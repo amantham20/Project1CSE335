@@ -1,10 +1,10 @@
 # AngrySparty
 
-### Created by Aman Dhruva Thamminana, Rajmeet Singh Chandok, Milan Mihailovic, Zhiqiang Ni, and Sam Samuel Valdovinos Granados
+### Created by Aman Dhruva Thamminana, Rajmeet Singh Chandok, Milan Mihailovic, Zhiqiang Ni, and Ian Valdovinos
 
 
 
-## Steps to run the project.
+## Steps to run the project
 
 - Ensure to reload cmake project.
 - Clean and run build.
