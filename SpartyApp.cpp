@@ -3,10 +3,9 @@
  * @author Ian Valdovinos Granados
  */
 
-#include "SpartyApp.h"
-
 #include "pch.h"
 #include "SpartyApp.h"
+
 
 bool SpartyApp::OnInit()
 {
