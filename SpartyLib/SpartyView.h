@@ -1,6 +1,6 @@
 /**
  * @file SpartyView.h
- * @author Ian Valdovinos Granados
+ * @author Ian Valdovinos Granados, zhiqiang ni
  *
  *
  */
