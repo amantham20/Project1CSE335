@@ -1,8 +1,9 @@
+/**
+ * @file main.cpp
+ * @author zhiqiang ni
+ */
 
-#include <iostream>
+#include "pch.h"
+#include "SpartyApp.h"
 
-int main()
-{
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
+wxIMPLEMENT_APP(SpartyApp);

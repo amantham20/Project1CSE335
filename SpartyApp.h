@@ -8,7 +8,7 @@
 #ifndef ANGRYSPARTY_SPARTYAPP_H
 #define ANGRYSPARTY_SPARTYAPP_H
 
-class SpartyApp : wxApp {
+class SpartyApp : public wxApp {
 private:
 
 public:
