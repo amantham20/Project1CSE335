@@ -16,6 +16,8 @@ void SpartyView::Initialize(wxFrame* parent)
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
     Bind(wxEVT_PAINT, &SpartyView::OnPaint, this);
+
+    // Not complete!
 }
 
 /**
