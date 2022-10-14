@@ -1,8 +1,8 @@
 /**
  * @file SpartyView.h
- * @author Ian Valdovinos Granados, zhiqiang ni
+ * @author Ian Valdovinos Granados, zhiqiang ni, Milan Mihailovic
  *
- *
+ * Window class in which the game is drawn.
  */
 
 #ifndef ANGRYSPARTY_SPARTYVIEW_H
