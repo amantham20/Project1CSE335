@@ -10,7 +10,7 @@
 void MainFrame::Initialize()
 {
     //todo: find the window size
-    Create(nullptr, wxID_ANY, L"Aquarium", wxDefaultPosition,  wxSize( 1000,800 ));
+    Create(nullptr, wxID_ANY, L"SpartyApp", wxDefaultPosition,  wxSize( 1000,800 ));
 
 
     //todo: add comment
@@ -44,6 +44,8 @@ void MainFrame::Initialize()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnMenuHelpAbout, this, wxID_ABOUT);
     CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
 }
+
+
 
 /**
  * Exit menu option handlers
