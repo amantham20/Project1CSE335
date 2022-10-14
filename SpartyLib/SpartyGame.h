@@ -7,8 +7,10 @@
 #ifndef ANGRYSPARTY_SPARTYGAME_H
 #define ANGRYSPARTY_SPARTYGAME_H
 
+class Item;
+
 /**
- * Base Sparty Game Class
+ * Base AngrySparty Game Class
  */
 class SpartyGame {
 private:

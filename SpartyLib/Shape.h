@@ -2,7 +2,7 @@
  * @file Shape.h
  * @author Rajmeet Singh Chandok
  *
- * Shape class
+ * Base class for all shapes in AngrySparty
  */
 
 #ifndef ANGRYSPARTY_SHAPE_H
