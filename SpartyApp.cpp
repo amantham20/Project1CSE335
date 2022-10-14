@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "SpartyApp.h"
+#include "MainFrame.h"
 
 
 bool SpartyApp::OnInit()
@@ -14,6 +15,12 @@ bool SpartyApp::OnInit()
 
     // Add image type handlers
     wxInitAllImageHandlers();
+
+
+    auto frame = new MainFrame();
+
+    frame->Initialize();
+    frame->Show(true);
 
 
     return true;
