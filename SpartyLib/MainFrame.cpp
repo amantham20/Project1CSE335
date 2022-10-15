@@ -1,6 +1,6 @@
 /**
  * @file MainFrame.cpp
- * @author Ian Valdovinos Granados, zhiqiang ni
+ * @author Ian Valdovinos Granados, zhiqiang ni, and Aman Dhruva Thamminana
  */
 
 #include "pch.h"

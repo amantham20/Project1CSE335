@@ -1,6 +1,6 @@
 /**
  * @file SpartyApp.cpp
- * @author Ian Valdovinos Granados
+ * @author Ian Valdovinos Granados, and  Aman Dhruva Thamminana
  */
 
 #include "pch.h"

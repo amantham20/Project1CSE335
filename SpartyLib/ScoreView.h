@@ -1,6 +1,6 @@
 /**
  * @file ScoreView.h
- * @author Ian Valdovinos Granados
+ * @author Ian Valdovinos Granados,
  *
  * Class that keeps track of the current score for the game or a specific level
  */
