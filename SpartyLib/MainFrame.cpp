@@ -12,7 +12,6 @@ void MainFrame::Initialize()
     //todo: find the window size
     Create(nullptr, wxID_ANY, L"SpartyApp", wxDefaultPosition,  wxSize( 1000,800 ));
 
-
     //todo: add comment
     auto sizer = new wxBoxSizer( wxVERTICAL );
     auto spartyView = new SpartyView();
