@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(SpartyLib)
 
-set(SOURCE_FILES pch.h MainFrame.cpp MainFrame.h SpartyView.cpp SpartyView.h Shape.cpp Shape.h SpartyGame.cpp SpartyGame.h Score.cpp Score.h Item.cpp Item.h ScoreDisplay.cpp ScoreDisplay.h Score.cpp)
+set(SOURCE_FILES pch.h MainFrame.cpp MainFrame.h SpartyView.cpp SpartyView.h Shape.cpp Shape.h SpartyGame.cpp SpartyGame.h Score.cpp Score.h Item.cpp Item.h ScoreDisplay.cpp ScoreDisplay.h Score.cpp Slingshot.cpp Slingshot.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
