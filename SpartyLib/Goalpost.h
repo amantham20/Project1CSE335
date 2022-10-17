@@ -1,6 +1,6 @@
 /**
  * @file Goalpost.h
- * @author Milan Mihailovic
+ * @author Milan Mihailovic, zhiqiang ni
  *
  * Class for a slingshot of type Goalpost
  */
@@ -17,7 +17,9 @@ class Goalpost : public Slingshot {
 private:
 
 public:
+    wxXmlNode *XmlSave(wxXmlNode *node) override;
 
+    void XmlLoad(wxXmlNode *node) override;
 };
 
 #endif //ANGRYSPARTY_GOALPOST_H

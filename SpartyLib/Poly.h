@@ -1,6 +1,6 @@
 /**
  * @file Poly.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  */
 
 #ifndef ANGRYSPARTY_POLY_H
@@ -19,6 +19,9 @@ private:
 
 public:
 
+    wxXmlNode *XmlSave(wxXmlNode *node) override;
+
+    void XmlLoad(wxXmlNode *node) override;
 };
 
 #endif //ANGRYSPARTY_POLY_H

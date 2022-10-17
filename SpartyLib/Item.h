@@ -1,6 +1,6 @@
 /**
  * @file Item.h
- * @author Milan Mihailovic
+ * @author Milan Mihailovic, zhiqiang ni
  *
  * Base class for any item in our game.
  */
@@ -28,6 +28,9 @@ public:
 
     Item(b2World* world);
 
+    virtual wxXmlNode *XmlSave(wxXmlNode *node);
+
+    virtual void XmlLoad(wxXmlNode *node);
 };
 
 #endif //ANGRYSPARTY_ITEM_H

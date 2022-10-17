@@ -1,6 +1,6 @@
 /**
  * @file WoodenSlingshot.h
- * @author Milan Mihailovic
+ * @author Milan Mihailovic, zhiqiang ni
  *
  * Class for a slingshot of type WoodenSlingshot
  */
@@ -17,7 +17,9 @@ class WoodenSlingshot : public Slingshot {
 private:
 
 public:
+    wxXmlNode *XmlSave(wxXmlNode *node) override;
 
+    void XmlLoad(wxXmlNode *node) override;
 };
 
 #endif //ANGRYSPARTY_WOODENSLINGSHOT_H
