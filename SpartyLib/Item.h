@@ -8,6 +8,7 @@
 #ifndef ANGRYSPARTY_ITEM_H
 #define ANGRYSPARTY_ITEM_H
 #include <memory>
+#include "b2_world.h"
 
 //class Level;
 
@@ -22,6 +23,8 @@ public:
 
     /// Copy constructor (disabled)
     Item(const Item &) = delete;
+
+    Item(b2World* world);
 
     virtual ~Item();
 
