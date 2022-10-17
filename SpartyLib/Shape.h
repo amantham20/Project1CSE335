@@ -1,15 +1,17 @@
 /**
  * @file Shape.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  */
 
 #ifndef ANGRYSPARTY_SHAPE_H
 #define ANGRYSPARTY_SHAPE_H
 
+#include "PositionalItem.h"
+
 /**
  * Base class for all shapes in AngrySparty
  */
-class Shape {
+class Shape : public PositionalItem{
 private:
     /// Shape's friction
     double mFriction = 0.5;
@@ -27,7 +29,9 @@ private:
     std::string mType = "dynamic";
 
 public:
+    wxXmlNode *XmlSave(wxXmlNode *node) override;
 
+    void XmlLoad(wxXmlNode *node) override;
 
 };
 
