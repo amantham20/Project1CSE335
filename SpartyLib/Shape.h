@@ -1,15 +1,13 @@
 /**
  * @file Shape.h
  * @author Rajmeet Singh Chandok
- *
- * Base class for all shapes in AngrySparty
  */
 
 #ifndef ANGRYSPARTY_SHAPE_H
 #define ANGRYSPARTY_SHAPE_H
 
 /**
- * Base class for shape
+ * Base class for all shapes in AngrySparty
  */
 class Shape {
 private:

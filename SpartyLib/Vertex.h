@@ -10,6 +10,9 @@
 
 #include "Poly.h"
 
+/**
+ * Vertex class derived from Polygon Class
+ */
 class Vertex : public Poly {
 private:
     /// X position

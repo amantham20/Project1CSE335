@@ -1,8 +1,6 @@
 /**
  * @file Block.h
  * @author Rajmeet Singh Chandok
- *
- *
  */
 
 #ifndef ANGRYSPARTY_BLOCK_H
@@ -10,6 +8,9 @@
 
 #include "Shape.h"
 
+/**
+ * Block class derived from Shape
+ */
 class Block : public Shape {
 private:
     /// Block Angle
