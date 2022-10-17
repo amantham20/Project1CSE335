@@ -13,7 +13,7 @@
  * This applies to the wooden slingshots
  * and the goalposts in the game.
  */
-class Slingshot {
+class Slingshot : public PositionalItem {
 private:
 
 public:
