@@ -15,7 +15,8 @@
  */
 class PositionalItem : public Item {
 private:
-    /// x position
+
+/// x position
     double mX;
 
     /// y position
@@ -25,6 +26,9 @@ private:
     b2Body* mBody;
 
 public:
+
+    PositionalItem(b2World* world);
+
     /**
      * Getter of x position
      * @return x position

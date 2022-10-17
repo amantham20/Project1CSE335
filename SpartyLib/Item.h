@@ -17,7 +17,7 @@ private:
     /// The level this item is contained in
     //Level *mLevel
 
-    /// Rigid body associated with the item
+/// Rigid body associated with the item
     b2Body *mBody;
 
 public:
@@ -27,9 +27,9 @@ public:
     /// Copy constructor (disabled)
     Item(const Item &) = delete;
 
-    Item(b2World* world);
-
     virtual ~Item();
+
+    Item(b2World* world);
 
 };
 
