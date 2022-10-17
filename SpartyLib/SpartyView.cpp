@@ -41,6 +41,7 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
     // Compute the time that has elapsed
     // since the last call to OnPaint.
+    // todo: Change timing approach to support box2D. See https://facweb.cse.msu.edu/cbowen/cse335/project1-fs22/box2d.php
     auto newTime = mStopWatch.Time();
     auto elapsed = (double)(newTime - mTime) * 0.001;
     mTime = newTime;
