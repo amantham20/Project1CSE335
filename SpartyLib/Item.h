@@ -17,9 +17,6 @@ private:
     /// The level this item is contained in
     //Level *mLevel
 
-/// Rigid body associated with the item
-    b2Body *mBody;
-
 public:
     /// Default constructor (disabled)
     Item() = delete;
