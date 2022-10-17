@@ -8,7 +8,7 @@
 
 using namespace std;
 /// Base filename for the slingshot image
-const std::wstring WoodSlingshotBaseName = L"slingshot";
+const wstring WoodSlingshotBaseName = L"slingshot";
 
 /// Size of the slingshot image in meters
 const b2Vec2 WoodSlingshotSize = b2Vec2(0.5, 1.446);
