@@ -7,6 +7,7 @@
 #define ANGRYSPARTY_POLY_H
 
 #include "Shape.h"
+#include <box2d.h>
 
 /**
  * Polygon class derived from Shape
@@ -15,6 +16,7 @@ class Poly : public Shape {
 private:
     /// Vertices
     std::vector<b2Vec2> mVertices;
+
 public:
 
 };
