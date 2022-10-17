@@ -8,6 +8,8 @@
 #ifndef ANGRYSPARTY_SLINGSHOT_H
 #define ANGRYSPARTY_SLINGSHOT_H
 
+#include "PositionalItem.h"
+
 /**
  * Base class for a slingshot
  * This applies to the wooden slingshots
