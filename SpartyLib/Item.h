@@ -12,12 +12,12 @@
 #include <memory>
 #include "b2_world.h"
 
-//class Level;
+class Level;
 
 class Item {
 private:
     /// The level this item is contained in
-    //Level *mLevel
+    Level *mLevel;
 
 public:
     /// Default constructor (disabled)

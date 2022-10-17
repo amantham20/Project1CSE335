@@ -1,12 +1,12 @@
 /**
  * @file Picture.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, Milan Mihailovic
  */
 
 #ifndef ANGRYSPARTY_PICTURE_H
 #define ANGRYSPARTY_PICTURE_H
 
-#include "SpartyGame.h"
+#include "Level.h"
 
 /**
  * Placeholder class for all pictures
@@ -20,7 +20,7 @@ private:
     std::unique_ptr<wxBitmap> mImageBitmap;
 
 public:
-    Picture(SpartyGame *game, const std::wstring& filename);
+    Picture(Level *level, const std::wstring& filename);
 
     /// Destructor
     virtual ~Picture();
