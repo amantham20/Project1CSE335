@@ -1,11 +1,11 @@
 /**
  * @file Picture.cpp
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, Milan Mihailovic
  */
 
 #include "pch.h"
 #include "Picture.h"
-#include "SpartyGame.h"
+#include "Level.h"
 
 using namespace std;
 
@@ -14,10 +14,8 @@ using namespace std;
  * @param object to SpartyGame
  * @param filename
  */
-Picture::Picture(SpartyGame *game, const std::wstring& filename)
+Picture::Picture(Level *level, const std::wstring& filename)
 {
     mImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mImageBitmap = make_unique<wxBitmap>(*mImage);
 }
-
-using namespace std;
