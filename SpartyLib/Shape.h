@@ -13,12 +13,16 @@
  */
 class Shape {
 private:
-    double mFriction;
-    double mResistance;
-    double mDensity;
+    /// Shape's friction
+    double mFriction = 0.5;
+
+    /// Shape's resistance
+    double mResistance = 0.5;
+
+    /// Shape's density
+    double mDensity = 1.0;
 
 public:
-
 };
 
 #endif //ANGRYSPARTY_SHAPE_H
