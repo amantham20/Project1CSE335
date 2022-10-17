@@ -11,13 +11,13 @@ using namespace std;
 const std::wstring WoodSlingshotBaseName = L"slingshot";
 
 /// Size of the slingshot image in meters
-//const b2Vec2 WoodSlingshotSize = b2Vec2(0.5, 1.446);
+const b2Vec2 WoodSlingshotSize = b2Vec2(0.5, 1.446);
 
 /// Back band attachment point
-//const b2Vec2 WoodSlingshotBandAttachBack = b2Vec2(-0.15f, 1.12f);
+const b2Vec2 WoodSlingshotBandAttachBack = b2Vec2(-0.15f, 1.12f);
 
 /// Front band attachment point
-//const b2Vec2 WoodSlingshotBandAttachFront = b2Vec2(0.15f, 1.2f);
+const b2Vec2 WoodSlingshotBandAttachFront = b2Vec2(0.15f, 1.2f);
 
 /// Maximum amount the slingshot can be pulled in meters
 const double WoodSlingshotMaximumPull = 1;
