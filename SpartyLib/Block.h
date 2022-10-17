@@ -13,14 +13,8 @@
  */
 class Block : public Shape {
 private:
-    /// Block Angle
-    double mAngle;
-
     /// Draw repeatedly
     int mRepeatX;
-
-    /// Type of block
-    std::string mType = "dynamic";
 
 public:
 

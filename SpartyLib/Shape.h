@@ -20,6 +20,12 @@ private:
     /// Shape's density
     double mDensity = 1.0;
 
+    /// Shape Angle
+    double mAngle;
+
+    /// Type of shape
+    std::string mType = "dynamic";
+
 public:
 
 
