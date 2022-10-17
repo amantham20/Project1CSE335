@@ -15,11 +15,11 @@ private:
     /// Block Angle
     double mAngle;
 
-    /// Repeat X Direction
+    /// Draw repeatedly
     int mRepeatX;
 
     /// Type of block
-    enum Type { Static, Dynamic };
+    std::string mType = "dynamic";
 
 public:
 

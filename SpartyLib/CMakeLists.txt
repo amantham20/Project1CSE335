@@ -13,3 +13,13 @@ add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
+
+include(FetchContent)
+FetchContent_Declare(
+        box2d
+        GIT_REPOSITORY https://github.com/erincatto/box2d.git
+        GIT_TAG v2.4.1
+)
+
+FetchContent_MakeAvailable(box2d)
+include_directories(${box2d_SOURCE_DIR}/include/box2d)
