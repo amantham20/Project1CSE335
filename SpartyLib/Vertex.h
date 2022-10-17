@@ -20,6 +20,9 @@ private:
     double mY;
 
 public:
+
+    Vertex(double x, double y);
+
     /**
      * Getter for X position
      * @return X position

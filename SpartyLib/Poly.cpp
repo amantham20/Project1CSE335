@@ -18,7 +18,29 @@
  */
 void Poly::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
+    //todo: this may be wong place but it got be some where in the code
+
+
+    //todo: this may be not the best way
+    mVertices.clear();
+
+    node->GetAttribute(L"x", L"0").ToDouble(&mX);
+    node->GetAttribute(L"y", L"0").ToDouble(&mY);
+
+    //load vertex
+    auto child = node->GetChildren();
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+        if(name == L"v")
+        {
+            double x, y;
+            child->GetAttribute(L"x", L"0").ToDouble(&x);
+            node->GetAttribute(L"y", L"0").ToDouble(&y);
+            auto vertex = Vertex(x,y);
+            mVertices.push_back(vertex);
+        }
+    }
 }
 
 /**
