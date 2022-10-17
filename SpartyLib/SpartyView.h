@@ -31,6 +31,10 @@ public:
     void onNewLevel(wxCommandEvent &event);
 
     void OnTimer(wxTimerEvent &event);
+
+    void OnFileSaveAs(wxCommandEvent &event);
+
+    void OnFileOpen(wxCommandEvent &event);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H
