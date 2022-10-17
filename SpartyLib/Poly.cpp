@@ -19,7 +19,6 @@
 void Poly::XmlLoad(wxXmlNode *node)
 {
     //todo: uncomplete code
-    Item::XmlLoad(node);
 }
 
 /**
@@ -29,8 +28,24 @@ void Poly::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* Poly::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
-    //todo: uncomplete code
+    auto polyNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"poly");
+    node->AddChild(polyNode);
 
-    return itemNode;
+    polyNode->AddAttribute(L"x", wxString::FromDouble(mX));
+    polyNode->AddAttribute(L"y", wxString::FromDouble(mY));
+    //todo need add image?
+
+
+
+    //save vertex
+    for(auto vertex : mVertices)
+    {
+        auto vNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"v");
+        polyNode->AddChild(vNode);
+
+        vNode->AddAttribute(L"x", wxString::FromDouble(vertex.getX()));
+        vNode->AddAttribute(L"y", wxString::FromDouble(vertex.getY()));
+    }
+
+    return polyNode;
 }

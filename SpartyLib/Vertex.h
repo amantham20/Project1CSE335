@@ -8,12 +8,10 @@
 #ifndef ANGRYSPARTY_VERTEX_H
 #define ANGRYSPARTY_VERTEX_H
 
-#include "Poly.h"
-
 /**
  * Vertex class derived from Polygon Class
  */
-class Vertex : public Poly {
+class Vertex{
 private:
     /// X position
     double mX;
@@ -45,10 +43,6 @@ public:
      * @param y
      */
     void setY(double y) { mY = y; }
-
-    wxXmlNode *XmlSave(wxXmlNode *node);
-
-    void XmlLoad(wxXmlNode *node);
 };
 
 #endif //ANGRYSPARTY_VERTEX_H
