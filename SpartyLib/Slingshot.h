@@ -1,6 +1,6 @@
 /**
  * @file Slingshot.h
- * @author Milan Mihailovic
+ * @author Milan Mihailovic, zhiqiang ni
  *
  * Base Class for the slingshot items in the game.
  */
@@ -19,7 +19,9 @@ class Slingshot : public PositionalItem {
 private:
 
 public:
+    wxXmlNode *XmlSave(wxXmlNode *node) override;
 
+    void XmlLoad(wxXmlNode *node) override;
 };
 
 #endif //ANGRYSPARTY_SLINGSHOT_H

@@ -1,5 +1,5 @@
 /**
- * @file ScoreView.h
+ * @file Score.h
  * @author Ian Valdovinos Granados
  *
  * Class that keeps track of the current score for the game or a specific level

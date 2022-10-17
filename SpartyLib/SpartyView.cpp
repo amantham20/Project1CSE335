@@ -23,7 +23,8 @@ void SpartyView::Initialize(wxFrame* parent)
 
     Bind(wxEVT_PAINT, &SpartyView::OnPaint, this);
     Bind(wxEVT_TIMER, &SpartyView::OnTimer, this);
-
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileSaveAs, this, wxID_SAVEAS);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileOpen, this, wxID_OPEN);
     //todo: not complete code
 }
 
@@ -55,5 +56,40 @@ void SpartyView::OnPaint(wxPaintEvent& event)
  */
 void SpartyView::OnTimer(wxTimerEvent &event)
 {
+    Refresh();
+}
+
+/**
+ * Handle the File>Save As menu option
+ * @param event The menu event
+ */
+void SpartyView::OnFileSaveAs(wxCommandEvent& event)
+{
+    wxFileDialog saveFileDialog(this, _("Save Level file"), "", "",
+                                "Level Files (*.sparty)|*.sparty", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
+    if (saveFileDialog.ShowModal() == wxID_CANCEL)
+    {
+        return;
+    }
+
+    auto filename = saveFileDialog.GetPath();
+    //todo not finished
+}
+
+/**
+ * File>Open menu handler
+ * @param event Menu event
+ */
+void SpartyView::OnFileOpen(wxCommandEvent& event)
+{
+    wxFileDialog loadFileDialog(this, _("Load Level file"), "", "",
+                                "Level Files (*.sparty)|*.sparty", wxFD_OPEN);
+    if (loadFileDialog.ShowModal() == wxID_CANCEL)
+    {
+        return;
+    }
+
+    auto filename = loadFileDialog.GetPath();
+    //todo not finished
     Refresh();
 }

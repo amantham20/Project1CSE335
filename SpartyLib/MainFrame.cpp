@@ -36,6 +36,8 @@ void MainFrame::Initialize()
 
     fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
+    fileMenu->Append(wxID_SAVEAS, "Save &As...\tCtrl-S", L"Save Level as...");
+    fileMenu->Append(wxID_OPEN, "Open &File...\tCtrl-F", L"Open Level file...");
 
     SetMenuBar( menuBar );
 

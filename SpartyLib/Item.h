@@ -1,12 +1,14 @@
 /**
  * @file Item.h
- * @author Milan Mihailovic
+ * @author Milan Mihailovic, zhiqiang ni
  *
  * Base class for any item in our game.
  */
 
 #ifndef ANGRYSPARTY_ITEM_H
 #define ANGRYSPARTY_ITEM_H
+
+#include <wx/xml/xml.h>
 #include <memory>
 #include "b2_world.h"
 
@@ -16,9 +18,6 @@ class Item {
 private:
     /// The level this item is contained in
     //Level *mLevel
-
-/// Rigid body associated with the item
-    b2Body *mBody;
 
 public:
     /// Default constructor (disabled)
@@ -31,6 +30,9 @@ public:
 
     Item(b2World* world);
 
+    virtual wxXmlNode *XmlSave(wxXmlNode *node);
+
+    virtual void XmlLoad(wxXmlNode *node);
 };
 
 #endif //ANGRYSPARTY_ITEM_H

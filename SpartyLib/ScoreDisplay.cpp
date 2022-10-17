@@ -1,8 +1,9 @@
 /**
- * @file Score.cpp
+ * @file ScoreDisplay.cpp
  * @author Ian Valdovinos Granados, zhiqiang ni
  */
 
+#include "pch.h"
 #include "ScoreDisplay.h"
 
 

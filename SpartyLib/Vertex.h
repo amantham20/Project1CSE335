@@ -1,6 +1,6 @@
 /**
  * @file Vertex.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  *
  *
  */
@@ -46,6 +46,9 @@ public:
      */
     void setY(double y) { mY = y; }
 
+    wxXmlNode *XmlSave(wxXmlNode *node);
+
+    void XmlLoad(wxXmlNode *node);
 };
 
 #endif //ANGRYSPARTY_VERTEX_H
