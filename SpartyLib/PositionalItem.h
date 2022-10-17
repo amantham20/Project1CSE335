@@ -1,6 +1,6 @@
 /**
  * @file PositionalItem.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  *
  */
 
@@ -52,6 +52,10 @@ public:
      * @param y pos
      */
     void setY(double y) { mY = y; }
+
+    wxXmlNode *XmlSave(wxXmlNode *node) override;
+
+    void XmlLoad(wxXmlNode *node) override;
 
 };
 
