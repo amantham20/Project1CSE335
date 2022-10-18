@@ -19,6 +19,9 @@ class Slingshot : public PositionalItem {
 private:
 
 public:
+
+    Slingshot(b2World* world);
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;

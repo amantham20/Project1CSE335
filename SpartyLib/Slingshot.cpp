@@ -9,6 +9,14 @@
 using namespace std;
 
 /**
+ * PositionalItem constructor
+ * @param world
+ */
+Slingshot::Slingshot(b2World *world) : PositionalItem(world)
+{
+}
+
+/**
  * Load the attributes for an item node.
  *
  * This is the  base class version that loads the attributes
