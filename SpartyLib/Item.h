@@ -8,9 +8,8 @@
 #ifndef ANGRYSPARTY_ITEM_H
 #define ANGRYSPARTY_ITEM_H
 
-#include <wx/xml/xml.h>
 #include <memory>
-#include "b2_world.h"
+#include <box2d.h>
 
 class Level;
 
