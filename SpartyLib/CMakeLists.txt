@@ -10,9 +10,9 @@ include(${wxWidgets_USE_FILE})
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
-target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
-
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
+
+target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} box2d)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -23,3 +23,4 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(box2d)
 include_directories(${box2d_SOURCE_DIR}/include/box2d)
+

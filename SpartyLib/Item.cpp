@@ -10,6 +10,10 @@
 #include "Level.h"
 #include "Consts.h"
 #include "Picture.h"
+#include <wx/graphics.h>
+
+
+
 
 using namespace std;
 
