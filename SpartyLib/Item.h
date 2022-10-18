@@ -19,6 +19,7 @@ private:
     /// The level this item is contained in
     Level *mLevel;
 
+
 public:
     /// Default constructor (disabled)
     Item() = delete;
@@ -29,6 +30,9 @@ public:
     virtual ~Item();
 
     Item(b2World* world);
+
+    Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename);
+
 
     virtual wxXmlNode *XmlSave(wxXmlNode *node);
 

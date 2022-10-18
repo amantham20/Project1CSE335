@@ -6,7 +6,9 @@
 #include "pch.h"
 #include "Item.h"
 #include <box2d.h>
-//#include "Level.h"
+#include "Level.h"
+#include "Consts.h"
+#include "Picture.h"
 
 using namespace std;
 
@@ -26,6 +28,25 @@ Item::Item(b2World *world)
 {
 
 }
+
+Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
+
+    auto wid = mLevel->GetHeight() * Consts::MtoCM;
+    auto hit = mLevel->GetWidth()  * Consts::MtoCM;
+
+    auto picture = Picture(mLevel, filename);
+    std::shared_ptr<wxBitmap> bitmap = picture.GetBitmap();
+
+    graphics->PushState();
+    graphics->Scale(1, -1);
+    graphics->DrawBitmap(*bitmap,
+            -wid/2,
+            -hit,
+            wid, hit);
+    graphics->PopState();
+}
+
+
 
 /**
  * Save this item to an XML node
