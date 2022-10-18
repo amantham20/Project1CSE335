@@ -22,7 +22,7 @@ private:
 
 public:
 
-
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H
