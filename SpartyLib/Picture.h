@@ -25,7 +25,7 @@ public:
     std::shared_ptr<wxBitmap> GetBitmap(){return mImageBitmap;}
 
     /// Destructor
-    virtual ~Picture();
+//    virtual ~Picture();
 
     /// Default constructor (disabled)
     Picture() = delete;

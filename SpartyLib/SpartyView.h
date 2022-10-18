@@ -9,10 +9,13 @@
 #define ANGRYSPARTY_SPARTYVIEW_H
 
 #include "ScoreDisplay.h"
+#include "SpartyGame.h"
 
 class SpartyView : public wxWindow {
 private:
     void OnPaint(wxPaintEvent& event);
+
+    SpartyGame mGame;
 
     ///an object describe scoredisplay
     ScoreDisplay mScoreDisplay;

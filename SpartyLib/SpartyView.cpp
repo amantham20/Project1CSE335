@@ -4,6 +4,7 @@
  */
 #include "pch.h"
 #include "SpartyView.h"
+#include "Background.h"
 #include <wx/dcbuffer.h>
 
 /// Frame duration in milliseconds
@@ -22,6 +23,7 @@ void SpartyView::Initialize(wxFrame* parent)
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
     Bind(wxEVT_PAINT, &SpartyView::OnPaint, this);
+
     Bind(wxEVT_TIMER, &SpartyView::OnTimer, this);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileSaveAs, this, wxID_SAVEAS);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileOpen, this, wxID_OPEN);
@@ -49,7 +51,22 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
     mScoreDisplay.OnPaint(&dc);
     mScoreDisplay.Update(elapsed, &dc);
+
+    auto size = GetClientSize();
+
+    auto graphics =
+            std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create( dc ));
+    graphics->SetInterpolationQuality(wxINTERPOLATION_BEST);
+
+    mGame.OnDraw(graphics, size.GetWidth(), size.GetHeight());
+
 }
+
+
+
+
+
+
 /**
  * todo: can someone add comments here
  * @param event

@@ -31,19 +31,25 @@ Item::Item(b2World *world)
 
 Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
 
-    auto wid = mLevel->GetHeight() * Consts::MtoCM;
-    auto hit = mLevel->GetWidth()  * Consts::MtoCM;
+
 
     auto picture = Picture(mLevel, filename);
+
+
+    auto wid = mLevel->GetHeight() * Consts::MtoCM;
+    auto hit = mLevel->GetWidth()  * Consts::MtoCM;
     std::shared_ptr<wxBitmap> bitmap = picture.GetBitmap();
 
-    graphics->PushState();
+//    graphics->PushState();
+//    graphics->Scale(1, -1);
     graphics->Scale(1, -1);
-    graphics->DrawBitmap(*bitmap,
-            -wid/2,
-            -hit,
-            wid, hit);
-    graphics->PopState();
+//    graphics->DrawBitmap(*bitmap,
+//            -wid/2,
+//            -hit,
+//            wid, hit);
+
+    graphics->DrawBitmap(*bitmap, -100, -200, 500, 200);
+//    graphics->PopState();
 }
 
 
