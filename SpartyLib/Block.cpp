@@ -28,8 +28,10 @@ void Block::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* Block::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
-    //todo: uncomplete code
+    auto blockNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"block");
+    node->AddChild(blockNode);
+    blockNode = Shape::XmlSave(blockNode);
+    blockNode->AddAttribute(L"repeat-x", wxString::FromDouble(mRepeatX, 0));
 
-    return itemNode;
+    return blockNode;
 }

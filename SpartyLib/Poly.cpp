@@ -23,10 +23,6 @@ void Poly::XmlLoad(wxXmlNode *node)
 
     //todo: this may be not the best way
     mVertices.clear();
-
-    node->GetAttribute(L"x", L"0").ToDouble(&mX);
-    node->GetAttribute(L"y", L"0").ToDouble(&mY);
-
     //load vertex
     auto child = node->GetChildren();
     for( ; child; child=child->GetNext())
@@ -51,22 +47,17 @@ void Poly::XmlLoad(wxXmlNode *node)
 wxXmlNode* Poly::XmlSave(wxXmlNode* node)
 {
     auto polyNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"poly");
+    polyNode = PositionalItem::XmlSave(polyNode);
     node->AddChild(polyNode);
-
-    polyNode->AddAttribute(L"x", wxString::FromDouble(mX));
-    polyNode->AddAttribute(L"y", wxString::FromDouble(mY));
     //todo need add image?
-
-
 
     //save vertex
     for(auto vertex : mVertices)
     {
         auto vNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"v");
-        polyNode->AddChild(vNode);
-
         vNode->AddAttribute(L"x", wxString::FromDouble(vertex.getX()));
         vNode->AddAttribute(L"y", wxString::FromDouble(vertex.getY()));
+        polyNode->AddChild(vNode);
     }
 
     return polyNode;

@@ -32,8 +32,8 @@ PositionalItem::PositionalItem(b2World *world) : Item(world)
  */
 void PositionalItem::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
-    Item::XmlLoad(node);
+    node->GetAttribute(L"x", L"0").ToDouble(&mX);
+    node->GetAttribute(L"y", L"0").ToDouble(&mY);
 }
 
 /**
@@ -43,8 +43,8 @@ void PositionalItem::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* PositionalItem::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
-    //todo: uncomplete code
+    node->AddAttribute(L"x", wxString::FromDouble(mX));
+    node->AddAttribute(L"y", wxString::FromDouble(mY));
 
-    return itemNode;
+    return node;
 }

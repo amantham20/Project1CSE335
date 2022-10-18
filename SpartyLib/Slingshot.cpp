@@ -30,8 +30,9 @@ void Slingshot::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* Slingshot::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
-    //todo: uncomplete code
+    auto slingshotNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"slingshot");
+    slingshotNode = PositionalItem::XmlSave(slingshotNode);
+    node->AddChild(slingshotNode);
 
-    return itemNode;
+    return slingshotNode;
 }

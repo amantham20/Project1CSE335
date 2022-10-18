@@ -17,11 +17,6 @@ class Poly : public Shape {
 private:
     /// Vertices
     std::vector<Vertex> mVertices;
-
-    /// x postion for poly
-    double mX;
-    /// y postion for poly
-    double mY;
 public:
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
