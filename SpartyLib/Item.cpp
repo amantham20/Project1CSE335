@@ -36,7 +36,7 @@ wxXmlNode *Item::XmlSave(wxXmlNode *node)
 {
     auto itemNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"item");
     node->AddChild(itemNode);
-    //todo: uncompleted code
+
     return itemNode;
 }
 /**

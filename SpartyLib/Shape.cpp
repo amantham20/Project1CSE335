@@ -29,8 +29,13 @@ void Shape::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* Shape::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
-    //todo: uncomplete code
+    auto shapeNode = PositionalItem::XmlSave(node);
+    shapeNode->AddAttribute(L"type", mType);
+    shapeNode->AddAttribute(L"angle", wxString::FromDouble(mAngle));
+    shapeNode->AddAttribute(L"density", wxString::FromDouble(mDensity));
+    shapeNode->AddAttribute(L"friction", wxString::FromDouble(mFriction));
+    shapeNode->AddAttribute(L"restitution", wxString::FromDouble(mRestitution));
+    //todo: image?
 
-    return itemNode;
+    return shapeNode;
 }

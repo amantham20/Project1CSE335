@@ -30,8 +30,9 @@ void PositionalItem::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* PositionalItem::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
-    //todo: uncomplete code
+    auto goalpostNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"goalpost");
+    goalpostNode = PositionalItem::XmlSave(goalpostNode);
+    node->AddChild(goalpostNode);
 
-    return itemNode;
+    return goalpostNode;
 }

@@ -18,8 +18,25 @@
  */
 void Poly::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
-    Item::XmlLoad(node);
+    //todo: this may be wong place but it got be some where in the code
+
+
+    //todo: this may be not the best way
+    mVertices.clear();
+    //load vertex
+    auto child = node->GetChildren();
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+        if(name == L"v")
+        {
+            double x, y;
+            child->GetAttribute(L"x", L"0").ToDouble(&x);
+            node->GetAttribute(L"y", L"0").ToDouble(&y);
+            auto vertex = Vertex(x,y);
+            mVertices.push_back(vertex);
+        }
+    }
 }
 
 /**
@@ -29,8 +46,19 @@ void Poly::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* Poly::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
-    //todo: uncomplete code
+    auto polyNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"poly");
+    polyNode = PositionalItem::XmlSave(polyNode);
+    node->AddChild(polyNode);
+    //todo need add image?
 
-    return itemNode;
+    //save vertex
+    for(auto vertex : mVertices)
+    {
+        auto vNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"v");
+        vNode->AddAttribute(L"x", wxString::FromDouble(vertex.getX()));
+        vNode->AddAttribute(L"y", wxString::FromDouble(vertex.getY()));
+        polyNode->AddChild(vNode);
+    }
+
+    return polyNode;
 }
