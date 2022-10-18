@@ -3,6 +3,7 @@
 #include <Score.h>
 #include <wx/filefn.h>
 
+
 TEST(ScoreTest, ScoreTest){
     Score score;
     ASSERT_EQ(0, score.GetScore());
