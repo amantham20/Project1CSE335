@@ -17,10 +17,10 @@ using namespace std;
  *
  * @param node The Xml node we are loading the item from
  */
-void PositionalItem::XmlLoad(wxXmlNode *node)
+void Goalpost::XmlLoad(wxXmlNode *node)
 {
     //todo: uncomplete code
-    Item::XmlLoad(node);
+    Slingshot::XmlLoad(node);
 }
 
 /**
@@ -28,10 +28,10 @@ void PositionalItem::XmlLoad(wxXmlNode *node)
  * @param node The parent node we are going to be a child of
  * @return
  */
-wxXmlNode* PositionalItem::XmlSave(wxXmlNode* node)
+wxXmlNode* Goalpost::XmlSave(wxXmlNode* node)
 {
     auto goalpostNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"goalpost");
-    goalpostNode = PositionalItem::XmlSave(goalpostNode);
+    //goalpostNode = XmlSave(goalpostNode);
     node->AddChild(goalpostNode);
 
     return goalpostNode;
