@@ -9,6 +9,14 @@
 using namespace std;
 
 /**
+ * WoodenSlingshot constructor
+ * @param world
+ */
+WoodenSlingshot::WoodenSlingshot(b2World *world) : Slingshot(world)
+{
+}
+
+/**
  * Load the attributes for an item node.
  *
  * This is the  base class version that loads the attributes

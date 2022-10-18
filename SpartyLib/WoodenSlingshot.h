@@ -17,6 +17,9 @@ class WoodenSlingshot : public Slingshot {
 private:
 
 public:
+
+    WoodenSlingshot(b2World* world);
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;
