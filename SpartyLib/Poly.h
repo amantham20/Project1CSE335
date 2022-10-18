@@ -7,7 +7,6 @@
 #define ANGRYSPARTY_POLY_H
 
 #include "Shape.h"
-#include "Vertex.h"
 #include <box2d.h>
 
 /**
@@ -17,6 +16,7 @@ class Poly : public Shape {
 private:
     /// Vertices
     std::vector<b2Vec2> mVertices;
+
 public:
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;

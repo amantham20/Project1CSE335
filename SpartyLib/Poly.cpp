@@ -33,8 +33,8 @@ void Poly::XmlLoad(wxXmlNode *node)
             double x, y;
             child->GetAttribute(L"x", L"0").ToDouble(&x);
             node->GetAttribute(L"y", L"0").ToDouble(&y);
-            auto vertex = Vertex(x,y);
-            mVertices.push_back(vertex);
+            b2Vec2 b2vertex(x, y);
+            mVertices.push_back(b2vertex);
         }
     }
 }
@@ -55,8 +55,8 @@ wxXmlNode* Poly::XmlSave(wxXmlNode* node)
     for(auto vertex : mVertices)
     {
         auto vNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"v");
-        vNode->AddAttribute(L"x", wxString::FromDouble(vertex.getX()));
-        vNode->AddAttribute(L"y", wxString::FromDouble(vertex.getY()));
+        vNode->AddAttribute(L"x", wxString::FromDouble(vertex.x));
+        vNode->AddAttribute(L"y", wxString::FromDouble(vertex.y));
         polyNode->AddChild(vNode);
     }
 
