@@ -27,7 +27,9 @@ private:
     /// offsets
     double mXOffset, mYOffset;
 
+    void LoadXMLItems(wxXmlNode* node);
 
+    void LoadXMLSparties(wxXmlNode *node);
 public:
 
     SpartyGame();
