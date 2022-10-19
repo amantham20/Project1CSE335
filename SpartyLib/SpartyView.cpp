@@ -6,9 +6,12 @@
 #include "SpartyView.h"
 #include <wx/dcbuffer.h>
 #include "Consts.h"
+#include "stdio.h"
+
+using namespace std;
 
 /// Frame duration in seconds
-const double FrameDuration = 1.0/6.0;
+const double FrameDuration = 1.0/60.0;
 
 /**
  * Initialize the Sparty view class.
@@ -35,18 +38,24 @@ void SpartyView::Initialize(wxFrame* parent)
  */
 void SpartyView::OnPaint(wxPaintEvent& event)
 {
+
+    // Compute the time that has elapsed
+    // since the last call to OnPaint.
+    auto newTime = mStopWatch.Time() * Consts::MillisecToSec;
+    auto elapsed = (double)(newTime - mTime) * Consts::MillisecToSec;
+    while(mTime < newTime)
+    {
+        mTime += FrameDuration;
+//        mSpartyGame.Update(FrameDuration);
+    }
+
+    mTime = newTime;
+
     wxAutoBufferedPaintDC dc(this);
 
     wxBrush background(*wxWHITE);
     dc.SetBackground(background);
     dc.Clear();
-
-    // Compute the time that has elapsed
-    // since the last call to OnPaint.
-    // todo: Change timing approach to support box2D. See https://facweb.cse.msu.edu/cbowen/cse335/project1-fs22/box2d.php
-    auto newTime = mStopWatch.Time();
-    auto elapsed = (double)(newTime - mTime) * 0.001;
-    mTime = newTime;
 
     mScoreDisplay.OnPaint(&dc);
     mScoreDisplay.Update(elapsed, &dc);

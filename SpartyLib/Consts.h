@@ -25,6 +25,9 @@ public:
     /// Convert of seconds to milliseconds
     static constexpr int SecToMillisec = 1000;
 
+    /// Convert of milliseconds to seconds
+    static constexpr double MillisecToSec = 0.001;
+
     // Slingshot constants:
 
     /// Base filename for the slingshot image

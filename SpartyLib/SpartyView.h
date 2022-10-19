@@ -25,7 +25,7 @@ private:
     wxStopWatch mStopWatch;
 
     /// The last stopwatch time
-    long mTime = 0;
+    double mTime = 0;
 public:
     void Initialize(wxFrame* parent);
 
