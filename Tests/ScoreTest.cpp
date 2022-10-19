@@ -5,7 +5,7 @@
 
 
 TEST(ScoreTest, ScoreTest){
-    Score score;
+    Score score(0);
     ASSERT_EQ(0, score.GetScore());
     score.AddScore(1);
     ASSERT_EQ(1, score.GetScore());
