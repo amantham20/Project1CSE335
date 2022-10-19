@@ -6,9 +6,10 @@
 #include "pch.h"
 #include "Level.h"
 #include "Consts.h"
+#include "SpartyGame.h"
 
-//todo required need to be call at somewhere can move to construtor(if have)
-void Level::init()
+//todo add comment
+Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
     mLevelScore = new Score(0);
 }

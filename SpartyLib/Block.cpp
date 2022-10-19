@@ -35,3 +35,8 @@ wxXmlNode* Block::XmlSave(wxXmlNode* node)
 
     return blockNode;
 }
+
+Block::Block(Level *level, const std::wstring& filename) : Shape(level, filename)
+{
+
+}

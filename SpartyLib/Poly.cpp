@@ -7,6 +7,11 @@
 #include "Poly.h"
 
 
+Poly::Poly(Level *level, const std::wstring& filename) : Shape(level, filename)
+{
+
+}
+
 /**
  * Load the attributes for an item node.
  *

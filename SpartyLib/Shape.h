@@ -29,6 +29,8 @@ private:
     std::string mType = "dynamic";
 
 public:
+    Shape(Level *level, const std::wstring& filename);
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;

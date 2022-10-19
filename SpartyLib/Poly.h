@@ -19,6 +19,9 @@ private:
 
 public:
 
+
+    Poly(Level *level, const std::wstring& filename);
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;

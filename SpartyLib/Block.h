@@ -17,6 +17,8 @@ private:
     int mRepeatX;
 
 public:
+    Block(Level *level, const std::wstring& filename);
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;

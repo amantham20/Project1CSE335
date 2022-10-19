@@ -8,6 +8,12 @@
 
 using namespace std;
 
+
+Goalpost::Goalpost(Level *level, const std::wstring& filename) : Slingshot(level, filename)
+{
+
+}
+
 /**
  * Load the attributes for an item node.
  *

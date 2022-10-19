@@ -29,17 +29,20 @@ Item::~Item()
  * Constructor
  * @param world The world the item is in.
  */
-Item::Item(b2World *world)
+Item::Item(Level *level, const std::wstring& filename) : mLevel(level)
 {
+    mPicture = new Picture(filename);
 
 }
+
+
 
 Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
 
     auto wid = mLevel->GetHeight() * Consts::MtoCM;
     auto hit = mLevel->GetWidth()  * Consts::MtoCM;
 
-    auto picture = Picture(mLevel, filename);
+    auto picture = Picture(filename);
     std::shared_ptr<wxBitmap> bitmap = picture.GetBitmap();
 
     graphics->PushState();

@@ -39,3 +39,12 @@ wxXmlNode* Shape::XmlSave(wxXmlNode* node)
 
     return shapeNode;
 }
+
+/**
+ * Constructor
+ * @param level
+ */
+Shape::Shape(Level *level, const std::wstring& filename) : PositionalItem(level, filename)
+{
+
+}

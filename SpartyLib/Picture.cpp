@@ -14,7 +14,7 @@ using namespace std;
  * @param object to SpartyGame
  * @param filename
  */
-Picture::Picture(Level *level, const std::wstring& filename)
+Picture::Picture(const std::wstring& filename)
 {
     mImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mImageBitmap = make_shared<wxBitmap>(*mImage);

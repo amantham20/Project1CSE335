@@ -20,6 +20,11 @@ private:
 
     ///An score pointer
     Score *mTotalScore;
+
+
+    void LoadXMLItems(wxXmlNode *node);
+
+    void LoadXMLSparties(wxXmlNode *node);
 public:
 
     SpartyGame();
@@ -32,6 +37,7 @@ public:
     void Save(const wxString &filename);
 
     void Load(const wxString& filename);
+
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
