@@ -5,9 +5,10 @@
 #include "pch.h"
 #include "SpartyView.h"
 #include <wx/dcbuffer.h>
+#include "Consts.h"
 
-/// Frame duration in milliseconds
-const int FrameDuration = 30;
+/// Frame duration in seconds
+const double FrameDuration = 1.0/6.0;
 
 /**
  * Initialize the Sparty view class.
@@ -16,7 +17,7 @@ const int FrameDuration = 30;
 void SpartyView::Initialize(wxFrame* parent)
 {
     mTimer.SetOwner(this);
-    mTimer.Start(FrameDuration);
+    mTimer.Start(FrameDuration*Consts::SecToMillisec);
 
     Create(parent, wxID_ANY);
     SetBackgroundStyle(wxBG_STYLE_PAINT);

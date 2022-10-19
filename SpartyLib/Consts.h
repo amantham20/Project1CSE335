@@ -22,6 +22,9 @@ public:
     /// Convert of radians to degrees
     static constexpr double RtoD = 57.2957795131;
 
+    /// Convert of seconds to milliseconds
+    static constexpr int SecToMillisec = 1000;
+
     // Slingshot constants:
 
     /// Base filename for the slingshot image

@@ -9,6 +9,7 @@
 #define ANGRYSPARTY_SPARTYVIEW_H
 
 #include "ScoreDisplay.h"
+#include "b2_math.h"
 
 class SpartyView : public wxWindow {
 private:
