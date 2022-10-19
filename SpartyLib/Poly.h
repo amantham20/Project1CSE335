@@ -20,7 +20,7 @@ private:
 public:
 
 
-    Poly(Level *level, const std::wstring& filename);
+    Poly(Level *level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

@@ -10,7 +10,7 @@
  * PositionalItem constructor
  * @param world
  */
-PositionalItem::PositionalItem(Level *level, const std::wstring& filename) : Item(level, filename)
+PositionalItem::PositionalItem(Level *level) : Item(level)
 {
 /*    // Configure box2d for the item
     // Create the body definition
@@ -34,6 +34,7 @@ void PositionalItem::XmlLoad(wxXmlNode *node)
 {
     node->GetAttribute(L"x", L"0").ToDouble(&mX);
     node->GetAttribute(L"y", L"0").ToDouble(&mY);
+    Item::XmlLoad(node);
 }
 
 /**

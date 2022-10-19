@@ -27,7 +27,7 @@ private:
 
 public:
 
-    PositionalItem(Level *level, const std::wstring& filename);
+    PositionalItem(Level *level);
 
     /**
      * Getter of x position

@@ -12,7 +12,7 @@ using namespace std;
  * PositionalItem constructor
  * @param world
  */
-Slingshot::Slingshot(Level *level, const std::wstring& filename) : PositionalItem(level, filename)
+Slingshot::Slingshot(Level *level) : PositionalItem(level)
 {
 }
 

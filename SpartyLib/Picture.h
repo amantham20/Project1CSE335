@@ -20,7 +20,7 @@ private:
     std::shared_ptr<wxBitmap> mImageBitmap;
 
 public:
-    Picture(const std::wstring& filename);
+    Picture(Item *item, const std::wstring &filename);
 
     std::shared_ptr<wxBitmap> GetBitmap(){return mImageBitmap;}
 

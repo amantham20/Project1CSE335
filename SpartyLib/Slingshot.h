@@ -20,7 +20,7 @@ private:
 
 public:
 
-    Slingshot(Level* level, const std::wstring& filename);
+    Slingshot(Level *level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

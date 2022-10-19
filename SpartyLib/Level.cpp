@@ -8,14 +8,15 @@
 #include "Consts.h"
 #include "SpartyGame.h"
 #include "Block.h"
+#include "Background.h"
 
 //todo add comment
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
     mLevelScore = new Score(0);
     std::shared_ptr<Item> item;
-    item = std::make_shared<Block>(this, L"images/elementMetal029.png");
-    mItems.push_back(item);
+    //item = std::make_shared<Block>(this);
+    //mItems.push_back(item);
 }
 
 void Level::Draw(wxDC *dc)
@@ -70,3 +71,40 @@ void Level::Draw(wxDC *dc)
 //
 //    graphics->PopState();
 //}
+
+void Level::LoadXMLItems(wxXmlNode *node)
+{
+    std::shared_ptr<Item> item;
+    auto name = node->GetName();
+
+    if(name == L"background")
+    {
+        //item = std::make_shared<Background>(this, filename);
+    }
+    if(name == L"block")
+    {
+        item = std::make_shared<Block>(this);
+    }
+    if (item != nullptr)
+    {
+        mItems.push_back(item);
+        item->XmlLoad(node);
+    }
+
+}
+
+/**
+ * Loads the contents of the xml file into the SpartyGame
+ * @param filename
+ */
+void Level::Load(wxXmlNode *node)
+{
+    auto child = node->GetChildren();
+    for( ; child; child=child->GetNext()) {
+        auto name = node->GetName();
+        if(name == L"items")
+        {
+            LoadXMLItems(child);
+        }
+    }
+}

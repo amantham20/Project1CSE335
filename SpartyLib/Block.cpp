@@ -17,8 +17,8 @@
  */
 void Block::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
-    Item::XmlLoad(node);
+    node->GetAttribute(L"repeat-x").ToInt(&mRepeatX);
+    Shape::XmlLoad(node);
 }
 
 /**
@@ -36,7 +36,7 @@ wxXmlNode* Block::XmlSave(wxXmlNode* node)
     return blockNode;
 }
 
-Block::Block(Level *level, const std::wstring& filename) : Shape(level, filename)
+Block::Block(Level *level) : Shape(level)
 {
 
 }

@@ -18,7 +18,7 @@ private:
 
 public:
 
-    WoodenSlingshot(Level* level, const std::wstring& filename);
+    WoodenSlingshot(Level *level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

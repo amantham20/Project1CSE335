@@ -7,7 +7,7 @@
 #include "Poly.h"
 
 
-Poly::Poly(Level *level, const std::wstring& filename) : Shape(level, filename)
+Poly::Poly(Level *level) : Shape(level)
 {
 
 }

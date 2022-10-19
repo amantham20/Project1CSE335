@@ -18,8 +18,12 @@
  */
 void Shape::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
-    Item::XmlLoad(node);
+    mType = node->GetAttribute(L"type").ToStdWstring();
+    node->GetAttribute(L"angle").ToDouble(&mAngle);
+    node->GetAttribute(L"density").ToDouble(&mDensity);
+    node->GetAttribute(L"friction").ToDouble(&mFriction);
+    node->GetAttribute(L"restitution").ToDouble(&mRestitution);
+    PositionalItem::XmlLoad(node);
 }
 
 /**
@@ -44,7 +48,7 @@ wxXmlNode* Shape::XmlSave(wxXmlNode* node)
  * Constructor
  * @param level
  */
-Shape::Shape(Level *level, const std::wstring& filename) : PositionalItem(level, filename)
+Shape::Shape(Level *level) : PositionalItem(level)
 {
 
 }

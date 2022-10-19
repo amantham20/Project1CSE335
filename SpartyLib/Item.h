@@ -22,8 +22,6 @@ private:
 
     //an pointer to picture
     Picture *mPicture;
-protected:
-    Item(Level* level, const std::wstring& filename);
 public:
     /// Default constructor (disabled)
     Item() = delete;
@@ -34,6 +32,7 @@ public:
     virtual ~Item();
 
     void Draw(wxDC *dc);
+    Item(Level *level);
     Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename);
 
 

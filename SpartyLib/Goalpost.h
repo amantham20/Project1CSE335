@@ -17,7 +17,7 @@ class Goalpost : public Slingshot {
 private:
 
 public:
-    Goalpost(Level *level, const std::wstring& filename);
+    Goalpost(Level *level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

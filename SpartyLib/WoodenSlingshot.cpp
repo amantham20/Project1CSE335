@@ -12,7 +12,7 @@ using namespace std;
  * WoodenSlingshot constructor
  * @param world
  */
-WoodenSlingshot::WoodenSlingshot(Level *level, const std::wstring& filename) : Slingshot(level, filename)
+WoodenSlingshot::WoodenSlingshot(Level *level) : Slingshot(level)
 {
 }
 

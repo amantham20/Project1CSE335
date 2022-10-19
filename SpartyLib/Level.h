@@ -33,6 +33,12 @@ public:
 
     double GetHeight(){return mHeight;}
     double GetWidth(){return mWidth;}
+
+    void LoadXMLItems(wxXmlNode *node);
+
+    void Load(const wxString &filename);
+
+    void Load(wxXmlNode *node);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

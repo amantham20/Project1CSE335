@@ -26,10 +26,10 @@ private:
     double mAngle;
 
     /// Type of shape
-    std::string mType = "dynamic";
+    std::wstring mType = L"dynamic";
 
 public:
-    Shape(Level *level, const std::wstring& filename);
+    Shape(Level *level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

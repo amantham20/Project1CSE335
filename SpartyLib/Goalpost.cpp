@@ -9,7 +9,7 @@
 using namespace std;
 
 
-Goalpost::Goalpost(Level *level, const std::wstring& filename) : Slingshot(level, filename)
+Goalpost::Goalpost(Level *level) : Slingshot(level)
 {
 
 }
