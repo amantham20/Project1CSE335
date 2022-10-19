@@ -20,6 +20,12 @@ private:
 
     ///An score pointer
     Score *mTotalScore;
+
+    /// scaling factor
+    double mScale;
+
+    /// offsets
+    double mXOffset, mYOffset;
 public:
 
     SpartyGame();
@@ -32,6 +38,8 @@ public:
     void Save(const wxString &filename);
 
     void Load(const wxString& filename);
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
