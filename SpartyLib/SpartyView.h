@@ -17,7 +17,8 @@ private:
     void OnPaint(wxPaintEvent& event);
 
     ///pointer for scoredisplay
-    ScoreDisplay *mScoreDisplay;
+    ScoreDisplay *mTotalScoreDisplay;
+    ScoreDisplay *mLevelScoreDisplay;
 
     /// The timer that allows for animation
     wxTimer mTimer;
@@ -28,6 +29,7 @@ private:
     /// The last stopwatch time
     double mTime = 0;
 
+    ///an object describe the sparty game
     SpartyGame mSpartyGame;
 
     void LoadLevels();

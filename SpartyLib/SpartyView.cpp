@@ -33,7 +33,9 @@ void SpartyView::Initialize(wxFrame* parent)
     mTimer.Start(FrameDuration*Consts::SecToMillisec);
 
     //todo add lvalue to const
-    mScoreDisplay = new ScoreDisplay(mSpartyGame.getScore(), 10, 10);
+    mTotalScoreDisplay = new ScoreDisplay(mSpartyGame.getScore(), 10, 10);
+    //todo add score and position
+    //mLevelScoreDisplay = new ScoreDisplay();
 
     Create(parent, wxID_ANY);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
@@ -93,8 +95,10 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     dc.SetBackground(background);
     dc.Clear();
 
-    mScoreDisplay->OnPaint(&dc);
-    mScoreDisplay->Update(elapsed, &dc);
+    mTotalScoreDisplay->OnPaint(&dc);
+    //mLevelScoreDisplay->OnPaint(&dc);
+    mTotalScoreDisplay->Update(elapsed, &dc);
+    //mLevelScoreDisplay->Update(elapsed, &dc);
 
 }
 /**

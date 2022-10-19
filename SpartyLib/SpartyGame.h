@@ -21,12 +21,14 @@ private:
     ///An score pointer
     Score *mTotalScore;
 public:
+
     SpartyGame();
     /**
      * get pointer of score
      * @return pointer of score
      */
     Score *getScore(){return mTotalScore;};
+
     void Save(const wxString &filename);
 
     void Load(const wxString& filename);
