@@ -40,5 +40,33 @@ void SpartyGame::Save(const wxString &filename)
  */
 void SpartyGame::Load(const wxString &filename)
 {
-    
+    // Make sure the given file(s) can be opened
+    wxXmlDocument xmlDoc;
+    if(!xmlDoc.Load(filename))
+    {
+        wxMessageBox(L"Unable to load Level file");
+        return;
+    }
+
+    // Get the XML document root node
+    auto root = xmlDoc.GetRoot();
+
+    //
+    // Traverse the children of the root
+    // node of the XML document in memory!!!!
+    //
+    auto child = root->GetChildren();
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+        if(name == L"items")
+        {
+            // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
+
+        } else if (name == L"angry")
+        {
+            // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
+
+        }
+    }
 }
