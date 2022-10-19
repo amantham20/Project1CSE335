@@ -19,6 +19,8 @@ private:
 
     void LoadXMLItems(wxXmlNode* node);
 
+    void LoadXMLSparties(wxXmlNode* node);
+
 public:
 
     void Save(const wxString &filename);

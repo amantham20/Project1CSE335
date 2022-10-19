@@ -78,7 +78,7 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     mScoreDisplay.Update(elapsed, &dc);
 }
 /**
- * todo: can someone add comments here
+ * Handles the timer event
  * @param event
  */
 void SpartyView::OnTimer(wxTimerEvent &event)
