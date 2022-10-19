@@ -11,8 +11,17 @@
 
 using namespace std;
 
+//todo move to conns class
 /// Frame duration in seconds
 const double FrameDuration = 1.0/60.0;
+
+///the x location for score display
+const int positionX = 10;
+///the Y location for score display
+
+const int positionY = 10;
+
+
 
 /**
  * Initialize the Sparty view class.
@@ -22,6 +31,9 @@ void SpartyView::Initialize(wxFrame* parent)
 {
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration*Consts::SecToMillisec);
+
+    //todo add lvalue to const
+    mScoreDisplay = new ScoreDisplay(mSpartyGame.getScore(), 10, 10);
 
     Create(parent, wxID_ANY);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
@@ -74,8 +86,9 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     dc.SetBackground(background);
     dc.Clear();
 
-    mScoreDisplay.OnPaint(&dc);
-    mScoreDisplay.Update(elapsed, &dc);
+    mScoreDisplay->OnPaint(&dc);
+    mScoreDisplay->Update(elapsed, &dc);
+
 }
 /**
  * todo: can someone add comments here

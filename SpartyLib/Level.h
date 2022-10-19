@@ -9,20 +9,19 @@
 #define ANGRYSPARTY_LEVEL_H
 
 #include "Item.h"
+#include "Score.h"
 
 class Level {
 private:
     double mHeight = 0;
     double mWidth = 0;
 
-    int mLevelScore = 0;
-
-
     /// All of the items in the level
     std::vector<std::shared_ptr<Item>> mItems;
-
+    /// an pointer for score
+    Score *mLevelScore;
 public:
-
+    void init();
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     double GetHeight(){return mHeight;}

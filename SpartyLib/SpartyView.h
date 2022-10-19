@@ -16,8 +16,8 @@ class SpartyView : public wxWindow {
 private:
     void OnPaint(wxPaintEvent& event);
 
-    ///an object describe scoredisplay
-    ScoreDisplay mScoreDisplay;
+    ///pointer for scoredisplay
+    ScoreDisplay *mScoreDisplay;
 
     /// The timer that allows for animation
     wxTimer mTimer;

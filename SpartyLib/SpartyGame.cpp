@@ -8,6 +8,15 @@
 #include "SpartyGame.h"
 
 /**
+ * constructor
+ */
+SpartyGame::SpartyGame()
+{
+    mTotalScore = new Score(0);
+}
+
+
+/**
  * Save the SpartyGame as a .sparty XML file.
  *
  * Open an XML file and stream the aquarium data to it.

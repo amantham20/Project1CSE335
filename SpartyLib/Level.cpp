@@ -7,6 +7,12 @@
 #include "Level.h"
 #include "Consts.h"
 
+//todo required need to be call at somewhere can move to construtor(if have)
+void Level::init()
+{
+    mLevelScore = new Score(0);
+}
+
 /**
  * Handle drawing the game on the screen including all subsystems.
  * @param graphics Graphics context to draw on

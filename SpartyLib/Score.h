@@ -16,13 +16,8 @@ private:
     /// Current score
     int mScore = 0;
 
-    /**
-     * Sets the score to a specified value
-     * @param newScore New score to set the Score to
-     */
-    void SetScore(int newScore) {mScore = newScore; }
-
 public:
+    Score(int score);
     /**
      * Gets the current score
      * @return Current score

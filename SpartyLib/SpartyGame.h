@@ -8,6 +8,7 @@
 #define ANGRYSPARTY_SPARTYGAME_H
 
 #include "Item.h"
+#include "Score.h"
 
 /**
  * Base AngrySparty Game Class
@@ -17,8 +18,15 @@ private:
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
 
+    ///An score pointer
+    Score *mTotalScore;
 public:
-
+    SpartyGame();
+    /**
+     * get pointer of score
+     * @return pointer of score
+     */
+    Score *getScore(){return mTotalScore;};
     void Save(const wxString &filename);
 
     void Load(const wxString& filename);

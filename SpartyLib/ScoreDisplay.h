@@ -12,9 +12,15 @@
 
 class ScoreDisplay {
 private:
-    ///an object that describes score
-    Score mScore;
+    ///an object pointer
+    Score *mScore;
+    ///x posistion for displaying
+    double mPositionX;
+    ///Y posistion for displaying
+    double mPositionY;
 public:
+    ScoreDisplay(Score *score, double x, double y);
+
     void OnPaint(wxDC *dc);
 
     void Update(double elapsed, wxDC *dc);

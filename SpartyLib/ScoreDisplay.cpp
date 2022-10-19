@@ -6,11 +6,12 @@
 #include "pch.h"
 #include "ScoreDisplay.h"
 
-
-///the x location for score display
-const int positionX = 10;
-///the Y location for score display
-const int positionY = 10;
+ScoreDisplay::ScoreDisplay(Score *score, double x, double y)
+{
+    mScore = score;
+    mPositionY = y;
+    mPositionX = x;
+}
 
 /**
  * Paint event, draws the window.
@@ -26,12 +27,12 @@ void ScoreDisplay::OnPaint(wxDC *dc)
     dc->SetFont(font);
     //todo: adjust the color and font
     dc->SetTextForeground(wxColour(0, 64, 0));
-    dc->DrawText(wxString::FromDouble(mScore.GetScore(), 0), positionX,positionY);
+    dc->DrawText(wxString::FromDouble(mScore->GetScore(), 0), mPositionX,mPositionY);
 }
 
 void ScoreDisplay::Update(double elapsed, wxDC *dc)
 {
     OnPaint(dc);
     //todo: delete this lane this is just for testing
-    mScore.AddScore(1);
+    mScore->AddScore(1);
 }
