@@ -35,7 +35,7 @@ void SpartyGame::Save(const wxString &filename)
 }
 
 /**
- * Loads the contents of the xml file into the Game
+ * Loads the contents of the xml file into the SpartyGame
  * @param filename
  */
 void SpartyGame::Load(const wxString &filename)
@@ -69,4 +69,13 @@ void SpartyGame::Load(const wxString &filename)
 
         }
     }
+}
+
+/**
+ * Loads every item in the items parent tag
+ * @param node
+ */
+void SpartyGame::LoadXMLItems(wxXmlNode *node)
+{
+
 }

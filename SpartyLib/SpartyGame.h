@@ -17,6 +17,8 @@ private:
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
 
+    void LoadXMLItems(wxXmlNode* node);
+
 public:
 
     void Save(const wxString &filename);
