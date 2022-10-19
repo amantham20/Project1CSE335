@@ -7,13 +7,23 @@
 #include "Level.h"
 #include "Consts.h"
 #include "SpartyGame.h"
+#include "Block.h"
 
 //todo add comment
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
     mLevelScore = new Score(0);
+    std::shared_ptr<Item> item;
+    item = std::make_shared<Block>(this, L"images/elementMetal029.png");
+    mItems.push_back(item);
 }
 
+void Level::Draw(wxDC *dc)
+{
+    for(auto item : mItems){
+        item->Draw(dc);
+    }
+}
 /**
  * Handle drawing the game on the screen including all subsystems.
  * @param graphics Graphics context to draw on

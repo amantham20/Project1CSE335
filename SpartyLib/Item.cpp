@@ -32,7 +32,6 @@ Item::~Item()
 Item::Item(Level *level, const std::wstring& filename) : mLevel(level)
 {
     mPicture = new Picture(filename);
-
 }
 
 
@@ -80,4 +79,9 @@ wxXmlNode *Item::XmlSave(wxXmlNode *node)
 void Item::XmlLoad(wxXmlNode *node)
 {
     //todo: uncompleted code
+}
+
+void Item::Draw(wxDC *dc)
+{
+    mPicture->Draw(dc);
 }

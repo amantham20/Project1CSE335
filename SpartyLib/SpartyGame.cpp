@@ -7,6 +7,7 @@
 #include "pch.h"
 #include "SpartyGame.h"
 #include "Block.h"
+#include "Level.h"
 
 /**
  * constructor
@@ -14,8 +15,19 @@
 SpartyGame::SpartyGame()
 {
     mTotalScore = new Score(0);
+    testlevel = new Level(this);
+
+
 }
 
+/**
+ * Draw the SpartyGame
+ * @param dc The device context to draw on
+ */
+void SpartyGame::OnDraw(wxDC *dc)
+{
+    testlevel->Draw(dc);
+}
 
 /**
  * Save the SpartyGame as a .sparty XML file.
@@ -32,10 +44,10 @@ void SpartyGame::Save(const wxString &filename)
     xmlDoc.SetRoot(root);
 
     // Iterate over all items and save them
-    for (const auto& item : mItems)
+/*    for (const auto& level : Level)
     {
         item->XmlSave(root);
-    }
+    }*/
 
     if(!xmlDoc.Save(filename, wxXML_NO_INDENTATION))
     {

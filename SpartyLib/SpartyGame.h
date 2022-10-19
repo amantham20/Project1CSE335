@@ -15,11 +15,14 @@
  */
 class SpartyGame {
 private:
-    /// All of the items to populate our game
-    std::vector<std::shared_ptr<Item>> mItems;
 
     ///An score pointer
     Score *mTotalScore;
+
+    Level *testlevel;
+
+
+
 
 
     void LoadXMLItems(wxXmlNode *node);
@@ -32,12 +35,14 @@ public:
      * get pointer of score
      * @return pointer of score
      */
+
     Score *getScore(){return mTotalScore;};
 
     void Save(const wxString &filename);
 
     void Load(const wxString& filename);
 
+    void OnDraw(wxDC *dc);
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

@@ -33,7 +33,7 @@ public:
 
     virtual ~Item();
 
-
+    void Draw(wxDC *dc);
     Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename);
 
 
