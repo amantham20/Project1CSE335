@@ -58,6 +58,13 @@ void SpartyView::LoadLevels()
     wxString levelZeroFilename = L"../levels/level0.xml";
     mSpartyGame.Load(levelZeroFilename);
 
+    // Load Level 1
+
+    // Load Level 2
+
+    // Load Level 3
+
+
     Refresh();
 }
 
@@ -91,7 +98,7 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
 }
 /**
- * todo: can someone add comments here
+ * Handles the timer event
  * @param event
  */
 void SpartyView::OnTimer(wxTimerEvent &event)

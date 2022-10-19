@@ -44,7 +44,7 @@ void SpartyGame::Save(const wxString &filename)
 }
 
 /**
- * Loads the contents of the xml file into the Game
+ * Loads the contents of the xml file into the SpartyGame
  * @param filename
  */
 void SpartyGame::Load(const wxString &filename)
@@ -71,11 +71,42 @@ void SpartyGame::Load(const wxString &filename)
         if(name == L"items")
         {
             // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
+            LoadXMLItems(child);
 
         } else if (name == L"angry")
         {
             // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
+            LoadXMLSparties(child);
 
         }
     }
+}
+
+/**
+ * Loads every item in the items parent tag
+ * @param node
+ */
+void SpartyGame::LoadXMLItems(wxXmlNode *node)
+{
+    // Get the first item in the items parent tag
+    auto child = node->GetChildren();
+
+    // Iterate over every item inside the items tag
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+        // todo: Load every item in the items tag
+
+    }
+
+}
+
+/**
+ * Loads every angry sparty in the angry parent tag
+ * @param node
+ */
+void SpartyGame::LoadXMLSparties(wxXmlNode *node)
+{
+    // todo: Implement load function to load the angry sparties
+
 }
