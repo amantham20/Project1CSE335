@@ -33,3 +33,12 @@ void SpartyGame::Save(const wxString &filename)
         return;
     }
 }
+
+/**
+ * Loads the contents of the xml file into the Game
+ * @param filename
+ */
+void SpartyGame::Load(const wxString &filename)
+{
+    
+}

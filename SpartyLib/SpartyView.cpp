@@ -7,6 +7,7 @@
 #include <wx/dcbuffer.h>
 #include "Consts.h"
 #include "stdio.h"
+#include "SpartyGame.h"
 
 using namespace std;
 
@@ -30,6 +31,22 @@ void SpartyView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileSaveAs, this, wxID_SAVEAS);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileOpen, this, wxID_OPEN);
     //todo: not complete code
+
+
+    // Load Level files
+    LoadLevels();
+}
+
+/**
+ * Parses the Level xml files to populate SpartyGame mItems
+ */
+void SpartyView::LoadLevels()
+{
+    // Load Level 0
+    wxString levelZeroFilename = L"levels/level0.xml";
+    mSpartyGame.Load(levelZeroFilename);
+
+    Refresh();
 }
 
 /**

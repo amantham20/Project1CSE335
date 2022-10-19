@@ -10,6 +10,7 @@
 
 #include "ScoreDisplay.h"
 #include "b2_math.h"
+#include "SpartyGame.h"
 
 class SpartyView : public wxWindow {
 private:
@@ -26,6 +27,10 @@ private:
 
     /// The last stopwatch time
     double mTime = 0;
+
+    SpartyGame mSpartyGame;
+
+    void LoadLevels();
 public:
     void Initialize(wxFrame* parent);
 

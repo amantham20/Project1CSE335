@@ -20,6 +20,8 @@ private:
 public:
 
     void Save(const wxString &filename);
+
+    void Load(const wxString& filename);
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
