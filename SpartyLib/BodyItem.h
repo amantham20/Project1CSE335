@@ -18,7 +18,7 @@ private:
 
 public:
 
-    BodyItem(b2World* world);
+    BodyItem(Level *level);
 
 };
 
