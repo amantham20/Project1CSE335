@@ -101,6 +101,14 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     dc.Clear();
     mSpartyGame.OnDraw(&dc);
 
+
+    auto size = GetClientSize();
+
+    auto graphics = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create( dc ));
+    graphics->SetInterpolationQuality(wxINTERPOLATION_BEST);
+
+    mSpartyGame.OnDraw(graphics, size.GetWidth(), size.GetHeight());
+
     mTotalScoreDisplay->OnPaint(&dc);
     //mLevelScoreDisplay->OnPaint(&dc);
     mTotalScoreDisplay->Update(elapsed, &dc);

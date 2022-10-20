@@ -6,9 +6,11 @@
 
 #include "pch.h"
 #include "SpartyGame.h"
+#include "Consts.h"
+#include "PlayAreaSize.h"
 #include "Block.h"
-#include "Level.h"
-#include "Background.h"
+
+using namespace std;
 
 /**
  * constructor
@@ -16,19 +18,51 @@
 SpartyGame::SpartyGame()
 {
     mTotalScore = new Score(0);
-    testlevel = new Level(this);
-
-
 }
 
-/**
- * Draw the SpartyGame
- * @param dc The device context to draw on
- */
-void SpartyGame::OnDraw(wxDC *dc)
-{
-    testlevel->Draw(dc);
+
+void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height){
+    wxBrush background(*wxBLACK);
+    graphics->SetBrush(background);
+    graphics->DrawRectangle(0, 0, width, height);
+
+    graphics->PushState();
+
+    // Get the playing area size in centimeters
+
+    PlayAreaSize playArea;
+    b2Vec2 playingAreaSize = playArea.Temp();
+    playingAreaSize *= Consts::MtoCM;
+
+    //
+    // Automatic Scaling
+    // We use CM display units instead of meters
+    // because a 1-meter wide line is very wide
+    //
+    auto scaleX = double(height) / double(playingAreaSize.y);
+    auto scaleY = double(width) / double(playingAreaSize.x);
+    mScale = scaleX < scaleY ? scaleX : scaleY;
+    graphics->Scale(mScale, -mScale);
+
+    // Determine the virtual size in cm
+    auto virtualWidth = (double)width / mScale;
+    auto virtualHeight = (double)height / mScale;
+
+    // And the offset to the middle of the screen
+    mXOffset = virtualWidth / 2.0;
+    mYOffset = -(virtualHeight - playingAreaSize.y) / 2.0 - playingAreaSize.y;
+
+    graphics->Translate(mXOffset, mYOffset);
+
+    //
+    // From here we are dealing with centimeter pixels
+    // and Y up being increase values
+    //
+    // INSERT YOUR DRAWING CODE HERE
+
+    graphics->PopState();
 }
+
 
 /**
  * Save the SpartyGame as a .sparty XML file.
@@ -45,10 +79,10 @@ void SpartyGame::Save(const wxString &filename)
     xmlDoc.SetRoot(root);
 
     // Iterate over all items and save them
-/*    for (const auto& level : Level)
+    for (const auto& item : mItems)
     {
         item->XmlSave(root);
-    }*/
+    }
 
     if(!xmlDoc.Save(filename, wxXML_NO_INDENTATION))
     {
@@ -79,7 +113,66 @@ void SpartyGame::Load(const wxString &filename)
     // node of the XML document in memory!!!!
     //
     auto child = root->GetChildren();
-    for( ; child; child=child->GetNext()) {
-        testlevel->Load(child);
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+        if(name == L"items")
+        {
+            // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
+            LoadXMLItems(child);
+
+        } else if (name == L"angry")
+        {
+            // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
+            LoadXMLSparties(child);
+
+        }
     }
+}
+
+/**
+ * Loads every item in the items parent tag
+ * @param node
+ */
+void SpartyGame::LoadXMLItems(wxXmlNode *node)
+{
+    // Get the first item in the items parent tag
+    auto child = node->GetChildren();
+
+    // Pointer to the item we are loading
+    shared_ptr<Item> item;
+
+    // Iterate over every item inside the items tag
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+
+        if (name == "block")
+        {
+
+        } else if (name == "poly")
+        {
+
+        } else if (name == "foe")
+        {
+
+        } else if (name == "goalposts")
+        {
+
+        } else if (name == "background")
+        {
+
+        }
+
+    }
+}
+
+/**
+ * Loads every angry sparty in the angry parent tag
+ * @param node
+ */
+void SpartyGame::LoadXMLSparties(wxXmlNode *node)
+{
+    // todo: Implement load function to load the angry sparties
+
 }

@@ -8,13 +8,18 @@
 #ifndef ANGRYSPARTY_BACKGROUND_H
 #define ANGRYSPARTY_BACKGROUND_H
 
-#include "Picture.h"
+#include "Item.h"
 
 class Background : public Item{
 private:
+//    std::unique_ptr<wxBitmap> mBackground;
 public:
-    Background(Level *level);
-    void XmlLoad(wxXmlNode *node) override;
+//    Background(std::unique_ptr<wxBitmap> pBackground):Item()
+
+    Background(const std::wstring& filename) : Item(filename){};
+
+
+
 };
 
 #endif //ANGRYSPARTY_BACKGROUND_H
