@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "ScoreDisplay.h"
+#include "Score.h"
 
 ScoreDisplay::ScoreDisplay(Score *score, double x, double y)
 {

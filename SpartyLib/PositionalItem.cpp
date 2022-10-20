@@ -10,14 +10,14 @@
  * PositionalItem constructor
  * @param world
  */
-PositionalItem::PositionalItem(b2World *world) : Item(world)
+PositionalItem::PositionalItem(Level *level) : Item(level)
 {
-    // Configure box2d for the item
+/*    // Configure box2d for the item
     // Create the body definition
     b2BodyDef bodyDefinition;
     bodyDefinition.position.Set(0.0f, -10.0f); // todo: The position has to be set to the actual item's position
     // Create body
-    mBody = world->CreateBody(&bodyDefinition);
+    mBody = world->CreateBody(&bodyDefinition);*/
 
 }
 
@@ -34,6 +34,7 @@ void PositionalItem::XmlLoad(wxXmlNode *node)
 {
     node->GetAttribute(L"x", L"0").ToDouble(&mX);
     node->GetAttribute(L"y", L"0").ToDouble(&mY);
+    Item::XmlLoad(node);
 }
 
 /**

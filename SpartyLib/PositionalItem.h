@@ -27,7 +27,7 @@ private:
 
 public:
 
-    PositionalItem(b2World* world);
+    PositionalItem(Level *level);
 
     /**
      * Getter of x position

@@ -11,6 +11,8 @@
 #include <memory>
 #include <box2d.h>
 
+
+class Picture;
 class Level;
 
 class Item {
@@ -18,7 +20,8 @@ private:
     /// The level this item is contained in
     Level *mLevel;
 
-
+    //an pointer to picture
+    Picture *mPicture;
 public:
     /// Default constructor (disabled)
     Item() = delete;
@@ -28,8 +31,8 @@ public:
 
     virtual ~Item();
 
-    Item(b2World* world);
-
+    void Draw(wxDC *dc);
+    Item(Level *level);
     Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename);
 
 

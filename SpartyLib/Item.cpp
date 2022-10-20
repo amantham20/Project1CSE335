@@ -29,17 +29,18 @@ Item::~Item()
  * Constructor
  * @param world The world the item is in.
  */
-Item::Item(b2World *world)
+Item::Item(Level *level) : mLevel(level)
 {
-
 }
+
+
 
 Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
 
     auto wid = mLevel->GetHeight() * Consts::MtoCM;
     auto hit = mLevel->GetWidth()  * Consts::MtoCM;
 
-    auto picture = Picture(mLevel, filename);
+    auto picture = Picture(nullptr, filename);
     std::shared_ptr<wxBitmap> bitmap = picture.GetBitmap();
 
     graphics->PushState();
@@ -77,4 +78,12 @@ wxXmlNode *Item::XmlSave(wxXmlNode *node)
 void Item::XmlLoad(wxXmlNode *node)
 {
     //todo: uncompleted code
+    std::wstring filename = L"./images/" + node->GetAttribute(L"image").ToStdWstring();
+    mPicture = new Picture(this, filename);
 }
+
+void Item::Draw(wxDC *dc)
+{
+    mPicture->Draw(dc);
+}
+

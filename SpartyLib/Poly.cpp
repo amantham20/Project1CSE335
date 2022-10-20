@@ -7,6 +7,11 @@
 #include "Poly.h"
 
 
+Poly::Poly(Level *level) : Shape(level)
+{
+
+}
+
 /**
  * Load the attributes for an item node.
  *

@@ -20,12 +20,12 @@ private:
     std::shared_ptr<wxBitmap> mImageBitmap;
 
 public:
-    Picture(Level *level, const std::wstring& filename);
+    Picture(Item *item, const std::wstring &filename);
 
     std::shared_ptr<wxBitmap> GetBitmap(){return mImageBitmap;}
 
     /// Destructor
-    virtual ~Picture();
+    ~Picture(){}
 
     /// Default constructor (disabled)
     Picture() = delete;
@@ -34,6 +34,7 @@ public:
     Picture(const Picture &) = delete;
 
 
+    void Draw(wxDC *dc);
 };
 
 #endif //ANGRYSPARTY_PICTURE_H

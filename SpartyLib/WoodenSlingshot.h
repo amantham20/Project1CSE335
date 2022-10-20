@@ -18,7 +18,7 @@ private:
 
 public:
 
-    WoodenSlingshot(b2World* world);
+    WoodenSlingshot(Level *level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

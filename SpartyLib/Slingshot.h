@@ -20,7 +20,7 @@ private:
 
 public:
 
-    Slingshot(b2World* world);
+    Slingshot(Level *level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
