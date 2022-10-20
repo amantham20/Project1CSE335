@@ -9,6 +9,7 @@
 
 #include "Item.h"
 #include "Score.h"
+#include <wx/graphics.h>
 
 /**
  * Base AngrySparty Game Class
