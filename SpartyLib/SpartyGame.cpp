@@ -176,3 +176,8 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node)
     // todo: Implement load function to load the angry sparties
 
 }
+
+void SpartyGame::OnDraw(wxDC *dc)
+{
+
+}
