@@ -26,6 +26,8 @@ private:
 
     /// offsets
     double mXOffset, mYOffset;
+
+
 public:
 
     SpartyGame();
