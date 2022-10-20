@@ -17,7 +17,7 @@ public:
 //    PlayAreaSize(){}
     //! temp
     /// TODO Remove this function
-    b2Vec2 Temp(){ return b2Vec2(10,20);}
+    b2Vec2 Temp(){ return b2Vec2(14.22,8);}
 
 };
 

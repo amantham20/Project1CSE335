@@ -22,6 +22,10 @@ public:
 
 
     void XmlLoad(wxXmlNode *node);
+    Background(const std::wstring& filename) : Item(filename){};
+    Background(const std::wstring& filename, Level *level) : Item(level, filename){};
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 #endif //ANGRYSPARTY_BACKGROUND_H

@@ -21,17 +21,22 @@ private:
 
 public:
     Picture(Item *item, const std::wstring &filename);
+//    Picture(Level *level, const std::wstring& filename);
+
+    Picture(const std::wstring& filename);
 
     std::shared_ptr<wxBitmap> GetBitmap(){return mImageBitmap;}
+
+    void SetPicture(const std::wstring& filename);
 
     /// Destructor
     ~Picture(){}
 
     /// Default constructor (disabled)
-    Picture() = delete;
+//    Picture() = delete;
 
     /// Copy constructor (disabled)
-    Picture(const Picture &) = delete;
+//    Picture(const Picture &) = delete;
 
 
     void Draw(wxDC *dc);

@@ -31,7 +31,13 @@ private:
     void LoadXMLItems(wxXmlNode* node);
 
     void LoadXMLSparties(wxXmlNode *node);
+    std::vector<std::shared_ptr<Level>> mLevels;
+
+
+
 public:
+
+
 
     SpartyGame();
     /**
