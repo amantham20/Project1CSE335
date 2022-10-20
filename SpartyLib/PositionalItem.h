@@ -1,6 +1,6 @@
 /**
  * @file PositionalItem.h
- * @author Rajmeet Singh Chandok, zhiqiang ni
+ * @author Rajmeet Singh Chandok, zhiqiang ni, Milan Mihailovic
  *
  */
 
@@ -8,7 +8,6 @@
 #define ANGRYSPARTY_POSITIONALITEM_H
 
 #include "Item.h"
-#include <box2d.h>
 
 /**
  * Positional Item class for items with specific positions.
@@ -16,14 +15,11 @@
 class PositionalItem : public Item {
 private:
 
-/// x position
+    /// x position
     double mX;
 
     /// y position
     double mY;
-
-    /// box2d Item Body
-    b2Body* mBody;
 
 public:
 

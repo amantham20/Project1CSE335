@@ -1,6 +1,6 @@
 /**
  * @file PositionalItem.cpp
- * @author Rajmeet Singh Chandok, zhiqiang ni
+ * @author Rajmeet Singh Chandok, zhiqiang ni, Milan Mihailovic
  */
 
 #include "pch.h"
@@ -12,12 +12,6 @@
  */
 PositionalItem::PositionalItem(Level *level) : Item(level)
 {
-/*    // Configure box2d for the item
-    // Create the body definition
-    b2BodyDef bodyDefinition;
-    bodyDefinition.position.Set(0.0f, -10.0f); // todo: The position has to be set to the actual item's position
-    // Create body
-    mBody = world->CreateBody(&bodyDefinition);*/
 
 }
 

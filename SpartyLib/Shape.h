@@ -1,17 +1,17 @@
 /**
  * @file Shape.h
- * @author Rajmeet Singh Chandok, zhiqiang ni
+ * @author Rajmeet Singh Chandok, zhiqiang ni, Milan Mihailovic
  */
 
 #ifndef ANGRYSPARTY_SHAPE_H
 #define ANGRYSPARTY_SHAPE_H
 
-#include "PositionalItem.h"
+#include "BodyItem.h"
 
 /**
  * Base class for all shapes in AngrySparty
  */
-class Shape : public PositionalItem{
+class Shape : public BodyItem {
 private:
     /// Shape's friction
     double mFriction = 0.5;
