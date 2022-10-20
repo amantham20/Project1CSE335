@@ -14,8 +14,10 @@ class PlayAreaSize {
 private:
 
 public:
+//    PlayAreaSize(){}
     //! temp
-    b2Vec2 Temp(){ return b2Vec2(0,0);}
+    /// TODO Remove this function
+    b2Vec2 Temp(){ return b2Vec2(10,20);}
 
 };
 
