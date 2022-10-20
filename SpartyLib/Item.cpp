@@ -49,6 +49,7 @@ Item::Item(Level *level, const std::wstring& filename){
 
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = make_unique<wxBitmap>(*mItemImage);
+    mLevel = level;
 }
 
 Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
@@ -69,10 +70,13 @@ Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& file
 }
 
 void Item::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
-    auto wid = mLevel->GetHeight() * Consts::MtoCM;
-    auto hit = mLevel->GetWidth()  * Consts::MtoCM;
+    auto wid = mLevel->GetWidth() * Consts::MtoCM;
+    auto hit = mLevel->GetHeight()  * Consts::MtoCM;
 
 //    std::shared_ptr<wxBitmap> bitmap = mPicture->GetBitmap();
+
+//    wid = 7000;
+//    hit = 3000;
 
     graphics->PushState();
     graphics->Scale(1, -1);

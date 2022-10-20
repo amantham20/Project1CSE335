@@ -28,7 +28,13 @@ private:
     double mXOffset, mYOffset;
 
 
+    std::vector<std::shared_ptr<Level>> mLevels;
+
+
+
 public:
+
+
 
     SpartyGame();
     /**

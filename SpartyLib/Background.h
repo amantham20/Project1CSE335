@@ -17,6 +17,7 @@ public:
 //    Background(std::unique_ptr<wxBitmap> pBackground):Item()
 
     Background(const std::wstring& filename) : Item(filename){};
+    Background(const std::wstring& filename, Level *level) : Item(level, filename){};
 
 
 

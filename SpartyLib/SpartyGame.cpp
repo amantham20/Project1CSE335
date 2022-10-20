@@ -19,9 +19,8 @@ SpartyGame::SpartyGame()
     mTotalScore = new Score(0);
 
     /// TODO remove the next line
-//    std::unique_ptr<wxBitmap> background = std::make_unique<wxBitmap>(L"images/background1.png", wxBITMAP_TYPE_ANY);
-    Level tLevel();
-    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"images/background1.png");
+    Level *tLevel = new Level(8, 14.22);
+    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
     mItems.push_back(tempBackground);
 
 }
@@ -36,8 +35,9 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
 
     // Get the playing area size in centimeters
 
-    PlayAreaSize playArea;
-    b2Vec2 playingAreaSize = playArea.Temp();
+//    PlayAreaSize playArea;
+//    b2Vec2 playingAreaSize = playArea.Temp();
+    b2Vec2 playingAreaSize = b2Vec2(14.22,8);
     playingAreaSize *= Consts::MtoCM;
 
     //
@@ -68,7 +68,7 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // graphics->DrawBitmap(*mBackground, 0, 0);
 //    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
     for( auto item : mItems){
-//        item->OnDraw(graphics);
+        item->OnDraw(graphics);
     }
     graphics->PopState();
 }
