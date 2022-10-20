@@ -12,6 +12,7 @@
 #include "Score.h"
 
 class SpartyGame;
+class Item;
 
 class Level {
 private:
@@ -22,13 +23,16 @@ private:
     SpartyGame *mSpartyGame;
 
     /// All of the items in the level
-    //std::vector<std::shared_ptr<Item>> mItems;
+    std::vector<std::shared_ptr<Item>> mItems;
 
     /// an pointer for score
     Score *mLevelScore;
 public:
     Level(SpartyGame *spartyGame);
     void Draw(wxDC *dc);
+
+    void Add(std::shared_ptr<Item> item);
+
 //    std::vector<std::shared_ptr<Item>> mItems;
     /// an pointer for score
 
