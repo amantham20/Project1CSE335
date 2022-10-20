@@ -17,12 +17,13 @@ private:
     double mWidth = 0;
 
     /// All of the items in the level
-    std::vector<std::shared_ptr<Item>> mItems;
+//    std::vector<std::shared_ptr<Item>> mItems;
     /// an pointer for score
     Score *mLevelScore;
 public:
+    Level(double pHeight, double pWidth) : mHeight(pHeight), mWidth(pWidth){};
     void init();
-    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
+//    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     double GetHeight(){return mHeight;}
     double GetWidth(){return mWidth;}

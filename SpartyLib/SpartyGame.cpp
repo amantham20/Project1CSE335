@@ -8,6 +8,8 @@
 #include "SpartyGame.h"
 #include "Consts.h"
 #include "PlayAreaSize.h"
+#include "Background.h"
+#include <wx/graphics.h>
 
 /**
  * constructor
@@ -15,6 +17,13 @@
 SpartyGame::SpartyGame()
 {
     mTotalScore = new Score(0);
+
+    /// TODO remove the next line
+//    std::unique_ptr<wxBitmap> background = std::make_unique<wxBitmap>(L"images/background1.png", wxBITMAP_TYPE_ANY);
+    Level tLevel();
+    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"images/background1.png");
+    mItems.push_back(tempBackground);
+
 }
 
 
@@ -56,7 +65,11 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // and Y up being increase values
     //
     // INSERT YOUR DRAWING CODE HERE
-
+    // graphics->DrawBitmap(*mBackground, 0, 0);
+//    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
+    for( auto item : mItems){
+//        item->OnDraw(graphics);
+    }
     graphics->PopState();
 }
 

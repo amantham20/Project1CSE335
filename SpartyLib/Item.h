@@ -10,16 +10,26 @@
 
 #include <memory>
 #include <box2d.h>
+#include "Picture.h"
 
 class Level;
 
 class Item {
 private:
-    /// The level this item is contained in
+/// The level this item is contained in
     Level *mLevel;
+
+//    Picture *mPicture;
+
+    std::unique_ptr<wxImage> mItemImage;
+
+    std::unique_ptr<wxBitmap> mItemBitmap;
 
 
 public:
+
+
+
     /// Default constructor (disabled)
     Item() = delete;
 
@@ -31,6 +41,12 @@ public:
     Item(b2World* world);
 
     Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename);
+
+    Item(const std::wstring& filename);
+
+    Item(Level *level, const std::wstring& filename);
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
 
     virtual wxXmlNode *XmlSave(wxXmlNode *node);
