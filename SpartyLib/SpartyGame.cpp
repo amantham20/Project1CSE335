@@ -8,6 +8,9 @@
 #include "SpartyGame.h"
 #include "Consts.h"
 #include "PlayAreaSize.h"
+#include "Block.h"
+
+using namespace std;
 
 /**
  * constructor
@@ -136,14 +139,32 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node)
     // Get the first item in the items parent tag
     auto child = node->GetChildren();
 
+    // Pointer to the item we are loading
+    shared_ptr<Item> item;
+
     // Iterate over every item inside the items tag
     for( ; child; child=child->GetNext())
     {
         auto name = child->GetName();
-        // todo: Load every item in the items tag
+
+        if (name == "block")
+        {
+
+        } else if (name == "poly")
+        {
+
+        } else if (name == "foe")
+        {
+
+        } else if (name == "goalposts")
+        {
+
+        } else if (name == "background")
+        {
+
+        }
 
     }
-
 }
 
 /**
