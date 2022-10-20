@@ -32,6 +32,8 @@ private:
     ///an object describe the sparty game
     SpartyGame mSpartyGame;
 
+
+
     void LoadLevels();
 public:
     void Initialize(wxFrame* parent);
@@ -43,6 +45,8 @@ public:
     void OnFileSaveAs(wxCommandEvent &event);
 
     void OnFileOpen(wxCommandEvent &event);
+
+    void OnDraw(wxDC *dc);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H

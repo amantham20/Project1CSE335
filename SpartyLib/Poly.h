@@ -19,6 +19,9 @@ private:
 
 public:
 
+
+    Poly(Level *level);
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;

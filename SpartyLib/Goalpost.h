@@ -17,6 +17,8 @@ class Goalpost : public Slingshot {
 private:
 
 public:
+    Goalpost(Level *level);
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;

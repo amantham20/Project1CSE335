@@ -8,6 +8,7 @@
 #include "Consts.h"
 #include "stdio.h"
 #include "SpartyGame.h"
+#include "Level.h"
 
 using namespace std;
 
@@ -47,8 +48,10 @@ void SpartyView::Initialize(wxFrame* parent)
     //todo: not complete code
 
 
+
+
     // Load Level files
-    LoadLevels();
+    //LoadLevels();
 }
 
 /**
@@ -57,7 +60,7 @@ void SpartyView::Initialize(wxFrame* parent)
 void SpartyView::LoadLevels()
 {
     // Load Level 0
-    wxString levelZeroFilename = L"../levels/level0.xml";
+    wxString levelZeroFilename = L"../levels/level0.sparty";
     mSpartyGame.Load(levelZeroFilename);
 
     // Load Level 1
@@ -81,6 +84,8 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     // since the last call to OnPaint.
     auto newTime = mStopWatch.Time() * Consts::MillisecToSec;
     auto elapsed = (double)(newTime - mTime) * Consts::MillisecToSec;
+
+
     while(mTime < newTime)
     {
         mTime += FrameDuration;
@@ -94,6 +99,7 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     wxBrush background(*wxWHITE);
     dc.SetBackground(background);
     dc.Clear();
+    mSpartyGame.OnDraw(&dc);
 
 
     auto size = GetClientSize();
@@ -149,6 +155,15 @@ void SpartyView::OnFileOpen(wxCommandEvent& event)
     }
 
     auto filename = loadFileDialog.GetPath();
-    //todo not finished
+    mSpartyGame.Load(filename);
     Refresh();
+}
+
+/**
+ * Draw the sparty
+ * @param dc The device context to draw on
+ */
+void SpartyView::OnDraw(wxDC *dc)
+{
+
 }

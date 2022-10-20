@@ -8,7 +8,7 @@
 #ifndef ANGRYSPARTY_SCOREDISPLAY_H
 #define ANGRYSPARTY_SCOREDISPLAY_H
 
-#include "Score.h"
+class Score;
 
 class ScoreDisplay {
 private:

@@ -12,7 +12,7 @@ using namespace std;
  * WoodenSlingshot constructor
  * @param world
  */
-WoodenSlingshot::WoodenSlingshot(b2World *world) : Slingshot(world)
+WoodenSlingshot::WoodenSlingshot(Level *level) : Slingshot(level)
 {
 }
 
