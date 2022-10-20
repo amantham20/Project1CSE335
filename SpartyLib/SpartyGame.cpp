@@ -21,7 +21,7 @@ SpartyGame::SpartyGame()
     /// TODO remove the next line
 //    std::unique_ptr<wxBitmap> background = std::make_unique<wxBitmap>(L"images/background1.png", wxBITMAP_TYPE_ANY);
     Level tLevel();
-    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"images/background1.png");
+    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png");
     mItems.push_back(tempBackground);
 
 }
