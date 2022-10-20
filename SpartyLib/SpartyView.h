@@ -46,7 +46,7 @@ public:
 
     void OnFileOpen(wxCommandEvent &event);
 
-    void OnDraw(wxDC *dc);
+//    void OnDraw(wxDC *dc);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H

@@ -35,23 +35,23 @@ Item::Item(Level *level) : mLevel(level)
 
 
 
-Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
-
-    auto wid = mLevel->GetHeight() * Consts::MtoCM;
-    auto hit = mLevel->GetWidth()  * Consts::MtoCM;
-
-    auto picture = Picture(nullptr, filename);
-    std::shared_ptr<wxBitmap> bitmap = picture.GetBitmap();
-
-    graphics->PushState();
-    graphics->Scale(1, -1);
-    graphics->DrawBitmap(*bitmap,
-            -wid/2,
-            -hit,
-            wid, hit);
-    graphics->PopState();
-
-}
+//Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
+//
+//    auto wid = mLevel->GetHeight() * Consts::MtoCM;
+//    auto hit = mLevel->GetWidth()  * Consts::MtoCM;
+//
+//    auto picture = Picture(nullptr, filename);
+//    std::shared_ptr<wxBitmap> bitmap = picture.GetBitmap();
+//
+//    graphics->PushState();
+//    graphics->Scale(1, -1);
+//    graphics->DrawBitmap(*bitmap,
+//            -wid/2,
+//            -hit,
+//            wid, hit);
+//    graphics->PopState();
+//
+//}
 
 /// TODO Remove this
 Item::Item(const std::wstring& filename){
@@ -62,7 +62,7 @@ Item::Item(const std::wstring& filename){
     mItemBitmap = make_shared<wxBitmap>(*mItemImage);
 }
 
-Item::Item(Level *level, const std::wstring& filename){
+Item::Item(std::shared_ptr<Level> level, const std::wstring& filename){
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = make_shared<wxBitmap>(*mItemImage);
     mLevel = level;
@@ -115,11 +115,11 @@ void Item::XmlLoad(wxXmlNode *node)
 {
     //todo: uncompleted code
     std::wstring filename = L"./images/" + node->GetAttribute(L"image").ToStdWstring();
-    mPicture = new Picture(this, filename);
+//    mPicture = new Picture(this, filename);
 }
 
-void Item::Draw(wxDC *dc)
-{
-    mPicture->Draw(dc);
-}
+//void Item::Draw(wxDC *dc)
+//{
+//    mPicture->Draw(dc);
+//}
 

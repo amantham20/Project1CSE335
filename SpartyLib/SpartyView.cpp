@@ -51,7 +51,7 @@ void SpartyView::Initialize(wxFrame* parent)
 
 
     // Load Level files
-    //LoadLevels();
+    LoadLevels();
 }
 
 /**
@@ -99,7 +99,10 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     wxBrush background(*wxWHITE);
     dc.SetBackground(background);
     dc.Clear();
-    mSpartyGame.OnDraw(&dc);
+//    mSpartyGame.OnDraw(&dc);
+
+
+
 
 
     auto size = GetClientSize();
@@ -163,7 +166,7 @@ void SpartyView::OnFileOpen(wxCommandEvent& event)
  * Draw the sparty
  * @param dc The device context to draw on
  */
-void SpartyView::OnDraw(wxDC *dc)
-{
-
-}
+//void SpartyView::OnDraw(wxDC *dc)
+//{
+//
+//}

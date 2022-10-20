@@ -28,7 +28,7 @@ private:
     /// offsets
     double mXOffset, mYOffset;
 
-    void LoadXMLItems(wxXmlNode* node);
+    void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
 
     void LoadXMLSparties(wxXmlNode *node);
     std::vector<std::shared_ptr<Level>> mLevels;

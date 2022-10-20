@@ -23,7 +23,6 @@ private:
 
     /// All of the items in the level
     //std::vector<std::shared_ptr<Item>> mItems;
-    std::vector<std::shared_ptr<Item>> mItems;
 
     /// an pointer for score
     Score *mLevelScore;
@@ -32,18 +31,18 @@ public:
     void Draw(wxDC *dc);
 //    std::vector<std::shared_ptr<Item>> mItems;
     /// an pointer for score
-    Score *mLevelScore;
 
     Level(double pHeight, double pWidth) : mHeight(pHeight), mWidth(pWidth){};
+    Level(){};
     void init();
 //    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     double GetHeight(){return mHeight;}
     double GetWidth(){return mWidth;}
 
-    void LoadXMLItems(wxXmlNode *node);
+    void LoadXMLLevel(wxXmlNode *node);
 
-    void Load(const wxString &filename);
+//    void Load(const wxString &filename);
 
     void Load(wxXmlNode *node);
 };

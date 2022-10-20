@@ -20,7 +20,6 @@ private:
     std::shared_ptr<wxBitmap> mImageBitmap;
 
 public:
-    Picture(Item *item, const std::wstring &filename);
 //    Picture(Level *level, const std::wstring& filename);
 
     Picture(const std::wstring& filename);

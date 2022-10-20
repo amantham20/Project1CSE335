@@ -15,6 +15,7 @@ void MainFrame::Initialize()
     //todo: add comment
     auto sizer = new wxBoxSizer( wxVERTICAL );
     auto spartyView = new SpartyView();
+
     spartyView->Initialize(this);
 
     //todo: make sure this sizer is correct

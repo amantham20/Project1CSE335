@@ -22,9 +22,9 @@ SpartyGame::SpartyGame()
     mTotalScore = new Score(0);
 
     /// TODO remove the next line
-    Level *tLevel = new Level(8, 14.22);
-    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
-    mItems.push_back(tempBackground);
+//    Level *tLevel = new Level(8, 14.22);
+//    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
+//    mItems.push_back(tempBackground);
 
 }
 
@@ -131,8 +131,16 @@ void SpartyGame::Load(const wxString &filename)
         auto name = child->GetName();
         if(name == L"items")
         {
+            double x;
+            double y;
+
+            std::shared_ptr<Level> tLevel = std::make_shared<Level>();
+            tLevel->Load(root);
+            mLevels.push_back(tLevel);
+
+
             // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
-            LoadXMLItems(child);
+            LoadXMLItems(child, tLevel);
 
         } else if (name == L"angry")
         {
@@ -147,7 +155,7 @@ void SpartyGame::Load(const wxString &filename)
  * Loads every item in the items parent tag
  * @param node
  */
-void SpartyGame::LoadXMLItems(wxXmlNode *node)
+void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
     // Get the first item in the items parent tag
     auto child = node->GetChildren();
@@ -174,6 +182,9 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node)
 
         } else if (name == "background")
         {
+//            Level *tLevel = new Level(8, 14.22);
+            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
+            mItems.push_back(tempBackground);
 
         }
 

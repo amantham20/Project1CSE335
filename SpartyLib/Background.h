@@ -21,9 +21,9 @@ public:
     //Background(const std::wstring& filename) : Item(filename){};
 
 
-    void XmlLoad(wxXmlNode *node);
+    void XmlLoad(wxXmlNode *node) override;
     Background(const std::wstring& filename) : Item(filename){};
-    Background(const std::wstring& filename, Level *level) : Item(level, filename){};
+    Background(const std::wstring& filename, std::shared_ptr<Level> level) : Item(level, filename){};
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };

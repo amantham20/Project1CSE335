@@ -19,7 +19,7 @@ class Level;
 class Item {
 private:
 /// The level this item is contained in
-    Level *mLevel;
+    std::shared_ptr<Level> mLevel;
 
     //an pointer to picture
     Picture *mPicture;
@@ -42,11 +42,13 @@ public:
 
     virtual ~Item();
 
-    void Draw(wxDC *dc);
+//    void Draw(wxDC *dc);
     Item(Level *level);
 
+    Item(const std::wstring& filename);
 
-    Item(Level *level, const std::wstring& filename);
+
+    Item(std::shared_ptr<Level> level, const std::wstring& filename);
 
     virtual void OnDraw(std::shared_ptr<wxGraphicsContext> graphics){};
 
@@ -54,7 +56,7 @@ public:
 
     virtual void XmlLoad(wxXmlNode *node);
 
-    Level* GetLevel(){return mLevel;}
+    std::shared_ptr<Level> GetLevel(){return mLevel;}
 
     std::shared_ptr<wxBitmap> GetBitMap(){return mItemBitmap;}
     
