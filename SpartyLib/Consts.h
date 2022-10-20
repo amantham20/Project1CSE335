@@ -57,6 +57,12 @@ public:
     /// The slingshot band colour
     const wxColour SlingshotBandColor = wxColour(55, 18, 1);
 
+    /// Initial Slingshot X location
+    constexpr static const double InitialX = -5.5;
+
+    /// Initial Slingshot Y location
+    constexpr static const double InitialY = 0.25;
+
 };
 
 #endif //ANGRYSPARTY_CONSTS_H
