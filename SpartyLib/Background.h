@@ -26,6 +26,8 @@ public:
     Background(const std::wstring& filename, std::shared_ptr<Level> level) : Item(level, filename){};
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    void SetLocation(double x, double y) override;
 };
 
 #endif //ANGRYSPARTY_BACKGROUND_H

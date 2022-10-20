@@ -49,6 +49,8 @@ public:
      */
     void setY(double y) { mY = y; }
 
+    void SetLocation(double x, double y)  override;
+
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;

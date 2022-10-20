@@ -43,3 +43,9 @@ wxXmlNode* PositionalItem::XmlSave(wxXmlNode* node)
 
     return node;
 }
+
+void PositionalItem::SetLocation(double x, double y)
+{
+    mX = x;
+    mY = y;
+}

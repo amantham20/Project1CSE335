@@ -32,3 +32,7 @@ void Background::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
             wid, hit);
     graphics->PopState();
 }
+
+void Background::SetLocation(double x, double y)
+{
+}

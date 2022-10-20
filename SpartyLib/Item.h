@@ -47,6 +47,8 @@ public:
 
     Item(const std::wstring& filename);
 
+    // use virtual function for this or visitors?
+    virtual void SetLocation(double x, double y) = 0;
 
     Item(std::shared_ptr<Level> level, const std::wstring& filename);
 
