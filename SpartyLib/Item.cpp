@@ -40,20 +40,17 @@ Item::Item(const std::wstring& filename){
 //    mPicture = &pictureTemp;
 
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
+    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
 }
 
 Item::Item(Level *level, const std::wstring& filename){
-//    Picture pictureTemp(filename);
-//    mPicture = &pictureTemp;
-
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
+    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
     mLevel = level;
 }
 
-Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
-
+//Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
+//
 //    auto wid = mLevel->GetHeight() * Consts::MtoCM;
 //    auto hit = mLevel->GetWidth()  * Consts::MtoCM;
 //
@@ -67,25 +64,10 @@ Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& file
 //            -hit,
 //            wid, hit);
 //    graphics->PopState();
-}
+//}
 
-void Item::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
-    auto wid = mLevel->GetWidth() * Consts::MtoCM;
-    auto hit = mLevel->GetHeight()  * Consts::MtoCM;
-
-//    std::shared_ptr<wxBitmap> bitmap = mPicture->GetBitmap();
-
-//    wid = 7000;
-//    hit = 3000;
-
-    graphics->PushState();
-    graphics->Scale(1, -1);
-    graphics->DrawBitmap(*mItemBitmap,
-            -wid/2,
-            -hit,
-            wid, hit);
-    graphics->PopState();
-}
+//void Item::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
+//}
 
 
 

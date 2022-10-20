@@ -23,7 +23,7 @@ private:
 
     std::unique_ptr<wxImage> mItemImage;
 
-    std::unique_ptr<wxBitmap> mItemBitmap;
+    std::shared_ptr<wxBitmap> mItemBitmap;
 
 
 public:
@@ -40,18 +40,22 @@ public:
 
     Item(b2World* world);
 
-    Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename);
+//    Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename);
 
     Item(const std::wstring& filename);
 
     Item(Level *level, const std::wstring& filename);
 
-    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
-
+    virtual void OnDraw(std::shared_ptr<wxGraphicsContext> graphics){};
 
     virtual wxXmlNode *XmlSave(wxXmlNode *node);
 
     virtual void XmlLoad(wxXmlNode *node);
+
+    Level* GetLevel(){return mLevel;}
+
+    std::shared_ptr<wxBitmap> GetBitMap(){return mItemBitmap;}
+    
 };
 
 #endif //ANGRYSPARTY_ITEM_H
