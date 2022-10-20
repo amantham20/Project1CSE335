@@ -10,7 +10,7 @@ using namespace std;
 
 /**
  * WoodenSlingshot constructor
- * @param world
+ * @param level
  */
 WoodenSlingshot::WoodenSlingshot(Level *level) : Slingshot(level)
 {
