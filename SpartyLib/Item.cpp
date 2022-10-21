@@ -12,9 +12,6 @@
 #include "Picture.h"
 #include <wx/graphics.h>
 
-
-
-
 using namespace std;
 
 /**
@@ -117,11 +114,20 @@ wxXmlNode *Item::XmlSave(wxXmlNode *node)
 void Item::XmlLoad(wxXmlNode *node)
 {
     //todo: uncompleted code
-    std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
+    if (!node->GetAttribute(L"image").IsEmpty())
+    {
+        std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
 //    mPicture = new Picture(this, filename);
+        mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+        mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+    }
+
+}
+
+void Item::SetImageName(wxString filename)
+{
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = make_shared<wxBitmap>(*mItemImage);
-
 }
 
 //void Item::Draw(wxDC *dc)
