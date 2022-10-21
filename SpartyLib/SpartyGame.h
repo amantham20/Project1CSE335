@@ -53,8 +53,6 @@ public:
      */
     Score *getScore(){return mTotalScore;};
 
-    void Save(const wxString &filename);
-
     void Load(const wxString& filename);
     void OnDraw(wxDC *dc);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);

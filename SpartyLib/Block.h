@@ -19,8 +19,6 @@ private:
 public:
     Block(std::shared_ptr<Level> level);
 
-    wxXmlNode *XmlSave(wxXmlNode *node) override;
-
     void XmlLoad(wxXmlNode *node) override;
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;

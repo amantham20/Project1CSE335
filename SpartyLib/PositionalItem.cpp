@@ -31,19 +31,6 @@ void PositionalItem::XmlLoad(wxXmlNode *node)
     Item::XmlLoad(node);
 }
 
-/**
- * Save this fish to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* PositionalItem::XmlSave(wxXmlNode* node)
-{
-    node->AddAttribute(L"x", wxString::FromDouble(mX));
-    node->AddAttribute(L"y", wxString::FromDouble(mY));
-
-    return node;
-}
-
 void PositionalItem::SetLocation(double x, double y)
 {
     mX = x;

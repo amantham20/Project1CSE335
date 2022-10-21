@@ -26,23 +26,6 @@ void Shape::XmlLoad(wxXmlNode *node)
     BodyItem::XmlLoad(node);
 }
 
-/**
- * Save this fish to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* Shape::XmlSave(wxXmlNode* node)
-{
-    auto shapeNode = PositionalItem::XmlSave(node);
-    shapeNode->AddAttribute(L"type", mType);
-    shapeNode->AddAttribute(L"angle", wxString::FromDouble(mAngle));
-    shapeNode->AddAttribute(L"density", wxString::FromDouble(mDensity));
-    shapeNode->AddAttribute(L"friction", wxString::FromDouble(mFriction));
-    shapeNode->AddAttribute(L"restitution", wxString::FromDouble(mRestitution));
-    //todo: image?
-
-    return shapeNode;
-}
 
 /**
  * Constructor

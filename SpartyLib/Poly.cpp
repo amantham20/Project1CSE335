@@ -45,15 +45,6 @@ void Poly::XmlLoad(wxXmlNode *node)
     Shape::XmlLoad(node);
 }
 
-/**
- * Save this fish to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* Poly::XmlSave(wxXmlNode* node)
-{
-
-}
 
 void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {

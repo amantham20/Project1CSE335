@@ -49,8 +49,6 @@ public:
 
     virtual void OnDraw(std::shared_ptr<wxGraphicsContext> graphics){};
 
-    virtual wxXmlNode *XmlSave(wxXmlNode *node);
-
     virtual void XmlLoad(wxXmlNode *node);
 
     std::shared_ptr<Level> GetLevel(){return mLevel;}
