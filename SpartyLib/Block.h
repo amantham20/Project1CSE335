@@ -14,7 +14,7 @@
 class Block : public Shape {
 private:
     /// Draw repeatedly
-    int mRepeatX;
+    int mRepeatX = 1;
 
 public:
     Block(std::shared_ptr<Level> level);
@@ -22,6 +22,8 @@ public:
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 #endif //ANGRYSPARTY_BLOCK_H

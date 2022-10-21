@@ -125,19 +125,15 @@ void SpartyGame::Load(const wxString &filename)
     // Traverse the children of the root
     // node of the XML document in memory!!!!
     //
+    std::shared_ptr<Level> tLevel = std::make_shared<Level>();
+    tLevel->Load(root);
+    mLevels.push_back(tLevel);
+
     auto child = root->GetChildren();
     for( ; child; child=child->GetNext())
     {
         auto name = child->GetName();
-        if(name == L"items")
-        {
-            double x;
-            double y;
-
-            std::shared_ptr<Level> tLevel = std::make_shared<Level>();
-            tLevel->Load(root);
-            mLevels.push_back(tLevel);
-
+        if(name == L"items"){
 
             // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
             LoadXMLItems(child, tLevel);
@@ -172,17 +168,25 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
         if (name == "block")
         {
-
-        } else if (name == "poly")
+            item = std::make_shared<Block>(pLevel);
+        }
+//        else if (name == "poly")
+//        {
+//
+//        }
+//        else if (name == "foe")
+//        {
+//
+//        }
+//        else if (name == "goalposts")
+//        {
+//
+//        }
+        else if (name == "slingshot")
         {
 
-        } else if (name == "foe")
-        {
-
-        } else if (name == "goalposts")
-        {
-
-        } else if (name == "background")
+        }
+        else if (name == "background")
         {
 //            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
             item = std::make_shared<Background>(pLevel);

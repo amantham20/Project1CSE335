@@ -55,6 +55,8 @@ public:
 
     void XmlLoad(wxXmlNode *node) override;
 
+    b2Vec2 GetPosition() { return b2Vec2(mX, mY); }
+
 };
 
 #endif //ANGRYSPARTY_POSITIONALITEM_H
