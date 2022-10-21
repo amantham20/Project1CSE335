@@ -9,7 +9,7 @@
 using namespace std;
 
 
-Goalpost::Goalpost(Level *level) : Slingshot(level)
+Goalpost::Goalpost(std::shared_ptr<Level> level) : Slingshot(level)
 {
 
 }
