@@ -8,13 +8,13 @@
 #include "Consts.h"
 #include "SpartyGame.h"
 #include "Block.h"
+#include "WoodenSlingshot.h"
 #include "Background.h"
 
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
-    std::shared_ptr<Item> item;
-    //item = std::make_shared<Block>(this);
-    //mItems.push_back(item);
+    std::shared_ptr<WoodenSlingshot> item;
+    mItems.push_back(item);
 }
 
 //void Level::Draw(wxDC *dc)
