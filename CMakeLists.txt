@@ -30,3 +30,6 @@ add_subdirectory(Tests)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/images/
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/images/)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/levels/
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/levels/)
