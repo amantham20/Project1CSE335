@@ -23,7 +23,7 @@ void Shape::XmlLoad(wxXmlNode *node)
     node->GetAttribute(L"density").ToDouble(&mDensity);
     node->GetAttribute(L"friction").ToDouble(&mFriction);
     node->GetAttribute(L"restitution").ToDouble(&mRestitution);
-    PositionalItem::XmlLoad(node);
+    BodyItem::XmlLoad(node);
 }
 
 /**
