@@ -194,10 +194,10 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 //        {
 //
 //        }
-//        else if (name == "slingshot")
-//        {
-//            item = std::make_shared<WoodenSlingshot>(pLevel);
-//        }
+        else if (name == "slingshot")
+        {
+            item = std::make_shared<WoodenSlingshot>(pLevel);
+        }
         else if (name == "background")
         {
 //            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
