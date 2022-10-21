@@ -117,7 +117,7 @@ wxXmlNode *Item::XmlSave(wxXmlNode *node)
 void Item::XmlLoad(wxXmlNode *node)
 {
     //todo: uncompleted code
-    std::wstring filename = L"./images/" + node->GetAttribute(L"image").ToStdWstring();
+    std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
 //    mPicture = new Picture(this, filename);
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = make_shared<wxBitmap>(*mItemImage);
