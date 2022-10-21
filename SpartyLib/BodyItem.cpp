@@ -17,6 +17,14 @@ BodyItem::BodyItem(std::shared_ptr<Level> level) : PositionalItem(level)
     b2BodyDef bodyDefinition;
     bodyDefinition.position.Set(0.0f, -10.0f); // todo: The position has to be set to the actual item's position
     // Create body
-    //mBody = world->CreateBody(&bodyDefinition);
+//    mBody = world->CreateBody(&bodyDefinition);
 
+}
+
+void BodyItem::XmlLoad(wxXmlNode *node)
+{
+    node->GetAttribute(L"width").ToDouble(&mWidth);
+    node->GetAttribute(L"height").ToDouble(&mHeight);
+
+    PositionalItem::XmlLoad(node);
 }
