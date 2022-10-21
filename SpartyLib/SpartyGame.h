@@ -21,6 +21,8 @@ private:
 
     ///An score pointer
     Score *mTotalScore;
+    /// an pointer for score
+    Score *mLevelScore;
 
     /// scaling factor
     double mScale;

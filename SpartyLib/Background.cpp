@@ -30,6 +30,7 @@ void Background::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
             -wid/2,
             -hit,
             wid, hit);
+
     graphics->PopState();
 }
 

@@ -12,7 +12,7 @@
 
 class Background : public Item{
 private:
-    Background(Level *level);
+    //Background(Level *level);
 
 //    std::unique_ptr<wxBitmap> mBackground;
 public:

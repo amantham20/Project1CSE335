@@ -12,7 +12,6 @@
 
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
-    mLevelScore = new Score(0);
     std::shared_ptr<Item> item;
     //item = std::make_shared<Block>(this);
     //mItems.push_back(item);

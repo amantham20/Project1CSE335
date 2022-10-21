@@ -6,34 +6,34 @@
 #include "pch.h"
 #include "ScoreDisplay.h"
 #include "Score.h"
+#include "Consts.h"
 
-ScoreDisplay::ScoreDisplay(Score *score, double x, double y)
+ScoreDisplay::ScoreDisplay(std::shared_ptr<Level> level, Score *score, double x, double y) :  PositionalItem(level)
 {
     mScore = score;
-    mPositionY = y;
-    mPositionX = x;
+    PositionalItem::setX(x);
+    PositionalItem::setY(y);
 }
 
-/**
- * Paint event, draws the window.
- * @param event Paint event object
- */
-void ScoreDisplay::OnPaint(wxDC *dc)
-{
-    //score view
-    wxFont font(wxSize(0, 20),
+void ScoreDisplay::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
+    auto tLevel = Item::GetLevel();
+    auto wid = tLevel->GetWidth() * Consts::MtoCM;
+    auto hit = tLevel->GetHeight()  * Consts::MtoCM;
+    graphics->PushState();
+    graphics->Scale(1, -1);
+    wxFont font(wxSize(0, 30),
                 wxFONTFAMILY_SWISS,
                 wxFONTSTYLE_NORMAL,
                 wxFONTWEIGHT_NORMAL);
-    dc->SetFont(font);
-    //todo: adjust the color and font
-    dc->SetTextForeground(wxColour(0, 64, 0));
-    dc->DrawText(wxString::FromDouble(mScore->GetScore(), 0), mPositionX,mPositionY);
+    graphics->SetFont(font, wxColour(255,0,0));
+    graphics->DrawText(wxString::FromDouble(mScore->GetScore(), 0),
+                       PositionalItem::getX() - wid/2 , PositionalItem::getY() - hit);
+    graphics->PopState();
 }
 
-void ScoreDisplay::Update(double elapsed, wxDC *dc)
+void ScoreDisplay::Update(double elapsed, std::shared_ptr<wxGraphicsContext> graphics)
 {
-    OnPaint(dc);
+    OnDraw(graphics);
     //todo: delete this lane this is just for testing
     mScore->AddScore(1);
 }

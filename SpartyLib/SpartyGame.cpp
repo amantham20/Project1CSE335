@@ -10,6 +10,7 @@
 #include "PlayAreaSize.h"
 #include "Block.h"
 #include "Background.h"
+#include "ScoreDisplay.h"
 #include <wx/graphics.h>
 using namespace std;
 
@@ -20,7 +21,7 @@ using namespace std;
 SpartyGame::SpartyGame()
 {
     mTotalScore = new Score(0);
-
+    mLevelScore = new Score(0);
     /// TODO remove the next line
 //    Level *tLevel = new Level(8, 14.22);
 //    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
@@ -73,6 +74,12 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     for( auto item : mItems){
         item->OnDraw(graphics);
     }
+
+    //todo: uncompleted working code don't know put where
+    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
+    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevelScore, 1400, 10);
+    a->OnDraw(graphics);
+    b->OnDraw(graphics);
     graphics->PopState();
 }
 
@@ -110,6 +117,7 @@ void SpartyGame::Save(const wxString &filename)
  */
 void SpartyGame::Load(const wxString &filename)
 {
+
     // Make sure the given file(s) can be opened
     wxXmlDocument xmlDoc;
     if(!xmlDoc.Load(filename))
@@ -127,6 +135,9 @@ void SpartyGame::Load(const wxString &filename)
     //
     std::shared_ptr<Level> tLevel = std::make_shared<Level>();
     tLevel->Load(root);
+
+
+
     mLevels.push_back(tLevel);
 
     auto child = root->GetChildren();
@@ -190,8 +201,6 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         {
 //            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
             item = std::make_shared<Background>(pLevel);
-
-
         }
 
         if (item != nullptr){

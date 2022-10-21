@@ -8,22 +8,20 @@
 #ifndef ANGRYSPARTY_SCOREDISPLAY_H
 #define ANGRYSPARTY_SCOREDISPLAY_H
 
+#include "PositionalItem.h"
+
 class Score;
 
-class ScoreDisplay {
+class ScoreDisplay : public PositionalItem{
 private:
     ///an object pointer
     Score *mScore;
-    ///x posistion for displaying
-    double mPositionX;
-    ///Y posistion for displaying
-    double mPositionY;
 public:
-    ScoreDisplay(Score *score, double x, double y);
+    ScoreDisplay(std::shared_ptr<Level> level, Score *score, double x, double y);
 
-    void OnPaint(wxDC *dc);
+    void Update(double elapsed, std::shared_ptr<wxGraphicsContext> graphics);
 
-    void Update(double elapsed, wxDC *dc);
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 
