@@ -19,6 +19,9 @@ private:
 public:
 
     BodyItem(Level *level);
+    BodyItem(std::shared_ptr<Level> level);
+
+
 
 };
 

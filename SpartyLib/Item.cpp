@@ -25,13 +25,7 @@ Item::~Item()
 
 }
 
-/**
- * Constructor
- * @param world The world the item is in.
- */
-Item::Item(Level *level) : mLevel(level)
-{
-}
+
 
 
 
@@ -53,20 +47,29 @@ Item::Item(Level *level) : mLevel(level)
 //
 //}
 
-/// TODO Remove this
-Item::Item(const std::wstring& filename){
-//    Picture pictureTemp(filename);
-//    mPicture = &pictureTemp;
-
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
-}
-
-Item::Item(std::shared_ptr<Level> level, const std::wstring& filename){
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+/**
+ * Constructor
+ * @param world The world the item is in.
+ */
+Item::Item(std::shared_ptr<Level> level)
+{
     mLevel = level;
 }
+
+/// TODO Remove this
+//Item::Item(const std::wstring& filename){
+////    Picture pictureTemp(filename);
+////    mPicture = &pictureTemp;
+//
+//    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+//    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+//}
+
+//Item::Item(std::shared_ptr<Level> level, const std::wstring& filename){
+//    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+//    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+//    mLevel = level;
+//}
 
 //Item::Item(std::shared_ptr<wxGraphicsContext> graphics, const std::wstring& filename){
 //
@@ -116,6 +119,9 @@ void Item::XmlLoad(wxXmlNode *node)
     //todo: uncompleted code
     std::wstring filename = L"./images/" + node->GetAttribute(L"image").ToStdWstring();
 //    mPicture = new Picture(this, filename);
+    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+
 }
 
 //void Item::Draw(wxDC *dc)

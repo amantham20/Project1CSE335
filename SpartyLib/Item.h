@@ -43,14 +43,14 @@ public:
     virtual ~Item();
 
 //    void Draw(wxDC *dc);
-    Item(Level *level);
+    Item(std::shared_ptr<Level> Level);
 
-    Item(const std::wstring& filename);
+//    Item(const std::wstring& filename);
 
     // use virtual function for this or visitors?
     virtual void SetLocation(double x, double y) = 0;
 
-    Item(std::shared_ptr<Level> level, const std::wstring& filename);
+//    Item(std::shared_ptr<Level> level, const std::wstring& filename);
 
     virtual void OnDraw(std::shared_ptr<wxGraphicsContext> graphics){};
 

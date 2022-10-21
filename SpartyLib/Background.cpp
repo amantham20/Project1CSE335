@@ -9,14 +9,14 @@
 #include "Consts.h"
 
 
-Background::Background(Level *level) : Item(level)
-{
-
-}
+//Background::Background(Level *level) : Item(level)
+//{
+//
+//}
 
 void Background::XmlLoad(wxXmlNode *node)
 {
-
+    Item::XmlLoad(node);
 }
 
 void Background::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
