@@ -24,19 +24,15 @@ private:
 
     /// All of the items in the level
     std::vector<std::shared_ptr<Item>> mItems;
-
-    /// an pointer for score
-    Score *mLevelScore;
 public:
     Level(SpartyGame *spartyGame);
     void Draw(wxDC *dc);
-
     void Add(std::shared_ptr<Item> item);
 
 //    std::vector<std::shared_ptr<Item>> mItems;
     /// an pointer for score
 
-    Level(double pHeight, double pWidth) : mHeight(pHeight), mWidth(pWidth){};
+    //Level(double pHeight, double pWidth) : mHeight(pHeight), mWidth(pWidth){};
     Level(){};
     void init();
 //    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
