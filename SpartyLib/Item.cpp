@@ -12,9 +12,6 @@
 #include "Picture.h"
 #include <wx/graphics.h>
 
-
-
-
 using namespace std;
 
 /**
@@ -91,20 +88,6 @@ Item::Item(std::shared_ptr<Level> level)
 //void Item::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 //}
 
-
-
-/**
- * Save this item to an XML node
- * @param node The parent node we are going to be a child of
- * @return wxXmlNode that we saved the item into
- */
-wxXmlNode *Item::XmlSave(wxXmlNode *node)
-{
-    auto itemNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"item");
-    node->AddChild(itemNode);
-
-    return itemNode;
-}
 /**
  * Load the attributes for an item node.
  *
@@ -117,11 +100,20 @@ wxXmlNode *Item::XmlSave(wxXmlNode *node)
 void Item::XmlLoad(wxXmlNode *node)
 {
     //todo: uncompleted code
-    std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
+    if (!node->GetAttribute(L"image").IsEmpty())
+    {
+        std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
 //    mPicture = new Picture(this, filename);
+        mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+        mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+    }
+
+}
+
+void Item::SetImageName(wxString filename)
+{
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = make_shared<wxBitmap>(*mItemImage);
-
 }
 
 //void Item::Draw(wxDC *dc)

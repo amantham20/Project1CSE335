@@ -13,8 +13,6 @@
 
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
-    std::shared_ptr<WoodenSlingshot> item;
-    mItems.push_back(item);
 }
 
 //void Level::Draw(wxDC *dc)

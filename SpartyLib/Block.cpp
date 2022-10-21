@@ -24,21 +24,6 @@ void Block::XmlLoad(wxXmlNode *node)
     Shape::XmlLoad(node);
 }
 
-/**
- * Save this fish to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* Block::XmlSave(wxXmlNode* node)
-{
-    auto blockNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"block");
-    node->AddChild(blockNode);
-    blockNode = Shape::XmlSave(blockNode);
-    blockNode->AddAttribute(L"repeat-x", wxString::FromDouble(mRepeatX,0));
-
-    return blockNode;
-}
-
 Block::Block(std::shared_ptr<Level> level) : Shape(level)
 {
 

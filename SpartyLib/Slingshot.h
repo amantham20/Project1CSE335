@@ -22,8 +22,6 @@ public:
 
     Slingshot(std::shared_ptr<Level> level);
 
-    wxXmlNode *XmlSave(wxXmlNode *node) override;
-
     void XmlLoad(wxXmlNode *node) override;
 };
 
