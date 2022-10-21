@@ -11,6 +11,7 @@
 #include "Block.h"
 #include "Background.h"
 #include "WoodenSlingshot.h"
+#include "Goalpost.h"
 #include "ScoreDisplay.h"
 #include "Poly.h"
 #include <wx/graphics.h>
@@ -163,10 +164,10 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 //        {
 //
 //        }
-//        else if (name == "goalposts")
-//        {
-//
-//        }
+        else if (name == "goalposts")
+        {
+            item = std::make_shared<Goalpost>(pLevel);
+        }
         else if (name == "slingshot")
         {
             item = std::make_shared<WoodenSlingshot>(pLevel);

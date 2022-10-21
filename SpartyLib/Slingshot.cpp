@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Slingshot.h"
+#include "Consts.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ using namespace std;
  */
 Slingshot::Slingshot(std::shared_ptr<Level> level) : PositionalItem(level)
 {
+
 }
 
 /**
@@ -29,4 +31,25 @@ void Slingshot::XmlLoad(wxXmlNode *node)
 {
     //todo: uncomplete code
     PositionalItem::XmlLoad(node);
+}
+
+void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    const int heightOffset = 50;
+
+    auto tLevel = Item::GetLevel();
+    auto wid = tLevel->GetWidth() * Consts::MtoCM;
+    auto hit = tLevel->GetHeight()  * Consts::MtoCM;
+
+    auto position = PositionalItem::GetPosition();
+    auto image = Item::GetBitMap();
+
+    graphics->PushState();
+    graphics->Scale(1, -1);
+    graphics->DrawBitmap(*Item::GetBitMap(),
+            position.x * Consts::MtoCM,
+            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset,
+            image->GetWidth(), image->GetHeight());
+
+    graphics->PopState();
 }

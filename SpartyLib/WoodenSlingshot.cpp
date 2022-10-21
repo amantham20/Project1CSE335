@@ -24,23 +24,7 @@ WoodenSlingshot::WoodenSlingshot(std::shared_ptr<Level> level) : Slingshot(level
 
 void WoodenSlingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    const int heightOffset = 50;
-
-    auto tLevel = Item::GetLevel();
-    auto wid = tLevel->GetWidth() * Consts::MtoCM;
-    auto hit = tLevel->GetHeight()  * Consts::MtoCM;
-
-    auto position = PositionalItem::GetPosition();
-    auto image = Item::GetBitMap();
-
-    graphics->PushState();
-    graphics->Scale(1, -1);
-    graphics->DrawBitmap(*Item::GetBitMap(),
-            position.x * Consts::MtoCM,
-            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset,
-            image->GetWidth(), image->GetHeight());
-
-    graphics->PopState();
+    Slingshot::OnDraw(graphics);
 }
 
 /**
