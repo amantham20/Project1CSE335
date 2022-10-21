@@ -23,6 +23,8 @@ public:
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //ANGRYSPARTY_WOODENSLINGSHOT_H
