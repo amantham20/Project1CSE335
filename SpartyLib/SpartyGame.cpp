@@ -168,6 +168,8 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
     {
         auto name = child->GetName();
 
+        shared_ptr<Item> item;
+
         if (name == "block")
         {
 
@@ -182,11 +184,18 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
         } else if (name == "background")
         {
-//            Level *tLevel = new Level(8, 14.22);
-            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
-            mItems.push_back(tempBackground);
+//            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
+            item = std::make_shared<Background>(pLevel);
+
 
         }
+
+        if (item != nullptr){
+            mItems.push_back(item);
+            item->XmlLoad(child);
+        }
+
+
 
     }
 }
