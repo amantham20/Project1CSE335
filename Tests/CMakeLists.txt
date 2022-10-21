@@ -2,7 +2,7 @@ project(Tests)
 
 set(TEST_FILES
     gtest_main.cpp
-    EmptyTest.cpp ScoreTest.cpp ClassInitTest.cpp BlockTest.cpp)
+    EmptyTest.cpp ScoreTest.cpp ClassInitTest.cpp BlockTest.cpp LevelTest.cpp)
 
 # Get Google Tests
 include(FetchContent)
