@@ -6,6 +6,10 @@
 #include <pch.h>
 #include "gtest/gtest.h"
 #include <wx/filename.h>
+#include <string>
+#include <fstream>
+
+using namespace std;
 
 class LevelTest : public ::testing::Test
 {
@@ -25,4 +29,24 @@ protected:
         return path;
     }
 
+    /**
+    * Read a file into a wstring and return it.
+    * @param filename Name of the file to read
+    * @return File contents
+    */
+    wstring ReadFile(const wxString &filename)
+    {
+        ifstream t(filename.ToStdString());
+        wstring str((istreambuf_iterator<char>(t)),
+                istreambuf_iterator<char>());
+
+        return str;
+    }
+
 };
+
+TEST_F(LevelTest, Load)
+{
+    // Create a path to temporary files
+    auto path = TempPath();
+}
