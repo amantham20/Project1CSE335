@@ -12,6 +12,7 @@
 #include "Background.h"
 #include "WoodenSlingshot.h"
 #include "ScoreDisplay.h"
+#include "Poly.h"
 #include <wx/graphics.h>
 using namespace std;
 
@@ -182,10 +183,10 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         {
             item = std::make_shared<Block>(pLevel);
         }
-//        else if (name == "poly")
-//        {
-//
-//        }
+        else if (name == "poly")
+        {
+            item = std::make_shared<Poly>(pLevel);
+        }
 //        else if (name == "foe")
 //        {
 //

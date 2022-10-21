@@ -37,11 +37,12 @@ void Poly::XmlLoad(wxXmlNode *node)
         {
             double x, y;
             child->GetAttribute(L"x", L"0").ToDouble(&x);
-            node->GetAttribute(L"y", L"0").ToDouble(&y);
+            child->GetAttribute(L"y", L"0").ToDouble(&y);
             b2Vec2 b2vertex(x, y);
             mVertices.push_back(b2vertex);
         }
     }
+    Shape::XmlLoad(node);
 }
 
 /**
@@ -51,19 +52,42 @@ void Poly::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* Poly::XmlSave(wxXmlNode* node)
 {
-    auto polyNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"poly");
-    polyNode = PositionalItem::XmlSave(polyNode);
-    node->AddChild(polyNode);
-    //todo need add image?
 
-    //save vertex
-    for(auto vertex : mVertices)
+}
+
+void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    auto position = PositionalItem::GetPosition();
+    auto angle = Shape::GetAngle();
+
+    // Find the minimum and maximum x/y values
+    b2Vec2 minimums = mVertices[0];
+    b2Vec2 maximums = mVertices[0];
+    for(auto v : mVertices)
     {
-        auto vNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"v");
-        vNode->AddAttribute(L"x", wxString::FromDouble(vertex.x));
-        vNode->AddAttribute(L"y", wxString::FromDouble(vertex.y));
-        polyNode->AddChild(vNode);
+        minimums.x = fmin(minimums.x, v.x);
+        minimums.y = fmin(minimums.y, v.y);
+        maximums.x = fmax(maximums.x, v.x);
+        maximums.y = fmax(maximums.y, v.y);
     }
 
-    return polyNode;
+    auto size = maximums - minimums;
+
+    auto x = position.x * Consts::MtoCM;
+    auto y = position.y * Consts::MtoCM;
+
+    graphics->PushState();
+    graphics->Translate(x, y);
+    graphics->Rotate(angle);
+
+    std::shared_ptr<wxBitmap> bitmap = Item::GetBitMap();
+
+    graphics->Scale(1, -1);
+    graphics->DrawBitmap(*bitmap,
+                         minimums.x * Consts::MtoCM,
+                         minimums.y * Consts::MtoCM,
+                         size.x * Consts::MtoCM,
+                         size.y * Consts::MtoCM);
+
+    graphics->PopState();
 }

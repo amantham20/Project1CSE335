@@ -23,7 +23,6 @@ void Block::XmlLoad(wxXmlNode *node)
     node->GetAttribute(L"repeat-x").ToInt(&mRepeatX);
     Shape::XmlLoad(node);
 }
-
 /**
  * Save this fish to an XML node
  * @param node The parent node we are going to be a child of
@@ -38,6 +37,7 @@ wxXmlNode* Block::XmlSave(wxXmlNode* node)
 
     return blockNode;
 }
+
 
 Block::Block(std::shared_ptr<Level> level) : Shape(level)
 {
