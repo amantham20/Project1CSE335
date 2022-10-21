@@ -47,6 +47,11 @@ protected:
 
 };
 
+TEST_F(SpartyGameTest, Construct)
+{
+    SpartyGame game;
+}
+
 TEST_F(SpartyGameTest, LoadLevel1)
 {
     // Create an instance of SpartyGame
