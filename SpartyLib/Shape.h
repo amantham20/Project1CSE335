@@ -7,6 +7,7 @@
 #define ANGRYSPARTY_SHAPE_H
 
 #include "BodyItem.h"
+#include "Consts.h"
 
 /**
  * Base class for all shapes in AngrySparty
@@ -23,7 +24,7 @@ private:
     double mDensity = 1.0;
 
     /// Shape Angle
-    double mAngle;
+    double mAngle = 0;
 
     /// Type of shape
     std::wstring mType = L"dynamic";
@@ -34,6 +35,12 @@ public:
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 
     void XmlLoad(wxXmlNode *node) override;
+
+    /**
+     * Getter for mAngle converted to radians
+     * @return mAngle
+     */
+    double GetAngle(){ return mAngle*Consts::DtoR; }
 
 };
 
