@@ -88,20 +88,6 @@ Item::Item(std::shared_ptr<Level> level)
 //void Item::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 //}
 
-
-
-/**
- * Save this item to an XML node
- * @param node The parent node we are going to be a child of
- * @return wxXmlNode that we saved the item into
- */
-wxXmlNode *Item::XmlSave(wxXmlNode *node)
-{
-    auto itemNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"item");
-    node->AddChild(itemNode);
-
-    return itemNode;
-}
 /**
  * Load the attributes for an item node.
  *

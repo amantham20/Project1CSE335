@@ -28,17 +28,3 @@ void Goalpost::XmlLoad(wxXmlNode *node)
     //todo: uncomplete code
     Slingshot::XmlLoad(node);
 }
-
-/**
- * Save this fish to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* Goalpost::XmlSave(wxXmlNode* node)
-{
-    auto goalpostNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"goalpost");
-    //goalpostNode = XmlSave(goalpostNode);
-    node->AddChild(goalpostNode);
-
-    return goalpostNode;
-}

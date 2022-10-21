@@ -57,16 +57,3 @@ void WoodenSlingshot::XmlLoad(wxXmlNode *node)
     //todo: uncomplete code
     Slingshot::XmlLoad(node);
 }
-
-/**
- * Save this fish to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* WoodenSlingshot::XmlSave(wxXmlNode* node)
-{
-    auto itemNode = Slingshot::XmlSave(node);
-    //todo: uncomplete code
-
-    return itemNode;
-}

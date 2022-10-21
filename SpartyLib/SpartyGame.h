@@ -39,7 +39,12 @@ private:
 
 public:
 
-
+    // todo: This function has to be removed when we store items in each level object instead of the game instance.
+    /**
+     * Returns the number of element in the game
+     * @return
+     */
+    int GetNumberOfItems() { return mItems.size(); }
 
     SpartyGame();
     /**
@@ -47,8 +52,6 @@ public:
      * @return pointer of score
      */
     Score *getScore(){return mTotalScore;};
-
-    void Save(const wxString &filename);
 
     void Load(const wxString& filename);
     void OnDraw(wxDC *dc);
