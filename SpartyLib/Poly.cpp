@@ -7,7 +7,7 @@
 #include "Poly.h"
 
 
-Poly::Poly(Level *level) : Shape(level)
+Poly::Poly(std::shared_ptr<Level> level) : Shape(level)
 {
 
 }

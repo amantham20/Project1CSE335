@@ -17,7 +17,7 @@ private:
     int mRepeatX;
 
 public:
-    Block(Level *level);
+    Block(std::shared_ptr<Level> level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

@@ -20,7 +20,7 @@ private:
 public:
 
 
-    Poly(Level *level);
+    Poly(std::shared_ptr<Level> level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

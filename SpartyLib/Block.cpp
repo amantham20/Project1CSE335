@@ -36,7 +36,7 @@ wxXmlNode* Block::XmlSave(wxXmlNode* node)
     return blockNode;
 }
 
-Block::Block(Level *level) : Shape(level)
+Block::Block(std::shared_ptr<Level> level) : Shape(level)
 {
 
 }

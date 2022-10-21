@@ -29,7 +29,7 @@ private:
     std::wstring mType = L"dynamic";
 
 public:
-    Shape(Level *level);
+    Shape(std::shared_ptr<Level> level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
 

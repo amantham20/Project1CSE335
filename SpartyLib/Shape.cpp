@@ -48,7 +48,7 @@ wxXmlNode* Shape::XmlSave(wxXmlNode* node)
  * Constructor
  * @param level
  */
-Shape::Shape(Level *level) : BodyItem(level)
+Shape::Shape(std::shared_ptr<Level> level) : BodyItem(level)
 {
 
 }
