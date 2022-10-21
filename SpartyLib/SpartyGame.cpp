@@ -208,9 +208,6 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
             mItems.push_back(item);
             item->XmlLoad(child);
         }
-
-
-
     }
 }
 
