@@ -29,7 +29,6 @@ private:
 
     std::shared_ptr<wxBitmap> mItemBitmap;
 
-
 public:
 
 
@@ -56,6 +55,8 @@ public:
     std::shared_ptr<Level> GetLevel(){return mLevel;}
 
     virtual std::shared_ptr<wxBitmap> GetBitMap(){return mItemBitmap;}
+
+    void SetImageName(wxString filename);
 
 
     
