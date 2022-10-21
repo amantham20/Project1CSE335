@@ -12,7 +12,7 @@ using namespace std;
  * WoodenSlingshot constructor
  * @param level
  */
-WoodenSlingshot::WoodenSlingshot(Level *level) : Slingshot(level)
+WoodenSlingshot::WoodenSlingshot(std::shared_ptr<Level> level) : Slingshot(level)
 {
 }
 
@@ -28,7 +28,7 @@ WoodenSlingshot::WoodenSlingshot(Level *level) : Slingshot(level)
 void WoodenSlingshot::XmlLoad(wxXmlNode *node)
 {
     //todo: uncomplete code
-    Item::XmlLoad(node);
+    Slingshot::XmlLoad(node);
 }
 
 /**
@@ -38,7 +38,7 @@ void WoodenSlingshot::XmlLoad(wxXmlNode *node)
  */
 wxXmlNode* WoodenSlingshot::XmlSave(wxXmlNode* node)
 {
-    auto itemNode = Item::XmlSave(node);
+    auto itemNode = Slingshot::XmlSave(node);
     //todo: uncomplete code
 
     return itemNode;

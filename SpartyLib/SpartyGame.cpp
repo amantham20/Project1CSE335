@@ -10,6 +10,7 @@
 #include "PlayAreaSize.h"
 #include "Block.h"
 #include "Background.h"
+#include "WoodenSlingshot.h"
 #include "ScoreDisplay.h"
 #include <wx/graphics.h>
 using namespace std;
@@ -193,10 +194,10 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 //        {
 //
 //        }
-        else if (name == "slingshot")
-        {
-
-        }
+//        else if (name == "slingshot")
+//        {
+//            item = std::make_shared<WoodenSlingshot>(pLevel);
+//        }
         else if (name == "background")
         {
 //            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);

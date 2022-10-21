@@ -20,7 +20,6 @@ private:
 
 public:
 
-    Slingshot(Level *level);
     Slingshot(std::shared_ptr<Level> level);
 
     wxXmlNode *XmlSave(wxXmlNode *node) override;
