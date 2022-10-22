@@ -22,7 +22,7 @@ public:
 
     void XmlLoad(wxXmlNode *node) override;
 
-    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 #endif //ANGRYSPARTY_WOODENSLINGSHOT_H
