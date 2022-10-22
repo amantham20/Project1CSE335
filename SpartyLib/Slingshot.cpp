@@ -45,11 +45,21 @@ void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     auto image = Item::GetBitMap();
 
     graphics->PushState();
+
     graphics->Scale(1, -1);
     graphics->DrawBitmap(*Item::GetBitMap(),
             position.x * Consts::MtoCM,
             (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset,
             image->GetWidth(), image->GetHeight());
-
+    wxPen pen(wxColour(41,13,1), 20);
+    graphics->SetPen(pen);
+    wxPoint2DDouble band[2] =
+            {
+            wxPoint2DDouble(position.x * Consts::MtoCM +15,
+                            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset+42),
+            wxPoint2DDouble(position.x * Consts::MtoCM + 45,
+                            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset + 35),
+            };
+    graphics->DrawLines(2, band);
     graphics->PopState();
 }
