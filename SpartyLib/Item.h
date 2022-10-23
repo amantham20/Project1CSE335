@@ -18,20 +18,21 @@ class Level;
 
 class Item {
 private:
-/// The level this item is contained in
+    /// The level this item is contained in
     std::shared_ptr<Level> mLevel;
 
-    //an pointer to picture
+    ///a pointer to picture
     Picture *mPicture;
-//    Picture *mPicture;
 
+    /// TEMP wxImage of the Item image
     std::unique_ptr<wxImage> mItemImage;
 
+    /// TEMP wxBitmap of the Item image
     std::shared_ptr<wxBitmap> mItemBitmap;
+    /// TODO remove Image/ Combine them into a class (aka use mPicture)
+
 
 public:
-
-
 
     /// Default constructor (disabled)
     Item() = delete;
@@ -43,16 +44,37 @@ public:
 
     Item(std::shared_ptr<Level> Level);
 
-    // use virtual function for this or visitors?
+    /// TODO ! use virtual function for this or visitors?
     virtual void SetLocation(double x, double y) = 0;
 
+    /**
+     * Draws the Item
+     *
+     * @param graphics Graphics that is used to draw the image.
+     */
     virtual void OnDraw(std::shared_ptr<wxGraphicsContext> graphics){};
 
     virtual void XmlLoad(wxXmlNode *node);
 
+    /**
+     * Getter for Level for this Item
+     *
+     *
+     * @return mLevel The Level the item is currently Present in.
+     *
+     * @TODO Move this to Protected?? (although may not be required as it is a getter.)
+     *
+     * @personToBlame Aman Dhruva Thamminana
+     */
     std::shared_ptr<Level> GetLevel(){return mLevel;}
 
+    /**
+     * Getter for the ImageBitMap
+     *
+     * @return ImageBitmap for the item
+     */
     virtual std::shared_ptr<wxBitmap> GetBitMap(){return mItemBitmap;}
+
 
     void SetImageName(wxString filename);
 
