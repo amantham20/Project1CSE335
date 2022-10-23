@@ -9,7 +9,7 @@
 #ifndef ANGRYSPARTY_PHYSICS_H
 #define ANGRYSPARTY_PHYSICS_H
 
-#include <box2d.h>
+//#include <box2d.h>
 
 /**
  * Class that describes the physics system for a level

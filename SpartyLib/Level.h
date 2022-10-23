@@ -8,7 +8,7 @@
 #ifndef ANGRYSPARTY_LEVEL_H
 #define ANGRYSPARTY_LEVEL_H
 
-#include "Item.h"
+//#include "Item.h"
 #include "Score.h"
 
 class SpartyGame;

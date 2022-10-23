@@ -7,7 +7,7 @@
 #define ANGRYSPARTY_POLY_H
 
 #include "Shape.h"
-#include <box2d.h>
+//#include <box2d.h>
 
 /**
  * Polygon class derived from Shape

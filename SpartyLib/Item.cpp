@@ -5,7 +5,7 @@
 
 #include "pch.h"
 #include "Item.h"
-#include <box2d.h>
+//#include <box2d.h>
 #include <wx/graphics.h>
 #include "Level.h"
 #include "Consts.h"

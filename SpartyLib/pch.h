@@ -12,6 +12,8 @@
 #include <wx/xml/xml.h>
 #include <wx/graphics.h>
 
+#include <box2d.h>
+
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 

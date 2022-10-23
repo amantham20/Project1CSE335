@@ -9,7 +9,7 @@
 #define ANGRYSPARTY_ITEM_H
 
 #include <memory>
-#include <box2d.h>
+//#include <box2d.h>
 #include "Picture.h"
 
 
