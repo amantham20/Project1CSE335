@@ -33,6 +33,7 @@ public:
      * @author Aman Dhruva Thamminana
      */
     Background(std::shared_ptr<Level> level) :Item(level){};
+
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     void SetLocation(double x, double y) override;
