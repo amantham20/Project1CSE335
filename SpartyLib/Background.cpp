@@ -8,12 +8,6 @@
 #include "Picture.h"
 #include "Consts.h"
 
-
-//Background::Background(Level *level) : Item(level)
-//{
-//
-//}
-
 void Background::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
