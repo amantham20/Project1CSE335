@@ -9,6 +9,7 @@
 
 #include "Item.h"
 #include "Score.h"
+#include "PictureManager.h"
 #include <wx/graphics.h>
 
 /**
@@ -27,6 +28,11 @@ private:
     /// scaling factor
     double mScale;
 
+
+    ///Image Cache
+    std::shared_ptr<PictureManager> pictureCache;
+
+
     /// offsets
     double mXOffset, mYOffset;
 
@@ -34,6 +40,8 @@ private:
 
     void LoadXMLSparties(wxXmlNode *node);
     std::vector<std::shared_ptr<Level>> mLevels;
+
+
 
 
 

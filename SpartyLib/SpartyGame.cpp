@@ -24,6 +24,9 @@ SpartyGame::SpartyGame()
 {
     mTotalScore = new Score(0);
     mLevelScore = new Score(0);
+
+    pictureCache = std::make_shared<PictureManager>();
+
     /// TODO remove the next line
 //    Level *tLevel = new Level(8, 14.22);
 //    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
@@ -179,7 +182,11 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
         if (item != nullptr){
             mItems.push_back(item);
+
+            item->setCache(pictureCache);
+
             item->XmlLoad(child);
+
         }
     }
 }

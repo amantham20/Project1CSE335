@@ -11,7 +11,7 @@
 #include <memory>
 //#include <box2d.h>
 #include "Picture.h"
-
+#include "PictureManager.h"
 
 class Picture;
 class Level;
@@ -24,12 +24,17 @@ private:
     ///a pointer to picture
     Picture *mPicture;
 
-    /// TEMP wxImage of the Item image
-    std::unique_ptr<wxImage> mItemImage;
-
-    /// TEMP wxBitmap of the Item image
-    std::shared_ptr<wxBitmap> mItemBitmap;
+//    /// TEMP wxImage of the Item image
+//    std::unique_ptr<wxImage> mItemImage;
+//
+//    /// TEMP wxBitmap of the Item image
+//    std::shared_ptr<wxBitmap> mItemBitmap;
     /// TODO remove Image/ Combine them into a class (aka use mPicture)
+
+//    images/bob.png
+    std::wstring mFileName = L"";
+
+    std::shared_ptr<PictureManager> mPictureCache;
 
 
 public:
@@ -75,11 +80,17 @@ public:
      */
     virtual std::shared_ptr<wxBitmap> GetBitMap(){
 //        return mItemBitmap;
-        return mPicture->GetBitmap();
+//        return mPicture->GetBitmap();
+        return mPictureCache->GetBitmap(mFileName);
     }
 
 
     void SetImageName(const std::wstring & filename);
+
+
+    void setCache(std::shared_ptr<PictureManager> pictureCache){
+        mPictureCache = pictureCache;
+    }
 
 
     

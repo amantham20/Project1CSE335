@@ -55,9 +55,10 @@ void Item::XmlLoad(wxXmlNode *node)
 
 //    mPicture = new Picture(this, filename);
         mPicture = new Picture(filename);
+        mFileName = filename;
 
-        mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-        mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+//        mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+//        mItemBitmap = make_shared<wxBitmap>(*mItemImage);
     }
 
 
@@ -72,10 +73,11 @@ void Item::XmlLoad(wxXmlNode *node)
  */
 void Item::SetImageName(const std::wstring & filename)
 {
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+//    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+//    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
 
     mPicture->SetPicture(filename);
+    mFileName = filename;
 }
 
 

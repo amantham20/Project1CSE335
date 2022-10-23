@@ -48,3 +48,5 @@ void Picture::SetPicture(const std::wstring& filename){
     mImageBitmap = make_shared<wxBitmap>(*mImage);
 }
 
+
+
