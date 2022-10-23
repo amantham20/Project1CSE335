@@ -7,7 +7,6 @@
 #include "pch.h"
 #include "SpartyGame.h"
 #include "Consts.h"
-#include "PlayAreaSize.h"
 #include "Block.h"
 #include "Background.h"
 #include "WoodenSlingshot.h"
