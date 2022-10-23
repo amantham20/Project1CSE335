@@ -68,7 +68,5 @@ void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
         x += xw;
     }
 
-//    graphics->Rotate(angle);
-
     graphics->PopState();
 }
