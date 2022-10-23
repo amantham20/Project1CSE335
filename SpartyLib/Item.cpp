@@ -25,7 +25,10 @@ Item::~Item()
 
 /**
  * Constructor
- * @param world The world the item is in.
+ *
+ * @param level The current Level the Object is in
+ *
+ * @author Aman Dhruva Thamminana
  */
 Item::Item(std::shared_ptr<Level> level)
 {
@@ -44,17 +47,26 @@ Item::Item(std::shared_ptr<Level> level)
  */
 void Item::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncompleted code
+
     if (!node->GetAttribute(L"image").IsEmpty())
     {
         std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
+
 //    mPicture = new Picture(this, filename);
+
         mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
         mItemBitmap = make_shared<wxBitmap>(*mItemImage);
     }
 
 }
 
+/**
+ * Setter for image
+ *
+ * sets image bit map
+ *
+ * @param filename Relative Directory of the image.
+ */
 void Item::SetImageName(wxString filename)
 {
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
