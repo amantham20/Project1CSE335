@@ -33,6 +33,7 @@ Item::~Item()
 Item::Item(std::shared_ptr<Level> level)
 {
     mLevel = level;
+    mPicture = new Picture();
 }
 
 
@@ -53,10 +54,12 @@ void Item::XmlLoad(wxXmlNode *node)
         std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
 
 //    mPicture = new Picture(this, filename);
+        mPicture = new Picture(filename);
 
         mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
         mItemBitmap = make_shared<wxBitmap>(*mItemImage);
     }
+
 
 }
 
@@ -67,10 +70,12 @@ void Item::XmlLoad(wxXmlNode *node)
  *
  * @param filename Relative Directory of the image.
  */
-void Item::SetImageName(wxString filename)
+void Item::SetImageName(const std::wstring & filename)
 {
     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = make_shared<wxBitmap>(*mItemImage);
+
+    mPicture->SetPicture(filename);
 }
 
 

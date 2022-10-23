@@ -73,10 +73,13 @@ public:
      *
      * @return ImageBitmap for the item
      */
-    virtual std::shared_ptr<wxBitmap> GetBitMap(){return mItemBitmap;}
+    virtual std::shared_ptr<wxBitmap> GetBitMap(){
+//        return mItemBitmap;
+        return mPicture->GetBitmap();
+    }
 
 
-    void SetImageName(wxString filename);
+    void SetImageName(const std::wstring & filename);
 
 
     
