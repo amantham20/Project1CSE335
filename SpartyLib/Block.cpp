@@ -10,13 +10,13 @@
 #include "Item.h"
 
 /**
- * Load the attributes for an item node.
+ * Load the attributes for an Block node.
  *
  * This is the  base class version that loads the attributes
  * common to all items. Override this to load custom attributes
  * for specific items.
  *
- * @param node The Xml node we are loading the item from
+ * @param node The Xml node we are loading the Block from
  */
 void Block::XmlLoad(wxXmlNode *node)
 {
@@ -29,11 +29,13 @@ Block::Block(std::shared_ptr<Level> level) : Shape(level)
 
 }
 
+
 void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 
     graphics->PushState();
     auto mSize = BodyItem::Getb2Vec();
 
+    //TODO : Get b2Body working to enable Easy Acess to these values
 //    b2Body* body = BodyItem::GetBody();
 //    auto position = body->GetPosition();
 //    auto angle = body->GetAngle();
