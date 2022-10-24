@@ -1,6 +1,6 @@
 /**
  * @file Consts.h
- * @author Aman Dhruva Thamminana Ian Valdovinos Granados
+ * @author Aman Dhruva Thamminana, Ian Valdovinos Granados
  *
  * Some basic handy constants
  */

@@ -12,6 +12,10 @@ using namespace std;
 /// Slingshot filename
 const wstring GoalpostsImageName = L"images/goalposts.png";
 
+/**
+ * Constructor
+ * @param level Level the Goalpost is in
+ */
 Goalpost::Goalpost(std::shared_ptr<Level> level) : Slingshot(level)
 {
     Item::SetImageName(GoalpostsImageName);
@@ -32,6 +36,10 @@ void Goalpost::XmlLoad(wxXmlNode *node)
     Slingshot::XmlLoad(node);
 }
 
+/**
+ * Draw this Goalpost
+ * @param graphics Graphics context used to draw this Goalpost
+ */
 void Goalpost::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Slingshot::OnDraw(graphics);
