@@ -7,6 +7,9 @@
 #include "MainFrame.h"
 #include "SpartyView.h"
 
+/**
+ * Initialize function for the MainFrame
+ */
 void MainFrame::Initialize()
 {
     //todo: find the window size
