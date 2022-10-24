@@ -1,6 +1,8 @@
 /**
  * @file Poly.h
  * @author Rajmeet Singh Chandok, zhiqiang ni
+ *
+ * Class that describes a Polygon
  */
 
 #ifndef ANGRYSPARTY_POLY_H

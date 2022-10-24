@@ -18,13 +18,15 @@ private:
 public:
     PictureManager(){};
 
-    void add(const std::wstring& key, const std::wstring& fileName){
+    void add(const std::wstring& key, const std::wstring& fileName)
+    {
         if (mImageCache.find(key) == mImageCache.end()){
             mImageCache.insert({key, new Picture(fileName)});
         }
     }
 
-    std::shared_ptr<wxBitmap> GetBitmap(const std::wstring & key){
+    std::shared_ptr<wxBitmap> GetBitmap(const std::wstring & key)
+    {
         if (mImageCache.find(key) != mImageCache.end()){
             return mImageCache[key]->GetBitmap();
         }
@@ -33,8 +35,6 @@ public:
             return mImageCache[key]->GetBitmap();
         }
     }
-
-
 };
 
 #endif //ANGRYSPARTY_PICTUREMANAGER_H

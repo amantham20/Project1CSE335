@@ -6,7 +6,10 @@
 #include "pch.h"
 #include "Poly.h"
 
-
+/**
+ * Constructor
+ * @param level
+ */
 Poly::Poly(std::shared_ptr<Level> level) : Shape(level)
 {
 
@@ -45,7 +48,10 @@ void Poly::XmlLoad(wxXmlNode *node)
     Shape::XmlLoad(node);
 }
 
-
+/**
+ * Draws a polygon using the graphics context given
+ * @param graphics
+ */
 void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     auto position = PositionalItem::GetPosition();
