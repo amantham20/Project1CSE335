@@ -20,6 +20,10 @@ using namespace std;
 //    mImageBitmap = make_shared<wxBitmap>(*mImage);
 //}
 
+/**
+ * Constructor
+ * @param filename Filename of the image Picture class will hold
+ */
 Picture::Picture(const std::wstring& filename)
 {
     mImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
@@ -43,6 +47,10 @@ Picture::Picture() {
 //                   int(50 - hit / 2));
 //}
 
+/**
+ * Set picture the Picture class holds
+ * @param filename filename of the picture.
+ */
 void Picture::SetPicture(const std::wstring& filename){
     mImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mImageBitmap = make_shared<wxBitmap>(*mImage);
