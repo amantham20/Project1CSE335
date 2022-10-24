@@ -21,6 +21,10 @@ BodyItem::BodyItem(std::shared_ptr<Level> level) : PositionalItem(level)
 
 }
 
+/**
+ * Loads XML data to BodyItem
+ * @param node Xml note containing data for BodyItem
+ */
 void BodyItem::XmlLoad(wxXmlNode *node)
 {
     node->GetAttribute(L"width").ToDouble(&mWidth);
