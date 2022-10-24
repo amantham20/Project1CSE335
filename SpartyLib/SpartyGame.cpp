@@ -18,7 +18,7 @@ using namespace std;
 
 
 /**
- * constructor
+ * Constructor
  */
 SpartyGame::SpartyGame()
 {
@@ -33,7 +33,12 @@ SpartyGame::SpartyGame()
 
 }
 
-
+/**
+ * Draws the SpartyGame
+ * @param graphics Graphics context used to draw Angry Sparty game on screen
+ * @param width Width of the game
+ * @param height Height of the game
+ */
 void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height){
     wxBrush background(*wxBLACK);
     graphics->SetBrush(background);
@@ -89,7 +94,7 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
 
 /**
  * Loads the contents of the xml file into the SpartyGame
- * @param filename
+ * @param filename Filename to load contents from
  */
 void SpartyGame::Load(const wxString &filename)
 {
@@ -136,7 +141,8 @@ void SpartyGame::Load(const wxString &filename)
 
 /**
  * Loads every item in the items parent tag
- * @param node
+ * @param node Node to start reading xml doc from
+ * @param pLevel Level the xml document belongs to
  */
 void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
@@ -192,7 +198,7 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
 /**
  * Loads every angry sparty in the angry parent tag
- * @param node
+ * @param node Node to start reading contents from
  */
 void SpartyGame::LoadXMLSparties(wxXmlNode *node)
 {
@@ -200,7 +206,3 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node)
 
 }
 
-void SpartyGame::OnDraw(wxDC *dc)
-{
-
-}

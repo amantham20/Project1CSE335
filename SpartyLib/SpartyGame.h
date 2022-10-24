@@ -26,10 +26,8 @@ private:
     /// scaling factor
     double mScale;
 
-
     ///Image Cache
     std::shared_ptr<PictureManager> pictureCache;
-
 
     /// offsets
     double mXOffset, mYOffset;
@@ -37,11 +35,8 @@ private:
     void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
 
     void LoadXMLSparties(wxXmlNode *node);
+
     std::vector<std::shared_ptr<Level>> mLevels;
-
-
-
-
 
 public:
 
@@ -60,7 +55,6 @@ public:
     Score *getScore(){return mTotalScore;};
 
     void Load(const wxString& filename);
-    void OnDraw(wxDC *dc);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 };
 
