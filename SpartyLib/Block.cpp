@@ -24,12 +24,19 @@ void Block::XmlLoad(wxXmlNode *node)
     Shape::XmlLoad(node);
 }
 
+/**
+ * Constructor
+ * @param level Level the block is in.
+ */
 Block::Block(std::shared_ptr<Level> level) : Shape(level)
 {
 
 }
 
-
+/**
+ * Draws this block
+ * @param graphics Graphics context to draw this block
+ */
 void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 
     graphics->PushState();

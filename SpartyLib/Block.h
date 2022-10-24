@@ -1,6 +1,8 @@
 /**
  * @file Block.h
  * @author Rajmeet Singh Chandok, zhiqiang ni
+ *
+ * Block in a given Level
  */
 
 #ifndef ANGRYSPARTY_BLOCK_H
