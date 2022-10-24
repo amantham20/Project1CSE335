@@ -10,7 +10,7 @@
 using namespace std;
 
 /**
- * PositionalItem constructor
+ * Constructor
  * @param world
  */
 Slingshot::Slingshot(std::shared_ptr<Level> level) : PositionalItem(level)
@@ -33,6 +33,10 @@ void Slingshot::XmlLoad(wxXmlNode *node)
     PositionalItem::XmlLoad(node);
 }
 
+/**
+ * Draws a slingshot
+ * @param graphics Graphics context used to draw this slingshot
+ */
 void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     const int heightOffset = 50;

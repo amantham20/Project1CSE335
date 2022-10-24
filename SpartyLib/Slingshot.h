@@ -12,6 +12,7 @@
 
 /**
  * Base class for a slingshot
+ *
  * This applies to the wooden slingshots
  * and the goalposts in the game.
  */

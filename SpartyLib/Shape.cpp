@@ -29,7 +29,7 @@ void Shape::XmlLoad(wxXmlNode *node)
 
 /**
  * Constructor
- * @param level
+ * @param level The level this shape is in
  */
 Shape::Shape(std::shared_ptr<Level> level) : BodyItem(level)
 {
