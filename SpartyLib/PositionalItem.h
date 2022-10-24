@@ -2,6 +2,8 @@
  * @file PositionalItem.h
  * @author Rajmeet Singh Chandok, zhiqiang ni, Milan Mihailovic
  *
+ * Class describing a special type of item that has a specific x and y positions.
+ *
  */
 
 #ifndef ANGRYSPARTY_POSITIONALITEM_H
@@ -53,6 +55,10 @@ public:
 
     void XmlLoad(wxXmlNode *node) override;
 
+    /**
+     * Returns the position of the item
+     * @return b2Vec2 representing the position of an item.
+     */
     b2Vec2 GetPosition() { return b2Vec2(mX, mY); }
 
 };

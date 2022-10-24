@@ -12,6 +12,9 @@
 
 class Score;
 
+/**
+ * Class in charge of displaying a score counter
+ */
 class ScoreDisplay : public PositionalItem{
 private:
     ///an object pointer

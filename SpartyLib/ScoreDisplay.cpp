@@ -8,6 +8,13 @@
 #include "Score.h"
 #include "Consts.h"
 
+/**
+ * Constructor
+ * @param level Level the score dusplay is in
+ * @param score Score to display
+ * @param x x-coordinate of the score display
+ * @param y y-coordinate of the score display
+ */
 ScoreDisplay::ScoreDisplay(std::shared_ptr<Level> level, Score *score, double x, double y) :  PositionalItem(level)
 {
     mScore = score;
@@ -15,6 +22,10 @@ ScoreDisplay::ScoreDisplay(std::shared_ptr<Level> level, Score *score, double x,
     PositionalItem::setY(y);
 }
 
+/**
+ * Draws the display on screen.
+ * @param graphics Graphics context to use to draw the score display.
+ */
 void ScoreDisplay::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
     auto tLevel = Item::GetLevel();
     auto wid = tLevel->GetWidth() * Consts::MtoCM;
@@ -31,6 +42,11 @@ void ScoreDisplay::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
     graphics->PopState();
 }
 
+/**
+ * Function called to update the ScoreDisplay on screen
+ * @param elapsed Time elapsed since the last call to Update
+ * @param graphics Graphics context used to draw this score display.
+ */
 void ScoreDisplay::Update(double elapsed, std::shared_ptr<wxGraphicsContext> graphics)
 {
     OnDraw(graphics);
