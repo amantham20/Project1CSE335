@@ -2,6 +2,7 @@
  * @file Level.h
  * @author Aman Dhruva Thamminana
  *
+ * Level class representing a level in the game
  *
  */
 
@@ -14,6 +15,9 @@
 class SpartyGame;
 class Item;
 
+/**
+ * Level class describing a level object in the game
+ */
 class Level {
 private:
     double mHeight = 0;
@@ -25,9 +29,9 @@ private:
     /// All of the items in the level
     std::vector<std::shared_ptr<Item>> mItems;
 
-
     /// an pointer for score
     Score *mLevelScore;
+
 public:
     Level() = delete;
     Level(SpartyGame *spartyGame);

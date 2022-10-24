@@ -11,6 +11,10 @@
 #include "WoodenSlingshot.h"
 #include "Background.h"
 
+/**
+ * Level constructor
+ * @param spartyGame Game the level is part of
+ */
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
     mLevelScore = new Score(0);
@@ -91,8 +95,8 @@ Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 //}
 
 /**
- * Loads the contents of the xml file into the SpartyGame
- * @param filename
+ * Loads the contents of the xml file into the Level
+ * @param node Xml node to read from
  */
 void Level::Load(wxXmlNode *node)
 {
@@ -111,7 +115,7 @@ void Level::Load(wxXmlNode *node)
 }
 
 /**
- * Add an item to the aquarium
+ * Add an item to the level
  * @param item New item to add
  */
 void Level::Add(std::shared_ptr<Item> item)
