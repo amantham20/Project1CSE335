@@ -2,6 +2,7 @@
  * @file Background.h
  * @author Aman Dhruva Thamminana
  *
+ * Background class for a Level
  *
  */
 
