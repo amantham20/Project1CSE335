@@ -29,6 +29,11 @@ void BodyItem::XmlLoad(wxXmlNode *node)
 {
     node->GetAttribute(L"width").ToDouble(&mWidth);
     node->GetAttribute(L"height").ToDouble(&mHeight);
+    mType = node->GetAttribute(L"type").ToStdWstring();
+    node->GetAttribute(L"angle").ToDouble(&mAngle);
+    node->GetAttribute(L"density").ToDouble(&mDensity);
+    node->GetAttribute(L"friction").ToDouble(&mFriction);
+    node->GetAttribute(L"restitution").ToDouble(&mRestitution);
 
     PositionalItem::XmlLoad(node);
 }

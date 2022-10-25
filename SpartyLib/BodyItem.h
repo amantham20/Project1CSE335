@@ -10,6 +10,7 @@
 #define ANGRYSPARTY_BODYITEM_H
 
 #include "PositionalItem.h"
+#include "Consts.h"
 #include "b2_body.h"
 #include <b2_math.h>
 
@@ -26,6 +27,21 @@ private:
 
     /// Height of the BodyItem
     double mHeight= 0;
+
+    /// Shape's friction
+    double mFriction = 0.5;
+
+    /// Shape's restitution
+    double mRestitution = 0.5;
+
+    /// Shape's density
+    double mDensity = 1.0;
+
+    /// Shape Angle
+    double mAngle = 0;
+
+    /// Type of shape
+    std::wstring mType = L"dynamic";
 
 public:
 
@@ -44,6 +60,12 @@ public:
      * @return b2Vec2
      */
     b2Vec2 Getb2Vec() { return b2Vec2(mWidth, mHeight); }
+
+    /**
+ * Getter for mAngle converted to radians
+ * @return mAngle
+ */
+    double GetAngle(){ return mAngle*Consts::DtoR; }
 
 };
 
