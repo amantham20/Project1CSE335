@@ -12,6 +12,9 @@
 #include "b2_math.h"
 #include "SpartyGame.h"
 
+/**
+ * View class used to display game on screen
+ */
 class SpartyView : public wxWindow {
 private:
     void OnPaint(wxPaintEvent& event);
@@ -41,8 +44,6 @@ public:
     void OnFileSaveAs(wxCommandEvent &event);
 
     void OnFileOpen(wxCommandEvent &event);
-
-//    void OnDraw(wxDC *dc);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H

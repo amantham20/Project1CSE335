@@ -18,8 +18,8 @@ const double FrameDuration = 1.0/60.0;
 
 ///the x location for score display
 const int positionX = 10;
-///the Y location for score display
 
+///the Y location for score display
 const int positionY = 10;
 
 
@@ -41,9 +41,6 @@ void SpartyView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileSaveAs, this, wxID_SAVEAS);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileOpen, this, wxID_OPEN);
     //todo: not complete code
-
-
-
 
     // Load Level files
     LoadLevels();
