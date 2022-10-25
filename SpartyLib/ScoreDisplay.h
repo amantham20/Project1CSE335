@@ -18,11 +18,11 @@ class Score;
 class ScoreDisplay : public PositionalItem{
 private:
     ///an object pointer
-    Score *mScore;
+    std::shared_ptr<Score> mScore;
 public:
-    ScoreDisplay(std::shared_ptr<Level> level, Score *score, double x, double y);
+    ScoreDisplay(std::shared_ptr<Level> level, std::shared_ptr<Score>, double x, double y);
 
-    void Update(double elapsed, std::shared_ptr<wxGraphicsContext> graphics);
+    void Update(std::shared_ptr<wxGraphicsContext> graphics);
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 };
