@@ -3,7 +3,7 @@ project(Tests)
 set(TEST_FILES
     gtest_main.cpp
 
-    EmptyTest.cpp ScoreTest.cpp ClassInitTest.cpp BlockTest.cpp LevelTest.cpp SpartyGameTest.cpp BackgroundTest.cpp FoeTest.cpp)
+    EmptyTest.cpp ScoreTest.cpp ClassInitTest.cpp BlockTest.cpp LevelTest.cpp SpartyGameTest.cpp BackgroundTest.cpp FoeTest.cpp WoodenSlingshotTest.cpp)
 
 
 # Get Google Tests
