@@ -33,7 +33,7 @@ Item::~Item()
 Item::Item(std::shared_ptr<Level> level)
 {
     mLevel = level;
-    mPicture = new Picture();
+    mPictureCache = std::make_shared<PictureManager>();
 }
 
 
@@ -52,16 +52,13 @@ void Item::XmlLoad(wxXmlNode *node)
     if (!node->GetAttribute(L"image").IsEmpty())
     {
         std::wstring filename = L"images/" + node->GetAttribute(L"image").ToStdWstring();
-
 //    mPicture = new Picture(this, filename);
-        mPicture = new Picture(filename);
         mFileName = filename;
 
 //        mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
 //        mItemBitmap = make_shared<wxBitmap>(*mItemImage);
     }
-
-
+    mPictureCache->GetBitmap(mFileName);
 }
 
 /**
@@ -76,8 +73,8 @@ void Item::SetImageName(const std::wstring & filename)
 //    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
 //    mItemBitmap = make_shared<wxBitmap>(*mItemImage);
 
-    mPicture->SetPicture(filename);
     mFileName = filename;
+
 }
 
 

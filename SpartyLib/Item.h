@@ -22,7 +22,7 @@ private:
     std::shared_ptr<Level> mLevel;
 
     ///a pointer to picture
-    Picture *mPicture;
+    //Picture *mPicture;
 
 //    /// TEMP wxImage of the Item image
 //    std::unique_ptr<wxImage> mItemImage;
@@ -83,7 +83,9 @@ public:
 //        return mPicture->GetBitmap();
         return mPictureCache->GetBitmap(mFileName);
     }
+    //virtual void Update(double elapsed){};
 
+    //virtual void Update(std::shared_ptr<wxGraphicsContext> graphics);
 
     void SetImageName(const std::wstring & filename);
 
