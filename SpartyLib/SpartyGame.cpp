@@ -14,7 +14,11 @@
 #include "ScoreDisplay.h"
 #include "Poly.h"
 #include "Foe.h"
+#include "HelmetSparty.h"
+#include "GruffSparty.h"
+
 #include <wx/graphics.h>
+
 using namespace std;
 
 
@@ -135,7 +139,7 @@ void SpartyGame::Load(const wxString &filename)
         else if (name == L"angry")
         {
             // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
-            LoadXMLSparties(child);
+            LoadXMLSparties(child, tLevel);
         }
     }
 }
@@ -198,7 +202,7 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
  * Loads every angry sparty in the angry parent tag
  * @param node Node to start reading contents from
  */
-void SpartyGame::LoadXMLSparties(wxXmlNode *node)
+void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
     // Get the first item in the items parent tag
     auto child = node->GetChildren();
@@ -214,9 +218,11 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node)
         shared_ptr<Item> item;
         if (name == "gruff-sparty")
         {
+            item = std::make_shared<GruffSparty>(pLevel);
 
         } else if (name == "helmet-sparty")
         {
+            item = std::make_shared<HelmetSparty>(pLevel);
 
         } else
         {

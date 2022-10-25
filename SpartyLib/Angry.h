@@ -13,6 +13,8 @@ private:
 
 public:
 
+    Angry(std::shared_ptr<Level> level);
+
 };
 
 

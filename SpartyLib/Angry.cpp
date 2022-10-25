@@ -3,3 +3,8 @@
 //
 
 #include "Angry.h"
+
+Angry::Angry(std::shared_ptr<Level> level) : BodyItem(level)
+{
+
+}

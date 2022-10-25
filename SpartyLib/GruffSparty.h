@@ -14,6 +14,7 @@ class GruffSparty : public Angry {
 private:
 
 public:
+    GruffSparty(std::shared_ptr<Level> level);
 
 };
 

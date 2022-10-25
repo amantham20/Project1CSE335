@@ -35,7 +35,7 @@ private:
 
     void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
 
-    void LoadXMLSparties(wxXmlNode *node);
+    void LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel);
 
     std::vector<std::shared_ptr<Level>> mLevels;
 

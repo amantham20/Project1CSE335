@@ -10,10 +10,12 @@
 
 #include "Angry.h"
 
-class HelmetSparty : Angry {
+class HelmetSparty : public Angry {
 private:
 
 public:
+
+    HelmetSparty(std::shared_ptr<Level> level);
 
 };
 
