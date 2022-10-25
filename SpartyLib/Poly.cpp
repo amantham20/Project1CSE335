@@ -10,7 +10,7 @@
  * Constructor
  * @param level
  */
-Poly::Poly(std::shared_ptr<Level> level) : Shape(level)
+Poly::Poly(std::shared_ptr<Level> level) : BodyItem(level)
 {
 
 }
@@ -45,7 +45,7 @@ void Poly::XmlLoad(wxXmlNode *node)
             mVertices.push_back(b2vertex);
         }
     }
-    Shape::XmlLoad(node);
+    BodyItem::XmlLoad(node);
 }
 
 /**
@@ -55,7 +55,7 @@ void Poly::XmlLoad(wxXmlNode *node)
 void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     auto position = PositionalItem::GetPosition();
-    auto angle = Shape::GetAngle();
+    auto angle = BodyItem::GetAngle();
 
     // Find the minimum and maximum x/y values
     b2Vec2 minimums = mVertices[0];

@@ -8,13 +8,13 @@
 #ifndef ANGRYSPARTY_POLY_H
 #define ANGRYSPARTY_POLY_H
 
-#include "Shape.h"
+#include "BodyItem.h"
 //#include <box2d.h>
 
 /**
- * Polygon class derived from Shape
+ * Polygon class derived from BodyItem
  */
-class Poly : public Shape {
+class Poly : public BodyItem {
 private:
     /// Vertices
     std::vector<b2Vec2> mVertices;
