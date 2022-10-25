@@ -41,8 +41,6 @@ public:
 
     void OnTimer(wxTimerEvent &event);
 
-    void OnFileSaveAs(wxCommandEvent &event);
-
     void OnLevelOpen(wxCommandEvent &event);
 };
 

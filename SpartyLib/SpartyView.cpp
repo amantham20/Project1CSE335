@@ -99,28 +99,12 @@ void SpartyView::OnTimer(wxTimerEvent &event)
 }
 
 /**
- * Handle the File>Save As menu option
- * @param event The menu event
- */
-void SpartyView::OnFileSaveAs(wxCommandEvent& event)
-{
-    wxFileDialog saveFileDialog(this, _("Save Level file"), "", "",
-                                "Level Files (*.sparty)|*.sparty", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
-    if (saveFileDialog.ShowModal() == wxID_CANCEL)
-    {
-        return;
-    }
-
-    auto filename = saveFileDialog.GetPath();
-    //todo not finished
-}
-
-/**
- * File>Open menu handler
+ * Level>Open level handler
  * @param event Menu event
  */
 void SpartyView::OnLevelOpen(wxCommandEvent& event)
 {
+    //todo: this is not the right code to use
     wxString filename = L"levels/level0.xml";
     switch (event.GetId())
     {
