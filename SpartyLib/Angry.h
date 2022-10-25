@@ -10,6 +10,7 @@
 
 class Angry : public BodyItem {
 private:
+
 public:
 
 };

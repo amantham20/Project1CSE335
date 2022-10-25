@@ -211,6 +211,17 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node)
     {
         auto name = child->GetName();
 
+        shared_ptr<Item> item;
+        if (name == "gruff-sparty")
+        {
+
+        } else if (name == "helmet-sparty")
+        {
+
+        } else
+        {
+
+        }
 
     }
 }
