@@ -8,6 +8,7 @@
 #include "Consts.h"
 #include "stdio.h"
 #include "SpartyGame.h"
+#include "ids.h"
 #include "Level.h"
 
 using namespace std;
@@ -38,32 +39,20 @@ void SpartyView::Initialize(wxFrame* parent)
 
     Bind(wxEVT_PAINT, &SpartyView::OnPaint, this);
     Bind(wxEVT_TIMER, &SpartyView::OnTimer, this);
-    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileSaveAs, this, wxID_SAVEAS);
-    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnFileOpen, this, wxID_OPEN);
+
+
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this,IDM_LEVEL0);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this,IDM_LEVEL1);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this,IDM_LEVEL2);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this,IDM_LEVEL3);
     //todo: not complete code
 
     // Load Level files
-    LoadLevels();
-}
-
-/**
- * Parses the Level xml files to populate SpartyGame mItems
- */
-void SpartyView::LoadLevels()
-{
-    // Load Level 0
     wxString levelZeroFilename = L"levels/level1.xml";
     mSpartyGame.Load(levelZeroFilename);
-
-    // Load Level 1
-
-    // Load Level 2
-
-    // Load Level 3
-
-
     Refresh();
 }
+
 
 /**
  * Paint event, draws the window.
@@ -91,12 +80,6 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     wxBrush background(*wxWHITE);
     dc.SetBackground(background);
     dc.Clear();
-//    mSpartyGame.OnDraw(&dc);
-
-
-
-
-
     auto size = GetClientSize();
 
     auto graphics = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create( dc ));
@@ -136,16 +119,32 @@ void SpartyView::OnFileSaveAs(wxCommandEvent& event)
  * File>Open menu handler
  * @param event Menu event
  */
-void SpartyView::OnFileOpen(wxCommandEvent& event)
+void SpartyView::OnLevelOpen(wxCommandEvent& event)
 {
-    wxFileDialog loadFileDialog(this, _("Load Level file"), "", "",
-                                "Level Files (*.sparty)|*.sparty", wxFD_OPEN);
-    if (loadFileDialog.ShowModal() == wxID_CANCEL)
+    wxString filename = L"levels/level0.xml";
+    switch (event.GetId())
     {
-        return;
+        case IDM_LEVEL0:
+        {
+            filename = L"levels/level0.xml";
+            break;
+        }
+        case IDM_LEVEL1:
+        {
+            filename = L"levels/level1.xml";
+            break;
+        }
+        case IDM_LEVEL2:
+        {
+            filename = L"levels/level2.xml";
+            break;
+        }
+        case IDM_LEVEL3:
+        {
+            filename = L"levels/level3.xml";
+            break;
+        }
     }
-
-    auto filename = loadFileDialog.GetPath();
     mSpartyGame.Load(filename);
     Refresh();
 }

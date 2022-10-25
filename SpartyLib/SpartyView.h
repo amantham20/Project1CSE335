@@ -43,7 +43,7 @@ public:
 
     void OnFileSaveAs(wxCommandEvent &event);
 
-    void OnFileOpen(wxCommandEvent &event);
+    void OnLevelOpen(wxCommandEvent &event);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H
