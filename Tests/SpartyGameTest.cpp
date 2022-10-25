@@ -64,8 +64,7 @@ TEST_F(SpartyGameTest, LoadLevel1)
     int numberOfItems = game.GetNumberOfItems();
 
     // Level 1 has 1 background, 1 slingshot, 14 blocks, 1 polygon, and 2 foes. A total of 19 items.
-//    ASSERT_EQ(19, numberOfItems);
-    ASSERT_EQ(17, numberOfItems);   // This is testing the number of items minus the number of foes for the Project Checkpoint
+    ASSERT_EQ(19, numberOfItems);
 }
 
 TEST_F(SpartyGameTest, LoadLevel2)
@@ -80,7 +79,6 @@ TEST_F(SpartyGameTest, LoadLevel2)
     int numberOfItems = game.GetNumberOfItems();
 
     // Level 1 has 1 background, 1 goalpost, 17 blocks, 1 polygon, and 4 foes. A total of 24 items.
-//    ASSERT_EQ(24, numberOfItems);
-    ASSERT_EQ(20, numberOfItems);   // This is testing the number of items minus the number of foes for the Project Checkpoint
+    ASSERT_EQ(24, numberOfItems);
 }
 
