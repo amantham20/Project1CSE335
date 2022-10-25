@@ -14,14 +14,14 @@
 class PictureManager {
 private:
 
-    std::map<std::wstring, Picture *> mImageCache;
+    std::map<std::wstring, std::shared_ptr<Picture>> mImageCache;
 public:
     PictureManager(){};
 
     void add(const std::wstring& key, const std::wstring& fileName)
     {
         if (mImageCache.find(key) == mImageCache.end()){
-            mImageCache.insert({key, new Picture(fileName)});
+            mImageCache.insert({key, std::make_shared<Picture>(fileName)});
         }
     }
 
