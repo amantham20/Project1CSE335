@@ -8,12 +8,12 @@
 #ifndef ANGRYSPARTY_BLOCK_H
 #define ANGRYSPARTY_BLOCK_H
 
-#include "Shape.h"
+#include "BodyItem.h"
 
 /**
- * Block class derived from Shape
+ * Block class derived from BodyItem
  */
-class Block : public Shape {
+class Block : public BodyItem {
 private:
     /// Draw repeatedly
     int mRepeatX = 1;

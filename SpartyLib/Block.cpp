@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "Block.h"
 #include "Consts.h"
-#include "Shape.h"
+#include "BodyItem.h"
 #include "Item.h"
 
 /**
@@ -21,14 +21,14 @@
 void Block::XmlLoad(wxXmlNode *node)
 {
     node->GetAttribute(L"repeat-x").ToInt(&mRepeatX);
-    Shape::XmlLoad(node);
+    BodyItem::XmlLoad(node);
 }
 
 /**
  * Constructor
  * @param level Level the block is in.
  */
-Block::Block(std::shared_ptr<Level> level) : Shape(level)
+Block::Block(std::shared_ptr<Level> level) : BodyItem(level)
 {
 
 }
@@ -48,7 +48,7 @@ void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 //    auto angle = body->GetAngle();
 
     auto position = PositionalItem::GetPosition();
-    auto angle = Shape::GetAngle();
+    auto angle = BodyItem::GetAngle();
 
     graphics->Translate(position.x * Consts::MtoCM,
             position.y * Consts::MtoCM);
