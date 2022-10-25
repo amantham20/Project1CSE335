@@ -17,6 +17,10 @@ public:
 
     HelmetSparty(std::shared_ptr<Level> level);
 
+    void XmlLoad(wxXmlNode *node) override;
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
 };
 
 #endif //ANGRYSPARTY_HELMETSPARTY_H

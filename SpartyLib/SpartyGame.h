@@ -28,7 +28,7 @@ private:
     double mScale;
 
     ///Image Cache
-    std::shared_ptr<PictureManager> pictureCache;
+    std::shared_ptr<PictureManager> mPictureCache;
 
     /// offsets
     double mXOffset, mYOffset;

@@ -29,7 +29,7 @@ SpartyGame::SpartyGame()
 {
     mTotalScore = std::make_shared<Score>(0);
 
-    pictureCache = std::make_shared<PictureManager>();
+    mPictureCache = std::make_shared<PictureManager>();
 
     /// TODO remove the next line
 //    Level *tLevel = new Level(8, 14.22);
@@ -191,7 +191,7 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         {
             mItems.push_back(item);
 
-            item->setCache(pictureCache);
+            item->setCache(mPictureCache);
 
             item->XmlLoad(child);
         }
@@ -204,6 +204,16 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
  */
 void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
+    // Get location where the sparties line should start
+    double x_start;
+    double y_start;
+    node->GetAttribute(L"x", L"0").ToDouble(&x_start);
+    node->GetAttribute(L"y", L"0").ToDouble(&y_start);
+
+    // Get spacing between angry sparties
+    double spacing;
+    node->GetAttribute(L"spacing", "0.6").ToDouble(&spacing);
+
     // Get the first item in the items parent tag
     auto child = node->GetChildren();
 
@@ -224,9 +234,15 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         {
             item = std::make_shared<HelmetSparty>(pLevel);
 
-        } else
-        {
+        }
 
+        if (item != nullptr)
+        {
+            mItems.push_back(item);
+
+            item->setCache(mPictureCache);
+
+            item->XmlLoad(child);
         }
 
     }

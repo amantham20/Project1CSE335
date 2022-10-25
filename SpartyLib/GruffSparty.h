@@ -16,6 +16,10 @@ private:
 public:
     GruffSparty(std::shared_ptr<Level> level);
 
+    void XmlLoad(wxXmlNode *node) override;
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
 };
 
 #endif //ANGRYSPARTY_GRUFFSPARTY_H
