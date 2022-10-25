@@ -17,7 +17,7 @@
  */
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
-    mLevelScore = new Score(0);
+    mLevelScore = std::make_shared<Score>(0);
 }
 
 //void Level::Draw(wxDC *dc)

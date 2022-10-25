@@ -23,7 +23,7 @@ using namespace std;
  */
 SpartyGame::SpartyGame()
 {
-    mTotalScore = new Score(0);
+    mTotalScore = std::make_shared<Score>(0);
 
     pictureCache = std::make_shared<PictureManager>();
 
@@ -92,6 +92,7 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     b->OnDraw(graphics);
     graphics->PopState();
 }
+
 
 /**
  * Loads the contents of the xml file into the SpartyGame

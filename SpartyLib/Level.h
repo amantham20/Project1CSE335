@@ -30,7 +30,7 @@ private:
     std::vector<std::shared_ptr<Item>> mItems;
 
     /// an pointer for score
-    Score *mLevelScore;
+    std::shared_ptr<Score> mLevelScore;
 
 public:
     Level() = delete;
@@ -50,7 +50,7 @@ public:
 
     void LoadXMLLevel(wxXmlNode *node);
 
-    Score *GetScore() { return mLevelScore; };
+    std::shared_ptr<Score> GetScore() { return mLevelScore; };
 
 //    void Load(const wxString &filename);
 

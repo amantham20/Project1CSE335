@@ -21,7 +21,7 @@ private:
     std::vector<std::shared_ptr<Item>> mItems;
 
     ///An score pointer
-    Score *mTotalScore;
+    std::shared_ptr<Score> mTotalScore;
 
     /// scaling factor
     double mScale;
@@ -48,11 +48,6 @@ public:
     int GetNumberOfItems() { return mItems.size(); }
 
     SpartyGame();
-    /**
-     * get pointer of score
-     * @return pointer of score
-     */
-    Score *getScore(){return mTotalScore;};
 
     void Load(const wxString& filename);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
