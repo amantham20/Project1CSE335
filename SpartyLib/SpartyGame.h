@@ -11,6 +11,7 @@
 #include "Score.h"
 #include "PictureManager.h"
 #include <wx/graphics.h>
+#include "ids.h"
 
 /**
  * Base AngrySparty Game Class
@@ -38,6 +39,8 @@ private:
 
     std::vector<std::shared_ptr<Level>> mLevels;
 
+    int mCurrentLevel = 0;
+
 public:
 
     // todo: This function has to be removed when we store items in each level object instead of the game instance.
@@ -48,6 +51,8 @@ public:
     int GetNumberOfItems() { return mItems.size(); }
 
     SpartyGame();
+
+    void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
     void Load(const wxString& filename);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);

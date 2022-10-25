@@ -105,31 +105,29 @@ void SpartyView::OnTimer(wxTimerEvent &event)
 void SpartyView::OnLevelOpen(wxCommandEvent& event)
 {
     //todo: this is not the right code to use
-    wxString filename = L"levels/level0.xml";
     switch (event.GetId())
     {
         case IDM_LEVEL0:
         {
-            filename = L"levels/level0.xml";
+            mSpartyGame.SetLevel(0);
             break;
         }
         case IDM_LEVEL1:
         {
-            filename = L"levels/level1.xml";
+            mSpartyGame.SetLevel(1);
             break;
         }
         case IDM_LEVEL2:
         {
-            filename = L"levels/level2.xml";
+            mSpartyGame.SetLevel(2);
             break;
         }
         case IDM_LEVEL3:
         {
-            filename = L"levels/level3.xml";
+            mSpartyGame.SetLevel(3);
             break;
         }
     }
-    mSpartyGame.Load(filename);
     Refresh();
 }
 
