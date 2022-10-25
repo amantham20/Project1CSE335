@@ -4,6 +4,7 @@
  */
 
 #include "pch.h"
+#include "ids.h"
 #include "MainFrame.h"
 #include "SpartyView.h"
 
@@ -32,16 +33,18 @@ void MainFrame::Initialize()
     Layout();
 
     auto menuBar = new wxMenuBar( );
-    auto fileMenu = new wxMenu();
+    auto LevelMenu = new wxMenu();
     auto helpMenu = new wxMenu();
 
-    menuBar->Append(fileMenu, L"&File" );
+    menuBar->Append(LevelMenu, L"&Level" );
     menuBar->Append(helpMenu, L"&Help");
 
-    fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
-    fileMenu->Append(wxID_SAVEAS, "Save &As...\tCtrl-S", L"Save Level as...");
-    fileMenu->Append(wxID_OPEN, "Open &File...\tCtrl-F", L"Open Level file...");
+
+    LevelMenu->Append(IDM_LEVEL0, "&Level 0", "Jump to Level 0");
+    LevelMenu->Append(IDM_LEVEL1, "&Level 1", "Jump to Level 1");
+    LevelMenu->Append(IDM_LEVEL2, "&Level 2", "Jump to Level 2");
+    LevelMenu->Append(IDM_LEVEL3, "&Level 3", "Jump to Level 3");
 
     SetMenuBar( menuBar );
 
