@@ -1,6 +1,6 @@
 /**
  * @file SpartyGame.cpp
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, Milan Mihailovic
  *
  */
 
@@ -13,6 +13,7 @@
 #include "Goalpost.h"
 #include "ScoreDisplay.h"
 #include "Poly.h"
+#include "Foe.h"
 #include <wx/graphics.h>
 using namespace std;
 
@@ -125,12 +126,12 @@ void SpartyGame::Load(const wxString &filename)
     for( ; child; child=child->GetNext())
     {
         auto name = child->GetName();
-        if(name == L"items"){
-
+        if(name == L"items")
+        {
             // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
             LoadXMLItems(child, tLevel);
-
-        } else if (name == L"angry")
+        }
+        else if (name == L"angry")
         {
             // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
             LoadXMLSparties(child);
@@ -167,10 +168,10 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         {
             item = std::make_shared<Poly>(pLevel);
         }
-//        else if (name == "foe")
-//        {
-//
-//        }
+        else if (name == "foe")
+        {
+            item = std::make_shared<Foe>(pLevel);
+        }
         else if (name == "goalposts")
         {
             item = std::make_shared<Goalpost>(pLevel);
@@ -185,13 +186,13 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
             item = std::make_shared<Background>(pLevel);
         }
 
-        if (item != nullptr){
+        if (item != nullptr)
+        {
             mItems.push_back(item);
 
             item->setCache(pictureCache);
 
             item->XmlLoad(child);
-
         }
     }
 }
