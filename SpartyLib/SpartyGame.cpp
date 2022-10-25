@@ -136,7 +136,6 @@ void SpartyGame::Load(const wxString &filename)
         {
             // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
             LoadXMLSparties(child);
-
         }
     }
 }
@@ -150,9 +149,6 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
     // Get the first item in the items parent tag
     auto child = node->GetChildren();
-
-    // Pointer to the item we are loading
-    shared_ptr<Item> item;
 
     // Iterate over every item inside the items tag
     for( ; child; child=child->GetNext())
@@ -204,7 +200,18 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
  */
 void SpartyGame::LoadXMLSparties(wxXmlNode *node)
 {
-    // todo: Implement load function to load the angry sparties
+    // Get the first item in the items parent tag
+    auto child = node->GetChildren();
 
+    // Pointer to the item we are loading
+    shared_ptr<Item> item;
+
+    // Iterate over the tags within the angry tag
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+
+
+    }
 }
 
