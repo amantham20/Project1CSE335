@@ -56,6 +56,8 @@ public:
 
     void Load(const wxString& filename);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
+
+    void Reset();
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
