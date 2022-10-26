@@ -54,6 +54,8 @@ public:
 
 //    void Load(const wxString &filename);
 
+    b2Vec2 GetPlayAreaSize(){return b2Vec2(mWidth, mHeight);}
+
     void Load(wxXmlNode *node);
 };
 
