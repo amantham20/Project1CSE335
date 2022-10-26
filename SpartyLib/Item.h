@@ -32,7 +32,7 @@ private:
     /// TODO remove Image/ Combine them into a class (aka use mPicture)
 
 //    images/bob.png
-    std::wstring mFileName = L"";
+    std::wstring mFileName = L"images/bob.png";
 
     std::shared_ptr<PictureManager> mPictureCache;
 
