@@ -82,7 +82,11 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // graphics->DrawBitmap(*mBackground, 0, 0);
 //    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
     for( auto item : mItems){
-        item->OnDraw(graphics);
+        if(item->GetLevel() == mLevels[mCurrentLevel]){
+            item->OnDraw(graphics);
+        }
+
+//        item->OnDraw(graphics);
     }
 
     //todo: uncompleted working code don't know put where
@@ -206,5 +210,11 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node)
 {
     // todo: Implement load function to load the angry sparties
 
+}
+
+
+void SpartyGame::Reset()
+{
+    mItems.clear();
 }
 
