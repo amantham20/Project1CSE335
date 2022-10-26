@@ -55,7 +55,9 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
 
 //    PlayAreaSize playArea;
 //    b2Vec2 playingAreaSize = playArea.Temp();
-    b2Vec2 playingAreaSize = b2Vec2(14.22,8);
+//    b2Vec2 playingAreaSize = b2Vec2(14.22,8);
+
+    b2Vec2 playingAreaSize = mLevels[mCurrentLevel]->GetPlayAreaSize();
     playingAreaSize *= Consts::MtoCM;
 
     //
@@ -86,7 +88,9 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // graphics->DrawBitmap(*mBackground, 0, 0);
 //    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
     for( auto item : mItems){
-        item->OnDraw(graphics);
+        if(item->GetLevel() == mLevels[mCurrentLevel]){
+            item->OnDraw(graphics);
+        }
     }
 
     //todo: uncompleted working code don't know put where
@@ -246,5 +250,11 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         }
 
     }
+}
+
+
+void SpartyGame::Reset()
+{
+    mItems.clear();
 }
 
