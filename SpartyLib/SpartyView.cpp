@@ -45,6 +45,8 @@ void SpartyView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this,IDM_LEVEL1);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this,IDM_LEVEL2);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this,IDM_LEVEL3);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnDebugMode, this, IDM_DEBUG);
+    parent->Bind(wxEVT_UPDATE_UI, &SpartyView::OnUpdateDebugMode, this, IDM_DEBUG);
     //todo: not complete code
 
     // Load Level files
@@ -101,7 +103,11 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
     mSpartyGame.OnDraw(graphics, size.GetWidth(), size.GetHeight());
 
-
+    if(mDebug)
+    {
+        // Draw outlines around each of the on-screen item
+        //todo:: need visitor?
+    }
 }
 /**
  * Handles the timer event
@@ -153,3 +159,17 @@ void SpartyView::OnLevelOpen(wxCommandEvent& event)
 //{
 //
 //}
+
+void SpartyView::OnDebugMode(wxCommandEvent& event)
+{
+    mDebug = !mDebug;
+}
+
+/**
+ * Update handler for View>Outlines menu option
+ * @param event Update event
+ */
+void SpartyView::OnUpdateDebugMode(wxUpdateUIEvent& event)
+{
+    event.Check(mDebug);
+}

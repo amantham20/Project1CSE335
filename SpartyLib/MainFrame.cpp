@@ -40,6 +40,7 @@ void MainFrame::Initialize()
     menuBar->Append(helpMenu, L"&Help");
 
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
+    helpMenu->Append(IDM_DEBUG, "Debug mode\tF5", "go to debug mode", wxITEM_CHECK);
 
     LevelMenu->Append(IDM_LEVEL0, "&Level 0", "Jump to Level 0");
     LevelMenu->Append(IDM_LEVEL1, "&Level 1", "Jump to Level 1");

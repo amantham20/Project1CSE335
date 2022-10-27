@@ -14,6 +14,7 @@ enum IDs {
     IDM_LEVEL1 = wxID_HIGHEST + 2,
     IDM_LEVEL2 = wxID_HIGHEST + 3,
     IDM_LEVEL3 = wxID_HIGHEST + 4,
+    IDM_DEBUG= wxID_HIGHEST + 5,
 };
 
 #endif //ANGRYSPARTY_IDS_H

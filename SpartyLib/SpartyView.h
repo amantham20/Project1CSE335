@@ -32,7 +32,7 @@ private:
     SpartyGame mSpartyGame;
 
 
-
+    bool mDebug = false;
     void LoadLevels();
 public:
     void Initialize(wxFrame* parent);
@@ -42,6 +42,9 @@ public:
     void OnTimer(wxTimerEvent &event);
 
     void OnLevelOpen(wxCommandEvent &event);
+
+    void OnDebugMode(wxCommandEvent& event);
+    void OnUpdateDebugMode(wxUpdateUIEvent& event);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H
