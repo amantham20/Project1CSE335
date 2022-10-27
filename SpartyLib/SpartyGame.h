@@ -39,7 +39,7 @@ private:
 
     std::vector<std::shared_ptr<Level>> mLevels;
 
-    int mCurrentLevel = 0;
+    int mCurrentLevel = 1;
 
 public:
 

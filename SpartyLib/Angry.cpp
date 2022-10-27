@@ -16,12 +16,12 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 //    auto position = body->GetPosition();
 //    auto angle = body->GetAngle();
 
-    const int heightOffset = 25;
+    const int heightOffset = 0;
 
     auto position = PositionalItem::GetPosition();
 
     //TODO : Couldn't figure out how to make foes exact height, change the 0.6 later
-    auto wid = Consts::MtoCM * 0.6;
+    auto wid = Consts::MtoCM * 0.5;
     auto x = position.x * Consts::MtoCM;
     auto y = position.y * Consts::MtoCM + heightOffset;
 
