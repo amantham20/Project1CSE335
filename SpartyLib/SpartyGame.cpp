@@ -214,6 +214,9 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
     node->GetAttribute(L"x", L"0").ToDouble(&x_start);
     node->GetAttribute(L"y", L"0").ToDouble(&y_start);
 
+    // Current location based on the offset
+    double x_current = x_start;
+
     // Get spacing between angry sparties
     double spacing;
     node->GetAttribute(L"spacing", "0.6").ToDouble(&spacing);
@@ -247,7 +250,8 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
             item->setCache(mPictureCache);
 
             // Set image location
-            item->SetLocation(x_start, y_start);
+            item->SetLocation(x_current, y_start);
+            x_current += spacing;
 
             item->XmlLoad(child);
         }

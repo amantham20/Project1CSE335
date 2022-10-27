@@ -24,5 +24,5 @@ void GruffSparty::SetLocation(double x, double y)
 
 void GruffSparty::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-
+    Angry::OnDraw(graphics);
 }

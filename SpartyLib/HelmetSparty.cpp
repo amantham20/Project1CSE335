@@ -24,5 +24,5 @@ void HelmetSparty::SetLocation(double x, double y)
 
 void HelmetSparty::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-
+    Angry::OnDraw(graphics);
 }
