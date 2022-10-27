@@ -33,13 +33,17 @@ void MainFrame::Initialize()
     Layout();
 
     auto menuBar = new wxMenuBar( );
+    auto fileMenu = new wxMenu();
     auto LevelMenu = new wxMenu();
     auto helpMenu = new wxMenu();
     auto viewMenu = new wxMenu();
 
+    menuBar->Append(fileMenu, L"&File");
     menuBar->Append(LevelMenu, L"&Level" );
     menuBar->Append(helpMenu, L"&Help");
     menuBar->Append(viewMenu, L"&View");
+
+    fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
 
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
 
