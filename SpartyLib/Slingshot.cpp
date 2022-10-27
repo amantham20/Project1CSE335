@@ -15,7 +15,7 @@ using namespace std;
  */
 Slingshot::Slingshot(std::shared_ptr<Level> level) : PositionalItem(level)
 {
-
+    level->SetSlingShot(std::shared_ptr<Slingshot>(this));
 }
 
 /**

@@ -140,3 +140,9 @@ void Level::Add(std::shared_ptr<Item> item)
 
     mItems.push_back(item);
 }
+
+void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
+{
+    mSlingShot = slingshot;
+}
+

@@ -14,6 +14,7 @@
 
 class SpartyGame;
 class Item;
+class Slingshot;
 
 /**
  * Level class describing a level object in the game
@@ -32,11 +33,16 @@ private:
     /// an pointer for score
     std::shared_ptr<Score> mLevelScore;
 
+    /// A pointer to the slingshot in the level
+    std::shared_ptr<Slingshot> mSlingShot;
+
 public:
     Level() = delete;
     Level(SpartyGame *spartyGame);
     void Draw(wxDC *dc);
     void Add(std::shared_ptr<Item> item);
+
+    void SetSlingShot(std::shared_ptr<Slingshot> slingshot);
 
 //    std::vector<std::shared_ptr<Item>> mItems;
     /// an pointer for score
