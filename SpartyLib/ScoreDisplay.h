@@ -9,6 +9,7 @@
 #define ANGRYSPARTY_SCOREDISPLAY_H
 
 #include "PositionalItem.h"
+#include "ItemVisitor.h"
 
 class Score;
 
@@ -24,7 +25,9 @@ public:
 
     void Update(std::shared_ptr<wxGraphicsContext> graphics);
 
-    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    void Accept(ItemVisitor* visitor) override { visitor->VisitScoreDisplay(this); }
 };
 
 

@@ -9,6 +9,7 @@
 #define ANGRYSPARTY_BLOCK_H
 
 #include "BodyItem.h"
+#include "ItemVisitor.h"
 
 /**
  * Block class derived from BodyItem
@@ -24,6 +25,8 @@ public:
     void XmlLoad(wxXmlNode *node) override;
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    void Accept(ItemVisitor* visitor) override { visitor->VisitBlock(this); }
 };
 
 #endif //ANGRYSPARTY_BLOCK_H

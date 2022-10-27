@@ -25,6 +25,8 @@ public:
     void XmlLoad(wxXmlNode *node) override;
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    void Accept(ItemVisitor* visitor) override { visitor->VisitFoe(this); }
 };
 
 #endif //ANGRYSPARTY_FOE_H

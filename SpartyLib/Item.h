@@ -12,6 +12,7 @@
 //#include <box2d.h>
 #include "Picture.h"
 #include "PictureManager.h"
+#include "ItemVisitor.h"
 
 class Picture;
 class Level;
@@ -94,7 +95,11 @@ public:
         mPictureCache = pictureCache;
     }
 
-
+    /**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+    virtual void Accept(ItemVisitor* visitor) = 0;
     
 };
 

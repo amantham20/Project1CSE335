@@ -17,6 +17,7 @@ class Poly;
 class Foe;
 class GruffSparty;
 class HelmetSparty;
+class ScoreDisplay;
 
 /**
  * Item visitor base class
@@ -38,7 +39,7 @@ public:
 
     virtual void VisitWoodenSlingshot(WoodenSlingshot* woodenSlingshot) {}
 
-    virtual void VisitGoadlpost(Goalpost* goalpost) {}
+    virtual void VisitGoalpost(Goalpost* goalpost) {}
 
     virtual void VisitBlock(Block* block) {}
 
@@ -49,6 +50,8 @@ public:
     virtual void VisitGruffSparty(GruffSparty* gruffSparty) {}
 
     virtual void VisitHelmetSparty(HelmetSparty* helmetSparty) {}
+
+    virtual void VisitScoreDisplay(ScoreDisplay* scoreDisplay) {}
 
 };
 

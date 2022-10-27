@@ -38,6 +38,8 @@ public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     void SetLocation(double x, double y) override;
+
+    void Accept(ItemVisitor* visitor) override { visitor->VisitBackground(this); }
 };
 
 #endif //ANGRYSPARTY_BACKGROUND_H

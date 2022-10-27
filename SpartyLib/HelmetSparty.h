@@ -23,6 +23,8 @@ public:
 
     void SetLocation(double x, double y) override;
 
+    void Accept(ItemVisitor* visitor) override { visitor->VisitHelmetSparty(this); }
+
 };
 
 #endif //ANGRYSPARTY_HELMETSPARTY_H

@@ -22,6 +22,8 @@ public:
 
     void SetLocation(double x, double y) override;
 
+    void Accept(ItemVisitor* visitor) override { visitor->VisitGruffSparty(this); }
+
 };
 
 #endif //ANGRYSPARTY_GRUFFSPARTY_H
