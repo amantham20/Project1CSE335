@@ -34,23 +34,23 @@ void MainFrame::Initialize()
 
     auto menuBar = new wxMenuBar( );
     auto fileMenu = new wxMenu();
-    auto LevelMenu = new wxMenu();
+    auto levelMenu = new wxMenu();
     auto helpMenu = new wxMenu();
     auto viewMenu = new wxMenu();
 
     menuBar->Append(fileMenu, L"&File");
-    menuBar->Append(LevelMenu, L"&Level" );
+    menuBar->Append(levelMenu, L"&Level" );
     menuBar->Append(helpMenu, L"&Help");
     menuBar->Append(viewMenu, L"&View");
 
-    fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
+    fileMenu->Append(wxID_EXIT, "&Exit\tAlt-X", "Quit this program");
 
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
 
-    LevelMenu->Append(IDM_LEVEL0, "&Level 0", "Jump to Level 0");
-    LevelMenu->Append(IDM_LEVEL1, "&Level 1", "Jump to Level 1");
-    LevelMenu->Append(IDM_LEVEL2, "&Level 2", "Jump to Level 2");
-    LevelMenu->Append(IDM_LEVEL3, "&Level 3", "Jump to Level 3");
+    levelMenu->Append(IDM_LEVEL0, "&Level 0", "Jump to Level 0");
+    levelMenu->Append(IDM_LEVEL1, "&Level 1", "Jump to Level 1");
+    levelMenu->Append(IDM_LEVEL2, "&Level 2", "Jump to Level 2");
+    levelMenu->Append(IDM_LEVEL3, "&Level 3", "Jump to Level 3");
 
     viewMenu->Append(IDM_DEBUG, "Debug mode\tF5", "go to debug mode", wxITEM_CHECK);
     SetMenuBar( menuBar );
