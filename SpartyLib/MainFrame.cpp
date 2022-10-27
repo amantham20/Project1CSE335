@@ -77,7 +77,7 @@ void MainFrame::OnExit(wxCommandEvent& event)
  */
 void MainFrame::OnMenuHelpAbout(wxCommandEvent& event)
 {
-    wxMessageBox(L"Welcome to the Angry Sparty app!\nAuthors: Aman, Ian, Milan, James, Rajmeet\"",
+    wxMessageBox(L"Welcome to the Angry Sparty app!\nAuthors: Aman, Ian, Milan, James, Rajmeet",
                  L"About Angry Sparty",
                  wxOK,
                  this);
