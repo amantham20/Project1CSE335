@@ -246,6 +246,9 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
             item->setCache(mPictureCache);
 
+            // Set image location
+            item->SetLocation(x_start, y_start);
+
             item->XmlLoad(child);
         }
 

@@ -21,6 +21,8 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    void SetLocation(double x, double y) override;
+
 };
 
 #endif //ANGRYSPARTY_HELMETSPARTY_H

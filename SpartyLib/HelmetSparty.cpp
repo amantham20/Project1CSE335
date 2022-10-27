@@ -17,6 +17,11 @@ void HelmetSparty::XmlLoad(wxXmlNode *node)
 
 }
 
+void HelmetSparty::SetLocation(double x, double y)
+{
+    PositionalItem::SetLocation(x, y);
+}
+
 void HelmetSparty::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
 

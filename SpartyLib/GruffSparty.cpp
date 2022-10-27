@@ -17,6 +17,11 @@ void GruffSparty::XmlLoad(wxXmlNode *node)
 
 }
 
+void GruffSparty::SetLocation(double x, double y)
+{
+    PositionalItem::SetLocation(x, y);
+}
+
 void GruffSparty::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
 
