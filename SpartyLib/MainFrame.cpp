@@ -35,18 +35,20 @@ void MainFrame::Initialize()
     auto menuBar = new wxMenuBar( );
     auto LevelMenu = new wxMenu();
     auto helpMenu = new wxMenu();
+    auto viewMenu = new wxMenu();
 
     menuBar->Append(LevelMenu, L"&Level" );
     menuBar->Append(helpMenu, L"&Help");
+    menuBar->Append(viewMenu, L"&View");
 
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
-    helpMenu->Append(IDM_DEBUG, "Debug mode\tF5", "go to debug mode", wxITEM_CHECK);
 
     LevelMenu->Append(IDM_LEVEL0, "&Level 0", "Jump to Level 0");
     LevelMenu->Append(IDM_LEVEL1, "&Level 1", "Jump to Level 1");
     LevelMenu->Append(IDM_LEVEL2, "&Level 2", "Jump to Level 2");
     LevelMenu->Append(IDM_LEVEL3, "&Level 3", "Jump to Level 3");
 
+    viewMenu->Append(IDM_DEBUG, "Debug mode\tF5", "go to debug mode", wxITEM_CHECK);
     SetMenuBar( menuBar );
 
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT);
