@@ -9,6 +9,7 @@
 #define ANGRYSPARTY_SLINGSHOT_H
 
 #include "PositionalItem.h"
+#include "Angry.h"
 
 /**
  * Base class for a slingshot
@@ -26,6 +27,8 @@ public:
     void XmlLoad(wxXmlNode *node) override;
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    void LoadAngrySparty(std::shared_ptr<Angry> sparty);
 };
 
 #endif //ANGRYSPARTY_SLINGSHOT_H
