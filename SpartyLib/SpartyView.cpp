@@ -10,6 +10,8 @@
 #include "SpartyGame.h"
 #include "ids.h"
 #include "Level.h"
+#include "HelmetSparty.h"
+#include "GruffSparty.h"
 
 using namespace std;
 

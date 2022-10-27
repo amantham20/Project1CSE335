@@ -28,18 +28,18 @@ private:
     double mScale;
 
     ///Image Cache
-    std::shared_ptr<PictureManager> pictureCache;
+    std::shared_ptr<PictureManager> mPictureCache;
 
     /// offsets
     double mXOffset, mYOffset;
 
     void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
 
-    void LoadXMLSparties(wxXmlNode *node);
+    void LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel);
 
     std::vector<std::shared_ptr<Level>> mLevels;
 
-    int mCurrentLevel = 0;
+    int mCurrentLevel = 1;
 
 public:
 

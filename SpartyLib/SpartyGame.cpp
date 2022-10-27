@@ -14,7 +14,11 @@
 #include "ScoreDisplay.h"
 #include "Poly.h"
 #include "Foe.h"
+#include "HelmetSparty.h"
+#include "GruffSparty.h"
+
 #include <wx/graphics.h>
+
 using namespace std;
 
 
@@ -25,7 +29,7 @@ SpartyGame::SpartyGame()
 {
     mTotalScore = std::make_shared<Score>(0);
 
-    pictureCache = std::make_shared<PictureManager>();
+    mPictureCache = std::make_shared<PictureManager>();
 
     /// TODO remove the next line
 //    Level *tLevel = new Level(8, 14.22);
@@ -139,8 +143,7 @@ void SpartyGame::Load(const wxString &filename)
         else if (name == L"angry")
         {
             // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
-            LoadXMLSparties(child);
-
+            LoadXMLSparties(child, tLevel);
         }
     }
 }
@@ -154,9 +157,6 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
     // Get the first item in the items parent tag
     auto child = node->GetChildren();
-
-    // Pointer to the item we are loading
-    shared_ptr<Item> item;
 
     // Iterate over every item inside the items tag
     for( ; child; child=child->GetNext())
@@ -195,7 +195,7 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         {
             mItems.push_back(item);
 
-            item->setCache(pictureCache);
+            item->setCache(mPictureCache);
 
             item->XmlLoad(child);
         }
@@ -206,10 +206,57 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
  * Loads every angry sparty in the angry parent tag
  * @param node Node to start reading contents from
  */
-void SpartyGame::LoadXMLSparties(wxXmlNode *node)
+void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
-    // todo: Implement load function to load the angry sparties
+    // Get location where the sparties line should start
+    double x_start;
+    double y_start;
+    node->GetAttribute(L"x", L"0").ToDouble(&x_start);
+    node->GetAttribute(L"y", L"0").ToDouble(&y_start);
 
+    // Current location based on the offset
+    double x_current = x_start;
+
+    // Get spacing between angry sparties
+    double spacing;
+    node->GetAttribute(L"spacing", "0.6").ToDouble(&spacing);
+
+    // Get the first item in the items parent tag
+    auto child = node->GetChildren();
+
+    // Pointer to the item we are loading
+    shared_ptr<Item> item;
+
+    // Iterate over the tags within the angry tag
+    for( ; child; child=child->GetNext())
+    {
+        auto name = child->GetName();
+
+        shared_ptr<Item> item;
+        if (name == "gruff-sparty")
+        {
+            item = std::make_shared<GruffSparty>(pLevel);
+
+        } else if (name == "helmet-sparty")
+        {
+            item = std::make_shared<HelmetSparty>(pLevel);
+
+        }
+
+        if (item != nullptr)
+        {
+            mItems.push_back(item);
+
+            item->setCache(mPictureCache);
+
+            // Set image location
+            item->SetLocation(x_current, y_start);
+            x_current += spacing;
+
+            item->XmlLoad(child);
+        }
+
+    }
 }
 
 
