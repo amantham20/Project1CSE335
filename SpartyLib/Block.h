@@ -20,7 +20,7 @@ private:
     int mRepeatX = 1;
 
 public:
-    Block(std::shared_ptr<Level> level);
+    Block(Level *level);
 
     void XmlLoad(wxXmlNode *node) override;
 

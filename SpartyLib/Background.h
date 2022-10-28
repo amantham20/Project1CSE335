@@ -33,7 +33,7 @@ public:
      *
      * @author Aman Dhruva Thamminana
      */
-    Background(std::shared_ptr<Level> level) :Item(level){};
+    Background(Level *level);
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
