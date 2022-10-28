@@ -44,3 +44,18 @@ void Goalpost::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Slingshot::OnDraw(graphics);
 }
+
+/**
+ * Loads an Angry Sparty for launch
+ * @param sparty Angry Sparty to load in the goalpost
+ */
+void Goalpost::LoadAngrySparty(Angry* sparty)
+{
+    // Get the position of the middle of the goalpost
+    auto position = PositionalItem::GetPosition();
+    auto xPosition = position.x+0.5;
+    auto yPosition = position.y+2.5;
+
+    // Set the Angry Sparty position between the goalpost's arms.
+    sparty->SetLocation(xPosition, yPosition);
+}

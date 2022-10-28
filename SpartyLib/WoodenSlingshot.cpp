@@ -41,3 +41,18 @@ void WoodenSlingshot::XmlLoad(wxXmlNode *node)
     //todo: uncomplete code
     Slingshot::XmlLoad(node);
 }
+
+/**
+ * Loads an Angry Sparty for launch
+ * @param sparty Angry Sparty to load in the slingshot
+ */
+void WoodenSlingshot::LoadAngrySparty(Angry* sparty)
+{
+    // Get the position of the middle of the slingshot
+    auto position = PositionalItem::GetPosition();
+    auto xPosition = position.x+0.3;
+    auto yPosition = position.y+1.5;
+
+    // Set the Angry Sparty position between the slingshot's arms.
+    sparty->SetLocation(xPosition, yPosition);
+}

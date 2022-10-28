@@ -69,12 +69,3 @@ void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->DrawLines(2, band);
     graphics->PopState();
 }
-
-/**
- * Loads an Angry Sparty for launch
- * @param sparty Angry Sparty to load in the slingshot
- */
-void Slingshot::LoadAngrySparty(Angry* sparty)
-{
-    sparty->SetLocation(0, 0);
-}

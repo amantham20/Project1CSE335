@@ -178,10 +178,12 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         else if (name == "goalposts")
         {
             item = std::make_shared<Goalpost>(pLevel);
+            pLevel->SetSlingShot(std::static_pointer_cast<Slingshot>(item));
         }
         else if (name == "slingshot")
         {
             item = std::make_shared<WoodenSlingshot>(pLevel);
+            pLevel->SetSlingShot(std::static_pointer_cast<Slingshot>(item));
         }
         else if (name == "background")
         {
