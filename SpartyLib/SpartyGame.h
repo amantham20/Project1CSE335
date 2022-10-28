@@ -20,9 +20,6 @@
  */
 class SpartyGame {
 private:
-    /// All of the items to populate our game
-    std::vector<std::shared_ptr<Item>> mItems;
-
     ///An score pointer
     std::shared_ptr<Score> mTotalScore;
 
@@ -48,14 +45,6 @@ private:
 //    b2World mWorld = b2World(b2Vec2(0, -9.8));
     Physics mPhysics;
 public:
-
-    // todo: This function has to be removed when we store items in each level object instead of the game instance.
-    /**
-     * Returns the number of element in the game
-     * @return
-     */
-    int GetNumberOfItems() { return mItems.size(); }
-
     SpartyGame();
 
     void SetLevel(const int &level) { mCurrentLevel = level; } ;

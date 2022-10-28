@@ -25,7 +25,7 @@ private:
 
 public:
 
-    PositionalItem(std::shared_ptr<Level> level);
+    PositionalItem(Level *level);
 
     /**
      * Getter of x position

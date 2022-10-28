@@ -11,7 +11,7 @@
  * Constructor
  * @param level Level the foe is in.
  */
-Foe::Foe(std::shared_ptr<Level> level) : BodyItem(level)
+Foe::Foe(Level *level) : BodyItem(level)
 {
 
 }
