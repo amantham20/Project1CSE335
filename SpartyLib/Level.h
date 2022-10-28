@@ -54,12 +54,8 @@ public:
 
     void SetSlingShot(std::shared_ptr<Slingshot> slingshot);
 
-//    std::vector<std::shared_ptr<Item>> mItems;
-    /// an pointer for score
-
     //Level(double pHeight, double pWidth) : mHeight(pHeight), mWidth(pWidth){};
     void init();
-//    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     double GetHeight(){return mHeight;}
     double GetWidth(){return mWidth;}
@@ -67,8 +63,6 @@ public:
     void LoadXMLLevel(wxXmlNode *node);
 
     std::shared_ptr<Score> GetScore() { return mLevelScore; };
-
-//    void Load(const wxString &filename);
 
     b2Vec2 GetPlayAreaSize(){return b2Vec2(mWidth, mHeight);}
 

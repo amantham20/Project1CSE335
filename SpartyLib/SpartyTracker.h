@@ -36,7 +36,7 @@ public:
 
     void VisitGruffSparty(GruffSparty* gruffSparty) override;
 
-    void ReloadSlingshot(std::shared_ptr<Slingshot> slingshot, Level *level);
+    void ReloadSlingshot(std::shared_ptr<Slingshot> slingshot);
 
 };
 

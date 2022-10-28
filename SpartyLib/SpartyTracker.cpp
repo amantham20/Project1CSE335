@@ -26,16 +26,11 @@ void SpartyTracker::VisitGruffSparty(GruffSparty* gruffSparty)
     mNumSparty++;
 }
 
-void SpartyTracker::ReloadSlingshot(std::shared_ptr<Slingshot> slingshot, Level* level)
+/**
+ * This function reloads an angry sparty in the given slingshot
+ * @param slingshot Slingshot to reload
+ */
+void SpartyTracker::ReloadSlingshot(std::shared_ptr<Slingshot> slingshot)
 {
-//    for (auto angry : mSparties)
-//    {
-//        if (angry->GetLevel() == level)
-//        {
-//            slingshot->LoadAngrySparty(angry);
-//            break;
-//        }
-//    }
-
     slingshot->LoadAngrySparty(mSparties.front());
 }
