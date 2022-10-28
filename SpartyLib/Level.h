@@ -40,8 +40,11 @@ private:
 
 public:
     Level() = delete;
+
     Level(SpartyGame *spartyGame);
-    void Draw(wxDC *dc);
+
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+
     void Add(std::shared_ptr<Item> item);
 
     void SetSlingShot(std::shared_ptr<Slingshot> slingshot);

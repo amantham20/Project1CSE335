@@ -155,3 +155,9 @@ void Level::ReloadSlingshot()
     visitor.ReloadSlingshot(mSlingShot, std::shared_ptr<Level>(this));
 }
 
+void Level::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    for( auto item : mItems){
+        item->OnDraw(graphics);
+    }
+}

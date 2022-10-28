@@ -58,11 +58,6 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     graphics->PushState();
 
     // Get the playing area size in centimeters
-
-//    PlayAreaSize playArea;
-//    b2Vec2 playingAreaSize = playArea.Temp();
-//    b2Vec2 playingAreaSize = b2Vec2(14.22,8);
-
     b2Vec2 playingAreaSize = mLevels[mCurrentLevel]->GetPlayAreaSize();
     playingAreaSize *= Consts::MtoCM;
 
@@ -90,14 +85,9 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // From here we are dealing with centimeter pixels
     // and Y up being increase values
     //
-    // INSERT YOUR DRAWING CODE HERE
-    // graphics->DrawBitmap(*mBackground, 0, 0);
-//    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
-    for( auto item : mItems){
-        if(item->GetLevel() == mLevels[mCurrentLevel]){
-            item->OnDraw(graphics);
-        }
-    }
+
+    // Draw current level
+    mLevels[mCurrentLevel]->OnDraw(graphics);
 
     //todo: uncompleted working code don't know put where
     shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
