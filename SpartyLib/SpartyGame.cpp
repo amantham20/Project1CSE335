@@ -274,32 +274,7 @@ void SpartyGame::Accept(ItemVisitor* visitor)
 {
     for (auto item : mItems)
     {
-        auto name = child->GetName();
-
-        shared_ptr<Item> item;
-        if (name == "gruff-sparty")
-        {
-            item = std::make_shared<GruffSparty>(pLevel);
-
-        } else if (name == "helmet-sparty")
-        {
-            item = std::make_shared<HelmetSparty>(pLevel);
-
-        }
-
-        if (item != nullptr)
-        {
-            mItems.push_back(item);
-            //// TODO : MIGHT BE A PROBLEM? cuz it is not a part of items in the XML
-            item->setCache(mPictureCache);
-
-            // Set image location
-            item->SetLocation(x_current, y_start);
-            x_current += spacing;
-
-            item->XmlLoad(child);
-        }
-
+        item->Accept(visitor);
     }
 }
 
@@ -314,10 +289,3 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     mPhysics.GetWorld()->DebugDraw();
 
 }
-
-
-void SpartyGame::Reset()
-{
-    mItems.clear();
-}
-
