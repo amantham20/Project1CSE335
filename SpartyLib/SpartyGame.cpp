@@ -18,6 +18,7 @@
 #include "GruffSparty.h"
 #include "SpartyTracker.h"
 #include "sstream"
+#include "DebugDraw.h"
 
 #include <wx/graphics.h>
 
@@ -27,11 +28,14 @@ using namespace std;
 /**
  * Constructor
  */
-SpartyGame::SpartyGame()
+ ///TODO Change where this is! the mPhysicsEngine should be in the level class
+SpartyGame::SpartyGame() :mPhysics(b2Vec2(14.22,8))
 {
     mTotalScore = std::make_shared<Score>(0);
 
     mPictureCache = std::make_shared<PictureManager>();
+
+
 
     /// TODO remove the next line
 //    Level *tLevel = new Level(8, 14.22);
@@ -141,7 +145,50 @@ void SpartyGame::Accept(ItemVisitor* visitor)
 {
     for (auto item : mItems)
     {
-        item->Accept(visitor);
+        auto name = child->GetName();
+
+        shared_ptr<Item> item;
+        if (name == "gruff-sparty")
+        {
+            item = std::make_shared<GruffSparty>(pLevel);
+
+        } else if (name == "helmet-sparty")
+        {
+            item = std::make_shared<HelmetSparty>(pLevel);
+
+        }
+
+        if (item != nullptr)
+        {
+            mItems.push_back(item);
+            //// TODO : MIGHT BE A PROBLEM? cuz it is not a part of items in the XML
+            item->setCache(mPictureCache);
+
+            // Set image location
+            item->SetLocation(x_current, y_start);
+            x_current += spacing;
+
+            item->XmlLoad(child);
+        }
+
     }
+}
+
+void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    // Draw the background
+    // Draw the items
+
+    DebugDraw debugDraw(graphics);
+    debugDraw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit);
+    mPhysics.GetWorld()->SetDebugDraw(&debugDraw);
+    mPhysics.GetWorld()->DebugDraw();
+
+}
+
+
+void SpartyGame::Reset()
+{
+    mItems.clear();
 }
 

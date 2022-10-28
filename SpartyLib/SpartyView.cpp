@@ -112,7 +112,8 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     if(mDebug)
     {
         // Draw outlines around each of the on-screen item
-        //todo:: need visitor?
+        //todo:: need visitor? Nope should be fine
+        mSpartyGame.DebugOnDraw(graphics);
     }
 }
 /**

@@ -13,6 +13,7 @@
 #include <wx/graphics.h>
 #include "ids.h"
 #include "ItemVisitor.h"
+#include "Physics.h"
 
 /**
  * Base AngrySparty Game Class
@@ -42,6 +43,10 @@ private:
 
     int mCurrentLevel = 1;
 
+
+    //// TODO: TEMP CODE WILL HAVE TO REMOVE IT
+//    b2World mWorld = b2World(b2Vec2(0, -9.8));
+    Physics mPhysics;
 public:
 
     // todo: This function has to be removed when we store items in each level object instead of the game instance.
@@ -60,7 +65,11 @@ public:
 
     void Reset();
 
+
     void Accept(ItemVisitor* visitor);
+
+    void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
