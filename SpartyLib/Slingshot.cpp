@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Slingshot.h"
+#include "Level.h"
 #include "Consts.h"
 
 using namespace std;
@@ -15,7 +16,6 @@ using namespace std;
  */
 Slingshot::Slingshot(Level *level) : PositionalItem(level)
 {
-    level->SetSlingShot(std::shared_ptr<Slingshot>(this));
 }
 
 /**
