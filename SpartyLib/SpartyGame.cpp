@@ -240,6 +240,7 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
     {
         auto name = child->GetName();
 
+        // Create right instance of an angry sparty depending on the tag name
         shared_ptr<Item> item;
         if (name == "gruff-sparty")
         {
@@ -253,14 +254,17 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
         if (item != nullptr)
         {
-            mItems.push_back(item);
+            // Add angry sparty to its level
+            pLevel->Add(item);
 
+            // Cache the picture
             item->setCache(mPictureCache);
 
             // Set image location
             item->SetLocation(x_current, y_start);
             x_current += spacing;
 
+            // Load item data based on xml file
             item->XmlLoad(child);
         }
 
