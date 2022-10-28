@@ -22,7 +22,7 @@ private:
 
 public:
 
-    Slingshot(std::shared_ptr<Level> level);
+    Slingshot(Level *level);
 
     void XmlLoad(wxXmlNode *node) override;
 

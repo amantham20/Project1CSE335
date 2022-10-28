@@ -23,7 +23,7 @@ void Block::XmlLoad(wxXmlNode *node)
  * Constructor
  * @param level Level the block is in.
  */
-Block::Block(std::shared_ptr<Level> level) : BodyItem(level)
+Block::Block(Level *level) : BodyItem(level)
 {
 
 }

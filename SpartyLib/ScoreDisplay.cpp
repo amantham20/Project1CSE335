@@ -15,7 +15,7 @@
  * @param x x-coordinate of the score display
  * @param y y-coordinate of the score display
  */
-ScoreDisplay::ScoreDisplay(std::shared_ptr<Level> level, std::shared_ptr<Score> score, double x, double y) :  PositionalItem(level)
+ScoreDisplay::ScoreDisplay(Level *level, std::shared_ptr<Score> score, double x, double y) : PositionalItem(level)
 {
     mScore = score;
     PositionalItem::setX(x);

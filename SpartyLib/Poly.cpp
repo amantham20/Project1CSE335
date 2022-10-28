@@ -10,7 +10,7 @@
  * Constructor
  * @param level
  */
-Poly::Poly(std::shared_ptr<Level> level) : BodyItem(level)
+Poly::Poly(Level *level) : BodyItem(level)
 {
 
 }

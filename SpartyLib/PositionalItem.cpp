@@ -10,7 +10,7 @@
  * PositionalItem constructor
  * @param world
  */
-PositionalItem::PositionalItem(std::shared_ptr<Level> level) : Item(level)
+PositionalItem::PositionalItem(Level *level) : Item(level)
 {
 
 }

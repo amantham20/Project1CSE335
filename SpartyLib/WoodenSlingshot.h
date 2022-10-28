@@ -18,7 +18,7 @@ private:
 
 public:
 
-    WoodenSlingshot(std::shared_ptr<Level> level);
+    WoodenSlingshot(Level *level);
 
     void XmlLoad(wxXmlNode *node) override;
 

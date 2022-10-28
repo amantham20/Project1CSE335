@@ -18,7 +18,7 @@ class Goalpost : public Slingshot {
 private:
 
 public:
-    Goalpost(std::shared_ptr<Level> level);
+    Goalpost(Level *level);
 
     void XmlLoad(wxXmlNode *node) override;
 
