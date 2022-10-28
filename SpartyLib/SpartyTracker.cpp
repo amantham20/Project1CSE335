@@ -26,7 +26,7 @@ void SpartyTracker::VisitGruffSparty(GruffSparty* gruffSparty)
     mNumSparty++;
 }
 
-void SpartyTracker::ReloadSlingshot(Slingshot* slingshot, std::shared_ptr<Level> level)
+void SpartyTracker::ReloadSlingshot(std::shared_ptr<Slingshot> slingshot, std::shared_ptr<Level> level)
 {
     for (auto angry : mSparties)
     {

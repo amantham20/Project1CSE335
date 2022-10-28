@@ -10,6 +10,7 @@
 #include "Block.h"
 #include "WoodenSlingshot.h"
 #include "Background.h"
+#include "SpartyTracker.h"
 
 /**
  * Level constructor
@@ -144,5 +145,13 @@ void Level::Add(std::shared_ptr<Item> item)
 void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
 {
     mSlingShot = slingshot;
+}
+
+void Level::ReloadSlingshot()
+{
+    SpartyTracker visitor;
+    mSpartyGame->Accept(&visitor);
+
+    visitor.ReloadSlingshot(mSlingShot, std::shared_ptr<Level>(this));
 }
 

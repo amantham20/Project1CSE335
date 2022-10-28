@@ -63,6 +63,8 @@ public:
     b2Vec2 GetPlayAreaSize(){return b2Vec2(mWidth, mHeight);}
 
     void Load(wxXmlNode *node);
+
+    void ReloadSlingshot();
 };
 
 #endif //ANGRYSPARTY_LEVEL_H
