@@ -38,6 +38,7 @@ private:
     std::shared_ptr<PictureManager> mPictureCache;
 
 
+
 public:
 
     /// Default constructor (disabled)

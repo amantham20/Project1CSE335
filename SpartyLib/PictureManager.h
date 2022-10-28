@@ -11,6 +11,9 @@
 #include <map>
 #include "Picture.h"
 
+/**
+ * Class that manages pictures
+ */
 class PictureManager {
 private:
 

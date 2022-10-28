@@ -16,6 +16,8 @@ class SpartyGame;
 class Item;
 class Slingshot;
 
+class Picture;
+
 /**
  * Level class describing a level object in the game
  */

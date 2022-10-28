@@ -29,6 +29,8 @@ public:
 
     Physics(const b2Vec2& size);
 
+    b2World* GetWorld() { return &mWorld; }
+
 };
 
 #endif //ANGRYSPARTY_PHYSICS_H
