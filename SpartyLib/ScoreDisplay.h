@@ -21,7 +21,7 @@ private:
     ///an object pointer
     std::shared_ptr<Score> mScore;
 public:
-    ScoreDisplay(Level *level, std::shared_ptr<Score>, double x, double y);
+    ScoreDisplay(std::shared_ptr<Level> level, std::shared_ptr<Score>, double x, double y);
 
     void Update(std::shared_ptr<wxGraphicsContext> graphics);
 

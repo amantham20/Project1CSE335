@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "HelmetSparty.h"
 
-HelmetSparty::HelmetSparty(Level *level) : Angry(level)
+HelmetSparty::HelmetSparty(std::shared_ptr<Level> level) : Angry(level)
 {
 
 }

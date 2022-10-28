@@ -10,20 +10,14 @@
 #include "Block.h"
 #include "WoodenSlingshot.h"
 #include "Background.h"
-#include "GruffSparty.h"
-#include "HelmetSparty.h"
-#include "Poly.h"
-#include "Foe.h"
-#include "Goalpost.h"
 
 /**
  * Level constructor
  * @param spartyGame Game the level is part of
  */
-Level::Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureManager) : mSpartyGame(spartyGame)
+Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
     mLevelScore = std::make_shared<Score>(0);
-    mPictureCache = pictureManager;
 }
 
 //void Level::Draw(wxDC *dc)
@@ -38,7 +32,67 @@ Level::Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureMana
  * @param width Width of the window in pixels
  * @param height Height of the window in pixels
  */
+//void Level::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height)
+//{
+//    wxBrush background(*wxBLACK);
+//    graphics->SetBrush(background);
+//    graphics->DrawRectangle(0, 0, width, height);
+//
+//    graphics->PushState();
+//
+//    // Get the playing area size in centimeters
+//    auto playingAreaSize = redacted;
+//    playingAreaSize *= Consts::MtoCM;
+//
+//    //
+//    // Automatic Scaling
+//    // We use CM display units instead of meters
+//    // because a 1-meter wide line is very wide
+//    //
+//    auto scaleX = double(height) / double(playingAreaSize.y);
+//    auto scaleY = double(width) / double(playingAreaSize.x);
+//    mScale = scaleX < scaleY ? scaleX : scaleY;
+//    graphics->Scale(mScale, -mScale);
+//
+//    // Determine the virtual size in cm
+//    auto virtualWidth = (double)width / mScale;
+//    auto virtualHeight = (double)height / mScale;
+//
+//    // And the offset to the middle of the screen
+//    mXOffset = virtualWidth / 2.0;
+//    mYOffset = -(virtualHeight - playingAreaSize.y) / 2.0 - playingAreaSize.y;
+//
+//    graphics->Translate(mXOffset, mYOffset);
+//
+//    //
+//    // From here we are dealing with centimeter pixels
+//    // and Y up being increase values
+//    //
+//    // INSERT YOUR DRAWING CODE HERE
+//
+//    graphics->PopState();
+//}
 
+//void Level::LoadXMLItems(wxXmlNode *node)
+//{
+//    std::shared_ptr<Item> item;
+//    auto name = node->GetName();
+//
+//    if(name == L"background")
+//    {
+//        //item = std::make_shared<Background>(this, filename);
+//    }
+//    if(name == L"block")
+//    {
+//        item = std::make_shared<Block>(this);
+//    }
+//    if (item != nullptr)
+//    {
+////        mItems.push_back(item);
+//        item->XmlLoad(node);
+//    }
+
+//}
 
 /**
  * Loads the contents of the xml file into the Level
@@ -46,21 +100,14 @@ Level::Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureMana
  */
 void Level::Load(wxXmlNode *node)
 {
-    auto child = node->GetChildren();
-    for( ; child; child=child->GetNext())
-    {
-        auto name = child->GetName();
-        if(name == L"items")
-        {
-            // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
-            LoadXMLItems(child);
-        }
-        else if (name == L"angry")
-        {
-            // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
-            LoadXMLSparties(child);
-        }
-    }
+//    auto child = node->GetChildren();
+//    for( ; child; child=child->GetNext()) {
+//        auto name = node->GetName();
+//        if(name == L"items")
+//        {
+//            LoadXMLItems(child);
+//        }
+//    }
 
     node->GetAttribute(L"height", L"0").ToDouble(&mHeight);
     node->GetAttribute(L"width", L"0").ToDouble(&mWidth);
@@ -97,114 +144,5 @@ void Level::Add(std::shared_ptr<Item> item)
 void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
 {
     mSlingShot = slingshot;
-}
-
-/**
- * Loads every angry sparty in the angry parent tag
- * @param node Node to start reading contents from
- */
-void Level::LoadXMLSparties(wxXmlNode *node)
-{
-    // Get location where the sparties line should start
-    double x_start;
-    double y_start;
-    node->GetAttribute(L"x", L"0").ToDouble(&x_start);
-    node->GetAttribute(L"y", L"0").ToDouble(&y_start);
-
-    // Current location based on the offset
-    double x_current = x_start;
-
-    // Get spacing between angry sparties
-    double spacing;
-    node->GetAttribute(L"spacing", "0.6").ToDouble(&spacing);
-
-    // Get the first item in the items parent tag
-    auto child = node->GetChildren();
-
-    // Iterate over the tags within the angry tag
-    for( ; child; child=child->GetNext())
-    {
-        auto name = child->GetName();
-
-        std::shared_ptr<Item> item;
-
-        if (name == L"gruff-sparty")
-        {
-            item = std::make_shared<GruffSparty>(this);
-
-        } else if (name == L"helmet-sparty")
-        {
-            item = std::make_shared<HelmetSparty>(this);
-
-        }
-
-        if (item != nullptr)
-        {
-            mItems.push_back(item);
-
-            item->setCache(mPictureCache);
-
-            // Set image location
-            item->SetLocation(x_current, y_start);
-            x_current += spacing;
-
-            item->XmlLoad(child);
-        }
-
-    }
-}
-
-/**
- * Loads every item in the items parent tag
- * @param node Node to start reading xml doc from
- * @param pLevel Level the xml document belongs to
- */
-void Level::LoadXMLItems(wxXmlNode *node)
-{
-    // Get the first item in the items parent tag
-    auto child = node->GetChildren();
-
-    // Iterate over every item inside the items tag
-    for( ; child; child=child->GetNext())
-    {
-        auto name = child->GetName();
-
-        std::shared_ptr<Item> item;
-
-        if (name == "block")
-        {
-            item = std::make_shared<Block>(this);
-        }
-        else if (name == "poly")
-        {
-            item = std::make_shared<Poly>(this);
-        }
-        else if (name == "foe")
-        {
-            item = std::make_shared<Foe>(this);
-        }
-        else if (name == "goalposts")
-        {
-            item = std::make_shared<Goalpost>(this);
-        }
-        else if (name == "slingshot")
-        {
-            item = std::make_shared<WoodenSlingshot>(this);
-        }
-        else if (name == "background")
-        {
-//            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
-            item = std::make_shared<Background>(this);
-        }
-
-        if (item != nullptr)
-        {
-            mItems.push_back(item);
-
-            item->setCache(mPictureCache);
-
-            item->XmlLoad(child);
-        }
-    }
 }
 

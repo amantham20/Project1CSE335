@@ -15,7 +15,7 @@ private:
 
 public:
 
-    HelmetSparty(Level *level);
+    HelmetSparty(std::shared_ptr<Level> level);
 
     void XmlLoad(wxXmlNode *node) override;
 
