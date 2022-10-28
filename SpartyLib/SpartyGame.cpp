@@ -89,11 +89,11 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // INSERT YOUR DRAWING CODE HERE
     // graphics->DrawBitmap(*mBackground, 0, 0);
 //    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
-    for( auto item : mItems){
+//    for( auto item : mItems){
 //        if(item->GetLevel() == mLevels[mCurrentLevel]){
 //            item->OnDraw(graphics);
 //        }
-    }
+   // }
 
     //todo: uncompleted working code don't know put where
 //    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
@@ -134,14 +134,14 @@ void SpartyGame::Load(const wxString &filename)
 
 void SpartyGame::Reset()
 {
-    mItems.clear();
+    //mItems.clear();
 }
 
 void SpartyGame::Accept(ItemVisitor* visitor)
 {
-    for (auto item : mItems)
-    {
-        item->Accept(visitor);
-    }
+//    for (auto item : mItems)
+//    {
+//        item->Accept(visitor);
+//    }
 }
 
