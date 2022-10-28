@@ -66,12 +66,6 @@ void Level::Load(wxXmlNode *node)
     node->GetAttribute(L"width", L"0").ToDouble(&mWidth);
 
 }
-
-void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
-{
-    mSlingShot = slingshot;
-}
-
 /**
  * Loads every angry sparty in the angry parent tag
  * @param node Node to start reading contents from

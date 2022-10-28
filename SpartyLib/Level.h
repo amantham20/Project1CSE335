@@ -36,9 +36,6 @@ private:
     /// an pointer for score
     std::shared_ptr<Score> mLevelScore;
 
-    /// A pointer to the slingshot in the level
-    std::shared_ptr<Slingshot> mSlingShot;
-
     std::shared_ptr<PictureManager> mPictureCache;
 
 public:
@@ -48,9 +45,6 @@ public:
     Level() = delete;
     Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureCache);
     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-    void Add(std::shared_ptr<Item> item);
-
-    void SetSlingShot(std::shared_ptr<Slingshot> slingshot);
 
 //    std::vector<std::shared_ptr<Item>> mItems;
     /// an pointer for score
