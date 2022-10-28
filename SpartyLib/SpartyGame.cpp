@@ -126,17 +126,15 @@ void SpartyGame::Load(const wxString &filename)
     // Get the XML document root node
     auto root = xmlDoc.GetRoot();
 
+    // Create a new instance of a level and push it to the SpartyGame.mLevels vector
+    std::shared_ptr<Level> tLevel = std::make_shared<Level>(this);
+    tLevel->Load(root);
+    mLevels.push_back(tLevel);
+
     //
     // Traverse the children of the root
     // node of the XML document in memory!!!!
     //
-    std::shared_ptr<Level> tLevel = std::make_shared<Level>(this);
-    tLevel->Load(root);
-
-
-
-    mLevels.push_back(tLevel);
-
     auto child = root->GetChildren();
     for( ; child; child=child->GetNext())
     {
@@ -167,10 +165,11 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
     // Iterate over every item inside the items tag
     for( ; child; child=child->GetNext())
     {
+        // Get tag name to create the correct instance of the object defined by the tag
         auto name = child->GetName();
 
+        // Create a shared pointer to an item and give it the right object type depending on the tag name
         shared_ptr<Item> item;
-
         if (name == "block")
         {
             item = std::make_shared<Block>(pLevel);
@@ -193,16 +192,19 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         }
         else if (name == "background")
         {
-//            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
             item = std::make_shared<Background>(pLevel);
         }
 
+        // If the item is not a null pointer, add it to the level mItems vector and load the item's attributes based defined by the xml doc
         if (item != nullptr)
         {
-            mItems.push_back(item);
+            // Add item to the Level
+            pLevel->Add(item);
 
+            // Cache the picture
             item->setCache(mPictureCache);
 
+            // Load item's attributes defined by xml document
             item->XmlLoad(child);
         }
     }
@@ -272,35 +274,35 @@ void SpartyGame::Reset()
 
 void SpartyGame::Accept(ItemVisitor* visitor)
 {
-    for (auto item : mItems)
-    {
-        auto name = child->GetName();
-
-        shared_ptr<Item> item;
-        if (name == "gruff-sparty")
-        {
-            item = std::make_shared<GruffSparty>(pLevel);
-
-        } else if (name == "helmet-sparty")
-        {
-            item = std::make_shared<HelmetSparty>(pLevel);
-
-        }
-
-        if (item != nullptr)
-        {
-            mItems.push_back(item);
-            //// TODO : MIGHT BE A PROBLEM? cuz it is not a part of items in the XML
-            item->setCache(mPictureCache);
-
-            // Set image location
-            item->SetLocation(x_current, y_start);
-            x_current += spacing;
-
-            item->XmlLoad(child);
-        }
-
-    }
+//    for (auto item : mItems)
+//    {
+//        auto name = child->GetName();
+//
+//        shared_ptr<Item> item;
+//        if (name == "gruff-sparty")
+//        {
+//            item = std::make_shared<GruffSparty>(pLevel);
+//
+//        } else if (name == "helmet-sparty")
+//        {
+//            item = std::make_shared<HelmetSparty>(pLevel);
+//
+//        }
+//
+//        if (item != nullptr)
+//        {
+//            mItems.push_back(item);
+//            //// TODO : MIGHT BE A PROBLEM? cuz it is not a part of items in the XML
+//            item->setCache(mPictureCache);
+//
+//            // Set image location
+//            item->SetLocation(x_current, y_start);
+//            x_current += spacing;
+//
+//            item->XmlLoad(child);
+//        }
+//
+//    }
 }
 
 void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
@@ -314,10 +316,3 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     mPhysics.GetWorld()->DebugDraw();
 
 }
-
-
-void SpartyGame::Reset()
-{
-    mItems.clear();
-}
-
