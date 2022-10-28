@@ -20,7 +20,7 @@ private:
     double mRadius;
 
 public:
-    Foe(Level *level);
+    Foe(std::shared_ptr<Level> level);
 
     void XmlLoad(wxXmlNode *node) override;
 

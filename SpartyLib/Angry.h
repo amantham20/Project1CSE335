@@ -13,7 +13,7 @@ private:
 
 public:
 
-    Angry(Level *level);
+    Angry(std::shared_ptr<Level> level);
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 //    std::shared_ptr<Level> GetLevel() {Item::GetLevel(); }

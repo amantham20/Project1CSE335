@@ -14,7 +14,7 @@ class GruffSparty : public Angry {
 private:
 
 public:
-    GruffSparty(Level *level);
+    GruffSparty(std::shared_ptr<Level> level);
 
     void XmlLoad(wxXmlNode *node) override;
 

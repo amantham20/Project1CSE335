@@ -20,7 +20,7 @@ class Level;
 class Item {
 private:
     /// The level this item is contained in
-    Level *mLevel;
+    std::shared_ptr<Level> mLevel;
 
     ///a pointer to picture
     //Picture *mPicture;
@@ -48,7 +48,7 @@ public:
 
     virtual ~Item();
 
-    Item(Level *level);
+    Item(std::shared_ptr<Level> Level);
 
     /// TODO ! use virtual function for this or visitors?
     virtual void SetLocation(double x, double y) = 0;
@@ -72,7 +72,7 @@ public:
      *
      * @personToBlame Aman Dhruva Thamminana
      */
-    Level* GetLevel(){return mLevel;}
+    std::shared_ptr<Level> GetLevel(){return mLevel;}
 
     /**
      * Getter for the ImageBitMap

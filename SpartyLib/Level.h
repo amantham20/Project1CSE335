@@ -11,7 +11,6 @@
 
 //#include "Item.h"
 #include "Score.h"
-#include "PictureManager.h"
 
 class SpartyGame;
 class Item;
@@ -37,10 +36,9 @@ private:
     /// A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
 
-    std::shared_ptr<PictureManager> mPictureCache;
 public:
     Level() = delete;
-    Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureCache);
+    Level(SpartyGame *spartyGame);
     void Draw(wxDC *dc);
     void Add(std::shared_ptr<Item> item);
 
@@ -57,9 +55,7 @@ public:
     double GetWidth(){return mWidth;}
 
     void LoadXMLLevel(wxXmlNode *node);
-    void LoadXMLSparties(wxXmlNode *node);
 
-    void LoadXMLItems(wxXmlNode *node);
     std::shared_ptr<Score> GetScore() { return mLevelScore; };
 
 //    void Load(const wxString &filename);
