@@ -26,12 +26,12 @@ Level::Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureMana
     mPictureCache = pictureManager;
 }
 
-//void Level::Draw(wxDC *dc)
-//{
-//    for(auto item : mItems){
-//        item->Draw(dc);
-//    }
-//}
+void Level::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    for(auto item : mItems){
+        item->OnDraw(graphics);
+    }
+}
 /**
  * Handle drawing the game on the screen including all subsystems.
  * @param graphics Graphics context to draw on
@@ -65,33 +65,6 @@ void Level::Load(wxXmlNode *node)
     node->GetAttribute(L"height", L"0").ToDouble(&mHeight);
     node->GetAttribute(L"width", L"0").ToDouble(&mWidth);
 
-}
-
-/**
- * Add an item to the level
- * @param item New item to add
- */
-void Level::Add(std::shared_ptr<Item> item)
-{
-    item->SetLocation(Consts::InitialX, Consts::InitialY);   // [210, 200]    200
-    bool atEnd = false;
-
-    /*while (!atEnd)
-    {
-        atEnd = true;
-
-        for (auto i = mItems.begin(); i!=mItems.end(); i++) {
-            if (item->DistanceTo(*i)<1)
-            {
-                atEnd = false;
-                item->SetLocation(item->GetX()+10, item->GetY()+10);
-                break;
-            }
-        }
-    }
-    */
-
-    mItems.push_back(item);
 }
 
 void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
