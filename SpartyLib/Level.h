@@ -38,7 +38,11 @@ private:
     std::shared_ptr<Slingshot> mSlingShot;
 
     std::shared_ptr<PictureManager> mPictureCache;
+
 public:
+    double getHeight() { return mHeight; };
+    double getWidth() { return mWidth; };
+
     Level() = delete;
     Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureCache);
     void Draw(wxDC *dc);
