@@ -19,8 +19,8 @@ private:
     std::vector<std::shared_ptr<Item>> mItems;
 public:
     /// Default Constructor
-    PlayingArea();
-
+    PlayingArea() = delete;
+    PlayingArea(std::vector<std::shared_ptr<Item>> items);
     /// Destructor
     ~PlayingArea(){}
 
@@ -31,7 +31,7 @@ public:
      * Getter for current score
      */
     int GetCurrentScore() { return mCurrentScore; }
-
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
     /**
      * Setter for current score
      *

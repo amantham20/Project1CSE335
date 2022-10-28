@@ -39,6 +39,9 @@ private:
     std::shared_ptr<Slingshot> mSlingShot;
 
 public:
+    double getHeight() { return mHeight; };
+    double getWidth() { return mWidth; };
+    std::vector<std::shared_ptr<Item>> GetItem() {return mItems; };
     Level() = delete;
 
     Level(SpartyGame *spartyGame);
