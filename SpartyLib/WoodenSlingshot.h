@@ -24,7 +24,7 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void Accept(ItemVisitor* visitor) override { visitor->VisitWoodenSlingshot(this); }
+    void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitWoodenSlingshot(this); }
 };
 
 #endif //ANGRYSPARTY_WOODENSLINGSHOT_H

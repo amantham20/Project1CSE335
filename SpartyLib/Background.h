@@ -39,7 +39,7 @@ public:
 
     void SetLocation(double x, double y) override;
 
-    void Accept(ItemVisitor* visitor) override { visitor->VisitBackground(this); }
+    void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitBackground(this); }
 };
 
 #endif //ANGRYSPARTY_BACKGROUND_H

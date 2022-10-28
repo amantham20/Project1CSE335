@@ -11,6 +11,8 @@
 
 //#include "Item.h"
 #include "Score.h"
+#include "ItemVisitor.h"
+#include "SpartyTracker.h"
 
 class SpartyGame;
 class Item;
@@ -73,6 +75,8 @@ public:
     void Load(wxXmlNode *node);
 
     void ReloadSlingshot();
+
+    void Accept(std::shared_ptr<ItemVisitor> visitor);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

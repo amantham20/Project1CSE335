@@ -101,18 +101,8 @@ Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
  */
 void Level::Load(wxXmlNode *node)
 {
-//    auto child = node->GetChildren();
-//    for( ; child; child=child->GetNext()) {
-//        auto name = node->GetName();
-//        if(name == L"items")
-//        {
-//            LoadXMLItems(child);
-//        }
-//    }
-
     node->GetAttribute(L"height", L"0").ToDouble(&mHeight);
     node->GetAttribute(L"width", L"0").ToDouble(&mWidth);
-
 }
 
 /**
@@ -122,23 +112,6 @@ void Level::Load(wxXmlNode *node)
 void Level::Add(std::shared_ptr<Item> item)
 {
     item->SetLocation(Consts::InitialX, Consts::InitialY);   // [210, 200]    200
-    bool atEnd = false;
-
-    /*while (!atEnd)
-    {
-        atEnd = true;
-
-        for (auto i = mItems.begin(); i!=mItems.end(); i++) {
-            if (item->DistanceTo(*i)<1)
-            {
-                atEnd = false;
-                item->SetLocation(item->GetX()+10, item->GetY()+10);
-                break;
-            }
-        }
-    }
-    */
-
     mItems.push_back(item);
 }
 
@@ -149,15 +122,22 @@ void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
 
 void Level::ReloadSlingshot()
 {
-    SpartyTracker visitor;
-//    mSpartyGame->Accept(&visitor);
-
-    visitor.ReloadSlingshot(mSlingShot, std::shared_ptr<Level>(this));
+    std::shared_ptr<SpartyTracker> visitor = std::make_shared<SpartyTracker>();
+    Accept(visitor);
+    visitor->ReloadSlingshot(mSlingShot, this);
 }
 
 void Level::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     for( auto item : mItems){
         item->OnDraw(graphics);
+    }
+}
+
+void Level::Accept(std::shared_ptr<ItemVisitor> visitor)
+{
+    for (auto item : mItems)
+    {
+        item->Accept(visitor);
     }
 }

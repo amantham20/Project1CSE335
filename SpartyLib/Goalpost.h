@@ -24,7 +24,7 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void Accept(ItemVisitor* visitor) override { visitor->VisitGoalpost(this); }
+    void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitGoalpost(this); }
 };
 
 #endif //ANGRYSPARTY_GOALPOST_H

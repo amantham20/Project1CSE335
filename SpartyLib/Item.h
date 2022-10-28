@@ -100,7 +100,7 @@ public:
      * Accept a visitor
      * @param visitor The visitor we accept
      */
-    virtual void Accept(ItemVisitor* visitor) = 0;
+    virtual void Accept(std::shared_ptr<ItemVisitor> visitor) = 0;
     
 };
 

@@ -23,7 +23,7 @@ public:
 
     void SetLocation(double x, double y) override;
 
-    void Accept(ItemVisitor* visitor) override { visitor->VisitHelmetSparty(this); }
+    void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitHelmetSparty(this); }
 
 };
 

@@ -140,6 +140,9 @@ void SpartyGame::Load(const wxString &filename)
             LoadXMLSparties(child, tLevel);
         }
     }
+
+    // Now that all the xml data has been loaded. Load the angry sparty into the slingshot
+    mLevels.back()->ReloadSlingshot();
 }
 
 /**
