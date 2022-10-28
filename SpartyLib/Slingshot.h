@@ -28,7 +28,7 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void LoadAngrySparty(std::shared_ptr<Angry> sparty);
+    void LoadAngrySparty(Angry* sparty);
 };
 
 #endif //ANGRYSPARTY_SLINGSHOT_H

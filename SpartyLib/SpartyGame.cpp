@@ -16,6 +16,8 @@
 #include "Foe.h"
 #include "HelmetSparty.h"
 #include "GruffSparty.h"
+#include "SpartyTracker.h"
+#include "sstream"
 
 #include <wx/graphics.h>
 
@@ -259,9 +261,16 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
     }
 }
 
-
 void SpartyGame::Reset()
 {
     mItems.clear();
+}
+
+void SpartyGame::Accept(ItemVisitor* visitor)
+{
+    for (auto item : mItems)
+    {
+        item->Accept(visitor);
+    }
 }
 

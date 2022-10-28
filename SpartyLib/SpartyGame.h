@@ -12,6 +12,7 @@
 #include "PictureManager.h"
 #include <wx/graphics.h>
 #include "ids.h"
+#include "ItemVisitor.h"
 
 /**
  * Base AngrySparty Game Class
@@ -58,6 +59,8 @@ public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     void Reset();
+
+    void Accept(ItemVisitor* visitor);
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

@@ -72,7 +72,7 @@ void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
  * Loads an Angry Sparty for launch
  * @param sparty Angry Sparty to load in the slingshot
  */
-void Slingshot::LoadAngrySparty(std::shared_ptr<Angry> sparty)
+void Slingshot::LoadAngrySparty(Angry* sparty)
 {
     sparty->SetLocation(0, 0);
 }

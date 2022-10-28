@@ -12,6 +12,8 @@
 #include "Angry.h"
 #include "HelmetSparty.h"
 #include "GruffSparty.h"
+#include "Slingshot.h"
+#include "Level.h"
 
 /**
  * Concrete visitor that keeps track of the Angry Sparties
@@ -22,7 +24,7 @@ private:
     int mNumSparty = 0;
 
     /// All of the Angry Sparties
-    std::vector<Angry *> mSparties;
+    std::vector<Angry*> mSparties;
 public:
     /**
      * Get the number of Angry Sparties
@@ -33,6 +35,8 @@ public:
     void VisitHelmetSparty(HelmetSparty* helmetSparty) override;
 
     void VisitGruffSparty(GruffSparty* gruffSparty) override;
+
+    void ReloadSlingshot(Slingshot* slingshot, std::shared_ptr<Level> level);
 
 };
 

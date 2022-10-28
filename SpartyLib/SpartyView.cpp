@@ -3,8 +3,10 @@
  * @author Ian Valdovinos Granados, Zhiqiang ni, Milan Mihailovic
  */
 #include "pch.h"
-#include "SpartyView.h"
+
 #include <wx/dcbuffer.h>
+
+#include "SpartyView.h"
 #include "Consts.h"
 #include "stdio.h"
 #include "SpartyGame.h"
@@ -12,6 +14,8 @@
 #include "Level.h"
 #include "HelmetSparty.h"
 #include "GruffSparty.h"
+#include "SpartyTracker.h"
+#include "sstream"
 
 using namespace std;
 
