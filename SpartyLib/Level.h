@@ -41,7 +41,7 @@ private:
 public:
     double getHeight() { return mHeight; };
     double getWidth() { return mWidth; };
-
+    std::vector<std::shared_ptr<Item>> GetItem() {return mItems; };
     Level() = delete;
     Level(SpartyGame *spartyGame, std::shared_ptr<PictureManager> pictureCache);
     void Draw(std::shared_ptr<wxGraphicsContext> graphics);

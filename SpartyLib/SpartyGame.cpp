@@ -91,6 +91,7 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // and Y up being increase values
     //
     // INSERT YOUR DRAWING CODE HERE
+
     mLevels[mCurrentLevel]->Draw(graphics);
     // graphics->DrawBitmap(*mBackground, 0, 0);
 //    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
