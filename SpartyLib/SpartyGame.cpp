@@ -257,21 +257,12 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
             // Load item data based on xml file
             item->XmlLoad(child);
         }
-
     }
 }
 
 void SpartyGame::Reset()
 {
     //mItems.clear();
-}
-
-void SpartyGame::Accept(ItemVisitor* visitor)
-{
-//    for (auto item : mItems)
-//    {
-//        item->Accept(visitor);
-//    }
 }
 
 void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)

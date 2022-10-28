@@ -4,7 +4,7 @@
 
 #include "Angry.h"
 
-Angry::Angry(Level *level) : BodyItem(level)
+Angry::Angry(std::shared_ptr<Level> level) : BodyItem(level)
 {
 
 }

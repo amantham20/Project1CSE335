@@ -34,7 +34,7 @@ private:
 
     void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
 
-    void LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel);
+    void LoadXMLSparties(wxXmlNode *node,std::shared_ptr<Level> pLevel);
 
     std::vector<std::shared_ptr<Level>> mLevels;
 
@@ -53,9 +53,6 @@ public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     void Reset();
-
-
-    void Accept(ItemVisitor* visitor);
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 

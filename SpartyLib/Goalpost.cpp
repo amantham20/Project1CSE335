@@ -16,7 +16,7 @@ const wstring GoalpostsImageName = L"images/goalposts.png";
  * Constructor
  * @param level Level the Goalpost is in
  */
-Goalpost::Goalpost(Level *level) : Slingshot(level)
+Goalpost::Goalpost(std::shared_ptr<Level> level) : Slingshot(level)
 {
     Item::SetImageName(GoalpostsImageName);
 }

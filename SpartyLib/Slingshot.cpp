@@ -14,7 +14,7 @@ using namespace std;
  * Constructor
  * @param world
  */
-Slingshot::Slingshot(Level *level) : PositionalItem(level)
+Slingshot::Slingshot(std::shared_ptr<Level> level) : PositionalItem(level)
 {
 }
 

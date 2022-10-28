@@ -150,7 +150,7 @@ void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
 void Level::ReloadSlingshot()
 {
     SpartyTracker visitor;
-    mSpartyGame->Accept(&visitor);
+//    mSpartyGame->Accept(&visitor);
 
     visitor.ReloadSlingshot(mSlingShot, std::shared_ptr<Level>(this));
 }

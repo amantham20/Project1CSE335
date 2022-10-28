@@ -9,7 +9,7 @@
 #include "Consts.h"
 #include "Level.h"
 
-Background::Background(Level *level) : Item(level)
+Background::Background(std::shared_ptr<Level> level) : Item(level)
 {
 
 }
