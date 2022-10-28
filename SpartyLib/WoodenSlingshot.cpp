@@ -17,7 +17,7 @@ const wstring WoodenSlingshotImageName = L"images/slingshot.png";
  * WoodenSlingshot constructor
  * @param level
  */
-WoodenSlingshot::WoodenSlingshot(std::shared_ptr<Level> level) : Slingshot(level)
+WoodenSlingshot::WoodenSlingshot(Level *level) : Slingshot(level)
 {
     Item::SetImageName(WoodenSlingshotImageName);
 }

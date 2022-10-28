@@ -10,7 +10,7 @@
  * BodyItem constructor
  * @param world
  */
-BodyItem::BodyItem(std::shared_ptr<Level> level) : PositionalItem(level)
+BodyItem::BodyItem(Level *level) : PositionalItem(level)
 {
     // Configure box2d for the item
     // Create the body definition

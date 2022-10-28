@@ -45,7 +45,7 @@ private:
 
 public:
 
-    BodyItem(std::shared_ptr<Level> level);
+    BodyItem(Level *level);
 
     void XmlLoad(wxXmlNode *node) override;
 
