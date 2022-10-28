@@ -30,7 +30,7 @@ Item::~Item()
  *
  * @author Aman Dhruva Thamminana
  */
-Item::Item(std::shared_ptr<Level> level)
+Item::Item(Level *level)
 {
     mLevel = level;
     mPictureCache = std::make_shared<PictureManager>();

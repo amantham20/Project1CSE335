@@ -15,7 +15,7 @@
  * @param x x-coordinate of the score display
  * @param y y-coordinate of the score display
  */
-ScoreDisplay::ScoreDisplay(std::shared_ptr<Level> level, std::shared_ptr<Score> score, double x, double y) :  PositionalItem(level)
+ScoreDisplay::ScoreDisplay(Level *level, std::shared_ptr<Score> score, double x, double y) : PositionalItem(level)
 {
     mScore = score;
     PositionalItem::setX(x);
@@ -28,18 +28,18 @@ ScoreDisplay::ScoreDisplay(std::shared_ptr<Level> level, std::shared_ptr<Score> 
  */
 void ScoreDisplay::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
     auto tLevel = Item::GetLevel();
-    auto wid = tLevel->GetWidth() * Consts::MtoCM;
-    auto hit = tLevel->GetHeight()  * Consts::MtoCM;
-    graphics->PushState();
-    graphics->Scale(1, -1);
-    wxFont font(wxSize(0, 30),
-                wxFONTFAMILY_SWISS,
-                wxFONTSTYLE_NORMAL,
-                wxFONTWEIGHT_NORMAL);
-    graphics->SetFont(font, wxColour(255,0,0));
-    graphics->DrawText(wxString::FromDouble(mScore->GetScore(), 0),
-                       PositionalItem::getX() - wid/2 , PositionalItem::getY() - hit);
-    graphics->PopState();
+//    auto wid = tLevel->GetWidth() * Consts::MtoCM;
+//    auto hit = tLevel->GetHeight()  * Consts::MtoCM;
+//    graphics->PushState();
+//    graphics->Scale(1, -1);
+//    wxFont font(wxSize(0, 30),
+//                wxFONTFAMILY_SWISS,
+//                wxFONTSTYLE_NORMAL,
+//                wxFONTWEIGHT_NORMAL);
+//    graphics->SetFont(font, wxColour(255,0,0));
+//    graphics->DrawText(wxString::FromDouble(mScore->GetScore(), 0),
+//                       PositionalItem::getX() - wid/2 , PositionalItem::getY() - hit);
+//    graphics->PopState();
 }
 
 /**

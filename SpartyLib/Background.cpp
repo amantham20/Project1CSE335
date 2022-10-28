@@ -7,6 +7,12 @@
 #include "Background.h"
 #include "Picture.h"
 #include "Consts.h"
+#include "Level.h"
+
+Background::Background(Level *level) : Item(level)
+{
+
+}
 
 /**
  * Load function for Background

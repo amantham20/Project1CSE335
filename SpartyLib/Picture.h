@@ -6,8 +6,6 @@
 #ifndef ANGRYSPARTY_PICTURE_H
 #define ANGRYSPARTY_PICTURE_H
 
-#include "Level.h"
-
 /**
  * Placeholder class for all pictures
  */

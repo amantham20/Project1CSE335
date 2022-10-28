@@ -91,20 +91,21 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // and Y up being increase values
     //
     // INSERT YOUR DRAWING CODE HERE
+    mLevels[mCurrentLevel]->Draw(graphics);
     // graphics->DrawBitmap(*mBackground, 0, 0);
 //    graphics->DrawBitmap(*mBackground,0,0, scaleX, scaleY);
-    for( auto item : mItems){
-        if(item->GetLevel() == mLevels[mCurrentLevel]){
-            item->OnDraw(graphics);
-        }
-    }
+//    for( auto item : mItems){
+//        if(item->GetLevel() == mLevels[mCurrentLevel]){
+//            item->OnDraw(graphics);
+//        }
+   // }
 
     //todo: uncompleted working code don't know put where
-    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
-    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
-    a->OnDraw(graphics);
-    b->OnDraw(graphics);
-    graphics->PopState();
+//    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
+//    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
+//    a->OnDraw(graphics);
+//    b->OnDraw(graphics);
+//    graphics->PopState();
 }
 
 
@@ -130,152 +131,23 @@ void SpartyGame::Load(const wxString &filename)
     // Traverse the children of the root
     // node of the XML document in memory!!!!
     //
-    std::shared_ptr<Level> tLevel = std::make_shared<Level>(this);
+    std::shared_ptr<Level> tLevel = std::make_shared<Level>(this, mPictureCache);
+
     tLevel->Load(root);
-
-
-
     mLevels.push_back(tLevel);
-
-    auto child = root->GetChildren();
-    for( ; child; child=child->GetNext())
-    {
-        auto name = child->GetName();
-        if(name == L"items")
-        {
-            // Items tag found. LOAD EVERY ITEM IN THE ITEMS TAG
-            LoadXMLItems(child, tLevel);
-        }
-        else if (name == L"angry")
-        {
-            // Angry tag found. LOAD EVERY ANGRY SPARTY IN THE ANGRY TAG
-            LoadXMLSparties(child, tLevel);
-        }
-    }
-}
-
-/**
- * Loads every item in the items parent tag
- * @param node Node to start reading xml doc from
- * @param pLevel Level the xml document belongs to
- */
-void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
-{
-    // Get the first item in the items parent tag
-    auto child = node->GetChildren();
-
-    // Iterate over every item inside the items tag
-    for( ; child; child=child->GetNext())
-    {
-        auto name = child->GetName();
-
-        shared_ptr<Item> item;
-
-        if (name == "block")
-        {
-            item = std::make_shared<Block>(pLevel);
-        }
-        else if (name == "poly")
-        {
-            item = std::make_shared<Poly>(pLevel);
-        }
-        else if (name == "foe")
-        {
-            item = std::make_shared<Foe>(pLevel);
-        }
-        else if (name == "goalposts")
-        {
-            item = std::make_shared<Goalpost>(pLevel);
-        }
-        else if (name == "slingshot")
-        {
-            item = std::make_shared<WoodenSlingshot>(pLevel);
-        }
-        else if (name == "background")
-        {
-//            std::shared_ptr<Item> tempBackground = std::make_shared<Background>(L"../images/background1.png", pLevel);
-            item = std::make_shared<Background>(pLevel);
-        }
-
-        if (item != nullptr)
-        {
-            mItems.push_back(item);
-
-            item->setCache(mPictureCache);
-
-            item->XmlLoad(child);
-        }
-    }
-}
-
-/**
- * Loads every angry sparty in the angry parent tag
- * @param node Node to start reading contents from
- */
-void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
-{
-    // Get location where the sparties line should start
-    double x_start;
-    double y_start;
-    node->GetAttribute(L"x", L"0").ToDouble(&x_start);
-    node->GetAttribute(L"y", L"0").ToDouble(&y_start);
-
-    // Current location based on the offset
-    double x_current = x_start;
-
-    // Get spacing between angry sparties
-    double spacing;
-    node->GetAttribute(L"spacing", "0.6").ToDouble(&spacing);
-
-    // Get the first item in the items parent tag
-    auto child = node->GetChildren();
-
-    // Pointer to the item we are loading
-    shared_ptr<Item> item;
-
-    // Iterate over the tags within the angry tag
-    for( ; child; child=child->GetNext())
-    {
-        auto name = child->GetName();
-
-        shared_ptr<Item> item;
-        if (name == "gruff-sparty")
-        {
-            item = std::make_shared<GruffSparty>(pLevel);
-
-        } else if (name == "helmet-sparty")
-        {
-            item = std::make_shared<HelmetSparty>(pLevel);
-
-        }
-
-        if (item != nullptr)
-        {
-            mItems.push_back(item);
-
-            item->setCache(mPictureCache);
-
-            // Set image location
-            item->SetLocation(x_current, y_start);
-            x_current += spacing;
-
-            item->XmlLoad(child);
-        }
-
-    }
 }
 
 void SpartyGame::Reset()
 {
-    mItems.clear();
+    //mItems.clear();
 }
 
 void SpartyGame::Accept(ItemVisitor* visitor)
 {
-    for (auto item : mItems)
-    {
-        item->Accept(visitor);
-    }
+//    for (auto item : mItems)
+//    {
+//        item->Accept(visitor);
+//    }
 }
 
 void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
