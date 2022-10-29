@@ -25,6 +25,13 @@
 using namespace std;
 
 
+/// Number of velocity update iterations per step
+const int VelocityIterations = 6;
+
+/// Number of position update iterations per step
+const int PositionIterations = 2;
+
+
 /**
  * Constructor
  */
@@ -98,7 +105,9 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
     a->OnDraw(graphics);
     b->OnDraw(graphics);
+    DebugOnDraw(graphics);
     graphics->PopState();
+
 }
 
 
@@ -283,9 +292,14 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     // Draw the background
     // Draw the items
 
+
     DebugDraw debugDraw(graphics);
     debugDraw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit);
     mPhysics->GetWorld()->SetDebugDraw(&debugDraw);
     mPhysics->GetWorld()->DebugDraw();
-
 }
+
+void SpartyGame::Update(double frameDuration){
+    mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
+}
+

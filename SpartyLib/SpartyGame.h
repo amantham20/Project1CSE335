@@ -38,7 +38,7 @@ private:
 
     std::vector<std::shared_ptr<Level>> mLevels;
 
-    int mCurrentLevel = 1;
+    int mCurrentLevel = 0;
 
 
     //// TODO: TEMP CODE WILL HAVE TO REMOVE IT
@@ -57,6 +57,8 @@ public:
     void Reset();
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+
+    void Update(double val);
 
 };
 
