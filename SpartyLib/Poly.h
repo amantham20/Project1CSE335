@@ -30,7 +30,7 @@ public:
 
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitPoly(this); }
 
-    void InstallPhysics(std::shared_ptr<Physics> physics) override;
+//    void InstallPhysics(std::shared_ptr<Physics> physics) override;
 };
 
 #endif //ANGRYSPARTY_POLY_H
