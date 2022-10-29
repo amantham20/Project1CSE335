@@ -60,3 +60,48 @@ void Foe::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
     graphics->PopState();
 }
+
+void Foe::InstallPhysics(std::shared_ptr<Physics> physics) {
+//    mPhysics = physics;
+    b2World* world = physics->GetWorld();
+
+    // Create the box
+    const int Octa = 8;
+    const b2Vec2 vertices[] = {
+            { 0.035355  ,  0.035355 },
+            { 0.0  ,  0.05 },
+            { -0.035355  ,  0.035355 },
+            { -0.05  ,  0.0 },
+            { -0.035355  ,  -0.035355 },
+            { -0.0  ,  -0.05 },
+            { 0.035355  ,  -0.035355 },
+            { 0.05  ,  -0.0 },
+    };
+
+    b2PolygonShape OctaSexy;
+    OctaSexy.Set(vertices, Octa);
+//    box.SetAsBox(mSize.x/2, mSize.y/2);
+//    box.SetAsBox(10,10);
+
+    b2BodyDef bodyDefinition;
+    bodyDefinition.position = PositionalItem::GetPosition();
+    bodyDefinition.angle = BodyItem::GetAngle();
+    bodyDefinition.type =  BodyItem::GetStatic() ? b2_staticBody : b2_dynamicBody;
+    auto body = world->CreateBody(&bodyDefinition);
+
+    if( BodyItem::GetStatic())
+    {
+        body->CreateFixture(&OctaSexy, 0.0f);
+    }
+    else
+    {
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &OctaSexy;
+        fixtureDef.density = (float) BodyItem::GetDensity();
+        fixtureDef.friction = (float) BodyItem::GetFriction();
+        fixtureDef.restitution = (float) BodyItem::GetResolution();
+
+        body->CreateFixture(&fixtureDef);
+    }
+    BodyItem::SetBody(body);
+}
