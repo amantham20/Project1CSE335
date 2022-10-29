@@ -44,34 +44,33 @@ void BodyItem::XmlLoad(wxXmlNode *node)
 
 void BodyItem::InstallPhysics(std::shared_ptr<Physics> physics)
 {
-//    mPhysics = physics;
-//    b2World* world = physics->GetWorld();
-//
-//    // Create the box
-//    b2PolygonShape box;
-//    box.SetAsBox(mSize.x/2, mSize.y/2);
-////    box.SetAsBox(10,10);
-//
-//    // Create the body definition
-//    b2BodyDef bodyDefinition;
-//    bodyDefinition.position = PositionalItem::GetPosition();
-//    bodyDefinition.angle = mAngle;
-//    bodyDefinition.type = mStatic ? b2_staticBody : b2_dynamicBody;
-//    auto body = world->CreateBody(&bodyDefinition);
-//
-//    if(mStatic)
-//    {
-//        body->CreateFixture(&box, 0.0f);
-//    }
-//    else
-//    {
-//        b2FixtureDef fixtureDef;
-//        fixtureDef.shape = &box;
-//        fixtureDef.density = (float)mDensity;
-//        fixtureDef.friction = (float)mFriction;
-//        fixtureDef.restitution = (float)mRestitution;
-//
-//        body->CreateFixture(&fixtureDef);
-//    }
-//    mBody = body;
+    mPhysics = physics;
+    b2World* world = physics->GetWorld();
+
+    // Create the box
+    b2PolygonShape box;
+    box.SetAsBox(mSize.x/2, mSize.y/2);
+
+    // Create the body definition
+    b2BodyDef bodyDefinition;
+    bodyDefinition.position = PositionalItem::GetPosition();
+    bodyDefinition.angle = mAngle*Consts::DtoR;
+    bodyDefinition.type = mStatic ? b2_staticBody : b2_dynamicBody;
+    auto body = world->CreateBody(&bodyDefinition);
+
+    if(mStatic)
+    {
+        body->CreateFixture(&box, 0.0f);
+    }
+    else
+    {
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &box;
+        fixtureDef.density = (float)mDensity;
+        fixtureDef.friction = (float)mFriction;
+        fixtureDef.restitution = (float)mRestitution;
+
+        body->CreateFixture(&fixtureDef);
+    }
+    mBody = body;
 }
