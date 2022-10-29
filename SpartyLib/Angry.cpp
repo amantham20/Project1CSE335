@@ -55,7 +55,3 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
     body->CreateFixture(&circle, 0.0f);
     BodyItem::SetBody(body);
 }
-
-void Angry::TemporaryPhysics(){
-
-}
