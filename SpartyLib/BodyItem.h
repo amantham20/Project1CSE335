@@ -11,8 +11,9 @@
 
 #include "PositionalItem.h"
 #include "Consts.h"
-#include "b2_body.h"
+#include <b2_body.h>
 #include <b2_math.h>
+#include "Physics.h"
 
 /**
  * BodyItem class containing a Box2D body
@@ -21,6 +22,9 @@ class BodyItem : public PositionalItem {
 private:
     /// box2d Item Body
     b2Body* mBody;
+
+    /// Physics object
+    std::shared_ptr<Physics> mPhysics;
 
     /// Width of the BodyItem
     double mWidth = 0;
@@ -43,6 +47,12 @@ private:
     /// Type of shape
     std::wstring mType = L"dynamic";
 
+    /// Boolean for static
+    bool mStatic = mType == L"static";
+
+    /// mSize
+    b2Vec2 mSize = b2Vec2(mWidth, mHeight);
+
 public:
 
     BodyItem(std::shared_ptr<Level> level);
@@ -53,19 +63,44 @@ public:
      * Getter for mBody
      * @return mBody
      */
-    b2Body* GetBody() { return mBody; }
+    b2Body* GetBody() {
+//        return &(*mBody);
+        return mBody;
+    }
 
     /**
-     * Getter for b2Vec2
+     * Getter for size
      * @return b2Vec2
      */
-    b2Vec2 Getb2Vec() { return b2Vec2(mWidth, mHeight); }
+    b2Vec2 GetSize() { return b2Vec2(mWidth, mHeight); }
 
     /**
- * Getter for mAngle converted to radians
- * @return mAngle
- */
+     * Getter for mAngle converted to radians
+     * @return mAngle
+     */
     double GetAngle(){ return mAngle*Consts::DtoR; }
+
+    b2Vec2 GetPosition() {return PositionalItem::GetPosition(); }
+
+
+//    virtual void InstallPhysics(std::shared_ptr<Physics> physics);
+
+    void InstallPhysics(std::shared_ptr<Physics> physics) override;
+
+    void SetBody(b2Body *body){mBody = body;}
+
+    void SetPhysics( std::shared_ptr<Physics> physics){mPhysics = physics;}
+
+//    b2Vec2 GetSize(){return mSize;}
+    double GetDAngle(){return mAngle;};
+
+    double GetResolution(){return mRestitution;};
+
+    double GetDensity(){return mDensity;};
+
+    double GetFriction(){return mFriction;};
+
+    bool GetStatic(){return mStatic;}
 
 };
 

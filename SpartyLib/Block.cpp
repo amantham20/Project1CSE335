@@ -8,6 +8,7 @@
 #include "Consts.h"
 #include "BodyItem.h"
 #include "Item.h"
+#include <box2d.h>
 
 /**
  * Load the attributes for an Block node.
@@ -35,15 +36,15 @@ Block::Block(std::shared_ptr<Level> level) : BodyItem(level)
 void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 
     graphics->PushState();
-    auto mSize = BodyItem::Getb2Vec();
+    auto mSize = BodyItem::GetSize();
 
     //TODO : Get b2Body working to enable Easy Acess to these values
-//    b2Body* body = BodyItem::GetBody();
-//    auto position = body->GetPosition();
-//    auto angle = body->GetAngle();
+    b2Body* body = BodyItem::GetBody();
+    auto position = body->GetPosition();
+    auto angle = body->GetAngle();
 
-    auto position = PositionalItem::GetPosition();
-    auto angle = BodyItem::GetAngle();
+//    auto position = PositionalItem::GetPosition();
+//    auto angle = BodyItem::GetAngle();
 
     graphics->Translate(position.x * Consts::MtoCM,
             position.y * Consts::MtoCM);

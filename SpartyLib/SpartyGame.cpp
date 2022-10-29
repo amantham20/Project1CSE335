@@ -29,8 +29,12 @@ using namespace std;
  * Constructor
  */
  ///TODO Change where this is! the mPhysicsEngine should be in the level class
-SpartyGame::SpartyGame() :mPhysics(b2Vec2(14.22,8))
+SpartyGame::SpartyGame() //:mPhysics(b2Vec2(14.22,8))
 {
+    mPhysics = make_shared<Physics>(b2Vec2(14.22,8));
+//    mPhysics = make_shared<Physics>(b2Vec2(14.22*Consts::MtoCM,8*Consts::MtoCM));
+
+
     mTotalScore = std::make_shared<Score>(0);
 
     mPictureCache = std::make_shared<PictureManager>();
@@ -143,6 +147,8 @@ void SpartyGame::Load(const wxString &filename)
 
     // Now that all the xml data has been loaded. Load the angry sparty into the slingshot
     mLevels.back()->ReloadSlingshot();
+
+
 }
 
 /**
@@ -201,6 +207,8 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
             // Load item's attributes defined by xml document
             item->XmlLoad(child);
+
+            item->InstallPhysics(mPhysics);
         }
     }
 }
@@ -277,7 +285,7 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
     DebugDraw debugDraw(graphics);
     debugDraw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit);
-    mPhysics.GetWorld()->SetDebugDraw(&debugDraw);
-    mPhysics.GetWorld()->DebugDraw();
+    mPhysics->GetWorld()->SetDebugDraw(&debugDraw);
+    mPhysics->GetWorld()->DebugDraw();
 
 }

@@ -88,3 +88,38 @@ void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
     graphics->PopState();
 }
+
+void Poly::InstallPhysics(std::shared_ptr<Physics> physics){
+//    mPhysics = physics;
+    BodyItem::SetPhysics(physics);
+    b2World* world = physics->GetWorld();
+
+    // Create the box
+    b2PolygonShape box;
+    auto size = BodyItem::GetSize();
+//    box.SetAsBox(size.x/2, size.y/2);
+    box.SetAsBox(10,10);
+
+    // Create the body definition
+    b2BodyDef bodyDefinition;
+    bodyDefinition.position = PositionalItem::GetPosition();
+    bodyDefinition.angle = BodyItem::GetDAngle();
+    bodyDefinition.type =  BodyItem::GetStatic() ? b2_staticBody : b2_dynamicBody;
+    auto body = world->CreateBody(&bodyDefinition);
+
+    if( BodyItem::GetStatic())
+    {
+        body->CreateFixture(&box, 0.0f);
+    }
+    else
+    {
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &box;
+        fixtureDef.density = (float) BodyItem::GetDensity();
+        fixtureDef.friction = (float) BodyItem::GetFriction();
+        fixtureDef.restitution = (float) BodyItem::GetResolution();
+
+        body->CreateFixture(&fixtureDef);
+    }
+    BodyItem::SetBody(body);
+}
