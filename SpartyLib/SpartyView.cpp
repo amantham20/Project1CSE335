@@ -71,14 +71,14 @@ void SpartyView::LoadLevels() {
     wxString levelZeroFilename = L"levels/level0.xml";
     mSpartyGame.Load(levelZeroFilename);
 
-    wxString levelOneFilename = L"levels/level1.xml";
-    mSpartyGame.Load(levelOneFilename);
-
-    wxString levelTwoFilename = L"levels/level2.xml";
-    mSpartyGame.Load(levelTwoFilename);
-
-    wxString levelThreeFilename = L"levels/level3.xml";
-    mSpartyGame.Load(levelThreeFilename);
+//    wxString levelOneFilename = L"levels/level1.xml";
+//    mSpartyGame.Load(levelOneFilename);
+//
+//    wxString levelTwoFilename = L"levels/level2.xml";
+//    mSpartyGame.Load(levelTwoFilename);
+//
+//    wxString levelThreeFilename = L"levels/level3.xml";
+//    mSpartyGame.Load(levelThreeFilename);
 }
 
 
@@ -98,7 +98,7 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     while(mTime < newTime)
     {
         mTime += FrameDuration;
-//        mSpartyGame.Update(FrameDuration);
+        mSpartyGame.Update(FrameDuration);
     }
 
     mTime = newTime;
@@ -119,7 +119,12 @@ void SpartyView::OnPaint(wxPaintEvent& event)
     {
         // Draw outlines around each of the on-screen item
         //todo:: need visitor? Nope should be fine
-        mSpartyGame.DebugOnDraw(graphics);
+        //todo:: thing broken inverted debug draw
+//        graphics->PushState();
+//        graphics->Scale(1,-1);
+//        mSpartyGame.DebugOnDraw(graphics);
+//        graphics->PopState();
+
     }
 }
 /**
@@ -137,6 +142,7 @@ void SpartyView::OnTimer(wxTimerEvent &event)
  */
 void SpartyView::OnLevelOpen(wxCommandEvent& event)
 {
+
     //todo: this is not the right code to use
     switch (event.GetId())
     {
@@ -158,6 +164,11 @@ void SpartyView::OnLevelOpen(wxCommandEvent& event)
         case IDM_LEVEL3:
         {
             mSpartyGame.SetLevel(3);
+            break;
+        }
+        default:
+        {
+            mSpartyGame.SetLevel(0);
             break;
         }
     }

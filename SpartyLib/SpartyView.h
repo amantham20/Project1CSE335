@@ -32,7 +32,7 @@ private:
     SpartyGame mSpartyGame;
 
 
-    bool mDebug = false;
+    bool mDebug = true;
     void LoadLevels();
 public:
     void Initialize(wxFrame* parent);
