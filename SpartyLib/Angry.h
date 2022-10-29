@@ -18,6 +18,8 @@ public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 //    std::shared_ptr<Level> GetLevel() {Item::GetLevel(); }
 
+    void InstallPhysics(std::shared_ptr<Physics> physics) override;
+
 };
 
 

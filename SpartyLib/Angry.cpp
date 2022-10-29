@@ -38,3 +38,24 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
     graphics->PopState();
 }
+
+void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
+    // Create the body definition
+    b2BodyDef bodyDefinition;
+    bodyDefinition.type = b2_staticBody;
+
+    auto world = physics->GetWorld();
+    auto body = world->CreateBody(&bodyDefinition);
+
+    // Create the shape
+    b2CircleShape circle;
+
+    circle.m_radius = (float)BodyItem::GetAngle();
+
+    body->CreateFixture(&circle, 0.0f);
+    BodyItem::SetBody(body);
+}
+
+void Angry::TemporaryPhysics(){
+
+}
