@@ -34,12 +34,9 @@ void Foe::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
 
     //TODO : Get b2Body working to enable Easy Access to these values
-//    b2Body* body = BodyItem::GetBody();
-//    auto position = body->GetPosition();
-//    auto angle = body->GetAngle();
-
-    auto position = PositionalItem::GetPosition();
-    auto angle = BodyItem::GetAngle();
+    b2Body* body = BodyItem::GetBody();
+    auto position = body->GetPosition();
+    auto angle = body->GetAngle();
 
     //TODO : Couldn't figure out how to make foes exact height, change the 0.6 later
     auto wid = Consts::MtoCM * 0.6;
@@ -62,26 +59,23 @@ void Foe::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 }
 
 void Foe::InstallPhysics(std::shared_ptr<Physics> physics) {
-//    mPhysics = physics;
     b2World* world = physics->GetWorld();
 
     // Create the box
     const int Octa = 8;
     const b2Vec2 vertices[] = {
-            { 0.035355  ,  0.035355 },
-            { 0.0  ,  0.05 },
-            { -0.035355  ,  0.035355 },
-            { -0.05  ,  0.0 },
-            { -0.035355  ,  -0.035355 },
-            { -0.0  ,  -0.05 },
-            { 0.035355  ,  -0.035355 },
-            { 0.05  ,  -0.0 },
+            { 0.35355/2, 0.35355/2 },
+            { 0.0 , 0.5/2 },
+            { -0.35355/2 , 0.35355/2 },
+            { -0.5/2 ,  0.0 },
+            { -0.35355/2 , -0.35355/2 },
+            { -0.0  ,  -0.5/2 },
+            { 0.35355/2 , -0.35355/2 },
+            { 0.5/2 ,  -0.0 },
     };
 
     b2PolygonShape OctaSexy;
     OctaSexy.Set(vertices, Octa);
-//    box.SetAsBox(mSize.x/2, mSize.y/2);
-//    box.SetAsBox(10,10);
 
     b2BodyDef bodyDefinition;
     bodyDefinition.position = PositionalItem::GetPosition();
