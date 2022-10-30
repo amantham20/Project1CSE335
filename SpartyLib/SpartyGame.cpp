@@ -19,6 +19,7 @@
 #include "SpartyTracker.h"
 #include "PlayingArea.h"
 #include "DebugDraw.h"
+#include "FoeTracker.h"
 
 #include <wx/graphics.h>
 
@@ -308,8 +309,14 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     if(mPlayingArea == NULL)
     {
         mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel)->GetItem());
-    } else
+    }
+    mPlayingArea->Draw(graphics);
+
+    std::shared_ptr<FoeTracker> visitor = std::make_shared<FoeTracker>();
+    mPlayingArea->Accept(visitor);
+    if(visitor->GetNumberFoe() <= 0)
     {
-        mPlayingArea->Draw(graphics);
+        mCurrentLevel++;
+        mPlayingArea.reset();
     }
 }

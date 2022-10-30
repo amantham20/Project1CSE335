@@ -6,8 +6,14 @@
 #define ANGRYSPARTY_FOETRACKER_H
 
 
-class FoeTracker {
+#include "ItemVisitor.h"
 
+class FoeTracker : public ItemVisitor{
+private:
+    int mNumberFoe = 0;
+public:
+    int GetNumberFoe(){ return mNumberFoe; };
+    void VisitFoe(Foe *foe) override;
 };
 
 

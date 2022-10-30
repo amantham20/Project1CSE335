@@ -25,3 +25,11 @@ void PlayingArea::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     mPhysics->GetWorld()->SetDebugDraw(&debugDraw);
     mPhysics->GetWorld()->DebugDraw();
 }
+
+void PlayingArea::Accept(std::shared_ptr<ItemVisitor> visitor)
+{
+    for (const auto& item : mItems)
+    {
+        item->Accept(visitor);
+    }
+}

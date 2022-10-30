@@ -10,6 +10,7 @@
 
 #include "Item.h"
 #include "SpartyGame.h"
+#include "ItemVisitor.h"
 
 class PlayingArea {
 private:
@@ -22,6 +23,8 @@ private:
 
     std::shared_ptr<Physics> mPhysics;
 public:
+    std::vector<std::shared_ptr<Item>> GetItem(){ return mItems; };
+
     /// Default Constructor
     PlayingArea() = delete;
     PlayingArea(std::vector<std::shared_ptr<Item>> items);
@@ -46,6 +49,8 @@ public:
     void SetCurrentScore(int score) { mCurrentScore = score; }
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+
+    void Accept(std::shared_ptr<ItemVisitor> visitor);
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H
