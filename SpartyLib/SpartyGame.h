@@ -58,6 +58,11 @@ public:
 
     std::shared_ptr<Item> HitTest(int x, int y);
 
+    /**
+     * Getter for the centimeter pixel scale factor
+     * @return
+     */
+    double GetScale() {return mScale;};
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
