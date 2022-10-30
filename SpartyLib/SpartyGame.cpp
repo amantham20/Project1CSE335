@@ -281,3 +281,9 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     mPhysics.GetWorld()->DebugDraw();
 
 }
+
+std::shared_ptr<Item> SpartyGame::HitTest(int x, int y)
+{
+    // Return the current level's hit test
+    return mLevels[mCurrentLevel]->HitTest(x, y);
+}

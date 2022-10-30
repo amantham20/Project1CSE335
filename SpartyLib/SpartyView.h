@@ -31,6 +31,8 @@ private:
     ///an object describe the sparty game
     SpartyGame mSpartyGame;
 
+    // Item that the user is currently grabbing
+    std::shared_ptr<Item> mGrabbedItem;
 
     bool mDebug = false;
     void LoadLevels();

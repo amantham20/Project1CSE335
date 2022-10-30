@@ -56,6 +56,8 @@ public:
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
+    std::shared_ptr<Item> HitTest(int x, int y);
+
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
