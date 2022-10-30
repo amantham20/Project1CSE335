@@ -104,10 +104,11 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     //->OnDraw(graphics);
 
     //todo: uncompleted working code don't know put where
-    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
-    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
-    a->OnDraw(graphics);
-    b->OnDraw(graphics);
+//    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
+//    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
+//    a->OnDraw(graphics);
+//    b->OnDraw(graphics);
+
     if(mDebug){
         DebugOnDraw(graphics);
     }
