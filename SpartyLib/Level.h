@@ -40,6 +40,12 @@ private:
 public:
     double getHeight() { return mHeight; };
     double getWidth() { return mWidth; };
+
+    /**
+     * Returns the position of the item
+     * @return b2Vec2 representing the position of an item.
+     */
+    b2Vec2 GetPosition() { return b2Vec2(mWidth, mHeight); }
     std::vector<std::shared_ptr<Item>> GetItem() {return mItems; };
     Level() = delete;
 

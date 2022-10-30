@@ -24,21 +24,12 @@
 
 using namespace std;
 
-
-/// Number of velocity update iterations per step
-const int VelocityIterations = 6;
-
-/// Number of position update iterations per step
-const int PositionIterations = 2;
-
-
 /**
  * Constructor
  */
  ///TODO Change where this is! the mPhysicsEngine should be in the level class
 SpartyGame::SpartyGame() //:mPhysics(b2Vec2(14.22,8))
 {
-    mPhysics = make_shared<Physics>(b2Vec2(14.22,8));
 //    mPhysics = make_shared<Physics>(b2Vec2(14.22*Consts::MtoCM,8*Consts::MtoCM));
 
     mPictureCache = std::make_shared<PictureManager>();
@@ -222,8 +213,6 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
             // Load item's attributes defined by xml document
             item->XmlLoad(child);
-
-            item->InstallPhysics(mPhysics);
         }
     }
 }
@@ -303,16 +292,14 @@ void SpartyGame::Reset()
 //todo delete? should done in playingarea
 void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    DebugDraw debugDraw(graphics);
-    debugDraw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit);
-    mPhysics->GetWorld()->SetDebugDraw(&debugDraw);
-    mPhysics->GetWorld()->DebugDraw();
+    mPlayingArea->DebugOnDraw(graphics);
 }
 
 void SpartyGame::Update(double frameDuration){
-    mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
-
-
+    if(mPlayingArea != NULL)
+    {
+        mPlayingArea->Update(frameDuration);
+    }
 }
 
 void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)

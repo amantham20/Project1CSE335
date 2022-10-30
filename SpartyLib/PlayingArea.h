@@ -16,7 +16,6 @@ class PlayingArea {
 private:
     /// Current Score
     int mCurrentScore;
-
     SpartyGame mSpartyGame;
     /// Items copied from Level
     std::vector<std::shared_ptr<Item>> mItems;
@@ -44,15 +43,12 @@ public:
      */
     int GetCurrentScore() { return mCurrentScore; }
     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-    /**
-     * Setter for current score
-     *
-     */
-    void SetCurrentScore(int score) { mCurrentScore = score; }
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
     void Accept(std::shared_ptr<ItemVisitor> visitor);
+
+    void Update(double frameDuration);
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H

@@ -7,10 +7,21 @@
 #include "DebugDraw.h"
 #include "Level.h"
 
+/// Number of velocity update iterations per step
+const int VelocityIterations = 6;
+
+/// Number of position update iterations per step
+const int PositionIterations = 2;
+
 PlayingArea::PlayingArea(std::shared_ptr<Level> level, std::shared_ptr<Score> totalScore) : mItems(level->GetItem()), mTotalScore(totalScore)
 {
     //todo incompleated
+    mPhysics = std::make_shared<Physics>(level->GetPosition());
     mScore = std::make_shared<Score>(level, 0, 1400, 10);
+    for(auto item : mItems)
+    {
+        item->InstallPhysics(mPhysics);
+    }
 }
 
 void PlayingArea::Draw(std::shared_ptr<wxGraphicsContext> graphics)
@@ -37,4 +48,8 @@ void PlayingArea::Accept(std::shared_ptr<ItemVisitor> visitor)
     {
         item->Accept(visitor);
     }
+}
+
+void PlayingArea::Update(double frameDuration){
+    mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
 }
