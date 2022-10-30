@@ -76,5 +76,3 @@ void Item::SetImageName(const std::wstring & filename)
     mFileName = filename;
 
 }
-
-

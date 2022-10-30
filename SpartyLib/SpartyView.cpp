@@ -197,4 +197,5 @@ void SpartyView::OnUpdateDebugMode(wxUpdateUIEvent& event)
 void SpartyView::OnLeftDown(wxMouseEvent &event)
 {
     mGrabbedItem = mSpartyGame.HitTest(event.GetX(), event.GetY());
+    int x = 0;
 }

@@ -31,25 +31,25 @@ public:
      * Getter of x position
      * @return x position
      */
-    double getX() {return mX;}
+    double GetX() {return mX;}
 
     /**
      * Setter for x position
      * @param x pos
      */
-    void setX(double x) { mX = x; }
+    void SetX(double x) { mX = x; }
 
     /**
      * Getter of y position
      * @return y position
      */
-    double getY() {return mY;}
+    double GetY() {return mY;}
 
     /**
      * Setter for y position
      * @param y pos
      */
-    void setY(double y) { mY = y; }
+    void SetY(double y) { mY = y; }
 
     void SetLocation(double x, double y)  override;
 
@@ -60,6 +60,8 @@ public:
      * @return b2Vec2 representing the position of an item.
      */
     b2Vec2 GetPosition() { return b2Vec2(mX, mY); }
+
+    bool HitTest(int x, int y) override;
 
 };
 

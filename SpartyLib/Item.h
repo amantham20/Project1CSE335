@@ -101,6 +101,8 @@ public:
      * @param visitor The visitor we accept
      */
     virtual void Accept(std::shared_ptr<ItemVisitor> visitor) = 0;
+
+    virtual bool HitTest(int x, int y) { return false; };
     
 };
 

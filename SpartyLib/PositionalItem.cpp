@@ -36,3 +36,35 @@ void PositionalItem::SetLocation(double x, double y)
     mX = x;
     mY = y;
 }
+
+/**
+ * Function that checks if this item has been clicked on
+ * @param x x coordinate to test
+ * @param y y coordinate to test
+ * @return True if the item has been clicked on. False otherwise.
+ */
+bool PositionalItem::HitTest(int x, int y)
+{
+    // Get the item's bitmap
+    auto itemBitmap = Item::GetBitMap();
+
+    // Get bitmaps width and height
+    double itemBitmapWidth = itemBitmap->GetWidth();
+    double itemBitmapHeight = itemBitmap->GetHeight();
+
+    // Make x and y relative to the top-left corner of the bitmap image
+    // Subtracting the center makes x, y relative to the image center
+    // Adding half the size makes x, y relative to the image top corner
+    // todo: GetX() and GetY() return position in meters whereas the height and width are size in pixels.
+    double testX = x - GetX() + itemBitmapWidth / 2;
+    double testY = y - GetY() + itemBitmapHeight / 2;
+
+    // Test to see if x, y are in the image
+    if (testX < 0 || testY < 0 || testX >= itemBitmapWidth || testY >= itemBitmapHeight)
+    {
+        // We are outside the image
+        return false;
+    }
+
+    return true;
+}

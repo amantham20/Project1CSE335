@@ -18,8 +18,8 @@
 ScoreDisplay::ScoreDisplay(std::shared_ptr<Level> level, std::shared_ptr<Score> score, double x, double y) : PositionalItem(level)
 {
     mScore = score;
-    PositionalItem::setX(x);
-    PositionalItem::setY(y);
+    PositionalItem::SetX(x);
+    PositionalItem::SetY(y);
 }
 
 /**
@@ -38,7 +38,7 @@ void ScoreDisplay::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 //                wxFONTWEIGHT_NORMAL);
 //    graphics->SetFont(font, wxColour(255,0,0));
 //    graphics->DrawText(wxString::FromDouble(mScore->GetScore(), 0),
-//                       PositionalItem::getX() - wid/2 , PositionalItem::getY() - hit);
+//                       PositionalItem::GetX() - wid/2 , PositionalItem::GetY() - hit);
 //    graphics->PopState();
 }
 
