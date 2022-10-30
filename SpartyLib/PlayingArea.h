@@ -23,6 +23,7 @@ private:
     std::shared_ptr<Physics> mPhysics;
     std::shared_ptr<Score> mScore;
     std::shared_ptr<Score> mTotalScore;
+    std::shared_ptr<TransitionalText> mTransitionalText;
 public:
     std::vector<std::shared_ptr<Item>> GetItem(){ return mItems; };
 

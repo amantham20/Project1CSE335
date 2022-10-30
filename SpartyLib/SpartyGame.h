@@ -9,6 +9,7 @@
 
 #include "Item.h"
 #include "Score.h"
+#include "TransitionalText.h"
 #include "PictureManager.h"
 #include <wx/graphics.h>
 #include "ids.h"

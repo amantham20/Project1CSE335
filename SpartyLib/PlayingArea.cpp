@@ -18,6 +18,7 @@ PlayingArea::PlayingArea(std::shared_ptr<Level> level, std::shared_ptr<Score> to
     //todo incompleated
     mPhysics = std::make_shared<Physics>(level->GetPosition());
     mScore = std::make_shared<Score>(level, 0, 1400, 10);
+    mTransitionalText = std::make_shared<TransitionalText>(level, 1400, 10);
     for(auto item : mItems)
     {
         item->InstallPhysics(mPhysics);
@@ -32,6 +33,7 @@ void PlayingArea::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     }
     mScore->OnDraw(graphics);
     mTotalScore->OnDraw(graphics);
+    mTransitionalText->OnDraw(graphics);
 }
 
 void PlayingArea::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
