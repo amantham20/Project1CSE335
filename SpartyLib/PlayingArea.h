@@ -1,6 +1,6 @@
 /**
  * @file PlayingArea.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  *
  *
  */
@@ -22,12 +22,14 @@ private:
     std::vector<std::shared_ptr<Item>> mItems;
 
     std::shared_ptr<Physics> mPhysics;
+    std::shared_ptr<Score> mScore;
+    std::shared_ptr<Score> mTotalScore;
 public:
     std::vector<std::shared_ptr<Item>> GetItem(){ return mItems; };
 
     /// Default Constructor
     PlayingArea() = delete;
-    PlayingArea(std::vector<std::shared_ptr<Item>> items);
+    PlayingArea(std::shared_ptr<Level> level, std::shared_ptr<Score> totalScore);
 
     /**
      * Destructor

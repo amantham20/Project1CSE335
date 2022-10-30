@@ -1,13 +1,16 @@
 /**
  * @file PlayingArea.cpp
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  */
 
 #include "PlayingArea.h"
 #include "DebugDraw.h"
+#include "Level.h"
 
-PlayingArea::PlayingArea(std::vector<std::shared_ptr<Item>> items) : mItems(items)
+PlayingArea::PlayingArea(std::shared_ptr<Level> level, std::shared_ptr<Score> totalScore) : mItems(level->GetItem()), mTotalScore(totalScore)
 {
+    //todo incompleated
+    mScore = std::make_shared<Score>(level, 0, 1400, 10);
 }
 
 void PlayingArea::Draw(std::shared_ptr<wxGraphicsContext> graphics)
@@ -16,6 +19,8 @@ void PlayingArea::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     {
         item->OnDraw(graphics);
     }
+    mScore->OnDraw(graphics);
+    mTotalScore->OnDraw(graphics);
 }
 
 void PlayingArea::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
