@@ -1,6 +1,9 @@
-//
-// Created by James on 10/30/22.
-//
+/**
+ * @file FoeTracker.h
+ * @author zhiqaing ni
+ *
+ * a class track number of foe
+ */
 
 #ifndef ANGRYSPARTY_FOETRACKER_H
 #define ANGRYSPARTY_FOETRACKER_H

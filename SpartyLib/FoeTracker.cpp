@@ -1,7 +1,7 @@
-//
-// Created by James on 10/30/22.
-//
-
+/**
+ * @file FoeTracker.cpp
+ * @author zhiqiang ni
+ */
 #include "FoeTracker.h"
 #include "Foe.h"
 
