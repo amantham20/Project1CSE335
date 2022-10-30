@@ -45,6 +45,8 @@ void Poly::XmlLoad(wxXmlNode *node)
             mVertices.push_back(b2vertex);
         }
     }
+
+
     BodyItem::XmlLoad(node);
 }
 
@@ -54,8 +56,9 @@ void Poly::XmlLoad(wxXmlNode *node)
  */
 void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    auto position = PositionalItem::GetPosition();
-    auto angle = BodyItem::GetAngle();
+    b2Body* body = BodyItem::GetBody();
+    auto position = body->GetPosition();
+    auto angle = body->GetAngle();
 
     // Find the minimum and maximum x/y values
     b2Vec2 minimums = mVertices[0];
@@ -89,37 +92,42 @@ void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->PopState();
 }
 //
-//void Poly::InstallPhysics(std::shared_ptr<Physics> physics){
-////    mPhysics = physics;
-//    BodyItem::SetPhysics(physics);
-//    b2World* world = physics->GetWorld();
-//
-//    // Create the box
-//    b2PolygonShape box;
-//    auto size = BodyItem::GetSize();
-//    box.SetAsBox(size.x/2, size.y/2);
-////    box.SetAsBox(10,10);
-//
-//    // Create the body definition
-//    b2BodyDef bodyDefinition;
-//    bodyDefinition.position = PositionalItem::GetPosition();
-//    bodyDefinition.angle = BodyItem::GetDAngle();
-//    bodyDefinition.type =  BodyItem::GetStatic() ? b2_staticBody : b2_dynamicBody;
-//    auto body = world->CreateBody(&bodyDefinition);
-//
-//    if( BodyItem::GetStatic())
-//    {
-//        body->CreateFixture(&box, 0.0f);
+void Poly::InstallPhysics(std::shared_ptr<Physics> physics){
+
+    b2World* world = physics->GetWorld();
+
+    // Create the poly
+    const int polySize = mVertices.size();
+    b2PolygonShape poly;
+
+//    const b2Vec2 temp[16];
+//    for (int i = 0; i<mVertices.size(); ++i) {
+//        temp[i] = mVertices[i];
 //    }
-//    else
-//    {
-//        b2FixtureDef fixtureDef;
-//        fixtureDef.shape = &box;
-//        fixtureDef.density = (float) BodyItem::GetDensity();
-//        fixtureDef.friction = (float) BodyItem::GetFriction();
-//        fixtureDef.restitution = (float) BodyItem::GetResolution();
-//
-//        body->CreateFixture(&fixtureDef);
-//    }
-//    BodyItem::SetBody(body);
-//}
+//    const b2Vec2 vert = const_cast<b2Vec2>(temp);
+    poly.Set(&mVertices[0], polySize);
+
+
+    // Create the body definition
+    b2BodyDef bodyDefinition;
+    bodyDefinition.position = PositionalItem::GetPosition();
+    bodyDefinition.angle = BodyItem::GetAngle();
+    bodyDefinition.type =  BodyItem::GetStatic() ? b2_staticBody : b2_dynamicBody;
+    auto body = world->CreateBody(&bodyDefinition);
+
+    if( BodyItem::GetStatic())
+    {
+        body->CreateFixture(&poly, 0.0f);
+    }
+    else
+    {
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &poly;
+        fixtureDef.density = (float) BodyItem::GetDensity();
+        fixtureDef.friction = (float) BodyItem::GetFriction();
+        fixtureDef.restitution = (float) BodyItem::GetResolution();
+
+        body->CreateFixture(&fixtureDef);
+    }
+    BodyItem::SetBody(body);
+}
