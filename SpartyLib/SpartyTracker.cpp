@@ -15,7 +15,6 @@ void SpartyTracker::VisitHelmetSparty(HelmetSparty* helmetSparty)
     mSparties.push_back(helmetSparty);
     mNumSparty++;
 }
-
 /**
  * Visit a GruffSpartu object
  * @param gruffSparty Angry Spartu we are visiting
