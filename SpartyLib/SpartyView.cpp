@@ -115,7 +115,6 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
     mSpartyGame.OnDraw(graphics, size.GetWidth(), size.GetHeight());
 
-
     if(mDebug)
     {
         // Draw outlines around each of the on-screen item

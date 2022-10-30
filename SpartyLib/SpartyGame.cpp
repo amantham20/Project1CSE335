@@ -99,15 +99,7 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
 
     // Draw current level
     //mLevels[mCurrentLevel]->OnDraw(graphics);
-
-    //to make clear i fell this should go in  update
-    if(mPlayingArea == NULL)
-    {
-        mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel)->GetItem());
-    } else
-    {
-        mPlayingArea->Draw(graphics);
-    }
+    Update(graphics);
     //todo: uncompleted working code don't know put where
     shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
     shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
@@ -311,7 +303,13 @@ void SpartyGame::Update(double frameDuration){
 
 }
 
-void SpartyGame::Update()
+void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
 {
-
+    if(mPlayingArea == NULL)
+    {
+        mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel)->GetItem());
+    } else
+    {
+        mPlayingArea->Draw(graphics);
+    }
 }

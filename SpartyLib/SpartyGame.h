@@ -64,6 +64,9 @@ public:
 
     void Update();
 
+    void Update(std::shared_ptr<wxGraphicsContext> graphics, double frameDuration);
+
+    void Update(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
