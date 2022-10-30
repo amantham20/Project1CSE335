@@ -172,6 +172,7 @@ void SpartyView::OnLevelOpen(wxCommandEvent& event)
             break;
         }
     }
+    mSpartyGame.Reset();
     Refresh();
 }
 

@@ -286,7 +286,8 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
 void SpartyGame::Reset()
 {
-    //mItems.clear();
+    mPlayingArea.reset();
+    mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel)->GetItem());
 }
 
 //todo delete? should done in playingarea
@@ -308,7 +309,7 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
 {
     if(mPlayingArea == NULL)
     {
-        mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel)->GetItem());
+        Reset();
     }
     mPlayingArea->Draw(graphics);
 
@@ -317,6 +318,5 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     if(visitor->GetNumberFoe() <= 0)
     {
         mCurrentLevel++;
-        mPlayingArea.reset();
     }
 }
