@@ -67,5 +67,8 @@ bool PositionalItem::HitTest(int x, int y)
         return false;
     }
 
-    return true;
+    // Test to see if x, y are in the drawn part of the image
+    // If the location is transparent, we are not in the drawn
+    // part of the image
+    return !itemImage->IsTransparent((int)testX, (int)testY);
 }
