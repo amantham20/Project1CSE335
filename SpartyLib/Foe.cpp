@@ -74,8 +74,8 @@ void Foe::InstallPhysics(std::shared_ptr<Physics> physics) {
             { 0.5/2 ,  -0.0 },
     };
 
-    b2PolygonShape OctaSexy;
-    OctaSexy.Set(vertices, Octa);
+    b2PolygonShape Octagon;
+    Octagon.Set(vertices, Octa);
 
     b2BodyDef bodyDefinition;
     bodyDefinition.position = PositionalItem::GetPosition();
@@ -85,12 +85,12 @@ void Foe::InstallPhysics(std::shared_ptr<Physics> physics) {
 
     if( BodyItem::GetStatic())
     {
-        body->CreateFixture(&OctaSexy, 0.0f);
+        body->CreateFixture(&Octagon, 0.0f);
     }
     else
     {
         b2FixtureDef fixtureDef;
-        fixtureDef.shape = &OctaSexy;
+        fixtureDef.shape = &Octagon;
         fixtureDef.density = (float) BodyItem::GetDensity();
         fixtureDef.friction = (float) BodyItem::GetFriction();
         fixtureDef.restitution = (float) BodyItem::GetResolution();

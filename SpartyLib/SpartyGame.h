@@ -46,7 +46,7 @@ private:
 //    b2World mWorld = b2World(b2Vec2(0, -9.8));
 
 //Physics mPhysics;
-    std::shared_ptr<Physics> mPhysics;
+
 
     bool mDebug = true;
     
