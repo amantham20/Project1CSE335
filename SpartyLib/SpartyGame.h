@@ -14,6 +14,7 @@
 #include "ids.h"
 #include "ItemVisitor.h"
 #include "Physics.h"
+class PlayingArea;
 
 /**
  * Base AngrySparty Game Class
@@ -46,9 +47,10 @@ private:
 
 //Physics mPhysics;
     std::shared_ptr<Physics> mPhysics;
+
+    std::shared_ptr<PlayingArea> mPlayingArea;
 public:
     SpartyGame();
-
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
     void Load(const wxString& filename);
@@ -59,6 +61,8 @@ public:
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
     void Update(double val);
+
+    void Update();
 
 };
 

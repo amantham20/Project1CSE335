@@ -17,7 +17,7 @@
 #include "HelmetSparty.h"
 #include "GruffSparty.h"
 #include "SpartyTracker.h"
-#include "sstream"
+#include "PlayingArea.h"
 #include "DebugDraw.h"
 
 #include <wx/graphics.h>
@@ -98,18 +98,27 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     //
 
     // Draw current level
-    mLevels[mCurrentLevel]->OnDraw(graphics);
+    //mLevels[mCurrentLevel]->OnDraw(graphics);
 
+    //to make clear i fell this should go in  update
+    if(mPlayingArea == NULL)
+    {
+        mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel)->GetItem());
+    } else
+    {
+        mPlayingArea->Draw(graphics);
+    }
     //todo: uncompleted working code don't know put where
     shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
     shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
     a->OnDraw(graphics);
     b->OnDraw(graphics);
+
+    //todo next line should be playing area
     DebugOnDraw(graphics);
     graphics->PopState();
 
 }
-
 
 /**
  * Loads the contents of the xml file into the SpartyGame
@@ -287,12 +296,9 @@ void SpartyGame::Reset()
     //mItems.clear();
 }
 
+//todo delete? should done in playingarea
 void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    // Draw the background
-    // Draw the items
-
-
     DebugDraw debugDraw(graphics);
     debugDraw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit);
     mPhysics->GetWorld()->SetDebugDraw(&debugDraw);
@@ -301,5 +307,11 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
 void SpartyGame::Update(double frameDuration){
     mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
+
+
 }
 
+void SpartyGame::Update()
+{
+
+}
