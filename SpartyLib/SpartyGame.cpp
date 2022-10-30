@@ -1,6 +1,6 @@
 /**
  * @file SpartyGame.cpp
- * @author Rajmeet Singh Chandok, Milan Mihailovic
+ * @author Rajmeet Singh Chandok, Milan Mihailovic, zhiqiang ni
  *
  */
 
@@ -11,7 +11,6 @@
 #include "Background.h"
 #include "WoodenSlingshot.h"
 #include "Goalpost.h"
-#include "ScoreDisplay.h"
 #include "Poly.h"
 #include "Foe.h"
 #include "HelmetSparty.h"
@@ -41,9 +40,6 @@ SpartyGame::SpartyGame() //:mPhysics(b2Vec2(14.22,8))
 {
     mPhysics = make_shared<Physics>(b2Vec2(14.22,8));
 //    mPhysics = make_shared<Physics>(b2Vec2(14.22*Consts::MtoCM,8*Consts::MtoCM));
-
-
-    mTotalScore = std::make_shared<Score>(0);
 
     mPictureCache = std::make_shared<PictureManager>();
 
@@ -101,11 +97,11 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // Draw current level
     //mLevels[mCurrentLevel]->OnDraw(graphics);
     Update(graphics);
-    //todo: uncompleted working code don't know put where
-    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
-    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
-    a->OnDraw(graphics);
-    b->OnDraw(graphics);
+    //todo: delete
+    //shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
+    //shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
+    //a->OnDraw(graphics);
+    //->OnDraw(graphics);
 
     //todo next line should be playing area
     DebugOnDraw(graphics);
@@ -287,7 +283,13 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 void SpartyGame::Reset()
 {
     mPlayingArea.reset();
-    mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel)->GetItem());
+    double score = 0;
+    if(mTotalScore != NULL)
+    {
+        score = mTotalScore->GetScore();
+    }
+    mTotalScore = std::make_shared<Score>(mLevels.at(mCurrentLevel), score, 10 ,10);
+    mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel), mTotalScore);
 }
 
 //todo delete? should done in playingarea

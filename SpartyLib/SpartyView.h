@@ -8,7 +8,6 @@
 #ifndef ANGRYSPARTY_SPARTYVIEW_H
 #define ANGRYSPARTY_SPARTYVIEW_H
 
-#include "ScoreDisplay.h"
 #include "b2_math.h"
 #include "SpartyGame.h"
 

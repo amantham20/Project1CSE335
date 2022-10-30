@@ -1,6 +1,6 @@
 /**
  * @file SpartyGame.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  * SpartyGame Class
  */
 
@@ -49,6 +49,7 @@ private:
     std::shared_ptr<Physics> mPhysics;
 
     std::shared_ptr<PlayingArea> mPlayingArea;
+
 public:
     SpartyGame();
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
