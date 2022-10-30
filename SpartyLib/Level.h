@@ -71,6 +71,8 @@ public:
     void ReloadSlingshot();
 
     void Accept(std::shared_ptr<ItemVisitor> visitor);
+
+    std::shared_ptr<Item> HitTest(int x, int y);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

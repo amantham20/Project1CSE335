@@ -83,3 +83,13 @@ void Level::Accept(std::shared_ptr<ItemVisitor> visitor)
         item->Accept(visitor);
     }
 }
+
+/**
+ * Checks if an item in the level has been clicked
+ * @param x
+ * @param y
+ */
+std::shared_ptr<Item> Level::HitTest(int x, int y)
+{
+
+}
