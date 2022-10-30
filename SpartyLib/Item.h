@@ -81,10 +81,18 @@ public:
      * @return ImageBitmap for the item
      */
     virtual std::shared_ptr<wxBitmap> GetBitMap(){
-//        return mItemBitmap;
-//        return mPicture->GetBitmap();
         return mPictureCache->GetBitmap(mFileName);
     }
+
+    /**
+     * Getter for the item's image
+     *
+     * @return ImageBitmap for the item
+     */
+    virtual std::shared_ptr<wxImage> GetImage(){
+        return mPictureCache->GetImage(mFileName);
+    }
+
     //virtual void Update(double elapsed){};
 
     //virtual void Update(std::shared_ptr<wxGraphicsContext> graphics);

@@ -45,8 +45,9 @@ void PositionalItem::SetLocation(double x, double y)
  */
 bool PositionalItem::HitTest(int x, int y)
 {
-    // Get the item's bitmap
+    // Get the item's bitmap and image
     auto itemBitmap = Item::GetBitMap();
+    auto itemImage = Item::GetImage();
 
     // Get bitmaps width and height
     double itemBitmapWidth = itemBitmap->GetWidth();
