@@ -105,7 +105,10 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
     a->OnDraw(graphics);
     b->OnDraw(graphics);
-    DebugOnDraw(graphics);
+    if(mDebug){
+        DebugOnDraw(graphics);
+    }
+
     graphics->PopState();
 
 }

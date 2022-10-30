@@ -14,7 +14,6 @@
 #include "ids.h"
 #include "ItemVisitor.h"
 #include "Physics.h"
-
 /**
  * Base AngrySparty Game Class
  */
@@ -46,6 +45,8 @@ private:
 
 //Physics mPhysics;
     std::shared_ptr<Physics> mPhysics;
+
+    bool mDebug = true;
 public:
     SpartyGame();
 
@@ -59,6 +60,8 @@ public:
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
     void Update(double val);
+
+    void SetDebug(bool debug){mDebug = debug;};
 
 };
 
