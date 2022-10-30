@@ -55,6 +55,9 @@ void SpartyView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_UPDATE_UI, &SpartyView::OnUpdateDebugMode, this, IDM_DEBUG);
     //todo: not complete code
 
+    // Bind mouse event handlers
+    Bind(wxEVT_LEFT_DOWN, &SpartyView::OnLeftDown, this);
+
     // Load Level files
     LoadLevels();
 
@@ -185,4 +188,13 @@ void SpartyView::OnDebugMode(wxCommandEvent& event)
 void SpartyView::OnUpdateDebugMode(wxUpdateUIEvent& event)
 {
     event.Check(mDebug);
+}
+
+/**
+ * Handle the left mouse button down event
+ * @param event
+ */
+void SpartyView::OnLeftDown(wxMouseEvent &event)
+{
+
 }
