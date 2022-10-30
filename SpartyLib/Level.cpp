@@ -18,7 +18,6 @@
  */
 Level::Level(SpartyGame *spartyGame) : mSpartyGame(spartyGame)
 {
-    mLevelScore = std::make_shared<Score>(0);
 }
 
 /**

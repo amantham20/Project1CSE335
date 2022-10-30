@@ -73,7 +73,7 @@ void SpartyView::LoadLevels() {
 
 //    wxString levelOneFilename = L"levels/level1.xml";
 //    mSpartyGame.Load(levelOneFilename);
-//
+
 //    wxString levelTwoFilename = L"levels/level2.xml";
 //    mSpartyGame.Load(levelTwoFilename);
 //
@@ -172,6 +172,7 @@ void SpartyView::OnLevelOpen(wxCommandEvent& event)
             break;
         }
     }
+    mSpartyGame.Reset();
     Refresh();
 }
 
@@ -187,6 +188,7 @@ void SpartyView::OnLevelOpen(wxCommandEvent& event)
 void SpartyView::OnDebugMode(wxCommandEvent& event)
 {
     mDebug = !mDebug;
+    mSpartyGame.SetDebug(mDebug);
 }
 
 /**

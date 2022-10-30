@@ -1,6 +1,6 @@
 /**
  * @file SpartyGame.cpp
- * @author Rajmeet Singh Chandok, Milan Mihailovic
+ * @author Rajmeet Singh Chandok, Milan Mihailovic, zhiqiang ni
  *
  */
 
@@ -11,14 +11,14 @@
 #include "Background.h"
 #include "WoodenSlingshot.h"
 #include "Goalpost.h"
-#include "ScoreDisplay.h"
 #include "Poly.h"
 #include "Foe.h"
 #include "HelmetSparty.h"
 #include "GruffSparty.h"
 #include "SpartyTracker.h"
-#include "sstream"
+#include "PlayingArea.h"
 #include "DebugDraw.h"
+#include "FoeTracker.h"
 
 #include <wx/graphics.h>
 
@@ -40,9 +40,6 @@ SpartyGame::SpartyGame() //:mPhysics(b2Vec2(14.22,8))
 {
     mPhysics = make_shared<Physics>(b2Vec2(14.22,8));
 //    mPhysics = make_shared<Physics>(b2Vec2(14.22*Consts::MtoCM,8*Consts::MtoCM));
-
-
-    mTotalScore = std::make_shared<Score>(0);
 
     mPictureCache = std::make_shared<PictureManager>();
 
@@ -98,18 +95,27 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     //
 
     // Draw current level
-    mLevels[mCurrentLevel]->OnDraw(graphics);
+    //mLevels[mCurrentLevel]->OnDraw(graphics);
+    Update(graphics);
+    //todo: delete
+    //shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
+    //shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
+    //a->OnDraw(graphics);
+    //->OnDraw(graphics);
 
     //todo: uncompleted working code don't know put where
-    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
-    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
-    a->OnDraw(graphics);
-    b->OnDraw(graphics);
-    DebugOnDraw(graphics);
+//    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
+//    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
+//    a->OnDraw(graphics);
+//    b->OnDraw(graphics);
+
+    if(mDebug){
+        DebugOnDraw(graphics);
+    }
+
     graphics->PopState();
 
 }
-
 
 /**
  * Loads the contents of the xml file into the SpartyGame
@@ -284,15 +290,19 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
 void SpartyGame::Reset()
 {
-    //mItems.clear();
+    mPlayingArea.reset();
+    double score = 0;
+    if(mTotalScore != NULL)
+    {
+        score = mTotalScore->GetScore();
+    }
+    mTotalScore = std::make_shared<Score>(mLevels.at(mCurrentLevel), score, 10 ,10);
+    mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel), mTotalScore);
 }
 
+//todo delete? should done in playingarea
 void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    // Draw the background
-    // Draw the items
-
-
     DebugDraw debugDraw(graphics);
     debugDraw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit);
     mPhysics->GetWorld()->SetDebugDraw(&debugDraw);
@@ -301,5 +311,22 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
 void SpartyGame::Update(double frameDuration){
     mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
+
+
 }
 
+void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    if(mPlayingArea == NULL)
+    {
+        Reset();
+    }
+    mPlayingArea->Draw(graphics);
+
+    std::shared_ptr<FoeTracker> visitor = std::make_shared<FoeTracker>();
+    mPlayingArea->Accept(visitor);
+    if(visitor->GetNumberFoe() <= 0)
+    {
+        mCurrentLevel++;
+    }
+}

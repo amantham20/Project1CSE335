@@ -34,9 +34,6 @@ private:
     /// All of the items in the level
     std::vector<std::shared_ptr<Item>> mItems;
 
-    /// an pointer for score
-    std::shared_ptr<Score> mLevelScore;
-
     /// A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
 
@@ -61,8 +58,6 @@ public:
     double GetWidth(){return mWidth;}
 
     void LoadXMLLevel(wxXmlNode *node);
-
-    std::shared_ptr<Score> GetScore() { return mLevelScore; };
 
     b2Vec2 GetPlayAreaSize(){return b2Vec2(mWidth, mHeight);}
 

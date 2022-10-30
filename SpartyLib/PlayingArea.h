@@ -1,6 +1,6 @@
 /**
  * @file PlayingArea.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  *
  *
  */
@@ -9,19 +9,31 @@
 #define ANGRYSPARTY_PLAYINGAREA_H
 
 #include "Item.h"
+#include "SpartyGame.h"
+#include "ItemVisitor.h"
 
 class PlayingArea {
 private:
     /// Current Score
     int mCurrentScore;
 
+    SpartyGame mSpartyGame;
     /// Items copied from Level
     std::vector<std::shared_ptr<Item>> mItems;
+
+    std::shared_ptr<Physics> mPhysics;
+    std::shared_ptr<Score> mScore;
+    std::shared_ptr<Score> mTotalScore;
 public:
+    std::vector<std::shared_ptr<Item>> GetItem(){ return mItems; };
+
     /// Default Constructor
     PlayingArea() = delete;
-    PlayingArea(std::vector<std::shared_ptr<Item>> items);
-    /// Destructor
+    PlayingArea(std::shared_ptr<Level> level, std::shared_ptr<Score> totalScore);
+
+    /**
+     * Destructor
+     */
     ~PlayingArea(){}
 
     /// Copy constructor (disabled)
@@ -38,6 +50,9 @@ public:
      */
     void SetCurrentScore(int score) { mCurrentScore = score; }
 
+    void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+
+    void Accept(std::shared_ptr<ItemVisitor> visitor);
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H

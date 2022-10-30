@@ -1,6 +1,6 @@
 /**
  * @file SpartyGame.h
- * @author Rajmeet Singh Chandok
+ * @author Rajmeet Singh Chandok, zhiqiang ni
  * SpartyGame Class
  */
 
@@ -14,6 +14,7 @@
 #include "ids.h"
 #include "ItemVisitor.h"
 #include "Physics.h"
+class PlayingArea;
 
 /**
  * Base AngrySparty Game Class
@@ -46,9 +47,13 @@ private:
 
 //Physics mPhysics;
     std::shared_ptr<Physics> mPhysics;
+
+    bool mDebug = true;
+    
+    std::shared_ptr<PlayingArea> mPlayingArea;
+
 public:
     SpartyGame();
-
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
     void Load(const wxString& filename);
@@ -60,6 +65,13 @@ public:
 
     void Update(double val);
 
+    void SetDebug(bool debug){mDebug = debug;};
+
+    void Update();
+
+    void Update(std::shared_ptr<wxGraphicsContext> graphics, double frameDuration);
+
+    void Update(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

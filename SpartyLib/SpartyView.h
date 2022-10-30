@@ -8,7 +8,6 @@
 #ifndef ANGRYSPARTY_SPARTYVIEW_H
 #define ANGRYSPARTY_SPARTYVIEW_H
 
-#include "ScoreDisplay.h"
 #include "b2_math.h"
 #include "SpartyGame.h"
 
@@ -32,7 +31,7 @@ private:
     SpartyGame mSpartyGame;
 
 
-    bool mDebug = true;
+    bool mDebug = false;
     void LoadLevels();
 public:
     void Initialize(wxFrame* parent);
