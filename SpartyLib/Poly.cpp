@@ -99,12 +99,6 @@ void Poly::InstallPhysics(std::shared_ptr<Physics> physics){
     // Create the poly
     const int polySize = mVertices.size();
     b2PolygonShape poly;
-
-//    const b2Vec2 temp[16];
-//    for (int i = 0; i<mVertices.size(); ++i) {
-//        temp[i] = mVertices[i];
-//    }
-//    const b2Vec2 vert = const_cast<b2Vec2>(temp);
     poly.Set(&mVertices[0], polySize);
 
 
