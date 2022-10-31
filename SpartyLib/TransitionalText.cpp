@@ -30,6 +30,11 @@ void TransitionalText::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
             wxFONTSTYLE_NORMAL,
             wxFONTWEIGHT_BOLD);
     graphics->SetFont(font, wxColour(0,0,255));
-    graphics->DrawText("Level X Begin", PositionalItem::getX() - wid - 245, PositionalItem::getY() - hit + 345);
+//    graphics->DrawText("Level X Begin", PositionalItem::getX() - wid - 245, PositionalItem::getY() - hit + 345);
+    double textWidth = 0;
+    double textHeight = 0;
+    graphics->GetTextExtent(L"Level 1 Begin", &textWidth, &textHeight);
+    graphics->DrawText("Level X Begin", 0-textWidth/2, -hit/2-textHeight/2);
+
     graphics->PopState();
 }
