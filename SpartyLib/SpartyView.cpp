@@ -216,6 +216,13 @@ void SpartyView::OnLeftUp(wxMouseEvent &event)
 */
 void SpartyView::OnMouseMove(wxMouseEvent &event)
 {
+    double scale = mSpartyGame.GetScale();
+    double xOffset = mSpartyGame.GetXOffset();
+    double yOffset = mSpartyGame.GetYOffset();
+
+    double metersX = (event.m_x / scale - xOffset) / Consts::MtoCM;
+    double metersY = (event.m_y / -scale - yOffset) / Consts::MtoCM;
+
     // See if an item is currently being moved by the mouse
     if (mGrabbedSparty != nullptr)
     {
@@ -223,7 +230,7 @@ void SpartyView::OnMouseMove(wxMouseEvent &event)
         // move it while the left button is down.
         if (event.LeftIsDown())
         {
-//            mGrabbedSparty->SetLocation(event.GetX(), event.GetY());
+            mGrabbedSparty->SetLocation(metersX, metersY);
         }
         else
         {
