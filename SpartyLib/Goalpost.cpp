@@ -39,6 +39,11 @@ void Goalpost::XmlLoad(wxXmlNode *node)
     auto position = PositionalItem::GetPosition();
     Slingshot::SetXLoadSpot(position.x+0.5);
     Slingshot::SetYLoadSpot(position.y+2.5);
+
+    Slingshot::SetXLeftAttachment(-5.4*Consts::MtoCM);
+    Slingshot::SetYLeftAttachment(2.7*Consts::MtoCM);
+    Slingshot::SetXRightAttachment(-4.6*Consts::MtoCM);
+    Slingshot::SetYRightAttachment(2.8*Consts::MtoCM);
 }
 
 /**
@@ -48,6 +53,14 @@ void Goalpost::XmlLoad(wxXmlNode *node)
 void Goalpost::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Slingshot::OnDraw(graphics);
+
+    // Draw slingshot rubber band
+    wxPen pen(wxColour(41,13,1), 20);
+    graphics->SetPen(pen);
+    wxGraphicsPath path = graphics->CreatePath();
+    path.MoveToPoint(Slingshot::GetXLeftAttachment(), Slingshot::GetYLeftAttachment());
+    path.AddLineToPoint(Slingshot::GetXRightAttachment(), Slingshot::GetYRightAttachment());
+    graphics->StrokePath(path);
 }
 
 /**

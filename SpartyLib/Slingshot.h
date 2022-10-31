@@ -19,8 +19,20 @@
  */
 class Slingshot : public PositionalItem {
 private:
+    /// x coordinate of the loading spot in meters
     double mXLoadSpot = 0;
+    /// y coordinate of the loading spot in meters
     double mYLoadSpot = 0;
+
+    /// x coordinate of the left attachment point for the rubber band in meters
+    double mXLeftAttachment = 0;
+    /// y coordinate of the left attachment point for the rubber band in meters
+    double mYLeftAttachment = 0;
+
+    /// x coordinate of the right attachment point for the rubber band in meters
+    double mXRightAttachment = 0;
+    /// y coordinate of the right attachment point for the rubber band in meters
+    double mYRightAttachment = 0;
 
 public:
 
@@ -53,6 +65,54 @@ public:
     * Sets the y position of the loading spot
     */
     void SetYLoadSpot(double y) {mYLoadSpot = y;};
+
+    /**
+     * Gets the x coordinate of the left attachment point
+     * @return x coordinate of the left attachment point
+     */
+    double GetXLeftAttachment() {return mXLeftAttachment;};
+
+    /**
+     * Gets the y coordinate of the left attachment point
+     * @return y coordinate of the left attachment point
+     */
+    double GetYLeftAttachment() {return mYLeftAttachment;};
+
+    /**
+     * Gets the x coordinate of the right attachment point
+     * @return x coordinate of the right attachment point
+     */
+    double GetXRightAttachment() {return mXRightAttachment;};
+
+    /**
+     * Gets the y coordinate of the right attachment point
+     * @return y coordinate of the right attachment point
+     */
+    double GetYRightAttachment() {return mYRightAttachment;};
+
+    /**
+     * Sets the x coordinate of the left attachment point
+     * @param x new x coordinate for the left attachment point for the rubber bands
+     */
+    void SetXLeftAttachment(double x) {mXLeftAttachment = x;};
+
+    /**
+     * Sets the y coordinate of the left attachment point
+     * @param y new y coordinate for the left attachment point for the rubber band
+     */
+    void SetYLeftAttachment(double y) {mYLeftAttachment = y;};
+
+    /**
+     * Sets the x coordinate of the right attachment point
+     * @param x new x coordinate for the right attachment point for the rubber band
+     */
+    void SetXRightAttachment(double x) {mXRightAttachment = x;};
+
+    /**
+     * Sets the y coordinate of the right attachment point
+     * @param y new y coordinate for the right attachment point for the rubber bands
+     */
+    void SetYRightAttachment(double y) {mYRightAttachment = y;};
 };
 
 #endif //ANGRYSPARTY_SLINGSHOT_H
