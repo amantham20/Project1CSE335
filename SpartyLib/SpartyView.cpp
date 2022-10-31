@@ -57,6 +57,8 @@ void SpartyView::Initialize(wxFrame* parent)
 
     // Bind mouse event handlers
     Bind(wxEVT_LEFT_DOWN, &SpartyView::OnLeftDown, this);
+    Bind(wxEVT_LEFT_UP, &SpartyView::OnLeftUp, this);
+    Bind(wxEVT_MOTION, &SpartyView::OnMouseMove, this);
 
     // Load Level files
     LoadLevels();
@@ -198,4 +200,40 @@ void SpartyView::OnLeftDown(wxMouseEvent &event)
 {
     mGrabbedItem = mSpartyGame.HitTest(event.GetX(), event.GetY());
     int i = 0;
+}
+
+/**
+* Handle the left mouse button down event
+* @param event
+*/
+void SpartyView::OnLeftUp(wxMouseEvent &event)
+{
+    OnMouseMove(event);
+}
+
+/**
+* Handle the left mouse button down event
+* @param event
+*/
+void SpartyView::OnMouseMove(wxMouseEvent &event)
+{
+    // See if an item is currently being moved by the mouse
+    if (mGrabbedItem != nullptr)
+    {
+        // If an item is being moved, we only continue to
+        // move it while the left button is down.
+        if (event.LeftIsDown())
+        {
+//            mGrabbedItem->SetLocation(event.GetX(), event.GetY());
+        }
+        else
+        {
+            // When the left button is released, we release the
+            // item.
+            mGrabbedItem = nullptr;
+        }
+
+        // Force the screen to redraw
+        Refresh();
+    }
 }

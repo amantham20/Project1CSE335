@@ -49,6 +49,8 @@ public:
     void OnUpdateDebugMode(wxUpdateUIEvent& event);
 
     void OnLeftDown(wxMouseEvent& event);
+    void OnMouseMove(wxMouseEvent& event);
+    void OnLeftUp(wxMouseEvent &event);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H
