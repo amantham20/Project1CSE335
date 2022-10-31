@@ -5,6 +5,8 @@
 
 #include "pch.h"
 #include "PositionalItem.h"
+#include "Level.h"
+#include "Consts.h"
 
 /**
  * PositionalItem constructor
@@ -50,15 +52,24 @@ bool PositionalItem::HitTest(int x, int y)
     auto itemImage = Item::GetImage();
 
     // Get bitmaps width and height
-    double itemBitmapWidth = itemBitmap->GetWidth();
-    double itemBitmapHeight = itemBitmap->GetHeight();
+    double itemBitmapWidth = itemBitmap->GetWidth()*0.5;
+    double itemBitmapHeight = itemBitmap->GetHeight()*0.5;
 
     // Make x and y relative to the top-left corner of the bitmap image
     // Subtracting the center makes x, y relative to the image center
     // Adding half the size makes x, y relative to the image top corner
-    // todo: GetX() and GetY() return position in meters whereas the height and width are size in pixels.
-    double testX = x - GetX() + itemBitmapWidth / 2;
-    double testY = y - GetY() + itemBitmapHeight / 2;
+
+    // Get the item's level and scale factor centimeters pixel
+    std::shared_ptr<Level> level = Item::GetLevel();
+    double scale = level->GetGameScale();
+
+    // Get item's position in pixels
+    double screenX = (GetX() * Consts::MtoCM + level->GetGameXOffset()) * scale;
+    double screenY = (GetY() * Consts::MtoCM + level->GetGameYOffset()) * -scale;
+
+    // Get position to test
+    double testX = x - screenX + itemBitmapWidth / 2;
+    double testY = y - screenY + itemBitmapHeight / 2;
 
     // Test to see if x, y are in the image
     if (testX < 0 || testY < 0 || testX >= itemBitmapWidth || testY >= itemBitmapHeight)

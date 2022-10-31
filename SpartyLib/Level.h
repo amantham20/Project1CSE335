@@ -13,8 +13,8 @@
 #include "Score.h"
 #include "ItemVisitor.h"
 #include "SpartyTracker.h"
+#include "SpartyGame.h"
 
-class SpartyGame;
 class Item;
 class Slingshot;
 
@@ -29,7 +29,7 @@ private:
     double mWidth = 0;
 
     ///an pointer to sparty game
-    SpartyGame *mSpartyGame;
+    std::shared_ptr<SpartyGame> mSpartyGame;
 
     /// All of the items in the level
     std::vector<std::shared_ptr<Item>> mItems;
@@ -73,6 +73,11 @@ public:
     void Accept(std::shared_ptr<ItemVisitor> visitor);
 
     std::shared_ptr<Item> HitTest(int x, int y);
+
+    double GetGameScale() {return mSpartyGame->GetScale();}
+
+    double GetGameXOffset() {return mSpartyGame->GetXOffset();}
+    double GetGameYOffset() {return mSpartyGame->GetYOffset();}
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

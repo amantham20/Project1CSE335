@@ -86,8 +86,8 @@ void Level::Accept(std::shared_ptr<ItemVisitor> visitor)
 
 /**
  * Checks if an item in the level has been clicked
- * @param x
- * @param y
+ * @param x x coordinate to test
+ * @param y y coordinate to test
  */
 std::shared_ptr<Item> Level::HitTest(int x, int y)
 {

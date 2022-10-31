@@ -29,7 +29,7 @@ private:
     ///Image Cache
     std::shared_ptr<PictureManager> mPictureCache;
 
-    /// offsets
+    /// offsets in centimeters
     double mXOffset, mYOffset;
 
     void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
@@ -63,6 +63,18 @@ public:
      * @return
      */
     double GetScale() {return mScale;};
+
+    /**
+     * Getter for the x offset
+     * @return x offset in centimeters
+     */
+    double GetXOffset() {return mXOffset;};
+
+    /**
+     * Getter for the y offset
+     * @return y offset in centimeters
+     */
+    double GetYOffset() {return mYOffset;};
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

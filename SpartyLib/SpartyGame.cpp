@@ -282,6 +282,12 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
 }
 
+/**
+ * Runs a hit test on the current level to determine if an item has been clicked on
+ * @param x x coordinate
+ * @param y y coordinate
+ * @return A pointer to an item that has been clicked on. Nullptr if no item has been clicked on.
+ */
 std::shared_ptr<Item> SpartyGame::HitTest(int x, int y)
 {
     // Return the current level's hit test
