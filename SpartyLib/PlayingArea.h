@@ -14,40 +14,38 @@
 
 class PlayingArea {
 private:
-    /// Current Score
-    int mCurrentScore;
-    SpartyGame mSpartyGame;
     /// Items copied from Level
     std::vector<std::shared_ptr<Item>> mItems;
 
+    ///physic for the level object
     std::shared_ptr<Physics> mPhysics;
+
+    ///level score object
     std::shared_ptr<Score> mScore;
+
+    ///total score object
     std::shared_ptr<Score> mTotalScore;
+
+    ///text object between level
     std::shared_ptr<TransitionalText> mTransitionalText;
 public:
-    std::vector<std::shared_ptr<Item>> GetItem(){ return mItems; };
-
     /// Default Constructor
     PlayingArea() = delete;
-    PlayingArea(std::shared_ptr<Level> level, std::shared_ptr<Score> totalScore);
+    PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Score> totalScore);
 
     /**
      * Destructor
      */
-    ~PlayingArea(){}
+    ~PlayingArea();
 
     /// Copy constructor (disabled)
     PlayingArea(const PlayingArea &) = delete;
 
-    /**
-     * Getter for current score
-     */
-    int GetCurrentScore() { return mCurrentScore; }
-    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+    void Draw(const std::shared_ptr<wxGraphicsContext>& graphics);
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
-    void Accept(std::shared_ptr<ItemVisitor> visitor);
+    void Accept(const std::shared_ptr<ItemVisitor>& visitor);
 
     void Update(double frameDuration);
 };
