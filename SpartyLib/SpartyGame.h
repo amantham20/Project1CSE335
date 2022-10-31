@@ -15,6 +15,8 @@
 #include "ItemVisitor.h"
 #include "Physics.h"
 
+class Angry;
+
 /**
  * Base AngrySparty Game Class
  */
@@ -56,7 +58,7 @@ public:
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
-    std::shared_ptr<Item> HitTest(int x, int y);
+    Angry* HitTest(int x, int y);
 
     /**
      * Getter for the centimeter pixel scale factor

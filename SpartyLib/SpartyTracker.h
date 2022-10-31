@@ -38,6 +38,7 @@ public:
 
     void ReloadSlingshot(std::shared_ptr<Slingshot> slingshot);
 
+    Angry* HitTest(int x, int y);
 };
 
 #endif //ANGRYSPARTY_SPARTYTRACKER_H

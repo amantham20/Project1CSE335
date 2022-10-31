@@ -18,6 +18,7 @@ class Item;
 class Slingshot;
 class SpartyTracker;
 class Picture;
+class Angry;
 
 /**
  * Level class describing a level object in the game
@@ -73,7 +74,7 @@ public:
 
     void Accept(std::shared_ptr<ItemVisitor> visitor);
 
-    std::shared_ptr<Item> HitTest(int x, int y);
+    Angry* HitTest(int x, int y);
 
     double GetGameScale() {return mSpartyGame->GetScale();}
 

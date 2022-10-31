@@ -89,15 +89,7 @@ void Level::Accept(std::shared_ptr<ItemVisitor> visitor)
  * @param x x coordinate to test
  * @param y y coordinate to test
  */
-std::shared_ptr<Item> Level::HitTest(int x, int y)
+Angry* Level::HitTest(int x, int y)
 {
-    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
-    {
-        if ((*i)->HitTest(x, y))
-        {
-            return *i;
-        }
-    }
-
-    return  nullptr;
+    return mSpartyTracker->HitTest(x, y);
 }

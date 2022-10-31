@@ -12,6 +12,7 @@
 #include "b2_math.h"
 #include "SpartyGame.h"
 
+class Angry;
 /**
  * View class used to display game on screen
  */
@@ -32,7 +33,7 @@ private:
     SpartyGame mSpartyGame;
 
     // Item that the user is currently grabbing
-    std::shared_ptr<Item> mGrabbedItem;
+    Angry* mGrabbedSparty;
 
     bool mDebug = false;
     void LoadLevels();
