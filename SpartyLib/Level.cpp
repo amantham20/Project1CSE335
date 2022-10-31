@@ -56,9 +56,9 @@ void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
  */
 void Level::ReloadSlingshot()
 {
-    std::shared_ptr<SpartyTracker> visitor = std::make_shared<SpartyTracker>();
-    Accept(visitor);
-    visitor->ReloadSlingshot(mSlingShot);
+    mSpartyTracker = std::make_shared<SpartyTracker>();
+    Accept(mSpartyTracker);
+    mSpartyTracker->ReloadSlingshot(mSlingShot);
 }
 
 /**

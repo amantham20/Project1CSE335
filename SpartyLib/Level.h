@@ -12,12 +12,11 @@
 //#include "Item.h"
 #include "Score.h"
 #include "ItemVisitor.h"
-#include "SpartyTracker.h"
 #include "SpartyGame.h"
 
 class Item;
 class Slingshot;
-
+class SpartyTracker;
 class Picture;
 
 /**
@@ -39,6 +38,8 @@ private:
 
     /// A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
+
+    std::shared_ptr<SpartyTracker> mSpartyTracker;
 
 public:
     double getHeight() { return mHeight; };
