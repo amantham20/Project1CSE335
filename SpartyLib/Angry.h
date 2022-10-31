@@ -10,13 +10,17 @@
 
 class Angry : public BodyItem {
 private:
+    bool mLoaded = false;
 
 public:
 
     Angry(std::shared_ptr<Level> level);
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
-//    std::shared_ptr<Level> GetLevel() {Item::GetLevel(); }
+
+    bool IsLoadedInSlingshot() {return mLoaded;};
+
+    void SetLoadedInSlingshot(bool loaded) {mLoaded = loaded;};
 
 };
 

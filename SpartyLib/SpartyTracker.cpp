@@ -32,7 +32,9 @@ void SpartyTracker::VisitGruffSparty(GruffSparty* gruffSparty)
  */
 void SpartyTracker::ReloadSlingshot(std::shared_ptr<Slingshot> slingshot)
 {
-    slingshot->LoadAngrySparty(mSparties.front());
+    auto nextAngrySparty = mSparties.front();
+    nextAngrySparty->SetLoadedInSlingshot(true);
+    slingshot->LoadAngrySparty(nextAngrySparty);
 }
 
 /**
@@ -44,7 +46,11 @@ Angry* SpartyTracker::HitTest(int x, int y)
 {
     for (auto i = mSparties.rbegin(); i!=mSparties.rend(); i++) {
         if ((*i)->HitTest(x, y)) {
-            return *i;
+            // Only return a non-null ptr to the angry sparty if it is loaded in the slingshot
+            if ((*i)->IsLoadedInSlingshot())
+            {
+                return *i;
+            }
         }
     }
 

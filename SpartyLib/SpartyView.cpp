@@ -216,17 +216,19 @@ void SpartyView::OnLeftUp(wxMouseEvent &event)
 */
 void SpartyView::OnMouseMove(wxMouseEvent &event)
 {
+    // Get the scale, x offset and y offset of the game.
     double scale = mSpartyGame.GetScale();
     double xOffset = mSpartyGame.GetXOffset();
     double yOffset = mSpartyGame.GetYOffset();
 
+    // Convert the event x and y coordinates from pixel unites to centimeters.
     double metersX = (event.m_x / scale - xOffset) / Consts::MtoCM;
     double metersY = (event.m_y / -scale - yOffset) / Consts::MtoCM;
 
-    // See if an item is currently being moved by the mouse
+    // See if an angry sparty is currently being moved by the mouse
     if (mGrabbedSparty != nullptr)
     {
-        // If an item is being moved, we only continue to
+        // If the angry sparty is being moved, we only continue to
         // move it while the left button is down.
         if (event.LeftIsDown())
         {
@@ -235,7 +237,8 @@ void SpartyView::OnMouseMove(wxMouseEvent &event)
         else
         {
             // When the left button is released, we release the
-            // item.
+            // angry sparty.
+            // todo: Angry launch code
             mGrabbedSparty = nullptr;
         }
 
