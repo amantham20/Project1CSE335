@@ -34,6 +34,10 @@ private:
     /// y coordinate of the right attachment point for the rubber band in meters
     double mYRightAttachment = 0;
 
+protected:
+    /// A pointer to the currently loaded angry sparty
+    Angry *mLoadedSparty;
+
 public:
 
     Slingshot(std::shared_ptr<Level> level);
@@ -42,7 +46,7 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    virtual void LoadAngrySparty(Angry* sparty) = 0;
+    virtual void LoadAngrySparty(Angry* sparty);
 
     /**
      * Get the x position of the loading spot

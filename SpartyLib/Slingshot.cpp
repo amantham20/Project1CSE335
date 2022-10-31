@@ -56,16 +56,17 @@ void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
             (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset,
             image->GetWidth(), image->GetHeight());
 
-    ///TODO Might have to move this to wooden slingshot
-//    wxPen pen(wxColour(41,13,1), 20);
-//    graphics->SetPen(pen);
-//    wxPoint2DDouble band[2] =
-//            {
-//            wxPoint2DDouble(position.x * Consts::MtoCM +  15,
-//                            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset+42),
-//            wxPoint2DDouble(position.x * Consts::MtoCM + 45,
-//                            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset + 35),
-//            };
-//    graphics->DrawLines(2, band);
+
     graphics->PopState();
+}
+
+/**
+ * Loads an Angry Sparty for launch
+ * @param sparty Angry Sparty to load in the slingshot
+ */
+void Slingshot::LoadAngrySparty(Angry* sparty)
+{
+    // Set the Angry Sparty position between the slingshot's arms.
+    sparty->SetLocation(GetXLoadSpot(), GetYLoadSpot());
+    mLoadedSparty = sparty;
 }

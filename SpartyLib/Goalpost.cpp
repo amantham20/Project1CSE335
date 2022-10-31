@@ -54,13 +54,26 @@ void Goalpost::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Slingshot::OnDraw(graphics);
 
-    // Draw slingshot rubber band
-    wxPen pen(wxColour(41,13,1), 20);
+    graphics->PushState();
+    wxPen pen(wxColour(41,13,1), 15);
     graphics->SetPen(pen);
     wxGraphicsPath path = graphics->CreatePath();
-    path.MoveToPoint(Slingshot::GetXLeftAttachment(), Slingshot::GetYLeftAttachment());
-    path.AddLineToPoint(Slingshot::GetXRightAttachment(), Slingshot::GetYRightAttachment());
+    // Draw slingshot rubber band if no angry sparty is loaded
+    if (!Slingshot::mLoadedSparty)
+    {
+        path.MoveToPoint(Slingshot::GetXLeftAttachment(), Slingshot::GetYLeftAttachment());
+        path.AddLineToPoint(Slingshot::GetXRightAttachment(), Slingshot::GetYRightAttachment());
+    } else
+    {
+        auto spartyPosition = Slingshot::mLoadedSparty->GetPosition();
+        path.MoveToPoint(Slingshot::GetXLeftAttachment(), Slingshot::GetYLeftAttachment());
+        path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
+        path.MoveToPoint(Slingshot::GetXRightAttachment(), Slingshot::GetYRightAttachment());
+        path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
+    }
+
     graphics->StrokePath(path);
+    graphics->PopState();
 }
 
 /**
@@ -69,6 +82,5 @@ void Goalpost::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
  */
 void Goalpost::LoadAngrySparty(Angry* sparty)
 {
-    // Set the Angry Sparty position between the goalpost's arms.
-    sparty->SetLocation(Slingshot::GetXLoadSpot(), Slingshot::GetYLoadSpot());
+    Slingshot::LoadAngrySparty(sparty);
 }
