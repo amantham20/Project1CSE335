@@ -19,6 +19,8 @@
  */
 class Slingshot : public PositionalItem {
 private:
+    double mXLoadSpot = 0;
+    double mYLoadSpot = 0;
 
 public:
 
@@ -29,6 +31,28 @@ public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     virtual void LoadAngrySparty(Angry* sparty) = 0;
+
+    /**
+     * Get the x position of the loading spot
+     * @return x position of the loading spot
+     */
+    double GetXLoadSpot() {return mXLoadSpot;};
+
+    /**
+     * Get the y position of the loading spot
+     * @return y position of the loading spot
+     */
+    double GetYLoadSpot() {return mYLoadSpot;};
+
+    /**
+    * Sets the x position of the loading spot
+    */
+    void SetXLoadSpot(double x) {mXLoadSpot = x;};
+
+    /**
+    * Sets the y position of the loading spot
+    */
+    void SetYLoadSpot(double y) {mYLoadSpot = y;};
 };
 
 #endif //ANGRYSPARTY_SLINGSHOT_H
