@@ -9,7 +9,7 @@
 #include <string>
 #include <fstream>
 #include <SpartyGame.h>
-#include "stdio.h"
+#include <stdio.h>
 
 using namespace std;
 

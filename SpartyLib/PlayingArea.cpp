@@ -3,6 +3,7 @@
  * @author Rajmeet Singh Chandok, zhiqiang ni
  */
 
+#include "pch.h"
 #include "PlayingArea.h"
 
 #include <utility>
