@@ -60,6 +60,31 @@ void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->PopState();
 }
 
+/**
+ * Only draws the front portion of the slingshot
+ * @param graphics
+ */
+void Slingshot::DrawFront(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    const int heightOffset = 50;
+
+    auto tLevel = Item::GetLevel();
+
+    auto position = PositionalItem::GetPosition();
+    auto image = mFrontPicture->GetBitmap();
+
+    graphics->PushState();
+
+    graphics->Scale(1, -1);
+    graphics->DrawBitmap(*image,
+            position.x * Consts::MtoCM,
+            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset,
+            image->GetWidth(), image->GetHeight());
+
+
+    graphics->PopState();
+}
+
 void Slingshot::DrawLeftRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
 {
     graphics->PushState();

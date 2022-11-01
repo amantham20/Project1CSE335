@@ -55,6 +55,8 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    void DrawFront(std::shared_ptr<wxGraphicsContext> graphics);
+
     void DrawLeftRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
 
     void DrawRightRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
