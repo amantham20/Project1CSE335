@@ -18,13 +18,13 @@ void MainFrame::Initialize()
 
     //todo: add comment
     auto sizer = new wxBoxSizer( wxVERTICAL );
-    auto spartyView = new SpartyView();
 
-    spartyView->Initialize(this);
+    mSpartyView = new SpartyView();
+    mSpartyView->Initialize(this);
 
     //todo: make sure this sizer is correct
     // Add it to the sizer
-    sizer->Add(spartyView,1, wxEXPAND | wxALL );
+    sizer->Add(mSpartyView,1, wxEXPAND | wxALL );
 
     // Set the sizer for this frame
     SetSizer( sizer );
@@ -57,6 +57,8 @@ void MainFrame::Initialize()
 
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnMenuHelpAbout, this, wxID_ABOUT);
+    Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
+
     CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
 }
 
@@ -81,4 +83,14 @@ void MainFrame::OnMenuHelpAbout(wxCommandEvent& event)
                  L"About Angry Sparty",
                  wxOK,
                  this);
+}
+
+/**
+ * Handle a close event. Stop the animation and destroy this window.
+ * @param event The Close event
+ */
+void MainFrame::OnClose(wxCloseEvent& event)
+{
+    mSpartyView->Stop();
+    Destroy();
 }

@@ -51,6 +51,11 @@ public:
     void OnLeftDown(wxMouseEvent& event);
     void OnMouseMove(wxMouseEvent& event);
     void OnLeftUp(wxMouseEvent &event);
+
+    /**
+     * Stop the timer so the window can close
+     */
+    void Stop() {mTimer.Stop();}
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H

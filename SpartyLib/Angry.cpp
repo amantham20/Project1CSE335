@@ -18,6 +18,8 @@ Angry::Angry(std::shared_ptr<Level> level)
 
 }
 
+
+
 void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     //TODO : Get b2Body working to enable Easy Access to these values
