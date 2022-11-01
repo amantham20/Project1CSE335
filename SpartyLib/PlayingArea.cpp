@@ -56,7 +56,12 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
     }
     mScore->OnDraw(graphics);
     mTotalScore->OnDraw(graphics);
-    mTransitionalText->OnDraw(graphics, mCurrentLevel);
+
+    if (mControlDisplay)
+    {
+        mTransitionalText->OnDraw(graphics, mCurrentLevel);
+    }
+
 }
 
 /**
@@ -89,4 +94,10 @@ void PlayingArea::Accept(const std::shared_ptr<ItemVisitor>& visitor)
  */
 void PlayingArea::Update(double frameDuration){
     mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
+    mTimeDuration += frameDuration;
+
+    if (mTimeDuration > 2)
+    {
+        mControlDisplay = false;
+    }
 }

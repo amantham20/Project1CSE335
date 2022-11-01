@@ -53,6 +53,10 @@ public:
     void Update(double frameDuration);
 
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
+
+    bool mControlDisplay = true;
+
+    double mTimeDuration = 0;
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H
