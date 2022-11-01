@@ -94,7 +94,20 @@ Angry* Level::HitTest(int x, int y)
     return mSpartyTracker->HitTest(x, y);
 }
 
+/**
+ * Draws the right slingshot rubber band portion in this level
+ * @param graphics graphics context used
+ */
 void Level::DrawRightSlingshotRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
 {
     mSlingShot->DrawRightRubberBand(graphics);
+}
+
+/**
+ * Draws the front of the slingshot in this level
+ * @param graphics graphics context used
+ */
+void Level::DrawSlingshotFront(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    mSlingShot->DrawFront(graphics);
 }

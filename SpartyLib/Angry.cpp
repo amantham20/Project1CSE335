@@ -41,6 +41,7 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
     if (IsLoadedInSlingshot())
     {
+        mLevel->DrawSlingshotFront(graphics);
         DrawRubberBand(graphics);
     }
 }

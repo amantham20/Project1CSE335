@@ -82,6 +82,8 @@ public:
     double GetGameYOffset() {return mSpartyGame->GetYOffset();}
 
     void DrawRightSlingshotRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
+
+    void DrawSlingshotFront(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H
