@@ -65,11 +65,8 @@ void Goalpost::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
         path.AddLineToPoint(Slingshot::GetXRightAttachment(), Slingshot::GetYRightAttachment());
     } else
     {
-        auto spartyPosition = Slingshot::mLoadedSparty->GetPosition();
-        path.MoveToPoint(Slingshot::GetXLeftAttachment(), Slingshot::GetYLeftAttachment());
-        path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
-        path.MoveToPoint(Slingshot::GetXRightAttachment(), Slingshot::GetYRightAttachment());
-        path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
+        DrawLeftRubberBand(graphics);
+        DrawRightRubberBand(graphics);
     }
 
     graphics->StrokePath(path);

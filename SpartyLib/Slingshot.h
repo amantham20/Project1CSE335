@@ -46,6 +46,10 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    void DrawLeftRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
+
+    void DrawRightRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
+
     virtual void LoadAngrySparty(Angry* sparty);
 
     /**

@@ -19,8 +19,6 @@ class Level;
 
 class Item {
 private:
-    /// The level this item is contained in
-    std::shared_ptr<Level> mLevel;
 
     ///a pointer to picture
     //Picture *mPicture;
@@ -37,7 +35,9 @@ private:
 
     std::shared_ptr<PictureManager> mPictureCache;
 
-
+protected:
+    /// The level this item is contained in
+    std::shared_ptr<Level> mLevel;
 
 public:
 

@@ -13,9 +13,9 @@
 #include "Score.h"
 #include "ItemVisitor.h"
 #include "SpartyGame.h"
+#include "Slingshot.h"
 
 class Item;
-class Slingshot;
 class SpartyTracker;
 class Picture;
 class Angry;
@@ -80,6 +80,8 @@ public:
 
     double GetGameXOffset() {return mSpartyGame->GetXOffset();}
     double GetGameYOffset() {return mSpartyGame->GetYOffset();}
+
+    void DrawRightSlingshotRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

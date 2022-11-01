@@ -18,6 +18,8 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    void DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
+
     bool IsLoadedInSlingshot() {return mLoaded;};
 
     void SetLoadedInSlingshot(bool loaded) {mLoaded = loaded;};

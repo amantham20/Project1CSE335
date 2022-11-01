@@ -5,6 +5,8 @@
 
 #include "pch.h"
 #include "GruffSparty.h"
+#include "Level.h"
+#include "Slingshot.h"
 
 GruffSparty::GruffSparty(std::shared_ptr<Level> level) : Angry(level)
 {

@@ -60,6 +60,36 @@ void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->PopState();
 }
 
+void Slingshot::DrawLeftRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    graphics->PushState();
+    wxPen pen(wxColour(41,13,1), 15);
+    graphics->SetPen(pen);
+    wxGraphicsPath path = graphics->CreatePath();
+
+    auto spartyPosition = mLoadedSparty->GetPosition();
+    path.MoveToPoint(GetXLeftAttachment(), GetYLeftAttachment());
+    path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
+
+    graphics->StrokePath(path);
+    graphics->PopState();
+}
+
+void Slingshot::DrawRightRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    graphics->PushState();
+    wxPen pen(wxColour(41,13,1), 15);
+    graphics->SetPen(pen);
+    wxGraphicsPath path = graphics->CreatePath();
+
+    auto spartyPosition = mLoadedSparty->GetPosition();
+    path.MoveToPoint(GetXRightAttachment(), GetYRightAttachment());
+    path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
+
+    graphics->StrokePath(path);
+    graphics->PopState();
+}
+
 /**
  * Loads an Angry Sparty for launch
  * @param sparty Angry Sparty to load in the slingshot

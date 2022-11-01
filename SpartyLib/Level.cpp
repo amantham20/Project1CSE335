@@ -93,3 +93,8 @@ Angry* Level::HitTest(int x, int y)
 {
     return mSpartyTracker->HitTest(x, y);
 }
+
+void Level::DrawRightSlingshotRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    mSlingShot->DrawRightRubberBand(graphics);
+}
