@@ -35,7 +35,6 @@ SpartyGame::SpartyGame() //:mPhysics(b2Vec2(14.22,8))
     mPictureCache = std::make_shared<PictureManager>();
 
 
-
     /// TODO remove the next line
 //    Level *tLevel = new Level(8, 14.22);
 //    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
@@ -253,7 +252,8 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
         {
             item = std::make_shared<GruffSparty>(pLevel);
 
-        } else if (name == "helmet-sparty")
+        }
+        else if (name == "helmet-sparty")
         {
             item = std::make_shared<HelmetSparty>(pLevel);
 
@@ -295,10 +295,12 @@ void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     mPlayingArea->DebugOnDraw(graphics);
 }
 
-void SpartyGame::Update(double frameDuration){
+void SpartyGame::Update(double frameDuration)
+{
     if(mPlayingArea != NULL)
     {
         mPlayingArea->Update(frameDuration);
+        mPlayingArea->SetLevel(mCurrentLevel);
     }
 }
 
