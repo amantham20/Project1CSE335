@@ -13,8 +13,8 @@
  */
 TransitionalText::TransitionalText(std::shared_ptr<Level> level, double x,double y) : PositionalItem(level)
 {
-    PositionalItem::setX(x);
-    PositionalItem::setY(y);
+    PositionalItem::SetX(x);
+    PositionalItem::SetY(y);
 }
 
 void TransitionalText::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, const int &level)
