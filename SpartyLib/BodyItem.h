@@ -48,7 +48,7 @@ private:
     std::wstring mType = L"dynamic";
 
     /// Boolean for static
-    bool mStatic = mType == L"static";
+    bool mStatic = false;
 
     /// mSize
     b2Vec2 mSize = b2Vec2(mWidth, mHeight);
