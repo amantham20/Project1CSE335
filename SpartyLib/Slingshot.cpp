@@ -56,16 +56,72 @@ void Slingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
             (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset,
             image->GetWidth(), image->GetHeight());
 
-    ///TODO Might have to move this to wooden slingshot
-    wxPen pen(wxColour(41,13,1), 20);
-    graphics->SetPen(pen);
-    wxPoint2DDouble band[2] =
-            {
-            wxPoint2DDouble(position.x * Consts::MtoCM +  15,
-                            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset+42),
-            wxPoint2DDouble(position.x * Consts::MtoCM + 45,
-                            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset + 35),
-            };
-    graphics->DrawLines(2, band);
+
     graphics->PopState();
+}
+
+/**
+ * Only draws the front portion of the slingshot
+ * @param graphics
+ */
+void Slingshot::DrawFront(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    const int heightOffset = 50;
+
+    auto tLevel = Item::GetLevel();
+
+    auto position = PositionalItem::GetPosition();
+    auto image = mFrontPicture->GetBitmap();
+
+    graphics->PushState();
+
+    graphics->Scale(1, -1);
+    graphics->DrawBitmap(*image,
+            position.x * Consts::MtoCM,
+            (position.y  * Consts::MtoCM) - image->GetHeight() - heightOffset,
+            image->GetWidth(), image->GetHeight());
+
+
+    graphics->PopState();
+}
+
+void Slingshot::DrawLeftRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    graphics->PushState();
+    wxPen pen(wxColour(41,13,1), 15);
+    graphics->SetPen(pen);
+    wxGraphicsPath path = graphics->CreatePath();
+
+    auto spartyPosition = mLoadedSparty->GetPosition();
+    path.MoveToPoint(GetXLeftAttachment(), GetYLeftAttachment());
+    path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
+
+    graphics->StrokePath(path);
+    graphics->PopState();
+}
+
+void Slingshot::DrawRightRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    graphics->PushState();
+    wxPen pen(wxColour(41,13,1), 15);
+    graphics->SetPen(pen);
+    wxGraphicsPath path = graphics->CreatePath();
+
+    auto spartyPosition = mLoadedSparty->GetPosition();
+    path.MoveToPoint(GetXRightAttachment(), GetYRightAttachment());
+    path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
+
+    graphics->StrokePath(path);
+    graphics->PopState();
+}
+
+/**
+ * Loads an Angry Sparty for launch
+ * @param sparty Angry Sparty to load in the slingshot
+ */
+void Slingshot::LoadAngrySparty(Angry* sparty)
+{
+    // Set the Angry Sparty position between the slingshot's arms.
+    sparty->SetLocation(GetXLoadSpot(), GetYLoadSpot());
+    mLoadedSparty = sparty;
 }

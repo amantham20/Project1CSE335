@@ -12,13 +12,13 @@
 //#include "Item.h"
 #include "Score.h"
 #include "ItemVisitor.h"
-#include "SpartyTracker.h"
+#include "SpartyGame.h"
+#include "Slingshot.h"
 
-class SpartyGame;
 class Item;
-class Slingshot;
-
+class SpartyTracker;
 class Picture;
+class Angry;
 
 /**
  * Level class describing a level object in the game
@@ -29,13 +29,15 @@ private:
     double mWidth = 0;
 
     ///an pointer to sparty game
-    SpartyGame *mSpartyGame;
+    std::shared_ptr<SpartyGame> mSpartyGame;
 
     /// All of the items in the level
     std::vector<std::shared_ptr<Item>> mItems;
 
     /// A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
+
+    std::shared_ptr<SpartyTracker> mSpartyTracker;
 
 public:
     double getHeight() { return mHeight; };
@@ -72,6 +74,17 @@ public:
     void ReloadSlingshot();
 
     void Accept(std::shared_ptr<ItemVisitor> visitor);
+
+    Angry* HitTest(int x, int y);
+
+    double GetGameScale() {return mSpartyGame->GetScale();}
+
+    double GetGameXOffset() {return mSpartyGame->GetXOffset();}
+    double GetGameYOffset() {return mSpartyGame->GetYOffset();}
+
+    void DrawRightSlingshotRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
+
+    void DrawSlingshotFront(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

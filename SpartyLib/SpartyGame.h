@@ -17,6 +17,8 @@
 #include "Physics.h"
 class PlayingArea;
 
+class Angry;
+
 /**
  * Base AngrySparty Game Class
  */
@@ -50,7 +52,7 @@ private:
 
 
     bool mDebug = true;
-    
+
     std::shared_ptr<PlayingArea> mPlayingArea;
 
 public:
@@ -73,6 +75,26 @@ public:
     void Update(std::shared_ptr<wxGraphicsContext> graphics, double frameDuration);
 
     void Update(std::shared_ptr<wxGraphicsContext> graphics);
+
+    Angry* HitTest(int x, int y);
+
+    /**
+     * Getter for the centimeter pixel scale factor
+     * @return
+     */
+    double GetScale() {return mScale;};
+
+    /**
+     * Getter for the x offset
+     * @return x offset in centimeters
+     */
+    double GetXOffset() {return mXOffset;};
+
+    /**
+     * Getter for the y offset
+     * @return y offset in centimeters
+     */
+    double GetYOffset() {return mYOffset;};
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

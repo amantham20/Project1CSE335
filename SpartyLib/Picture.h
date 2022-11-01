@@ -12,7 +12,7 @@
 class Picture {
 private:
     /// The underlying image
-    std::unique_ptr<wxImage> mImage;
+    std::shared_ptr<wxImage> mImage;
 
     /// The bitmap we can display for this image
     std::shared_ptr<wxBitmap> mImageBitmap;
@@ -25,6 +25,8 @@ public:
     Picture();
 
     std::shared_ptr<wxBitmap> GetBitmap(){return mImageBitmap;}
+
+    std::shared_ptr<wxImage> GetImage(){return mImage;}
 
     void SetPicture(const std::wstring& filename);
 

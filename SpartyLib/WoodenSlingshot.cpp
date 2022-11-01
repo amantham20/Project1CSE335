@@ -12,6 +12,7 @@ using namespace std;
 
 /// Slingshot filename
 const wstring WoodenSlingshotImageName = L"images/slingshot.png";
+const wstring WoodenSlingshotFrontImageName = L"images/slingshot-front.png";
 
 /**
  * WoodenSlingshot constructor
@@ -20,11 +21,30 @@ const wstring WoodenSlingshotImageName = L"images/slingshot.png";
 WoodenSlingshot::WoodenSlingshot(std::shared_ptr<Level> level) : Slingshot(level)
 {
     Item::SetImageName(WoodenSlingshotImageName);
+    Slingshot::SetFrontPicture(WoodenSlingshotFrontImageName);
 }
 
 void WoodenSlingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Slingshot::OnDraw(graphics);
+
+    graphics->PushState();
+    wxPen pen(wxColour(41,13,1), 15);
+    graphics->SetPen(pen);
+    wxGraphicsPath path = graphics->CreatePath();
+    // Draw slingshot rubber band if no angry sparty is loaded
+    if (!Slingshot::mLoadedSparty)
+    {
+        path.MoveToPoint(Slingshot::GetXLeftAttachment(), Slingshot::GetYLeftAttachment());
+        path.AddLineToPoint(Slingshot::GetXRightAttachment(), Slingshot::GetYRightAttachment());
+    } else
+    {
+        DrawLeftRubberBand(graphics);
+        DrawRightRubberBand(graphics);
+    }
+
+    graphics->StrokePath(path);
+    graphics->PopState();
 }
 
 /**
@@ -38,8 +58,17 @@ void WoodenSlingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
  */
 void WoodenSlingshot::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
     Slingshot::XmlLoad(node);
+
+    // Set position of the laoding spot for an angry sparty
+    auto position = PositionalItem::GetPosition();
+    Slingshot::SetXLoadSpot(position.x+0.3);
+    Slingshot::SetYLoadSpot(position.y+1.5);
+
+    Slingshot::SetXLeftAttachment(-5.35*Consts::MtoCM);
+    Slingshot::SetYLeftAttachment(1.7*Consts::MtoCM);
+    Slingshot::SetXRightAttachment(-5.0*Consts::MtoCM);
+    Slingshot::SetYRightAttachment(1.8*Consts::MtoCM);
 }
 
 /**
@@ -48,11 +77,5 @@ void WoodenSlingshot::XmlLoad(wxXmlNode *node)
  */
 void WoodenSlingshot::LoadAngrySparty(Angry* sparty)
 {
-    // Get the position of the middle of the slingshot
-    auto position = PositionalItem::GetPosition();
-    auto xPosition = position.x+0.3;
-    auto yPosition = position.y+1.5;
-
-    // Set the Angry Sparty position between the slingshot's arms.
-    sparty->SetLocation(xPosition, yPosition);
+    Slingshot::LoadAngrySparty(sparty);
 }

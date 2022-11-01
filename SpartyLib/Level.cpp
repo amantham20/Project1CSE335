@@ -55,9 +55,9 @@ void Level::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
  */
 void Level::ReloadSlingshot()
 {
-    std::shared_ptr<SpartyTracker> visitor = std::make_shared<SpartyTracker>();
-    Accept(visitor);
-    visitor->ReloadSlingshot(mSlingShot);
+    mSpartyTracker = std::make_shared<SpartyTracker>();
+    Accept(mSpartyTracker);
+    mSpartyTracker->ReloadSlingshot(mSlingShot);
 }
 
 /**
@@ -81,4 +81,32 @@ void Level::Accept(std::shared_ptr<ItemVisitor> visitor)
     {
         item->Accept(visitor);
     }
+}
+
+/**
+ * Checks if an item in the level has been clicked
+ * @param x x coordinate to test
+ * @param y y coordinate to test
+ */
+Angry* Level::HitTest(int x, int y)
+{
+    return mSpartyTracker->HitTest(x, y);
+}
+
+/**
+ * Draws the right slingshot rubber band portion in this level
+ * @param graphics graphics context used
+ */
+void Level::DrawRightSlingshotRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    mSlingShot->DrawRightRubberBand(graphics);
+}
+
+/**
+ * Draws the front of the slingshot in this level
+ * @param graphics graphics context used
+ */
+void Level::DrawSlingshotFront(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    mSlingShot->DrawFront(graphics);
 }

@@ -11,6 +11,7 @@
 #include "b2_math.h"
 #include "SpartyGame.h"
 
+class Angry;
 /**
  * View class used to display game on screen
  */
@@ -30,6 +31,8 @@ private:
     ///an object describe the sparty game
     SpartyGame mSpartyGame;
 
+    // Item that the user is currently grabbing
+    Angry* mGrabbedSparty;
 
     bool mDebug = false;
     void LoadLevels();
@@ -44,6 +47,10 @@ public:
 
     void OnDebugMode(wxCommandEvent& event);
     void OnUpdateDebugMode(wxUpdateUIEvent& event);
+
+    void OnLeftDown(wxMouseEvent& event);
+    void OnMouseMove(wxMouseEvent& event);
+    void OnLeftUp(wxMouseEvent &event);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H

@@ -38,6 +38,17 @@ public:
             return mImageCache[key]->GetBitmap();
         }
     }
+
+    std::shared_ptr<wxImage> GetImage(const std::wstring & key)
+    {
+        if (mImageCache.find(key) != mImageCache.end()){
+            return mImageCache[key]->GetImage();
+        }
+        else{
+            add(key, key);
+            return mImageCache[key]->GetImage();
+        }
+    }
 };
 
 #endif //ANGRYSPARTY_PICTUREMANAGER_H

@@ -55,6 +55,11 @@ void SpartyView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_UPDATE_UI, &SpartyView::OnUpdateDebugMode, this, IDM_DEBUG);
     //todo: not complete code
 
+    // Bind mouse event handlers
+    Bind(wxEVT_LEFT_DOWN, &SpartyView::OnLeftDown, this);
+    Bind(wxEVT_LEFT_UP, &SpartyView::OnLeftUp, this);
+    Bind(wxEVT_MOTION, &SpartyView::OnMouseMove, this);
+
     // Load Level files
     LoadLevels();
 
@@ -198,4 +203,59 @@ void SpartyView::OnDebugMode(wxCommandEvent& event)
 void SpartyView::OnUpdateDebugMode(wxUpdateUIEvent& event)
 {
     event.Check(mDebug);
+}
+
+/**
+ * Handle the left mouse button down event
+ * @param event
+ */
+void SpartyView::OnLeftDown(wxMouseEvent &event)
+{
+    mGrabbedSparty = mSpartyGame.HitTest(event.GetX(), event.GetY());
+}
+
+/**
+* Handle the left mouse button down event
+* @param event
+*/
+void SpartyView::OnLeftUp(wxMouseEvent &event)
+{
+    OnMouseMove(event);
+}
+
+/**
+* Handle the left mouse button down event
+* @param event
+*/
+void SpartyView::OnMouseMove(wxMouseEvent &event)
+{
+    // Get the scale, x offset and y offset of the game.
+    double scale = mSpartyGame.GetScale();
+    double xOffset = mSpartyGame.GetXOffset();
+    double yOffset = mSpartyGame.GetYOffset();
+
+    // Convert the event x and y coordinates from pixel unites to centimeters.
+    double metersX = (event.m_x / scale - xOffset) / Consts::MtoCM;
+    double metersY = (event.m_y / -scale - yOffset) / Consts::MtoCM;
+
+    // See if an angry sparty is currently being moved by the mouse
+    if (mGrabbedSparty != nullptr)
+    {
+        // If the angry sparty is being moved, we only continue to
+        // move it while the left button is down.
+        if (event.LeftIsDown())
+        {
+            mGrabbedSparty->SetLocation(metersX, metersY);
+        }
+        else
+        {
+            // When the left button is released, we release the
+            // angry sparty.
+            // todo: Angry launch code
+            mGrabbedSparty = nullptr;
+        }
+
+        // Force the screen to redraw
+        Refresh();
+    }
 }

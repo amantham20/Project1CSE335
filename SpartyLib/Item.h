@@ -21,8 +21,6 @@ class Level;
 
 class Item {
 private:
-    /// The level this item is contained in
-    std::shared_ptr<Level> mLevel;
 
     ///a pointer to picture
     //Picture *mPicture;
@@ -39,7 +37,9 @@ private:
 
     std::shared_ptr<PictureManager> mPictureCache;
 
-
+protected:
+    /// The level this item is contained in
+    std::shared_ptr<Level> mLevel;
 
 public:
 
@@ -83,10 +83,18 @@ public:
      * @return ImageBitmap for the item
      */
     virtual std::shared_ptr<wxBitmap> GetBitMap(){
-//        return mItemBitmap;
-//        return mPicture->GetBitmap();
         return mPictureCache->GetBitmap(mFileName);
     }
+
+    /**
+     * Getter for the item's image
+     *
+     * @return ImageBitmap for the item
+     */
+    virtual std::shared_ptr<wxImage> GetImage(){
+        return mPictureCache->GetImage(mFileName);
+    }
+
     //virtual void Update(double elapsed){};
 
     //virtual void Update(std::shared_ptr<wxGraphicsContext> graphics);
@@ -104,9 +112,10 @@ public:
      */
     virtual void Accept(std::shared_ptr<ItemVisitor> visitor) = 0;
 
+    virtual bool HitTest(int x, int y) { return false; };
 
     virtual void InstallPhysics(std::shared_ptr<Physics> physics){};
-    
+
 };
 
 #endif //ANGRYSPARTY_ITEM_H
