@@ -26,13 +26,13 @@ private:
     std::shared_ptr<Score> mTotalScore;
 
     /// scaling factor
-    double mScale;
+    double mScale = 0;
 
     ///Image Cache
     std::shared_ptr<PictureManager> mPictureCache;
 
     /// offsets
-    double mXOffset, mYOffset;
+    double mXOffset = 0, mYOffset= 0;
 
     void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
 

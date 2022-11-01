@@ -17,7 +17,7 @@ public:
     TransitionalText(std::shared_ptr<Level> level, double x,double y);
 
     void Accept(std::shared_ptr<ItemVisitor> visitor){};
-    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, const int &level);
 
 };
 
