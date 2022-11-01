@@ -11,6 +11,7 @@ using namespace std;
 
 /// Slingshot filename
 const wstring GoalpostsImageName = L"images/goalposts.png";
+const wstring GoalpostsFrontImageName = L"images/goalposts-front.png";
 
 /**
  * Constructor
@@ -19,6 +20,7 @@ const wstring GoalpostsImageName = L"images/goalposts.png";
 Goalpost::Goalpost(std::shared_ptr<Level> level) : Slingshot(level)
 {
     Item::SetImageName(GoalpostsImageName);
+    Slingshot::SetFrontPicture(GoalpostsFrontImageName);
 }
 
 /**

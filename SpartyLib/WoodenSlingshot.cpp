@@ -12,6 +12,7 @@ using namespace std;
 
 /// Slingshot filename
 const wstring WoodenSlingshotImageName = L"images/slingshot.png";
+const wstring WoodenSlingshotFrontImageName = L"images/slingshot-front.png";
 
 /**
  * WoodenSlingshot constructor
@@ -20,6 +21,7 @@ const wstring WoodenSlingshotImageName = L"images/slingshot.png";
 WoodenSlingshot::WoodenSlingshot(std::shared_ptr<Level> level) : Slingshot(level)
 {
     Item::SetImageName(WoodenSlingshotImageName);
+    Slingshot::SetFrontPicture(WoodenSlingshotFrontImageName);
 }
 
 void WoodenSlingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)

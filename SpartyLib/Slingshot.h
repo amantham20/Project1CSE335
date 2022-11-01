@@ -10,6 +10,7 @@
 
 #include "PositionalItem.h"
 #include "Angry.h"
+#include "Picture.h"
 
 /**
  * Base class for a slingshot
@@ -34,11 +35,19 @@ private:
     /// y coordinate of the right attachment point for the rubber band in meters
     double mYRightAttachment = 0;
 
+    std::shared_ptr<Picture> mFrontPicture;
+
 protected:
     /// A pointer to the currently loaded angry sparty
     Angry *mLoadedSparty;
 
 public:
+
+    /**
+     * Initializes a front picture image for the front of the slingshot
+     * @param filename
+     */
+    void SetFrontPicture(const std::wstring& filename) {mFrontPicture = std::make_shared<Picture>(filename);};
 
     Slingshot(std::shared_ptr<Level> level);
 
