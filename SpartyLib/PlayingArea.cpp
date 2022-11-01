@@ -21,12 +21,18 @@ const int PositionIterations = 2;
  * @param level
  * @param totalScore
  */
-PlayingArea::PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Score> totalScore) : mItems(level->GetItem()), mTotalScore(std::move(totalScore))
+PlayingArea::PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Score> totalScore) : mTotalScore(std::move(totalScore))
 {
     //todo incompleated Have to make it left alighted when the values are greater than 1 digit
     mPhysics = std::make_shared<Physics>(level->GetPosition());
     mScore = std::make_shared<Score>(level, 0, level->GetWidth()*Consts::MtoCM-30, 10);
     mTransitionalText = std::make_shared<TransitionalText>(level, 1400, 10);
+
+    for(auto item : level->GetItem())
+    {
+        mItems.push_back(item);
+    }
+
     for(const auto& item : mItems)
     {
         item->InstallPhysics(mPhysics);
