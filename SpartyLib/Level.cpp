@@ -110,3 +110,12 @@ void Level::DrawSlingshotFront(std::shared_ptr<wxGraphicsContext> graphics)
 {
     mSlingShot->DrawFront(graphics);
 }
+
+/**
+ * Gets the position of the loading spot of the slingshot in this level
+ * @return Position of the loading spot
+ */
+b2Vec2 Level::GetSlingshotLoadingPosition()
+{
+    return b2Vec2(mSlingShot->GetXLoadSpot(), mSlingShot->GetYLoadSpot());
+}

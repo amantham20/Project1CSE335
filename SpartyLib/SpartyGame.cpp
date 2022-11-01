@@ -331,3 +331,12 @@ Angry* SpartyGame::HitTest(int x, int y)
     // Return the current level's hit test
     return mLevels[mCurrentLevel]->HitTest(x, y);
 }
+
+/**
+ * Gets the position of the loading spot of the slingshot in the current level
+ * @return Position of the loading spot
+ */
+b2Vec2 SpartyGame::GetSlingshotLoadingPosition()
+{
+    return mLevels[mCurrentLevel]->GetSlingshotLoadingPosition();
+}

@@ -95,6 +95,8 @@ public:
      * @return y offset in centimeters
      */
     double GetYOffset() {return mYOffset;};
+
+    b2Vec2 GetSlingshotLoadingPosition();
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
