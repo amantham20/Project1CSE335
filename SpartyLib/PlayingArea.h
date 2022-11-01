@@ -28,6 +28,9 @@ private:
 
     ///text object between level
     std::shared_ptr<TransitionalText> mTransitionalText;
+
+    int mCurrentLevel = 0;
+
 public:
     /// Default Constructor
     PlayingArea() = delete;
@@ -48,6 +51,8 @@ public:
     void Accept(const std::shared_ptr<ItemVisitor>& visitor);
 
     void Update(double frameDuration);
+
+    void SetLevel(const int &level) { mCurrentLevel = level; } ;
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H

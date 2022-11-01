@@ -50,7 +50,7 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
     }
     mScore->OnDraw(graphics);
     mTotalScore->OnDraw(graphics);
-    mTransitionalText->OnDraw(graphics);
+    mTransitionalText->OnDraw(graphics, mCurrentLevel);
 }
 
 /**

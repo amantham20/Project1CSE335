@@ -17,7 +17,7 @@ TransitionalText::TransitionalText(std::shared_ptr<Level> level, double x,double
     PositionalItem::setY(y);
 }
 
-void TransitionalText::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
+void TransitionalText::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, const int &level)
 {
     auto tLevel = Item::GetLevel();
     auto wid = tLevel->GetWidth() * Consts::MtoCM;
@@ -34,7 +34,8 @@ void TransitionalText::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     double textWidth = 0;
     double textHeight = 0;
     graphics->GetTextExtent(L"Level 1 Begin", &textWidth, &textHeight);
-    graphics->DrawText("Level X Begin", 0-textWidth/2, -hit/2-textHeight/2);
+
+    graphics->DrawText("Level " + wxString::FromDouble(level, 0) + " Begin", 0-textWidth/2, -hit/2-textHeight/2);
 
     graphics->PopState();
 }
