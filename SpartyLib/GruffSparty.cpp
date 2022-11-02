@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "GruffSparty.h"
 #include "Level.h"
+#include "stdio.h"
 #include "Slingshot.h"
 
 GruffSparty::GruffSparty(std::shared_ptr<Level> level) : Angry(level)
@@ -27,4 +28,5 @@ void GruffSparty::SetLocation(double x, double y)
 void GruffSparty::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Angry::OnDraw(graphics);
+
 }

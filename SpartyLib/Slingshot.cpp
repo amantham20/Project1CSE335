@@ -125,3 +125,11 @@ void Slingshot::LoadAngrySparty(Angry* sparty)
     sparty->SetLocation(GetXLoadSpot(), GetYLoadSpot());
     mLoadedSparty = sparty;
 }
+
+/**
+ * Clears the pointer to a loaded angry sparty
+ */
+void Slingshot::ClearLoadedAngrySparty()
+{
+    mLoadedSparty = nullptr;
+}

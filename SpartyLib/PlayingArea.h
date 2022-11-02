@@ -11,6 +11,7 @@
 #include "Item.h"
 #include "SpartyGame.h"
 #include "ItemVisitor.h"
+#include "SpartyTracker.h"
 
 /**
  * PlayingArea class
@@ -38,6 +39,10 @@ private:
 
     bool mLevelEnd = false;
 
+    std::shared_ptr<SpartyTracker> mSpartyTracker;
+
+    // A pointer to the slingshot in the level
+    std::shared_ptr<Slingshot> mSlingShot;
 public:
     /// Default Constructor
     PlayingArea() = delete;
@@ -72,6 +77,12 @@ public:
     bool mControlDisplay = true;
 
     double mTimeDuration = 0;
+
+    Angry* HitTest(int x, int y);
+
+    void ReloadSlingshot();
+
+    void SetSlingShot(std::shared_ptr<Slingshot> slingshot);
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H

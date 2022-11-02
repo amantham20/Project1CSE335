@@ -244,6 +244,7 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
 
         // If the angry sparty is being moved, we only continue to
         // move it while the left button is down.
+        b2Vec2 velocity = b2Vec2(10, -1);
         if (event.LeftIsDown()) {
 
             //  Calculate angle between x-axis and mouse position vector
@@ -268,6 +269,8 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
                 if (distance <= rubberBandLength)
                 {
                     mGrabbedSparty->SetLocation(metersX, metersY);
+                    auto position = mGrabbedSparty->GetPosition();
+//                    std::cout << position.x << ", " << position.y << std::endl;
                 } else
                 {
                     // The slingshot is being pulled to its maximum length
@@ -288,7 +291,10 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
             // When the left button is released, we release the
             // angry sparty.
             // todo: Angry launch code
-            mGrabbedSparty->SetLocation(slingshotLoadingPosition.x, slingshotLoadingPosition.y);
+//            mGrabbedSparty->SetLocation(slingshotLoadingPosition.x, slingshotLoadingPosition.y);
+            mGrabbedSparty->SetLoadedInSlingshot(false);
+            mSpartyGame.ClearLoadedSparty();
+
             mGrabbedSparty = nullptr;
         }
 

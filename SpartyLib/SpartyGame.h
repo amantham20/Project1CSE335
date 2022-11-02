@@ -101,6 +101,8 @@ public:
     b2Vec2 GetSlingshotLoadingPosition();
 
     int GetRubberBandLength();
+
+    void ClearLoadedSparty();
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

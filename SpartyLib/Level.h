@@ -94,6 +94,10 @@ public:
     int GetRubberBandLength();
 
     void AddItemDepp(std::shared_ptr<PlayingArea> playingArea);
+
+    void ClearLoadedSparty();
+
+    std::shared_ptr<Slingshot> GetSlingshot();
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

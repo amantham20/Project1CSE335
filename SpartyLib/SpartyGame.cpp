@@ -151,7 +151,7 @@ void SpartyGame::Load(const wxString &filename)
     }
 
     // Now that all the xml data has been loaded. Load the angry sparty into the slingshot
-    mLevels.back()->ReloadSlingshot();
+//    mLevels.back()->ReloadSlingshot();
 
 
 }
@@ -288,6 +288,8 @@ void SpartyGame::Reset()
     mTotalScore = std::make_shared<Score>(mLevels.at(mCurrentLevel), score, 10 ,10);
     mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel), mTotalScore);
     mLevels[mCurrentLevel]->AddItemDepp(mPlayingArea);
+    mPlayingArea->SetSlingShot(mLevels[mCurrentLevel]->GetSlingshot());
+    mPlayingArea->ReloadSlingshot();
     mPlayingArea->InstallPhysics();
 }
 
@@ -313,6 +315,8 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     {
         Reset();
     }
+//    mPlayingArea->SetSlingShot(mLevels[mCurrentLevel]->GetSlingshot());
+//    mPlayingArea->ReloadSlingshot();
     mPlayingArea->Draw(graphics);
 
     std::shared_ptr<FoeTracker> visitor = std::make_shared<FoeTracker>();
@@ -333,8 +337,10 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
 Angry* SpartyGame::HitTest(int x, int y)
 {
     // Return the current level's hit test
-    return mLevels[mCurrentLevel]->HitTest(x, y);
+//    return mLevels[mCurrentLevel]->HitTest(x, y);
+    return mPlayingArea->HitTest(x, y);
 }
+
 
 /**
  * Gets the position of the loading spot of the slingshot in the current level
@@ -348,4 +354,9 @@ b2Vec2 SpartyGame::GetSlingshotLoadingPosition()
 int SpartyGame::GetRubberBandLength()
 {
     return mLevels[mCurrentLevel]->GetRubberBandLength();
+}
+
+void SpartyGame::ClearLoadedSparty()
+{
+    mLevels[mCurrentLevel]->ClearLoadedSparty();
 }

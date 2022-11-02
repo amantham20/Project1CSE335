@@ -24,12 +24,15 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     //TODO : Get b2Body working to enable Easy Access to these values
 //    b2Body* body = BodyItem::GetBody();
-//    auto position = body->GetPosition();
+    auto position = PositionalItem::GetPosition();
+//    auto position = mLoaded ? PositionalItem::GetPosition() : body->GetPosition();
+//    std::cout << mLoaded << " " << "Position x: " << position.x << " " << "Position y: " << position.y << std::endl;
+
 //    auto angle = body->GetAngle();
 
     const int heightOffset = 0;
 
-    auto position = PositionalItem::GetPosition();
+//    auto position = PositionalItem::GetPosition();
 
     auto wid = Consts::MtoCM*0.5;
     auto x = position.x*Consts::MtoCM;
@@ -80,8 +83,12 @@ void Angry::DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
 
 void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
     // Create the body definition
+    BodyItem::SetPhysics(physics);
+
     b2BodyDef bodyDefinition;
+    // Todo: Change to dynamics body on the fly instead of hard coding it
     bodyDefinition.type = b2_staticBody;
+    bodyDefinition.position = PositionalItem::GetPosition();
 
     auto world = physics->GetWorld();
     auto body = world->CreateBody(&bodyDefinition);
@@ -94,3 +101,4 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
     body->CreateFixture(&circle, 0.0f);
     BodyItem::SetBody(body);
 }
+
