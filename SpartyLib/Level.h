@@ -15,10 +15,13 @@
 #include "SpartyGame.h"
 #include "Slingshot.h"
 
+class PlayingArea;
 class Item;
 class SpartyTracker;
 class Picture;
 class Angry;
+
+
 
 /**
  * Level class describing a level object in the game
@@ -48,7 +51,7 @@ public:
      * @return b2Vec2 representing the position of an item.
      */
     b2Vec2 GetPosition() { return b2Vec2(mWidth, mHeight); }
-    std::vector<std::shared_ptr<Item>> GetItem() {return mItems; };
+
     Level() = delete;
 
     Level(SpartyGame *spartyGame);
@@ -89,6 +92,8 @@ public:
     b2Vec2 GetSlingshotLoadingPosition();
 
     int GetRubberBandLength();
+
+    void AddItemDepp(std::shared_ptr<PlayingArea> playingArea);
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

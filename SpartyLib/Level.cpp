@@ -11,6 +11,9 @@
 #include "WoodenSlingshot.h"
 #include "Background.h"
 #include "SpartyTracker.h"
+#include "PlayingArea.h"
+
+//class PlayingArea;
 
 /**
  * Level constructor
@@ -123,4 +126,11 @@ b2Vec2 Level::GetSlingshotLoadingPosition()
 int Level::GetRubberBandLength()
 {
     return mSlingShot->GetRubberBandLength();
+}
+
+void Level::AddItemDepp(std::shared_ptr<PlayingArea> playingArea){
+    for(auto item : mItems)
+    {
+        playingArea->Add(item);
+    }
 }

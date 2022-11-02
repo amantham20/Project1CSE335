@@ -28,20 +28,23 @@ PlayingArea::PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Sc
     mScore = std::make_shared<Score>(level, 0, level->GetWidth()*Consts::MtoCM-30, 10);
     mTransitionalText = std::make_shared<TransitionalText>(level, 1400, 10);
 
-    for(auto item : level->GetItem())
-    {
-        mItems.push_back(item);
-    }
 
-    for(const auto& item : mItems)
-    {
-        item->InstallPhysics(mPhysics);
-    }
+//    for(const auto& item : mItems)
+//    {
+//        item->InstallPhysics(mPhysics);
+//    }
 }
 
 PlayingArea::~PlayingArea()
 {
     mItems.clear();
+}
+
+void PlayingArea::InstallPhysics() {
+    for(const auto& item : mItems)
+    {
+        item->InstallPhysics(mPhysics);
+    }
 }
 
 /**
@@ -62,6 +65,11 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
         mTransitionalText->OnDraw(graphics, mCurrentLevel);
     }
 
+}
+
+void PlayingArea::Add(std::shared_ptr<Item> item)
+{
+    mItems.push_back(item);
 }
 
 /**

@@ -54,6 +54,10 @@ public:
 
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
+    void Add(std::shared_ptr<Item> item);
+
+    void InstallPhysics();
+
     bool mControlDisplay = true;
 
     double mTimeDuration = 0;

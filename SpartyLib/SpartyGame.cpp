@@ -287,6 +287,8 @@ void SpartyGame::Reset()
     }
     mTotalScore = std::make_shared<Score>(mLevels.at(mCurrentLevel), score, 10 ,10);
     mPlayingArea = std::make_shared<PlayingArea>(mLevels.at(mCurrentLevel), mTotalScore);
+    mLevels[mCurrentLevel]->AddItemDepp(mPlayingArea);
+    mPlayingArea->InstallPhysics();
 }
 
 //todo delete? should done in playingarea
