@@ -6,9 +6,17 @@
 #include "pch.h"
 #include "HelmetSparty.h"
 
+
+/// The radius in meters
+const double HelmetSpartyRadius = 0.25;
+
+/// The velocity factor for Helmet Sparty
+const float HelmetSpartyVelocityFactor = 20.0;
+
 HelmetSparty::HelmetSparty(std::shared_ptr<Level> level) : Angry(level)
 {
-
+    Angry::SetRadius(HelmetSpartyRadius);
+    Angry::SetVelocityFactor(HelmetSpartyVelocityFactor);
 }
 
 void HelmetSparty::XmlLoad(wxXmlNode *node)

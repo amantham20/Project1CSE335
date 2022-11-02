@@ -22,6 +22,8 @@
 class Angry : public BodyItem {
 private:
     bool mLoaded = false;
+    double mRadius = 0;
+    float mVelocityFactor = 0;
 
 public:
 
@@ -38,6 +40,19 @@ public:
     void InstallPhysics(std::shared_ptr<Physics> physics) override;
 
     void Launch(b2Vec2 vel);
+
+    /**
+     * Setter for Radius
+     * @param rad
+     */
+    void SetRadius(double rad) { mRadius = rad; }
+
+    /**
+    * Setter for Velocity Factor
+    * @param val
+    */
+    void SetVelocityFactor(float val) { mVelocityFactor = val; }
+
 };
 
 

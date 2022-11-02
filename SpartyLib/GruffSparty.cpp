@@ -9,9 +9,17 @@
 #include "stdio.h"
 #include "Slingshot.h"
 
+/// The radius in meters
+const double GruffSpartyRadius = 0.25;
+
+/// The velocity factor for Gruff Sparty
+const float GruffSpartyVelocityFactor = 12.0;
+
+
 GruffSparty::GruffSparty(std::shared_ptr<Level> level) : Angry(level)
 {
-
+    Angry::SetRadius(GruffSpartyRadius);
+    Angry::SetVelocityFactor(GruffSpartyVelocityFactor);
 }
 
 void GruffSparty::XmlLoad(wxXmlNode *node)

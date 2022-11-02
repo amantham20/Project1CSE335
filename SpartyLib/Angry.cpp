@@ -19,11 +19,12 @@ Angry::Angry(std::shared_ptr<Level> level)
 }
 
 
-
 void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     b2Body* body = BodyItem::GetBody();
     auto position = mLoaded ? PositionalItem::GetPosition() : body->GetPosition();
+    auto angle = body->GetAngle();
+
 
     const int heightOffset = 0;
 
@@ -33,6 +34,8 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
     graphics->PushState();
     graphics->Translate(x, y);
+    graphics->Rotate(angle);
+
 
     std::shared_ptr<wxBitmap> bitmap = Item::GetBitMap();
 
@@ -119,7 +122,7 @@ void Angry::Launch(b2Vec2 vel)
 
     // Create the shape
     b2CircleShape circle;
-    circle.m_radius = (float)0.25;
+    circle.m_radius = (float)mRadius;
 
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &circle;
@@ -129,7 +132,7 @@ void Angry::Launch(b2Vec2 vel)
 
     body->CreateFixture(&fixtureDef);
 
-    vel *= 12;
+    vel *= mVelocityFactor;
     body->SetLinearVelocity(vel);
 }
 
