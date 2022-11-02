@@ -8,6 +8,9 @@
 #ifndef ANGRYSPARTY_SPARTYAPP_H
 #define ANGRYSPARTY_SPARTYAPP_H
 
+/**
+ * The SpartyApp class
+ */
 class SpartyApp : public wxApp {
 private:
 

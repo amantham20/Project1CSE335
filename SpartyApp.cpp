@@ -7,7 +7,10 @@
 #include "SpartyApp.h"
 #include "MainFrame.h"
 
-
+/**
+ * Initializes the application and creates the main frame
+ * @return true on success otherwise false
+ */
 bool SpartyApp::OnInit()
 {
     if (!wxApp::OnInit())
