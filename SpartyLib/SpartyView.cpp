@@ -57,7 +57,7 @@ void SpartyView::Initialize(wxFrame* parent)
     Bind(wxEVT_LEFT_DOWN, &SpartyView::OnLeftDown, this);
     Bind(wxEVT_LEFT_UP, &SpartyView::OnLeftUp, this);
     Bind(wxEVT_MOTION, &SpartyView::OnMouseMove, this);
-    //Bind(wxEVT_KEY_DOWN, &SpartyView::OnSpaceButton, this);
+    Bind(wxEVT_KEY_DOWN, &SpartyView::OnSpaceButton, this);
 
     // Load Level files
     LoadLevels();
@@ -209,8 +209,14 @@ void SpartyView::OnLeftDown(wxMouseEvent& event)
  * Handle the space button down event
  * @param event
  */
-void SpartyView::OnSpaceButton(wxMouseEvent& event)
+void SpartyView::OnSpaceButton(wxKeyEvent& event)
 {
+    wxChar unicode = event.GetUnicodeKey();
+
+    // Space bar has an ASCII value of 32
+    if ( unicode == 32 )
+    {
+    }
 }
 
 /**

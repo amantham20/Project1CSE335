@@ -47,8 +47,10 @@ std::shared_ptr<wxBitmap> PictureManager::GetBitmap(const std::wstring & key)
  * Get the image from the cache of the image
  *
  * if the image is not in the cache then add it to the cache
+ *
+ * @brief gets the bitmap image with the fileName(as key)
  * @param key
- * @return
+ * @return the wxImage of the key
  */
 std::shared_ptr<wxImage> PictureManager::GetImage(const std::wstring & key)
 {

@@ -8,7 +8,9 @@
 #ifndef ANGRYSPARTY_IDS_H
 #define ANGRYSPARTY_IDS_H
 
-
+/**
+ * ID values for our program.
+ */
 enum IDs {
     IDM_LEVEL0 = wxID_HIGHEST + 1,
     IDM_LEVEL1 = wxID_HIGHEST + 2,
