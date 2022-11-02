@@ -31,6 +31,8 @@ private:
 
     int mCurrentLevel = 0;
 
+    bool mLevelEnd = false;
+
 public:
     /// Default Constructor
     PlayingArea() = delete;
@@ -53,6 +55,8 @@ public:
     void Update(double frameDuration);
 
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
+
+    void SetEnd(const bool &end) { mLevelEnd = end; } ;
 
     bool mControlDisplay = true;
 
