@@ -60,7 +60,7 @@ public:
      */
     void Stop() {mTimer.Stop();}
 
-    void OnSpaceButton(wxMouseEvent& event);
+    void OnSpaceButton(wxKeyEvent& event);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H
