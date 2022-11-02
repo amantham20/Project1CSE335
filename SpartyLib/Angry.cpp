@@ -69,7 +69,7 @@ void Angry::DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
     // Draw line based on the position of the angry sparty
     auto position = PositionalItem::GetPosition();
     path.MoveToPoint(position.x*Consts::MtoCM, position.y*Consts::MtoCM);
-    path.AddLineToPoint(position.x*Consts::MtoCM-17, position.y*Consts::MtoCM-2);
+    path.AddLineToPoint(position.x*Consts::MtoCM-18.5, position.y*Consts::MtoCM-2);
     graphics->StrokePath(path);
     graphics->PopState();
 

@@ -262,7 +262,6 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
                 } else
                 {
                     // The slingshot is being pulled to its maximum length
-                    std::cout << (Consts::Pi -abs(thetaRad))*Consts::RtoD << std::endl;
                     double xMax = slingshotLoadingPosition.x - rubberBandLength*cos(Consts::Pi -abs(thetaRad));
                     double yMax = 0;
                     if (thetaRad > 0 )
