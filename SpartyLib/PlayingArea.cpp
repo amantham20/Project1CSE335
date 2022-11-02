@@ -62,7 +62,7 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
 
     if (mControlDisplay)
     {
-        mTransitionalText->OnDraw(graphics, mCurrentLevel);
+        mTransitionalText->OnDraw(graphics, mCurrentLevel, mLevelEnd);
     }
 
 }

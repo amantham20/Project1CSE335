@@ -44,6 +44,8 @@ private:
 
     int mCurrentLevel = 0;
 
+    bool mLevelEnd = false;
+
 
     //// TODO: TEMP CODE WILL HAVE TO REMOVE IT
 //    b2World mWorld = b2World(b2Vec2(0, -9.8));

@@ -303,6 +303,7 @@ void SpartyGame::Update(double frameDuration)
     {
         mPlayingArea->Update(frameDuration);
         mPlayingArea->SetLevel(mCurrentLevel);
+        mPlayingArea->SetEnd(mLevelEnd);
     }
 }
 
@@ -318,6 +319,7 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     mPlayingArea->Accept(visitor);
     if(visitor->GetNumberFoe() <= 0)
     {
+        mLevelEnd = true;
         mCurrentLevel++;
     }
 }

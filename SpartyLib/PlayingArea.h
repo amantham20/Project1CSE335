@@ -31,6 +31,8 @@ private:
 
     int mCurrentLevel = 0;
 
+    bool mLevelEnd = false;
+
 public:
     /// Default Constructor
     PlayingArea() = delete;
@@ -54,9 +56,13 @@ public:
 
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
+
     void Add(std::shared_ptr<Item> item);
 
     void InstallPhysics();
+
+    void SetEnd(const bool &end) { mLevelEnd = end; } ;
+
 
     bool mControlDisplay = true;
 

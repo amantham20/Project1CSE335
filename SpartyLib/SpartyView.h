@@ -56,6 +56,8 @@ public:
      * Stop the timer so the window can close
      */
     void Stop() {mTimer.Stop();}
+
+    void OnSpaceButton(wxMouseEvent& event);
 };
 
 #endif //ANGRYSPARTY_SPARTYVIEW_H
