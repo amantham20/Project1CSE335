@@ -16,6 +16,8 @@
  */
 class Goalpost : public Slingshot {
 private:
+    // Rubber band length in meters
+    int mRubberBandLength = 2;
 
 public:
     Goalpost(std::shared_ptr<Level> level);
@@ -27,6 +29,8 @@ public:
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitGoalpost(this); }
 
     void LoadAngrySparty(Angry* sparty) override;
+
+    int GetRubberBandLength() override {return mRubberBandLength;};
 };
 
 #endif //ANGRYSPARTY_GOALPOST_H

@@ -262,5 +262,5 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
 
         // Force the screen to redraw
         Refresh();
-    }
+    } 
 }

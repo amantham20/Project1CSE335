@@ -132,6 +132,8 @@ public:
      * @param y new y coordinate for the right attachment point for the rubber bands
      */
     void SetYRightAttachment(double y) {mYRightAttachment = y;};
+
+    virtual int GetRubberBandLength() = 0;
 };
 
 #endif //ANGRYSPARTY_SLINGSHOT_H

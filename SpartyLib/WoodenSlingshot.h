@@ -15,6 +15,8 @@
  */
 class WoodenSlingshot : public Slingshot {
 private:
+    // Rubber band length in meters
+    int mRubberBandLength = 1;
 
 public:
 
@@ -27,6 +29,8 @@ public:
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitWoodenSlingshot(this); }
 
     void LoadAngrySparty(Angry* sparty) override;
+
+    int GetRubberBandLength() override {return mRubberBandLength;};
 };
 
 #endif //ANGRYSPARTY_WOODENSLINGSHOT_H
