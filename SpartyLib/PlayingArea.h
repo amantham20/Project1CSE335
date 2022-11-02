@@ -12,6 +12,11 @@
 #include "SpartyGame.h"
 #include "ItemVisitor.h"
 
+/**
+ * PlayingArea class
+ *
+ * A class that displays the playing area all the items for a specific level
+ */
 class PlayingArea {
 private:
     /// Items copied from Level

@@ -11,6 +11,9 @@
 
 #include "ItemVisitor.h"
 
+/**
+ * a Visitor class track number of foe
+ */
 class FoeTracker : public ItemVisitor{
 private:
     int mNumberFoe = 0;

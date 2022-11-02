@@ -14,6 +14,11 @@
 
 #include "BodyItem.h"
 
+/**
+ * Class for angry sparty
+ *
+ * (items that get launched from the slingshot)
+ */
 class Angry : public BodyItem {
 private:
     bool mLoaded = false;

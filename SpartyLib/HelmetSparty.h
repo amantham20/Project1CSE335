@@ -10,6 +10,11 @@
 
 #include "Angry.h"
 
+/**
+ * Class that inherits from AngrySparty and represents a helmet sparty.
+ *
+ * an type of angry sparty that gets launched by the slingshot.
+ */
 class HelmetSparty : public Angry {
 private:
 

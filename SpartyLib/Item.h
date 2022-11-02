@@ -19,6 +19,9 @@
 class Picture;
 class Level;
 
+/**
+ * Base class for any item in our game.
+ */
 class Item {
 private:
 

@@ -10,6 +10,11 @@
 
 #include "BodyItem.h"
 
+/**
+ * Foe class
+ *
+ * (class for all enemies)
+ */
 class Foe : public BodyItem {
 private:
 
