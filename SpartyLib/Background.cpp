@@ -9,6 +9,15 @@
 #include "Consts.h"
 #include "Level.h"
 
+/**
+ * Constructor for the Background image
+ *
+ * Calls Item and passes in Level
+ *
+ * @param level The current Level the Object is in.
+ *
+ * @author Aman Dhruva Thamminana
+ */
 Background::Background(std::shared_ptr<Level> level) : Item(level)
 {
 
@@ -55,7 +64,7 @@ void Background::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
 
 
 /**
- *
+ *  returns the location of the background
  * @param x
  * @param y
  *

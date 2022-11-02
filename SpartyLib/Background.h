@@ -24,21 +24,16 @@ public:
 
     void XmlLoad(wxXmlNode *node) override;
 
-    /**
-     * Constructor for the Background image
-     *
-     * Calls Item and passes in Level
-     *
-     * @param level The current Level the Object is in.
-     *
-     * @author Aman Dhruva Thamminana
-     */
     Background(std::shared_ptr<Level> level);
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     void SetLocation(double x, double y) override;
 
+    /**
+     * Vistor pattern for Background Class
+     * @param visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitBackground(this); }
 };
 
