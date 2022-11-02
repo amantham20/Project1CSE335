@@ -21,8 +21,7 @@
 class BodyItem : public PositionalItem {
 private:
 
-    /// Physics object
-    std::shared_ptr<Physics> mPhysics;
+
 
     /// Width of the BodyItem
     double mWidth = 0;
@@ -55,6 +54,8 @@ protected:
     /// box2d Item Body
     b2Body* mBody;
 
+    /// Physics object
+    std::shared_ptr<Physics> mPhysics;
 public:
 
     BodyItem(std::shared_ptr<Level> level);

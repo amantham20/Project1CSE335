@@ -22,17 +22,10 @@ Angry::Angry(std::shared_ptr<Level> level)
 
 void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    //TODO : Get b2Body working to enable Easy Access to these values
     b2Body* body = BodyItem::GetBody();
-//    auto position = PositionalItem::GetPosition();
     auto position = mLoaded ? PositionalItem::GetPosition() : body->GetPosition();
-//    std::cout << mLoaded << " " << "Position x: " << position.x << " " << "Position y: " << position.y << std::endl;
-
-//    auto angle = body->GetAngle();
 
     const int heightOffset = 0;
-
-//    auto position = PositionalItem::GetPosition();
 
     auto wid = Consts::MtoCM*0.5;
     auto x = position.x*Consts::MtoCM;
@@ -82,12 +75,12 @@ void Angry::DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
 
 
 void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
-    // Create the body definition
+
     BodyItem::SetPhysics(physics);
 
     b2BodyDef bodyDefinition;
     // Todo: Change to dynamics body on the fly instead of hard coding it
-    bodyDefinition.type = b2_dynamicBody;
+    bodyDefinition.type = b2_staticBody;
     bodyDefinition.position = PositionalItem::GetPosition();
 
     auto world = physics->GetWorld();
@@ -104,6 +97,39 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
 
 void Angry::Launch(b2Vec2 vel)
 {
-    mBody->SetLinearVelocity(vel);
+    auto body = BodyItem::GetBody();
+    // Get the position and angle before
+    // we destroy the body.
+    auto position = body->GetPosition();
+    auto angle = body->GetAngle();
+
+    auto world = mPhysics->GetWorld();
+
+    // Destroy the body in the physics system
+    world->DestroyBody(body);
+
+    // Create the body definition
+    b2BodyDef bodyDefinition;
+    bodyDefinition.position = position;
+    bodyDefinition.angle = angle;
+    bodyDefinition.type = b2_dynamicBody;
+    bodyDefinition.angularDamping = 0.9;
+    bodyDefinition.linearDamping = 0.1;
+    body = world->CreateBody(&bodyDefinition);
+
+    // Create the shape
+    b2CircleShape circle;
+    circle.m_radius = (float)0.25;
+
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &circle;
+    fixtureDef.density = (float)5;
+    fixtureDef.friction = 1;
+    fixtureDef.restitution = 0.3;
+
+    body->CreateFixture(&fixtureDef);
+
+    vel *= 12;
+    body->SetLinearVelocity(vel);
 }
 
