@@ -34,6 +34,8 @@ public:
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitFoe(this); }
 
     void InstallPhysics(std::shared_ptr<Physics> physics) override;
+
+    bool HitTest(int x, int y) override { return true; };
 };
 
 #endif //ANGRYSPARTY_FOE_H
