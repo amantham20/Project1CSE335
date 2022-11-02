@@ -23,9 +23,9 @@ Angry::Angry(std::shared_ptr<Level> level)
 void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     //TODO : Get b2Body working to enable Easy Access to these values
-//    b2Body* body = BodyItem::GetBody();
-    auto position = PositionalItem::GetPosition();
-//    auto position = mLoaded ? PositionalItem::GetPosition() : body->GetPosition();
+    b2Body* body = BodyItem::GetBody();
+//    auto position = PositionalItem::GetPosition();
+    auto position = mLoaded ? PositionalItem::GetPosition() : body->GetPosition();
 //    std::cout << mLoaded << " " << "Position x: " << position.x << " " << "Position y: " << position.y << std::endl;
 
 //    auto angle = body->GetAngle();
@@ -87,7 +87,7 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
 
     b2BodyDef bodyDefinition;
     // Todo: Change to dynamics body on the fly instead of hard coding it
-    bodyDefinition.type = b2_staticBody;
+    bodyDefinition.type = b2_dynamicBody;
     bodyDefinition.position = PositionalItem::GetPosition();
 
     auto world = physics->GetWorld();
@@ -100,5 +100,10 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
 
     body->CreateFixture(&circle, 0.0f);
     BodyItem::SetBody(body);
+}
+
+void Angry::Launch(b2Vec2 vel)
+{
+    mBody->SetLinearVelocity(vel);
 }
 

@@ -36,6 +36,9 @@ private:
 
     bool mDebug = false;
     void LoadLevels();
+
+    b2Vec2 velocity = b2Vec2(0,0);
+
 public:
     void Initialize(wxFrame* parent);
 

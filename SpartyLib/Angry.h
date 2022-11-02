@@ -37,6 +37,7 @@ public:
 
     void InstallPhysics(std::shared_ptr<Physics> physics) override;
 
+    void Launch(b2Vec2 vel);
 };
 
 
