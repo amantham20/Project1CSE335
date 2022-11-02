@@ -20,8 +20,6 @@
  */
 class BodyItem : public PositionalItem {
 private:
-    /// box2d Item Body
-    b2Body* mBody;
 
     /// Physics object
     std::shared_ptr<Physics> mPhysics;
@@ -52,6 +50,10 @@ private:
 
     /// mSize
     b2Vec2 mSize = b2Vec2(mWidth, mHeight);
+
+protected:
+    /// box2d Item Body
+    b2Body* mBody;
 
 public:
 

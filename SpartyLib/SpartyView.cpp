@@ -237,17 +237,23 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
     double metersX = (event.m_x/scale-xOffset)/Consts::MtoCM;
     double metersY = (event.m_y/-scale-yOffset)/Consts::MtoCM;
 
+    // Get position of the slingshot loading spot
+    auto slingshotLoadingPosition = mSpartyGame.GetSlingshotLoadingPosition();
+
     // See if an angry sparty is currently being moved by the mouse
     if (mGrabbedSparty!=nullptr) {
-        // Get position of the slingshot loading spot
-        auto slingshotLoadingPosition = mSpartyGame.GetSlingshotLoadingPosition();
 
         // If the angry sparty is being moved, we only continue to
         // move it while the left button is down.
+
+        // todo: change hard coded value to the projectile direction and velocity
+
         if (event.LeftIsDown()) {
+            auto spartyPosition = mGrabbedSparty->GetPosition();
+
+            velocity = b2Vec2(sin(abs(spartyPosition.x)-abs(slingshotLoadingPosition.x)), sin(abs(slingshotLoadingPosition.y)-abs(spartyPosition.y)));
 
             //  Calculate angle between x-axis and mouse position vector
-            auto spartyPosition = mGrabbedSparty->GetPosition();
             double thetaRad = atan2(metersY-slingshotLoadingPosition.y, metersX-slingshotLoadingPosition.x);
             double thetaDeg = thetaRad * Consts::RtoD;
 
@@ -268,6 +274,8 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
                 if (distance <= rubberBandLength)
                 {
                     mGrabbedSparty->SetLocation(metersX, metersY);
+                    auto position = mGrabbedSparty->GetPosition();
+//                    std::cout << position.x << ", " << position.y << std::endl;
                 } else
                 {
                     // The slingshot is being pulled to its maximum length
@@ -288,7 +296,11 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
             // When the left button is released, we release the
             // angry sparty.
             // todo: Angry launch code
-            mGrabbedSparty->SetLocation(slingshotLoadingPosition.x, slingshotLoadingPosition.y);
+//            mGrabbedSparty->SetLocation(slingshotLoadingPosition.x, slingshotLoadingPosition.y);
+            mGrabbedSparty->SetLoadedInSlingshot(false);
+            mSpartyGame.ClearLoadedSparty();
+
+            mGrabbedSparty->Launch(velocity);
             mGrabbedSparty = nullptr;
         }
 

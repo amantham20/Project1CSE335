@@ -134,6 +134,8 @@ public:
     void SetYRightAttachment(double y) {mYRightAttachment = y;};
 
     virtual int GetRubberBandLength() = 0;
+
+    void ClearLoadedAngrySparty();
 };
 
 #endif //ANGRYSPARTY_SLINGSHOT_H

@@ -86,15 +86,15 @@ void Level::Accept(std::shared_ptr<ItemVisitor> visitor)
     }
 }
 
-/**
- * Checks if an item in the level has been clicked
- * @param x x coordinate to test
- * @param y y coordinate to test
- */
-Angry* Level::HitTest(int x, int y)
-{
-    return mSpartyTracker->HitTest(x, y);
-}
+///**
+// * Checks if an item in the level has been clicked
+// * @param x x coordinate to test
+// * @param y y coordinate to test
+// */
+//Angry* Level::HitTest(int x, int y)
+//{
+//    return mSpartyTracker->HitTest(x, y);
+//}
 
 /**
  * Draws the right slingshot rubber band portion in this level
@@ -133,4 +133,17 @@ void Level::AddItemDepp(std::shared_ptr<PlayingArea> playingArea){
     {
         playingArea->Add(item);
     }
+}
+
+/**
+ * Clears the loaded sparty of the slingshot in this level
+ */
+void Level::ClearLoadedSparty()
+{
+    mSlingShot->ClearLoadedAngrySparty();
+}
+
+std::shared_ptr<Slingshot> Level::GetSlingshot()
+{
+    return mSlingShot;
 }

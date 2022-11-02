@@ -109,3 +109,33 @@ void PlayingArea::Update(double frameDuration){
         mControlDisplay = false;
     }
 }
+
+/**
+ * Reload the slingshot with an Angry sparty in this level
+ */
+void PlayingArea::ReloadSlingshot()
+{
+    mSpartyTracker = std::make_shared<SpartyTracker>();
+    Accept(mSpartyTracker);
+    mSpartyTracker->ReloadSlingshot(mSlingShot);
+}
+
+/**
+ * Checks if an item in the level has been clicked
+ * @param x x coordinate to test
+ * @param y y coordinate to test
+ */
+Angry* PlayingArea::HitTest(int x, int y)
+{
+    return mSpartyTracker->HitTest(x, y);
+}
+
+/**
+ * Sets the slingshot for this level, this allows fast access to the level's slingshot instead of having to
+ * iterate over its mItems.
+ * @param slingshot Slingshot to set to this level
+ */
+void PlayingArea::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
+{
+    mSlingShot = slingshot;
+}
