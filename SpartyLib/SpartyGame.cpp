@@ -340,3 +340,8 @@ b2Vec2 SpartyGame::GetSlingshotLoadingPosition()
 {
     return mLevels[mCurrentLevel]->GetSlingshotLoadingPosition();
 }
+
+int SpartyGame::GetRubberBandLength()
+{
+    return mLevels[mCurrentLevel]->GetRubberBandLength();
+}

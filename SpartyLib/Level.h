@@ -87,6 +87,8 @@ public:
     void DrawSlingshotFront(std::shared_ptr<wxGraphicsContext> graphics);
 
     b2Vec2 GetSlingshotLoadingPosition();
+
+    int GetRubberBandLength();
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

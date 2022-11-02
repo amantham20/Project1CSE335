@@ -237,19 +237,43 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
         // move it while the left button is down.
         if (event.LeftIsDown()) {
 
-            // Get the position of the angry sparty and the loading position of the slingshot. Calculate angle between vectors.
+            //  Calculate angle between x-axis and mouse position vector
             auto spartyPosition = mGrabbedSparty->GetPosition();
             double thetaRad = atan2(metersY-slingshotLoadingPosition.y, metersX-slingshotLoadingPosition.x);
             double thetaDeg = thetaRad * Consts::RtoD;
 
-            //
+            // Check if the slingshot is being pulled in the right direction
             if (thetaDeg >= -95 && thetaDeg <= 120)
             {
 //                auto limitY = tan(thetaRad)*metersX;
 //                mGrabbedSparty->SetLocation(metersX, limitY);
             } else
             {
-                mGrabbedSparty->SetLocation(metersX, metersY);
+                // Calculate distance from the mouse to the slingshot loading spot
+                double distance = sqrt(pow((metersX - slingshotLoadingPosition.x), 2) + pow((metersY - slingshotLoadingPosition.y), 2));
+
+                // Get the maximum length of the rubber band
+                int rubberBandLength = mSpartyGame.GetRubberBandLength();
+
+                // Check if the rubber band is being pulled to its maximum length
+                if (distance <= rubberBandLength)
+                {
+                    mGrabbedSparty->SetLocation(metersX, metersY);
+                } else
+                {
+                    // The slingshot is being pulled to its maximum length
+                    std::cout << (Consts::Pi -abs(thetaRad))*Consts::RtoD << std::endl;
+                    double xMax = slingshotLoadingPosition.x - rubberBandLength*cos(Consts::Pi -abs(thetaRad));
+                    double yMax = 0;
+                    if (thetaRad > 0 )
+                    {
+                        yMax = slingshotLoadingPosition.y + rubberBandLength*sin(Consts::Pi -abs(thetaRad));
+                    } else
+                    {
+                        yMax = slingshotLoadingPosition.y - rubberBandLength*sin(Consts::Pi -abs(thetaRad));
+                    }
+                    mGrabbedSparty->SetLocation(xMax, yMax);
+                }
             }
         }
         else {

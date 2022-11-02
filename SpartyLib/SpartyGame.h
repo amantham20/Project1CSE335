@@ -97,6 +97,8 @@ public:
     double GetYOffset() {return mYOffset;};
 
     b2Vec2 GetSlingshotLoadingPosition();
+
+    int GetRubberBandLength();
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

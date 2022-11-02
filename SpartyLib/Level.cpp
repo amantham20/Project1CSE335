@@ -119,3 +119,8 @@ b2Vec2 Level::GetSlingshotLoadingPosition()
 {
     return b2Vec2(mSlingShot->GetXLoadSpot(), mSlingShot->GetYLoadSpot());
 }
+
+int Level::GetRubberBandLength()
+{
+    return mSlingShot->GetRubberBandLength();
+}

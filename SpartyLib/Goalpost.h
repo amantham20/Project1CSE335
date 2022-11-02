@@ -17,7 +17,7 @@
 class Goalpost : public Slingshot {
 private:
     // Rubber band length in meters
-    int mRubberBandLength = 2;
+    int mRubberBandLength = 3;
 
 public:
     Goalpost(std::shared_ptr<Level> level);

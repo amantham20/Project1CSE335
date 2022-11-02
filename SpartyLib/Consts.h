@@ -22,6 +22,8 @@ public:
     /// Convert of radians to degrees
     static constexpr double RtoD = 57.2957795131;
 
+    static constexpr double Pi = 3.14159265358979323846;
+
     /// Convert of seconds to milliseconds
     static constexpr int SecToMillisec = 1000;
 
