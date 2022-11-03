@@ -39,8 +39,10 @@ void SpartyTracker::ReloadSlingshot(std::shared_ptr<Slingshot> slingshot)
             break;
         }
     }
-    nextAngrySparty->SetLoadedInSlingshot(true);
-    slingshot->LoadAngrySparty(nextAngrySparty);
+    if (nextAngrySparty != nullptr){
+        nextAngrySparty->SetLoadedInSlingshot(true);
+        slingshot->LoadAngrySparty(nextAngrySparty);
+    }
 }
 
 /**

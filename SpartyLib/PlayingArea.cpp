@@ -82,7 +82,7 @@ void PlayingArea::NextLoad(){
     if(FlyingAngry != nullptr && mSlingShot->GetLoadedAngrySparty() == nullptr){
         auto velocity = FlyingAngry->GetBody()->GetLinearVelocity();
         auto speed = velocity.Length();
-        if(speed < 0.01){
+        if(speed < 0.05){
             ////Sparty is dead
             spartyToKill = FlyingAngry;
 
