@@ -23,9 +23,22 @@ private:
     /// y position
     double mY;
 
+    /// initial coordinates
+    b2Vec2 mInitialCords = b2Vec2(-1, -1);
+
 public:
 
     PositionalItem(std::shared_ptr<Level> level);
+
+    void SetLocation(double x, double y)  override;
+
+    void XmlLoad(wxXmlNode *node) override;
+
+    bool HitTest(int x, int y) override;
+
+    void ResetXY();
+
+    void AssignXYInitial(double x, double y) override;
 
     /**
      * Getter of x position
@@ -51,17 +64,12 @@ public:
      */
     void SetY(double y) { mY = y; }
 
-    void SetLocation(double x, double y)  override;
-
-    void XmlLoad(wxXmlNode *node) override;
-
     /**
      * Returns the position of the item
      * @return b2Vec2 representing the position of an item.
      */
     b2Vec2 GetPosition() { return b2Vec2(mX, mY); }
 
-    bool HitTest(int x, int y) override;
 
 };
 

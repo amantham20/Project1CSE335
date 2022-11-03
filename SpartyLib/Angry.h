@@ -8,7 +8,6 @@
 #ifndef ANGRYSPARTY_ANGRY_H
 #define ANGRYSPARTY_ANGRY_H
 
-
 #include "BodyItem.h"
 
 /**
@@ -16,7 +15,8 @@
  *
  * (items that get launched from the slingshot)
  */
-class Angry : public BodyItem {
+class Angry : public BodyItem
+{
 private:
     bool mLoaded = false;
     double mRadius = 0;
@@ -28,10 +28,6 @@ public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     void DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
-
-    bool IsLoadedInSlingshot() {return mLoaded;};
-
-    void SetLoadedInSlingshot(bool loaded) {mLoaded = loaded;};
 
     void InstallPhysics(std::shared_ptr<Physics> physics) override;
 
@@ -57,7 +53,17 @@ public:
      */
     int GetId(){ return Item::GetId();}
 
+    /**
+     * Getter for is loaded in slingshot
+     * @return
+     */
+    bool IsLoadedInSlingshot() {return mLoaded;};
 
+    /**
+     * Setter for is loaded in slingshot
+     * @param loaded
+     */
+    void SetLoadedInSlingshot(bool loaded) {mLoaded = loaded;};
 };
 
 

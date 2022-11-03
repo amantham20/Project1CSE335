@@ -30,9 +30,15 @@ void PositionalItem::XmlLoad(wxXmlNode *node)
 {
     node->GetAttribute(L"x", L"0").ToDouble(&mX);
     node->GetAttribute(L"y", L"0").ToDouble(&mY);
+
     Item::XmlLoad(node);
 }
 
+/**
+ * Setter for mX and mY
+ * @param x
+ * @param y
+ */
 void PositionalItem::SetLocation(double x, double y)
 {
     mX = x;
@@ -82,4 +88,24 @@ bool PositionalItem::HitTest(int x, int y)
     // If the location is transparent, we are not in the drawn
     // part of the image
     return !itemImage->IsTransparent((int)testX, (int)testY);
+}
+
+/**
+ * Reset the x and y to initial values
+ */
+void PositionalItem::ResetXY()
+{
+    mX = mInitialCords.x;
+    mY = mInitialCords.y;
+}
+
+/**
+ * Setter for initial x and y values
+ * @param x
+ * @param y
+ */
+void PositionalItem::AssignXYInitial(double x, double y)
+{
+    mInitialCords.x = x;
+    mInitialCords.y = y;
 }

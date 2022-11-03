@@ -27,19 +27,9 @@ using namespace std;
 /**
  * Constructor
  */
- ///TODO Change where this is! the mPhysicsEngine should be in the level class
 SpartyGame::SpartyGame() //:mPhysics(b2Vec2(14.22,8))
 {
-//    mPhysics = make_shared<Physics>(b2Vec2(14.22*Consts::MtoCM,8*Consts::MtoCM));
-
     mPictureCache = std::make_shared<PictureManager>();
-
-
-    /// TODO remove the next line
-//    Level *tLevel = new Level(8, 14.22);
-//    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
-//    mItems.push_back(tempBackground);
-
 }
 
 /**
@@ -87,17 +77,7 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
     // Draw current level
     //mLevels[mCurrentLevel]->OnDraw(graphics);
     Update(graphics);
-    //todo: delete
-    //shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
-    //shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
-    //a->OnDraw(graphics);
-    //->OnDraw(graphics);
 
-    //todo: uncompleted working code don't know put where
-//    shared_ptr<Item> a = std::make_shared<ScoreDisplay>(mLevels[0], mTotalScore, 10, 10);
-//    shared_ptr<Item> b = std::make_shared<ScoreDisplay>(mLevels[0], mLevels[0]->GetScore(), 1400, 10);
-//    a->OnDraw(graphics);
-//    b->OnDraw(graphics);
 
     if(mDebug){
         DebugOnDraw(graphics);
@@ -274,6 +254,7 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
             // Set image location
             item->SetLocation(x_current, y_start);
+            item->AssignXYInitial(x_current, y_start);
             x_current += spacing;
 
             // Load item data based on xml file
@@ -285,6 +266,9 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
     }
 }
 
+/**
+ * Reset the sparty game when done
+ */
 void SpartyGame::Reset()
 {
     mPlayingArea.reset();
@@ -313,7 +297,6 @@ void SpartyGame::Update(double frameDuration)
     {
         mPlayingArea->Update(frameDuration);
         mPlayingArea->SetLevel(mCurrentLevel);
-//        mPlayingArea->SetEnd(mLevelEnd);
     }
 }
 
@@ -323,8 +306,7 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     {
         Reset();
     }
-//    mPlayingArea->SetSlingShot(mLevels[mCurrentLevel]->GetSlingshot());
-//    mPlayingArea->ReloadSlingshot();
+
     mPlayingArea->Draw(graphics);
 
     std::shared_ptr<FoeTracker> visitor = std::make_shared<FoeTracker>();
@@ -351,8 +333,6 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
  */
 Angry* SpartyGame::HitTest(int x, int y)
 {
-    // Return the current level's hit test
-//    return mLevels[mCurrentLevel]->HitTest(x, y);
     return mPlayingArea->HitTest(x, y);
 }
 

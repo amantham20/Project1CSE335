@@ -24,18 +24,6 @@ class Level;
  */
 class Item {
 private:
-
-    ///a pointer to picture
-    //Picture *mPicture;
-
-//    /// TEMP wxImage of the Item image
-//    std::unique_ptr<wxImage> mItemImage;
-//
-//    /// TEMP wxBitmap of the Item image
-//    std::shared_ptr<wxBitmap> mItemBitmap;
-    /// TODO remove Image/ Combine them into a class (aka use mPicture)
-
-//    images/bob.png
     std::wstring mFileName = L"images/bob.png";
 
     std::shared_ptr<PictureManager> mPictureCache;
@@ -58,7 +46,6 @@ public:
 
     Item(std::shared_ptr<Level> level);
 
-    /// TODO ! use virtual function for this or visitors?
     virtual void SetLocation(double x, double y) = 0;
 
     /**
@@ -72,44 +59,17 @@ public:
 
     /**
      * Getter for Level for this Item
-     *
-     *
      * @return mLevel The Level the item is currently Present in.
-     *
-     * @TODO Move this to Protected?? (although may not be required as it is a getter.)
-     *
-     * @personToBlame Aman Dhruva Thamminana
      */
-    std::shared_ptr<Level>  GetLevel(){return mLevel;}
+    std::shared_ptr<Level>GetLevel(){ return mLevel;}
 
     /**
      * Getter for the ImageBitMap
-     *
      * @return ImageBitmap for the item
      */
-    virtual std::shared_ptr<wxBitmap> GetBitMap(){
-        return mPictureCache->GetBitmap(mFileName);
-    }
-
-    /**
-     * Getter for the item's image
-     *
-     * @return ImageBitmap for the item
-     */
-    virtual std::shared_ptr<wxImage> GetImage(){
-        return mPictureCache->GetImage(mFileName);
-    }
-
-    //virtual void Update(double elapsed){};
-
-    //virtual void Update(std::shared_ptr<wxGraphicsContext> graphics);
+    virtual std::shared_ptr<wxBitmap> GetBitMap(){ return mPictureCache->GetBitmap(mFileName); }
 
     void SetImageName(const std::wstring & filename);
-
-
-    void setCache(std::shared_ptr<PictureManager> pictureCache){
-        mPictureCache = pictureCache;
-    }
 
     /**
      * Accept a visitor
@@ -121,14 +81,31 @@ public:
 
     virtual void InstallPhysics(std::shared_ptr<Physics> physics){};
 
-    void SetId(int id){
-        mId = id;
-    }
+    virtual void AssignXYInitial(double x, double y){};
 
-    int GetId(){
-        return mId;
-    }
+    /**
+     * Setter for item id
+     * @param id
+     */
+    void SetId(int id) { mId = id; }
 
+    /**
+     * Getter for the item id
+     * @return
+     */
+    int GetId(){ return mId; }
+
+    /**
+     * Setter for cache
+     * @param pictureCache
+     */
+    void setCache(std::shared_ptr<PictureManager> pictureCache){ mPictureCache = pictureCache; }
+
+    /**
+     * Getter for the item's image
+     * @return ImageBitmap for the item
+     */
+    virtual std::shared_ptr<wxImage> GetImage(){ return mPictureCache->GetImage(mFileName); }
 };
 
 #endif //ANGRYSPARTY_ITEM_H

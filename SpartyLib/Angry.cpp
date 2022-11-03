@@ -1,9 +1,8 @@
 /**
  * @file Angry.cpp
  * @author James, Rajmeet Singh Chandok
- *
+ * Angry's defination
  */
-
 
 #include "pch.h"
 #include "Angry.h"
@@ -29,7 +28,6 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     auto position = mLoaded ? PositionalItem::GetPosition() : body->GetPosition();
     auto angle = body->GetAngle();
 
-
     const int heightOffset = 0;
 
     auto wid = Consts::MtoCM*0.5;
@@ -39,7 +37,6 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->PushState();
     graphics->Translate(x, y);
     graphics->Rotate(angle);
-
 
     std::shared_ptr<wxBitmap> bitmap = Item::GetBitMap();
 
@@ -89,7 +86,6 @@ void Angry::DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
  * @param physics
  */
 void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
-
     BodyItem::SetPhysics(physics);
 
     b2BodyDef bodyDefinition;
@@ -148,7 +144,6 @@ void Angry::Launch(b2Vec2 vel)
     body->CreateFixture(&fixtureDef);
     BodyItem::SetBody(body);
 
-
     vel *= mVelocityFactor;
     body->SetLinearVelocity(vel);
 }
@@ -160,6 +155,8 @@ void Angry::DeleteBody()
 {
     auto body = BodyItem::GetBody();
     auto world = mPhysics->GetWorld();
+
     // Destroy the body in the physics system
     world->DestroyBody(body);
+    PositionalItem::ResetXY();
 }

@@ -6,7 +6,6 @@
 #include "pch.h"
 #include "GruffSparty.h"
 #include "Level.h"
-#include "stdio.h"
 #include "Slingshot.h"
 
 /// The radius in meters
@@ -22,6 +21,7 @@ const float GruffSpartyVelocityFactor = 12.0;
  */
 GruffSparty::GruffSparty(std::shared_ptr<Level> level) : Angry(level)
 {
+
     Angry::SetRadius(GruffSpartyRadius);
     Angry::SetVelocityFactor(GruffSpartyVelocityFactor);
 }
