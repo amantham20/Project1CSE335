@@ -81,6 +81,7 @@ public:
 
     void SetEnd(const bool &end) { mLevelEnd = end; } ;
 
+    bool mAddTotal = true;
 
     bool mControlDisplay = true;
 

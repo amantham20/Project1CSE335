@@ -28,7 +28,7 @@ PlayingArea::PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Sc
 {
     //todo incompleated Have to make it left alighted when the values are greater than 1 digit
     mPhysics = std::make_shared<Physics>(level->GetPosition());
-    mScore = std::make_shared<Score>(level, 0, level->GetWidth()*Consts::MtoCM-30, 10);
+    mScore = std::make_shared<Score>(level, 0, level->GetWidth()*Consts::MtoCM-50, 10);
     mTransitionalText = std::make_shared<TransitionalText>(level, 1400, 10);
 
 
@@ -111,6 +111,7 @@ void PlayingArea::NextLoad(){
                 for (auto itemItter = mItems.begin(); itemItter != mItems.end(); itemItter++ ){
                     if(Killlist.find((*itemItter)->GetId()) != Killlist.end() ){
                         KillVec.push_back(itemItter);
+                        mScore->AddScore(100);
                     }
                 }
 
@@ -134,6 +135,7 @@ void PlayingArea::NextLoad(){
                     mControlDisplay = true;
                     mLevelEnd = true;
 
+
                     leftOverSparties = Homie->GetNumberFoe() - Homie->TheseHoes().size();
                 }
 
@@ -152,13 +154,6 @@ void PlayingArea::NextLoad(){
         }
 
     }
-
-
-
-
-
-
-
 }
 
 void PlayingArea::Add(std::shared_ptr<Item> item)
@@ -203,14 +198,21 @@ void PlayingArea::Update(double frameDuration){
 
         mKill = true;
 
-
     }
-    if( mLevelEnd == true){
+    if( mLevelEnd == true)
+    {
+        if(mAddTotal)
+        {
+            mTotalScore->AddScore(mScore->GetScore());
+            mAddTotal = false;
+        }
+
         return;
     }
 
     if (mTimeDuration > 2)
     {
+
         mControlDisplay = false;
     }
 }
