@@ -19,6 +19,8 @@ class FoeTracker : public ItemVisitor{
 private:
     int mNumberFoe = 0;
 
+    int nNumberAngry = 0;
+
     std::vector<Foe *> mFoeKillList;
     std::unordered_set<int> mFoeKillListId;
 public:
@@ -30,6 +32,12 @@ public:
     std::unordered_set<int> TheseHoesID(){return mFoeKillListId;};
 
     std::vector<Foe *>  TheseHoes(){return mFoeKillList;};
+
+    void VisitGruffSparty(GruffSparty* gruffSparty) override { nNumberAngry++;}
+
+    void VisitHelmetSparty(HelmetSparty* helmetSparty) override { nNumberAngry++;}
+
+    int GetNumberAngry(){return nNumberAngry;}
 };
 
 

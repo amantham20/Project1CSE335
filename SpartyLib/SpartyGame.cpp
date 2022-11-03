@@ -338,6 +338,9 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
         }
         Reset();
     }
+    if(visitor->GetNumberAngry() <= 0){
+        Reset();
+    }
 }
 
 /**
