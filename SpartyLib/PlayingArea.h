@@ -41,10 +41,10 @@ private:
 
     std::shared_ptr<SpartyTracker> mSpartyTracker;
 
-    // A pointer to the slingshot in the level
+    /// A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
 
-    Angry * FlyingAngry = nullptr;
+    Angry * mFlyingAngry = nullptr;
 
     bool mKill = false;
 
@@ -74,6 +74,7 @@ public:
 
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
+
     void Add(std::shared_ptr<Item> item);
 
     void InstallPhysics();
@@ -94,7 +95,13 @@ public:
 
     void NextLoad();
 
-    bool isDone(){ return mKill; }
+    bool isDone(){
+        return mKill;
+    }
+
+    void SetFlyingSparty(Angry* angry) {mFlyingAngry = angry;};
+
+    Angry* GetFlyingSparty() {return mFlyingAngry;};
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H

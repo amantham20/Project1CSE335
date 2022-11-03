@@ -105,6 +105,11 @@ public:
     int GetRubberBandLength();
 
     void ClearLoadedSparty();
+
+    Angry* GetFlyingSparty();
+
+    void SetFlyingSparty(Angry* angry);
+
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H

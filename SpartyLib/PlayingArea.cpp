@@ -74,17 +74,17 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
 
 void PlayingArea::NextLoad(){
 
-    if(FlyingAngry == nullptr){
-        FlyingAngry = mSlingShot->GetLoadedAngrySparty();
+    if(mFlyingAngry == nullptr){
+        mFlyingAngry = mSlingShot->GetLoadedAngrySparty();
     }
 
     Angry* spartyToKill;
-    if(FlyingAngry != nullptr && mSlingShot->GetLoadedAngrySparty() == nullptr){
-        auto velocity = FlyingAngry->GetBody()->GetLinearVelocity();
+    if(mFlyingAngry != nullptr && mSlingShot->GetLoadedAngrySparty() == nullptr){
+        auto velocity = mFlyingAngry->GetBody()->GetLinearVelocity();
         auto speed = velocity.Length();
         if(speed < 0.05){
             ////Sparty is dead
-            spartyToKill = FlyingAngry;
+            spartyToKill = mFlyingAngry;
 
                 int idChecker =  spartyToKill->GetId();
                 auto deleteItem = mItems.end();
@@ -101,7 +101,7 @@ void PlayingArea::NextLoad(){
                 if(deleteItem != mItems.end()){
                     mItems.erase(deleteItem);
                 }
-                FlyingAngry = nullptr;
+                mFlyingAngry = nullptr;
 
                 auto Homie = std::make_shared<FoeTracker>();
                 Accept(Homie);
@@ -215,6 +215,26 @@ void PlayingArea::Update(double frameDuration){
 
         mControlDisplay = false;
     }
+
+//    auto velocity = mFlyingAngry->GetBody()->GetLinearVelocity();
+
+//    mFlyingAngry->SetDive(mDive);
+//
+//    if (mFlyingAngry->GetDive())
+//    {
+//        mFlyingAngry->Launch(velocity, mDive);
+//        mFlyingAngry->SetDive(false);
+//    }
+
+
+//    if (mDive)
+//    {
+////        wxLogMessage("Success!!");
+//    }
+
+    // dont loop here
+    // probably put diving here
+    // change member variable trhough virtual setter that checks each item (call the function Dive)
 }
 
 /**
