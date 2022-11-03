@@ -126,10 +126,25 @@ void PlayingArea::NextLoad(){
                         mItems.erase(*itter);
                 }
 
+                if(Homie->GetNumberFoe() - Homie->TheseHoes().size() == 0){
+
+
+                    leftOverTime = mTimeDuration;
+
+                    mControlDisplay = true;
+                    mLevelEnd = true;
+
+                    leftOverSparties = Homie->GetNumberFoe() - Homie->TheseHoes().size();
+                }
+
+
+
 
                 spartyToKill->DeleteBody();
 
                 ReloadSlingshot();
+
+
 
 
 
@@ -183,12 +198,16 @@ void PlayingArea::Update(double frameDuration){
     mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
     mTimeDuration += frameDuration;
 
-//    auto foeTracker = std::make_shared<FoeTracker>();
-////    Accept(foeTracker);
-//    for(auto item : mItems){
-//        item->
-//    }
-//    foeTracker->RemoveFallenFoe(mPhysics);
+    if (mTimeDuration > 5+leftOverTime){
+        mControlDisplay = false;
+
+        mKill = true;
+
+
+    }
+    if( mLevelEnd == true){
+        return;
+    }
 
     if (mTimeDuration > 2)
     {

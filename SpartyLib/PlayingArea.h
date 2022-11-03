@@ -45,6 +45,12 @@ private:
     std::shared_ptr<Slingshot> mSlingShot;
 
     Angry * FlyingAngry = nullptr;
+
+    bool mKill = false;
+
+    int leftOverSparties = -1;
+
+    double leftOverTime = DBL_MAX;
 public:
     /// Default Constructor
     PlayingArea() = delete;
@@ -87,6 +93,10 @@ public:
     void SetSlingShot(std::shared_ptr<Slingshot> slingshot);
 
     void NextLoad();
+
+    bool isDone(){
+        return mKill;
+    }
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H
