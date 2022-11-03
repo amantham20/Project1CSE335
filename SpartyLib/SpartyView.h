@@ -39,6 +39,8 @@ private:
 
     b2Vec2 velocity = b2Vec2(0,0);
 
+    bool mDive = false;
+
 public:
     void Initialize(wxFrame* parent);
 

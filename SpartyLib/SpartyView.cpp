@@ -216,6 +216,15 @@ void SpartyView::OnSpaceButton(wxKeyEvent& event)
     // Space bar has an ASCII value of 32
     if ( unicode == 32 )
     {
+        mGrabbedSparty = mSpartyGame.GetFlyingSparty();
+        if (mGrabbedSparty!=nullptr)
+        {
+            if (mDive)
+            {
+                mGrabbedSparty->Dive();
+                mDive = false;
+            }
+        }
     }
 }
 
@@ -308,6 +317,8 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
             mGrabbedSparty->SetLoadedInSlingshot(false);
             mSpartyGame.ClearLoadedSparty();
             mGrabbedSparty->Launch(velocity);
+            mDive = true;
+            mSpartyGame.SetFlyingSparty(mGrabbedSparty);
             mGrabbedSparty = nullptr;
         }
 
