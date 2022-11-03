@@ -82,8 +82,8 @@ void SpartyView::LoadLevels()
     wxString levelTwoFilename = L"levels/level2.xml";
     mSpartyGame.Load(levelTwoFilename);
 
-//    wxString levelThreeFilename = L"levels/level3.xml";
-//    mSpartyGame.Load(levelThreeFilename);
+    wxString levelThreeFilename = L"levels/level3.xml";
+    mSpartyGame.Load(levelThreeFilename);
 }
 
 /**

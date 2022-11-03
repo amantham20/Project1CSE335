@@ -105,7 +105,6 @@ void PlayingArea::NextLoad(){
 
                 auto Homie = std::make_shared<FoeTracker>();
                 Accept(Homie);
-//                Accept(mSpartyTracker);
                 auto Killlist  = Homie->TheseHoesID();
 
                 std::vector<std::vector<std::shared_ptr<Item>>::iterator> KillVec;
@@ -123,20 +122,14 @@ void PlayingArea::NextLoad(){
 
                 }
 
-
-
-//                for(auto itter : KillVec){
-//                    if(*itter != nullptr){
-//                        mItems.erase(itter);
-//                    }
-//
-//                }
                 for(auto itter = KillVec.rbegin(); itter != KillVec.rend(); itter++){
                         mItems.erase(*itter);
                 }
 
+
                 spartyToKill->DeleteBody();
 
+                ReloadSlingshot();
 
 
 

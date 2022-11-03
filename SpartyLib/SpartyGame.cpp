@@ -333,6 +333,9 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     {
         mLevelEnd = true;
         mCurrentLevel++;
+        if (mCurrentLevel >= 4){
+            mCurrentLevel = 0;
+        }
         Reset();
     }
 }
