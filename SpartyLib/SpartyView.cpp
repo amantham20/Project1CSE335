@@ -257,7 +257,7 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
         if (event.LeftIsDown()) {
             auto spartyPosition = mGrabbedSparty->GetPosition();
 
-            velocity = b2Vec2(sin(abs(spartyPosition.x)-abs(slingshotLoadingPosition.x)), sin(abs(slingshotLoadingPosition.y)-abs(spartyPosition.y)));
+            velocity = b2Vec2((abs(spartyPosition.x)-abs(slingshotLoadingPosition.x)), (abs(slingshotLoadingPosition.y)-abs(spartyPosition.y)));
 
             //  Calculate angle between x-axis and mouse position vector
             double thetaRad = atan2(metersY-slingshotLoadingPosition.y, metersX-slingshotLoadingPosition.x);
@@ -266,10 +266,12 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
             // Check if the slingshot is being pulled in the right direction
             if (thetaDeg >= -95 && thetaDeg <= 120)
             {
+                // The slingshot is being pulled in the wrong direction
 //                auto limitY = tan(thetaRad)*metersX;
 //                mGrabbedSparty->SetLocation(metersX, limitY);
             } else
             {
+                // The slingshot is being pulled in the correct direction
                 // Calculate distance from the mouse to the slingshot loading spot
                 double distance = sqrt(pow((metersX - slingshotLoadingPosition.x), 2) + pow((metersY - slingshotLoadingPosition.y), 2));
 
@@ -305,7 +307,6 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
 //            mGrabbedSparty->SetLocation(slingshotLoadingPosition.x, slingshotLoadingPosition.y);
             mGrabbedSparty->SetLoadedInSlingshot(false);
             mSpartyGame.ClearLoadedSparty();
-
             mGrabbedSparty->Launch(velocity);
             mGrabbedSparty = nullptr;
         }

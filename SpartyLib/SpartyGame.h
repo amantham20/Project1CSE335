@@ -53,7 +53,7 @@ private:
 //Physics mPhysics;
 
 
-    bool mDebug = true;
+    bool mDebug = false;
 
     std::shared_ptr<PlayingArea> mPlayingArea;
 
