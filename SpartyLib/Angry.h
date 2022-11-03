@@ -64,7 +64,8 @@ public:
      * @param loaded
      */
     void SetLoadedInSlingshot(bool loaded) {mLoaded = loaded;};
-};
 
+    void Dive();
+};
 
 #endif //ANGRYSPARTY_ANGRY_H
