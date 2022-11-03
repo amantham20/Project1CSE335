@@ -2,7 +2,7 @@
 <level width="20" height="8">
     <items>
         <background width="20" height="8" image="spooky-background.png"/>
-        <goalposts x="-5.5" y="0.25"/>
+        <slingshot x="-5.5" y="0.25"/>
         <block x="0" y="0.125" width="20" height="0.25" repeat-x="45" type="static" image="sand.png"/>
         <block x="4.09142" y="2.04342" angle="268.599" friction="0.3" restitution="0.8" width="1" height="0.25"
                image="elementWood015.png"/>
@@ -30,8 +30,8 @@
 <!--        <foe x="4.35066" y="3.79633" angle="-64.9866" radius="0.3" down="1.5" image="pumpkin.png"/>-->
 <!--        <foe x="5.12217" y="4.03672" angle="-20.4206" radius="0.3" down="1.5" image="pumpkin.png"/>-->
 <!--        <foe x="4.53487" y="0.759972" angle="-337.889" radius="0.3" down="0.6" image="pumpkin.png"/>-->
-        <foe x="5.85255" y="3.05716" angle="21.1097" radius="0.3" down="1.5" image="foeM.png"/>
-        <foe x="4.35066" y="3.79633" angle="-64.9866" radius="0.3" down="1.5" image="foeO.png"/>
+        <foe x="5.85255" y="3.05716" angle="21.1097" radius="0.3" down="1.5" image="pumpkin.png"/>
+        <foe x="4.35066" y="3.79633" angle="-64.9866" radius="0.3" down="1.5" image="pumpkin.png"/>
     </items>
     <angry x="-6.5" y="0.3" spacing="0.6">
         <helmet-sparty/>
