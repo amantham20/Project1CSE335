@@ -1,6 +1,6 @@
 /**
  * @file Foe.cpp
- * @author Milan Mihailovic
+ * @author Milan Mihailovic, Rajmeet Singh Chandok
  */
 
 #include "pch.h"
@@ -34,13 +34,10 @@ void Foe::XmlLoad(wxXmlNode *node)
  */
 void Foe::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-
-    //TODO : Get b2Body working to enable Easy Access to these values
     b2Body* body = BodyItem::GetBody();
     auto position = body->GetPosition();
     auto angle = body->GetAngle();
 
-    //TODO : Couldn't figure out how to make foes exact height, change the 0.6 later
     auto wid = Consts::MtoCM * 0.6;
     auto x = position.x * Consts::MtoCM;
     auto y = position.y * Consts::MtoCM;
@@ -60,19 +57,25 @@ void Foe::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->PopState();
 }
 
-void Foe::InstallPhysics(std::shared_ptr<Physics> physics) {
+/**
+ * Install physics in foe
+ * @param physics
+ */
+void Foe::InstallPhysics(std::shared_ptr<Physics> physics)
+{
     b2World* world = physics->GetWorld();
 
     // Create the box
     const int Octa = 8;
+    const double divideFactor = 1.9;
     const b2Vec2 vertices[] = {
-            { 0.35355/2, 0.35355/2 },
-            { 0.0 , 0.5/2 },
-            { -0.35355/2 , 0.35355/2 },
-            { -0.5/2 ,  0.0 },
-            { -0.35355/2 , -0.35355/2 },
-            { -0.0  ,  -0.5/2 },
-            { 0.35355/2 , -0.35355/2 },
+            { 0.35355/divideFactor, 0.35355/divideFactor },
+            { 0.0 , 0.5/divideFactor },
+            { -0.35355/divideFactor , 0.35355/divideFactor },
+            { -0.5/divideFactor ,  0.0 },
+            { -0.35355/divideFactor , -0.35355/divideFactor },
+            { -0.0  ,  -0.5/divideFactor },
+            { 0.35355/divideFactor , -0.35355/divideFactor },
             { 0.5/2 ,  -0.0 },
     };
 
