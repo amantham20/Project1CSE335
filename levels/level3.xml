@@ -10,7 +10,6 @@
         <block x="5.35271" y="2.65242" angle="-1.42057" width="1.5" height="0.25" image="elementWood031.png"/>
         <block x="5.15529" y="3.64555" angle="-177.924" width="0.75" height="0.2" image="elementStone047.png"/>
         <block x="3.69974" y="0.364022" angle="0.0632041" width="0.75" height="0.2" image="elementStone047.png"/>
-        <block x="6.055" y="3.67833" angle="-87.926" width="0.2" height="0.175" image="debrisStone_1.png"/>
         <block x="3.95657" y="3.45098" angle="-102.159" width="0.2" height="0.175" image="debrisGlass_1.png"/>
         <block x="4.76891" y="1.41164" angle="178.593" width="3" height="0.2" image="elementMetal013.png"/>
         <block x="4.5197" y="0.36511" angle="-180.006" width="0.85" height="0.2" image="elementMetal029.png"/>

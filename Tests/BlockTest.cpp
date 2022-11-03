@@ -8,7 +8,7 @@
 #include <Block.h>
 #include <Level.h>
 
-TEST(FishBetaTest, Construct){
+TEST(BlockTest, Construct){
    std::shared_ptr<Level> level;
    Block testBlock(level);
 }
