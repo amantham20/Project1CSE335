@@ -9,7 +9,6 @@
 #define ANGRYSPARTY_POLY_H
 
 #include "BodyItem.h"
-//#include <box2d.h>
 
 /**
  * Polygon class derived from BodyItem
@@ -20,8 +19,6 @@ private:
     std::vector<b2Vec2> mVertices;
 
 public:
-
-
     Poly(std::shared_ptr<Level> level);
 
     void XmlLoad(wxXmlNode *node) override;

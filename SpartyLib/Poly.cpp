@@ -91,7 +91,11 @@ void Poly::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 
     graphics->PopState();
 }
-//
+
+/**
+ * Install physics for poly given the physics object
+ * @param physics
+ */
 void Poly::InstallPhysics(std::shared_ptr<Physics> physics){
 
     b2World* world = physics->GetWorld();

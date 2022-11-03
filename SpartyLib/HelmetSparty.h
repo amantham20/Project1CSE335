@@ -19,7 +19,6 @@ class HelmetSparty : public Angry {
 private:
 
 public:
-
     HelmetSparty(std::shared_ptr<Level> level);
 
     void XmlLoad(wxXmlNode *node) override;

@@ -1,24 +1,28 @@
 /**
  * @file Angry.cpp
- * @author James
+ * @author James, Rajmeet Singh Chandok
  *
  */
 
-//
-// Created by James on 10/25/22.
-//
 
 #include "pch.h"
 #include "Angry.h"
 #include "Level.h"
 
+/**
+ * Constructor
+ * @param level
+ */
 Angry::Angry(std::shared_ptr<Level> level)
         :BodyItem(level)
 {
 
 }
 
-
+/**
+ * Drawing of angry sparty
+ * @param graphics
+ */
 void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     b2Body* body = BodyItem::GetBody();
@@ -54,6 +58,10 @@ void Angry::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
     }
 }
 
+/**
+ * Draws the rubber band that scales with the position
+ * @param graphics
+ */
 void Angry::DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
 {
     // Draw slingshot rubber band that wraps around the body of the angry sparty
@@ -76,7 +84,10 @@ void Angry::DrawRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
     mLevel->DrawRightSlingshotRubberBand(graphics);
 }
 
-
+/**
+ * Installs physics to each angry sparty
+ * @param physics
+ */
 void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
 
     BodyItem::SetPhysics(physics);
@@ -98,6 +109,10 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
     BodyItem::SetBody(body);
 }
 
+/**
+ * Invoked with the angry sparty is launched
+ * @param vel velocity vector
+ */
 void Angry::Launch(b2Vec2 vel)
 {
     auto body = BodyItem::GetBody();
@@ -138,3 +153,13 @@ void Angry::Launch(b2Vec2 vel)
     body->SetLinearVelocity(vel);
 }
 
+/**
+ * Gets the physics world and destroys the body
+ */
+void Angry::DeleteBody()
+{
+    auto body = BodyItem::GetBody();
+    auto world = mPhysics->GetWorld();
+    // Destroy the body in the physics system
+    world->DestroyBody(body);
+}

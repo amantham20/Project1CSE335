@@ -1,12 +1,9 @@
 /**
  * @file Angry.h
- * @author James
+ * @author James, Rajmeet Singh Chandok
  *
  */
 
-//
-// Created by James on 10/25/22.
-//
 
 #ifndef ANGRYSPARTY_ANGRY_H
 #define ANGRYSPARTY_ANGRY_H
@@ -26,7 +23,6 @@ private:
     float mVelocityFactor = 0;
 
 public:
-
     Angry(std::shared_ptr<Level> level);
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
@@ -41,6 +37,8 @@ public:
 
     void Launch(b2Vec2 vel);
 
+    void DeleteBody();
+
     /**
      * Setter for Radius
      * @param rad
@@ -53,11 +51,11 @@ public:
     */
     void SetVelocityFactor(float val) { mVelocityFactor = val; }
 
-    void DeleteBody(){
-        mPhysics->GetWorld()->DestroyBody(BodyItem::GetBody());
-    }
-
-    int GetId(){return Item::GetId();}
+    /**
+     * Getter for item's id
+     * @return int
+     */
+    int GetId(){ return Item::GetId();}
 
 
 };
