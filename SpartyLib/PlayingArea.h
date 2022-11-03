@@ -43,6 +43,8 @@ private:
 
     // A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
+
+    Angry * FlyingAngry = nullptr;
 public:
     /// Default Constructor
     PlayingArea() = delete;
@@ -83,6 +85,8 @@ public:
     void ReloadSlingshot();
 
     void SetSlingShot(std::shared_ptr<Slingshot> slingshot);
+
+    void NextLoad();
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H

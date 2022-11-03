@@ -40,6 +40,8 @@ private:
 
     std::shared_ptr<PictureManager> mPictureCache;
 
+    int mId = -1;
+
 protected:
     /// The level this item is contained in
     std::shared_ptr<Level> mLevel;
@@ -118,6 +120,14 @@ public:
     virtual bool HitTest(int x, int y) { return false; };
 
     virtual void InstallPhysics(std::shared_ptr<Physics> physics){};
+
+    void SetId(int id){
+        mId = id;
+    }
+
+    int GetId(){
+        return mId;
+    }
 
 };
 

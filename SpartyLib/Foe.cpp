@@ -24,6 +24,8 @@ Foe::Foe(std::shared_ptr<Level> level) : BodyItem(level)
 void Foe::XmlLoad(wxXmlNode *node)
 {
     BodyItem::XmlLoad(node);
+    node->GetAttribute(L"down").ToDouble(&mDown);
+
 }
 
 /**

@@ -108,6 +108,7 @@ void Slingshot::DrawRightRubberBand(std::shared_ptr<wxGraphicsContext> graphics)
     wxGraphicsPath path = graphics->CreatePath();
 
     auto spartyPosition = mLoadedSparty->GetPosition();
+//    auto spartyPosition = mLoadedSpartySP->GetPosition();
     path.MoveToPoint(GetXRightAttachment(), GetYRightAttachment());
     path.AddLineToPoint(spartyPosition.x*Consts::MtoCM, spartyPosition.y*Consts::MtoCM);
 
@@ -126,10 +127,18 @@ void Slingshot::LoadAngrySparty(Angry* sparty)
     mLoadedSparty = sparty;
 }
 
+void Slingshot::LoadAngrySparty(std::shared_ptr<Angry> sparty)
+{
+    // Set the Angry Sparty position between the slingshot's arms.
+    sparty->SetLocation(GetXLoadSpot(), GetYLoadSpot());
+    mLoadedSpartySP = sparty;
+}
+
 /**
  * Clears the pointer to a loaded angry sparty
  */
 void Slingshot::ClearLoadedAngrySparty()
 {
     mLoadedSparty = nullptr;
+    mLoadedSpartySP = nullptr;
 }

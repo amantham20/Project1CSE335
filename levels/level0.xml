@@ -10,6 +10,7 @@
         <block x="3.52113" y="1.41129" angle="0.26278" width="1.5" height="0.25" image="elementWood031.png"/>
         <foe x="3.86058" y="1.8335" angle="-336.946" radius="0.3" down="1" image="foeM.png"/>
         <foe x="3.09669" y="1.8305" angle="22.8317" radius="0.3" down="1" image="foeO.png"/>
+        <foe x="2.09669" y="4.8305" angle="22.8317" radius="0.3" down="1" image="foeO.png"/>
     </items>
     <angry x="-6.5" y="0.3" spacing="0.6">
         <gruff-sparty/>

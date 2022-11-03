@@ -113,6 +113,7 @@ void SpartyGame::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, 
  */
 void SpartyGame::Load(const wxString &filename)
 {
+    mId = 0;
 
     // Make sure the given file(s) can be opened
     wxXmlDocument xmlDoc;
@@ -212,6 +213,10 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
             // Load item's attributes defined by xml document
             item->XmlLoad(child);
+
+
+            item->SetId(mId);
+            mId += 1;
         }
     }
 }
@@ -273,6 +278,9 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
             // Load item data based on xml file
             item->XmlLoad(child);
+
+            item->SetId(mId);
+            mId += 1;
         }
     }
 }
@@ -325,6 +333,7 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     {
         mLevelEnd = true;
         mCurrentLevel++;
+        Reset();
     }
 }
 

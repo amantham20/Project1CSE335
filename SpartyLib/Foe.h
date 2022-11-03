@@ -35,7 +35,17 @@ public:
 
     void InstallPhysics(std::shared_ptr<Physics> physics) override;
 
-    bool HitTest(int x, int y) override { return true; };
+    double GetDown(){return mDown;}
+
+    int GetId(){return Item::GetId();}
+
+    void DeleteBody(std::shared_ptr<Physics> physics){
+        physics->GetWorld()->DestroyBody(BodyItem::GetBody());
+    }
+
+//    Physics* GetPhysics(){return Item::}
+
+//    bool HitTest(int x, int y) override { return true; };
 };
 
 #endif //ANGRYSPARTY_FOE_H

@@ -57,6 +57,8 @@ private:
 
     std::shared_ptr<PlayingArea> mPlayingArea;
 
+    int mId = 0;
+
 public:
     SpartyGame();
     void SetLevel(const int &level) { mCurrentLevel = level; } ;

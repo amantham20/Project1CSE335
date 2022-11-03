@@ -131,6 +131,8 @@ void Angry::Launch(b2Vec2 vel)
     fixtureDef.restitution = 0.3;
 
     body->CreateFixture(&fixtureDef);
+    BodyItem::SetBody(body);
+
 
     vel *= mVelocityFactor;
     body->SetLinearVelocity(vel);

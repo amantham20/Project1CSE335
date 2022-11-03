@@ -9,6 +9,9 @@
 #include <utility>
 #include "DebugDraw.h"
 #include "Level.h"
+#include "FoeTracker.h"
+#include <unordered_set>
+#include "Foe.h"
 
 /// Number of velocity update iterations per step
 const int VelocityIterations = 6;
@@ -65,6 +68,89 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
         mTransitionalText->OnDraw(graphics, mCurrentLevel, mLevelEnd);
     }
 
+    NextLoad();
+
+}
+
+void PlayingArea::NextLoad(){
+
+    if(FlyingAngry == nullptr){
+        FlyingAngry = mSlingShot->GetLoadedAngrySparty();
+    }
+
+    Angry* spartyToKill;
+    if(FlyingAngry != nullptr && mSlingShot->GetLoadedAngrySparty() == nullptr){
+        auto velocity = FlyingAngry->GetBody()->GetLinearVelocity();
+        auto speed = velocity.Length();
+        if(speed < 0.01){
+            ////Sparty is dead
+            spartyToKill = FlyingAngry;
+
+                int idChecker =  spartyToKill->GetId();
+                auto deleteItem = mItems.end();
+                for(auto itemItter = mItems.begin(); itemItter != mItems.end(); itemItter++ ){
+                    if (idChecker == (*itemItter)->GetId()){
+                        deleteItem = itemItter;
+                        break;
+
+                    }
+
+
+                }
+
+                if(deleteItem != mItems.end()){
+                    mItems.erase(deleteItem);
+                }
+                FlyingAngry = nullptr;
+
+                auto Homie = std::make_shared<FoeTracker>();
+                Accept(Homie);
+//                Accept(mSpartyTracker);
+                auto Killlist  = Homie->TheseHoesID();
+
+                std::vector<std::vector<std::shared_ptr<Item>>::iterator> KillVec;
+                for (auto itemItter = mItems.begin(); itemItter != mItems.end(); itemItter++ ){
+                    if(Killlist.find((*itemItter)->GetId()) != Killlist.end() ){
+                        KillVec.push_back(itemItter);
+                    }
+                }
+
+                auto KilllistObj = Homie->TheseHoes();
+                for(auto itemItter : KilllistObj){
+                    if (itemItter->GetBody()!=nullptr){
+                        itemItter->DeleteBody(mPhysics);
+                    }
+
+                }
+
+
+
+//                for(auto itter : KillVec){
+//                    if(*itter != nullptr){
+//                        mItems.erase(itter);
+//                    }
+//
+//                }
+                for(auto itter = KillVec.rbegin(); itter != KillVec.rend(); itter++){
+                        mItems.erase(*itter);
+                }
+
+                spartyToKill->DeleteBody();
+
+
+
+
+
+        }
+
+    }
+
+
+
+
+
+
+
 }
 
 void PlayingArea::Add(std::shared_ptr<Item> item)
@@ -103,6 +189,13 @@ void PlayingArea::Accept(const std::shared_ptr<ItemVisitor>& visitor)
 void PlayingArea::Update(double frameDuration){
     mPhysics->GetWorld()->Step(frameDuration, VelocityIterations, PositionIterations);
     mTimeDuration += frameDuration;
+
+//    auto foeTracker = std::make_shared<FoeTracker>();
+////    Accept(foeTracker);
+//    for(auto item : mItems){
+//        item->
+//    }
+//    foeTracker->RemoveFallenFoe(mPhysics);
 
     if (mTimeDuration > 2)
     {

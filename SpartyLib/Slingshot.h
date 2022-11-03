@@ -40,6 +40,7 @@ private:
 protected:
     /// A pointer to the currently loaded angry sparty
     Angry *mLoadedSparty;
+    std::shared_ptr<Item> mLoadedSpartySP;
 
 public:
 
@@ -61,7 +62,16 @@ public:
 
     void DrawRightRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
 
+
     virtual void LoadAngrySparty(Angry* sparty);
+
+    virtual void LoadAngrySparty(std::shared_ptr<Angry> sparty);
+
+
+
+    Angry* GetLoadedAngrySparty(){
+        return mLoadedSparty;
+    }
 
     /**
      * Get the x position of the loading spot

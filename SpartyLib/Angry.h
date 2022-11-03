@@ -53,6 +53,13 @@ public:
     */
     void SetVelocityFactor(float val) { mVelocityFactor = val; }
 
+    void DeleteBody(){
+        mPhysics->GetWorld()->DestroyBody(BodyItem::GetBody());
+    }
+
+    int GetId(){return Item::GetId();}
+
+
 };
 
 

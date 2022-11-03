@@ -79,3 +79,4 @@ void WoodenSlingshot::LoadAngrySparty(Angry* sparty)
 {
     Slingshot::LoadAngrySparty(sparty);
 }
+
