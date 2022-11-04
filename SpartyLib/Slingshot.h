@@ -87,12 +87,14 @@ public:
     double GetYLoadSpot() {return mYLoadSpot;};
 
     /**
-    * Sets the x position of the loading spot
+    * sets the loading x spot
+    * @param x loading x spot
     */
     void SetXLoadSpot(double x) {mXLoadSpot = x;};
 
     /**
-    * Sets the y position of the loading spot
+    * sets the loading y spot
+    * @param y loading y spot
     */
     void SetYLoadSpot(double y) {mYLoadSpot = y;};
 
