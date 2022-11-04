@@ -9,8 +9,8 @@
 #include "Consts.h"
 
 /**
- * PositionalItem constructor
- * @param world
+ * Constructor Default
+ * @param level
  */
 PositionalItem::PositionalItem(std::shared_ptr<Level> level) : Item(level)
 {

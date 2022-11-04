@@ -20,7 +20,7 @@ private:
     /// The box2d world
     b2World mWorld;
 
-    // A ground reference object
+    /// A ground reference object
     b2Body* mGround;
 
 public:
