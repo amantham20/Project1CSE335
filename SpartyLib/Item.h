@@ -46,6 +46,11 @@ public:
 
     Item(std::shared_ptr<Level> level);
 
+    /**
+     * Setter for location of item
+     * @param x x values
+     * @param y y values
+     */
     virtual void SetLocation(double x, double y) = 0;
 
     /**
@@ -77,6 +82,12 @@ public:
      */
     virtual void Accept(std::shared_ptr<ItemVisitor> visitor) = 0;
 
+    /**
+     * Hit test for item
+     * @param x value
+     * @param y value
+     * @return boolean true or false if hit
+     */
     virtual bool HitTest(int x, int y) { return false; };
 
     /**
@@ -84,8 +95,17 @@ public:
      */
     virtual void ResetXY(){};
 
+    /**
+     * Install physics function that installs physics for each item
+     * @param physics
+     */
     virtual void InstallPhysics(std::shared_ptr<Physics> physics){};
 
+    /**
+     * Setter for assigning the default values for x and y.
+     * @param x value
+     * @param y value
+     */
     virtual void AssignXYInitial(double x, double y){};
 
     /**

@@ -1,4 +1,4 @@
-/**
+x/**
  * @file WoodenSlingshot.cpp
  * @author Milan Mihailovic, zhiqiang ni
  */
@@ -24,6 +24,10 @@ WoodenSlingshot::WoodenSlingshot(std::shared_ptr<Level> level) : Slingshot(level
     Slingshot::SetFrontPicture(WoodenSlingshotFrontImageName);
 }
 
+/**
+ * Draws the wooden slingshot given the graphics context
+ * @param graphics
+ */
 void WoodenSlingshot::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Slingshot::OnDraw(graphics);

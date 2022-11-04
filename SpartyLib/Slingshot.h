@@ -40,6 +40,8 @@ private:
 protected:
     /// A pointer to the currently loaded angry sparty
     Angry *mLoadedSparty;
+
+    /// A pointer to the loaded sparty 
     std::shared_ptr<Item> mLoadedSpartySP;
 
 public:
@@ -64,13 +66,11 @@ public:
 
     virtual void LoadAngrySparty(Angry* sparty);
 
-    virtual void LoadAngrySparty(std::shared_ptr<Angry> sparty);
-
-
-
-    Angry* GetLoadedAngrySparty(){
-        return mLoadedSparty;
-    }
+    /**
+     * Get Loaded Angry Sparty Object
+     * @return Angry object
+     */
+    Angry* GetLoadedAngrySparty(){ return mLoadedSparty; }
 
     /**
      * Get the x position of the loading spot
@@ -142,6 +142,10 @@ public:
      */
     void SetYRightAttachment(double y) {mYRightAttachment = y;};
 
+    /**
+     * Getter for Virtual Rubber band Length function.
+     * @return int
+     */
     virtual int GetRubberBandLength() = 0;
 
     void ClearLoadedAngrySparty();

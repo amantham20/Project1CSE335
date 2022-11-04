@@ -15,7 +15,7 @@
  */
 class WoodenSlingshot : public Slingshot {
 private:
-    // Rubber band length in meters
+    /// Rubber band length in meters
     int mRubberBandLength = 1;
 
 public:
@@ -26,10 +26,18 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    /**
+     * Visitor for wooden slingshot
+     * @param visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitWoodenSlingshot(this); }
 
     void LoadAngrySparty(Angry* sparty) override;
 
+    /**
+     * Getter for the Rubber band length
+     * @return rubberband length
+     */
     int GetRubberBandLength() override {return mRubberBandLength;};
 };
 
