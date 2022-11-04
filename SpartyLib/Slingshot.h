@@ -62,7 +62,6 @@ public:
 
     void DrawRightRubberBand(std::shared_ptr<wxGraphicsContext> graphics);
 
-
     virtual void LoadAngrySparty(Angry* sparty);
 
     virtual void LoadAngrySparty(std::shared_ptr<Angry> sparty);

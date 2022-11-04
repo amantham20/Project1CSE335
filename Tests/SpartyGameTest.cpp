@@ -58,13 +58,17 @@ TEST_F(SpartyGameTest, LoadLevel1)
     SpartyGame game;
 
     // Level filenames
+    wxString levelZeroFilename = L"../levels/level0.xml";
     wxString levelOneFilename = L"../levels/level1.xml";
 
+    game.Load(levelZeroFilename);
     game.Load(levelOneFilename);
+    game.SetLevel(1);
+    game.Reset();
     int numberOfItems = game.GetNumberOfItems();
 
-    // Level 1 has 1 background, 1 slingshot, 14 blocks, 1 polygon, and 2 foes. A total of 19 items.
-    ASSERT_EQ(19, numberOfItems);
+    // Level 1 has 1 background, 1 slingshot, 14 blocks, 1 polygon, 2 foes, and 3 angry Sparties. A total of 22 items.
+    ASSERT_EQ(22, numberOfItems);
 }
 
 TEST_F(SpartyGameTest, LoadLevel2)
@@ -73,12 +77,19 @@ TEST_F(SpartyGameTest, LoadLevel2)
     SpartyGame game;
 
     // Level filenames
+    wxString levelZeroFilename = L"../levels/level0.xml";
+    wxString levelOneFilename = L"../levels/level1.xml";
     wxString levelTwoFilename = L"../levels/level2.xml";
 
+    game.Load(levelZeroFilename);
+    game.Load(levelOneFilename);
     game.Load(levelTwoFilename);
+    game.SetLevel(2);
+    game.Reset();
+
     int numberOfItems = game.GetNumberOfItems();
 
-    // Level 1 has 1 background, 1 goalpost, 17 blocks, 1 polygon, and 4 foes. A total of 24 items.
-    ASSERT_EQ(24, numberOfItems);
+    // Level 1 has 1 background, 1 goalpost, 17 blocks, 1 polygon, 4 foes, and 6 Sparties. A total of 24 items.
+    ASSERT_EQ(30, numberOfItems);
 }
 

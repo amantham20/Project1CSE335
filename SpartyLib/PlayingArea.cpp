@@ -13,7 +13,7 @@
 #include <unordered_set>
 #include "Foe.h"
 
-/// Number of velocity update iterations per step
+/// Number of mPullDirection update iterations per step
 const int VelocityIterations = 6;
 
 /// Number of position update iterations per step
@@ -75,7 +75,6 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
     }
 
     NextLoad();
-
 }
 
 void PlayingArea::NextLoad(){
@@ -145,20 +144,18 @@ void PlayingArea::NextLoad(){
                     leftOverSparties = Homie->GetNumberFoe() - Homie->TheseHoes().size();
                 }
 
-
-
-
                 spartyToKill->DeleteBody();
 
                 ReloadSlingshot();
 
+                if (Homie->GetNumberAngry()-1 == 0)
+                {
+                    leftOverTime = mTimeDuration;
 
-
-
-
-
+                    mControlDisplay = true;
+                    mLevelEnd = true;
+                }
         }
-
     }
 }
 
@@ -271,4 +268,9 @@ Angry* PlayingArea::HitTest(int x, int y)
 void PlayingArea::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
 {
     mSlingShot = slingshot;
+}
+
+int PlayingArea::GetNumberOfItems()
+{
+    return mItems.size();
 }

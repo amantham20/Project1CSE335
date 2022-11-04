@@ -43,3 +43,5 @@ __MACOSX
 *.exe
 *.out
 *.app
+Doxyfile (2).doxy
+*.doxy

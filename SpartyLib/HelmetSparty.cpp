@@ -10,7 +10,7 @@
 /// The radius in meters
 const double HelmetSpartyRadius = 0.25;
 
-/// The velocity factor for Helmet Sparty
+/// The mPullDirection factor for Helmet Sparty
 const float HelmetSpartyVelocityFactor = 20.0;
 
 /**

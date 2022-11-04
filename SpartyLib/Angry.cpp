@@ -111,7 +111,7 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
 
 /**
  * Invoked with the angry sparty is launched
- * @param vel velocity vector
+ * @param vel mPullDirection vector
  */
 void Angry::Launch(b2Vec2 vel)
 {

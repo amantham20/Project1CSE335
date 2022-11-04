@@ -338,7 +338,7 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
         }
         Reset();
     }
-    if(visitor->GetNumberAngry() == 0 && visitor->GetNumberFoe() != 0){
+    if(visitor->GetNumberAngry() == 0 && visitor->GetNumberFoe() != 0 && mPlayingArea->isDone()){
         Reset();
     }
 }
@@ -384,4 +384,9 @@ Angry* SpartyGame::GetFlyingSparty()
 void SpartyGame::SetFlyingSparty(Angry* angry)
 {
     mPlayingArea->SetFlyingSparty(angry);
+}
+
+int SpartyGame::GetNumberOfItems()
+{
+    return mPlayingArea->GetNumberOfItems();
 }
