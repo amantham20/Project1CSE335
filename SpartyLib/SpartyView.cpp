@@ -100,7 +100,7 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
     while (mTime<newTime) {
         mTime += FrameDuration;
-        mSpartyGame.Update(FrameDuration);
+        mSpartyGame.UpdateItems(FrameDuration);
     }
 
     mTime = newTime;
@@ -173,14 +173,9 @@ void SpartyView::OnLevelOpen(wxCommandEvent& event)
 }
 
 /**
- * Draw the sparty
- * @param dc The device context to draw on
+ * Sets the debug mode
+ * @param event Event
  */
-//void SpartyView::OnDraw(wxDC *dc)
-//{
-//
-//}
-
 void SpartyView::OnDebugMode(wxCommandEvent& event)
 {
     mDebug = !mDebug;

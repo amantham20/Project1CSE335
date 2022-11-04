@@ -31,20 +31,22 @@ private:
     ///an object describe the sparty game
     SpartyGame mSpartyGame;
 
-    // Item that the user is currently grabbing
+    /// Item that the user is currently grabbing
     Angry* mGrabbedSparty;
 
+    /// Boolean that keeps track of whether we are in debug mode or not
     bool mDebug = false;
+
     void LoadLevels();
 
+    /// Direction in which the angry sparty is being pulled
     b2Vec2 mPullDirection = b2Vec2(0,0);
 
+    /// True if the angry sparty is on dive, false otherwise.
     bool mDive = false;
 
 public:
     void Initialize(wxFrame* parent);
-
-    void onNewLevel(wxCommandEvent &event);
 
     void OnTimer(wxTimerEvent &event);
 

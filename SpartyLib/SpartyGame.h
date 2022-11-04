@@ -33,50 +33,55 @@ private:
     ///Image Cache
     std::shared_ptr<PictureManager> mPictureCache;
 
-    /// offsets
-    double mXOffset = 0, mYOffset= 0;
+    /// X offset
+    double mXOffset = 0;
+
+    /// Y offset
+    double mYOffset= 0;
 
     void LoadXMLItems(wxXmlNode* node, std::shared_ptr<Level> pLevel);
 
     void LoadXMLSparties(wxXmlNode *node,std::shared_ptr<Level> pLevel);
 
+    /// Vector of levels
     std::vector<std::shared_ptr<Level>> mLevels;
 
+    /// Index of the current level
     int mCurrentLevel = 0;
 
-    bool mLevelEnd = false;
-
-
-    //// TODO: TEMP CODE WILL HAVE TO REMOVE IT
-//    b2World mWorld = b2World(b2Vec2(0, -9.8));
-
-//Physics mPhysics;
-
-
+    /// Boolean that keeps track of whether we are in debug mode or not
     bool mDebug = false;
 
+    /// Pointer to tha playing area
     std::shared_ptr<PlayingArea> mPlayingArea;
 
+    /// ID for loading ids into objects
     int mId = 0;
 
 public:
     SpartyGame();
+
+    /**
+     * Sets the current level to another level
+     * @param level new level to set current level to
+     */
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
     void Load(const wxString& filename);
+
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     void Reset();
 
     void DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
-    void Update(double val);
+    void UpdateItems(double val);
 
+    /**
+     * Sets the debug to the mode denoted by the debug paraameter
+     * @param debug Boolean to set the debug mode to
+     */
     void SetDebug(bool debug){mDebug = debug;};
-
-    void Update();
-
-    void Update(std::shared_ptr<wxGraphicsContext> graphics, double frameDuration);
 
     void Update(std::shared_ptr<wxGraphicsContext> graphics);
 
