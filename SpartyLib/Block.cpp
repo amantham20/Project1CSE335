@@ -33,18 +33,16 @@ Block::Block(std::shared_ptr<Level> level) : BodyItem(level)
  * Draws this block
  * @param graphics Graphics context to draw this block
  */
-void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
+void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
+{
 
     graphics->PushState();
     auto mSize = BodyItem::GetSize();
 
-    //TODO : Get b2Body working to enable Easy Acess to these values
     b2Body* body = BodyItem::GetBody();
     auto position = body->GetPosition();
     auto angle = body->GetAngle();
 
-//    auto position = PositionalItem::GetPosition();
-//    auto angle = BodyItem::GetAngle();
 
     graphics->Translate(position.x * Consts::MtoCM,
             position.y * Consts::MtoCM);

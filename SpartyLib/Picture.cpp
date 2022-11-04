@@ -23,8 +23,6 @@ Picture::Picture(const std::wstring& filename)
  * Initializes to Bob.png
  */
 Picture::Picture() {
-    //TODO Kinda Rethink this
-
     // Not MyFinest Choice.
     mImage = make_unique<wxImage>(L"images/bob.png", wxBITMAP_TYPE_ANY);
     mImageBitmap = make_shared<wxBitmap>(*mImage);

@@ -26,10 +26,6 @@ Poly::Poly(std::shared_ptr<Level> level) : BodyItem(level)
  */
 void Poly::XmlLoad(wxXmlNode *node)
 {
-    //todo: this may be wong place but it got be some where in the code
-
-
-    //todo: this may be not the best way
     mVertices.clear();
     //load vertex
     auto child = node->GetChildren();

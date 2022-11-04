@@ -29,7 +29,6 @@ Slingshot::Slingshot(std::shared_ptr<Level> level) : PositionalItem(level)
  */
 void Slingshot::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
     PositionalItem::XmlLoad(node);
 }
 
