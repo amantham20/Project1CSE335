@@ -123,7 +123,9 @@ void Angry::Launch(b2Vec2 vel)
     auto world = mPhysics->GetWorld();
 
     // Destroy the body in the physics system
-    world->DestroyBody(body);
+    if (body != nullptr){
+        world->DestroyBody(body);
+    }
 
     // Create the body definition
     b2BodyDef bodyDefinition;

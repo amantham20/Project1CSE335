@@ -292,7 +292,7 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
                 }
             }
         }
-        else {
+        else if(mGrabbedSparty->IsLoadedInSlingshot()) {
             // When the left button is released, we release the Angry Sparty
             mGrabbedSparty->SetLoadedInSlingshot(false);
             mSpartyGame.ClearLoadedSparty();
