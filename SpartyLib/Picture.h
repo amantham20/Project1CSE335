@@ -41,12 +41,10 @@ public:
     ~Picture(){}
 
     /// Default constructor (disabled)
-//    Picture() = delete;
 
     /// Copy constructor (disabled)
     Picture(const Picture &) = delete;
 
-//    std::shared_ptr<wxBitmap> GetPictureBitmap(){return mImageBitmap;}
 
 };
 
