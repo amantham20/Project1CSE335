@@ -270,6 +270,10 @@ void PlayingArea::SetSlingShot(std::shared_ptr<Slingshot> slingshot)
     mSlingShot = slingshot;
 }
 
+/**
+ * Gets the number of Items in the playarea
+ * @return
+ */
 int PlayingArea::GetNumberOfItems()
 {
     return mItems.size();
