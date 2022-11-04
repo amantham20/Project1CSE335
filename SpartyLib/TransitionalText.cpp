@@ -47,7 +47,7 @@ void TransitionalText::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, const
     {
         graphics->DrawText("Level " + wxString::FromDouble(level, 0) + " Begin", 0-textWidth/2, -hit/2-textHeight/2);
         graphics->GetTextExtent(L"Use the spacebar for special ablity", &textWidth, &textHeight);
-        graphics->DrawText("Use the spacebar for special ablity", 0-textWidth/2, -hit/2-textHeight/2+200);
+        graphics->DrawText("Use the spacebar for special ablity", 0-textWidth/2, -hit/2-textHeight/2-200);
 
     }
     else
