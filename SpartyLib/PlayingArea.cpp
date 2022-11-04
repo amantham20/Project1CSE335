@@ -32,23 +32,22 @@ const int PositionYScore  = 10;
  */
 PlayingArea::PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Score> totalScore) : mTotalScore(std::move(totalScore))
 {
-    //todo incompleated Have to make it left alighted when the values are greater than 1 digit
     mPhysics = std::make_shared<Physics>(level->GetPosition());
     mScore = std::make_shared<Score>(level, 0, level->GetWidth()*Consts::MtoCM-50, 10);
     mTransitionalText = std::make_shared<TransitionalText>(level, PositionXScore, PositionYScore);
-
-
-//    for(const auto& item : mItems)
-//    {
-//        item->InstallPhysics(mPhysics);
-//    }
 }
 
+/**
+ * Destructor of the playing area
+ */
 PlayingArea::~PlayingArea()
 {
     mItems.clear();
 }
 
+/**
+ * Installs physics on every item in the playing area
+ */
 void PlayingArea::InstallPhysics() {
     for(const auto& item : mItems)
     {
@@ -58,7 +57,7 @@ void PlayingArea::InstallPhysics() {
 
 /**
  * draws the item
- * @param graphics
+ * @param graphics Graphics used to draw items in the playing area
  */
 void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
 {
@@ -77,6 +76,9 @@ void PlayingArea::Draw(const std::shared_ptr<wxGraphicsContext>& graphics)
     NextLoad();
 }
 
+/**
+ * Loads the next level if no items are moving and all the foes have been killed
+ */
 void PlayingArea::NextLoad(){
 
     if(mFlyingAngry == nullptr){
@@ -139,9 +141,6 @@ void PlayingArea::NextLoad(){
 
                     mControlDisplay = true;
                     mLevelEnd = true;
-
-
-                    leftOverSparties = Homie->GetNumberFoe() - Homie->TheseHoes().size();
                 }
 
                 spartyToKill->DeleteBody();
@@ -159,6 +158,10 @@ void PlayingArea::NextLoad(){
     }
 }
 
+/**
+ * Adds an item to the playing area
+ * @param item
+ */
 void PlayingArea::Add(std::shared_ptr<Item> item)
 {
     mItems.push_back(item);
@@ -218,26 +221,6 @@ void PlayingArea::Update(double frameDuration){
 
         mControlDisplay = false;
     }
-
-//    auto velocity = mFlyingAngry->GetBody()->GetLinearVelocity();
-
-//    mFlyingAngry->SetDive(mDive);
-//
-//    if (mFlyingAngry->GetDive())
-//    {
-//        mFlyingAngry->Launch(velocity, mDive);
-//        mFlyingAngry->SetDive(false);
-//    }
-
-
-//    if (mDive)
-//    {
-////        wxLogMessage("Success!!");
-//    }
-
-    // dont loop here
-    // probably put diving here
-    // change member variable trhough virtual setter that checks each item (call the function Dive)
 }
 
 /**
@@ -251,9 +234,10 @@ void PlayingArea::ReloadSlingshot()
 }
 
 /**
- * Checks if an item in the level has been clicked
- * @param x x coordinate to test
- * @param y y coordinate to test
+ * Hit Test on the playing area. Checks if an item has been clicked on the playing area
+ * @param x X coordinate to test
+ * @param y Y coordinate to test
+ * @return Returns a pointer to an item that has been clicked on. Return nullptr if no item has been clicekd on
  */
 Angry* PlayingArea::HitTest(int x, int y)
 {

@@ -29,6 +29,10 @@ public:
 
     Physics(const b2Vec2& size);
 
+    /**
+     * Return the world of the GetWorld
+     * @return mWorld
+     */
     b2World* GetWorld() { return &mWorld; }
 
 };

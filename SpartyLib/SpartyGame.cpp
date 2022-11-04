@@ -27,19 +27,9 @@ using namespace std;
 /**
  * Constructor
  */
- ///TODO Change where this is! the mPhysicsEngine should be in the level class
 SpartyGame::SpartyGame() //:mPhysics(b2Vec2(14.22,8))
 {
-//    mPhysics = make_shared<Physics>(b2Vec2(14.22*Consts::MtoCM,8*Consts::MtoCM));
-
     mPictureCache = std::make_shared<PictureManager>();
-
-
-    /// TODO remove the next line
-//    Level *tLevel = new Level(8, 14.22);
-//    std::shared_ptr<Item> tempBackground = std::make_unique<Background>(L"../images/background1.png", tLevel);
-//    mItems.push_back(tempBackground);
-
 }
 
 /**
@@ -224,6 +214,7 @@ void SpartyGame::LoadXMLItems(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 /**
  * Loads every angry sparty in the angry parent tag
  * @param node Node to start reading contents from
+ * @param pLevel Level in which the items belong to
  */
 void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 {
@@ -286,6 +277,9 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
     }
 }
 
+/**
+ * Resets the playing are to a new playing area when a new level is benig loaded
+ */
 void SpartyGame::Reset()
 {
     mPlayingArea.reset();
@@ -302,37 +296,44 @@ void SpartyGame::Reset()
     mPlayingArea->InstallPhysics();
 }
 
-//todo delete? should done in playingarea
+/**
+ * Draws the debug mode
+ * @param graphics Graphics context used to draw
+ */
 void SpartyGame::DebugOnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     mPlayingArea->DebugOnDraw(graphics);
 }
 
-void SpartyGame::Update(double frameDuration)
+/**
+ * Updates the position of every item in the playing area
+ * @param frameDuration Frame duration that keeps track of the last time we called update
+ */
+void SpartyGame::UpdateItems(double frameDuration)
 {
     if(mPlayingArea != NULL)
     {
         mPlayingArea->Update(frameDuration);
         mPlayingArea->SetLevel(mCurrentLevel);
-//        mPlayingArea->SetEnd(mLevelEnd);
     }
 }
 
+/**
+ * Updates the state of every item on screen
+ * @param graphics Graphics context to use
+ */
 void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
 {
     if(mPlayingArea == NULL)
     {
         Reset();
     }
-//    mPlayingArea->SetSlingShot(mLevels[mCurrentLevel]->GetSlingshot());
-//    mPlayingArea->ReloadSlingshot();
     mPlayingArea->Draw(graphics);
 
     std::shared_ptr<FoeTracker> visitor = std::make_shared<FoeTracker>();
     mPlayingArea->Accept(visitor);
     if(visitor->GetNumberFoe() <= 0 && mPlayingArea->isDone())
     {
-        mLevelEnd = true;
         mLevels.at(mCurrentLevel)->ResetItemXY();
         mCurrentLevel++;
         if (mCurrentLevel >= 4){
@@ -371,26 +372,45 @@ b2Vec2 SpartyGame::GetSlingshotLoadingPosition()
     return mLevels[mCurrentLevel]->GetSlingshotLoadingPosition();
 }
 
+/**
+ * Returns the rubber band length of the slingshot in the current level
+ * @return Length of the slingshot in the current level
+ */
 int SpartyGame::GetRubberBandLength()
 {
     return mLevels[mCurrentLevel]->GetRubberBandLength();
 }
 
+/**
+ * Clears the loaded sparty in the current level
+ */
 void SpartyGame::ClearLoadedSparty()
 {
     mLevels[mCurrentLevel]->ClearLoadedSparty();
 }
 
+/**
+ * Gets the flying Sparty in the current level
+ * @return Pointer to a flying sparty. If no angry sparty is flying, nullptr is returned.
+ */
 Angry* SpartyGame::GetFlyingSparty()
 {
     return mPlayingArea->GetFlyingSparty();
 }
 
+/**
+ * Sets a Flying sparty
+ * @param angry Pointer to angry Sparty to set as Flying Sparty
+ */
 void SpartyGame::SetFlyingSparty(Angry* angry)
 {
     mPlayingArea->SetFlyingSparty(angry);
 }
 
+/**
+ * Gets the number of items in the playing area
+ * @return
+ */
 int SpartyGame::GetNumberOfItems()
 {
     return mPlayingArea->GetNumberOfItems();

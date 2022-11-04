@@ -100,7 +100,7 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
     while (mTime<newTime) {
         mTime += FrameDuration;
-        mSpartyGame.Update(FrameDuration);
+        mSpartyGame.UpdateItems(FrameDuration);
     }
 
     mTime = newTime;

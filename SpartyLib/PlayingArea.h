@@ -35,25 +35,30 @@ private:
     ///text object between level
     std::shared_ptr<TransitionalText> mTransitionalText;
 
+    /// Current level we are in
     int mCurrentLevel = 0;
 
+    /// Boolean that keeps track of whether the level finished or not
     bool mLevelEnd = false;
 
+    /// Pointer to the Sparty tracker
     std::shared_ptr<SpartyTracker> mSpartyTracker;
 
     /// A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
 
+    /// Pointer to a pointer that is flying
     Angry * mFlyingAngry = nullptr;
 
+    /// Keeps track if items have been killed
     bool mKill = false;
 
-    int leftOverSparties = -1;
-
+    /// Time that has to elapse for the game to finish and the text to show
     double leftOverTime = DBL_MAX;
 public:
     /// Default Constructor
     PlayingArea() = delete;
+
     PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Score> totalScore);
 
     /**
@@ -72,6 +77,10 @@ public:
 
     void Update(double frameDuration);
 
+    /**
+     * Sets the level Playig Area is currently displaying
+     * @param level New level to set Playing area to
+     */
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
 
@@ -79,12 +88,13 @@ public:
 
     void InstallPhysics();
 
-    void SetEnd(const bool &end) { mLevelEnd = end; } ;
-
+    /// Boolean that sets if the total should be added or not
     bool mAddTotal = true;
 
+    /// Controls the text display that shows when a level is done or loads
     bool mControlDisplay = true;
 
+    /// Duration texts should last, initialized to zero.
     double mTimeDuration = 0;
 
     Angry* HitTest(int x, int y);
@@ -95,12 +105,24 @@ public:
 
     void NextLoad();
 
+    /**
+     * Returns if the level has been completed successfully
+     * @return True if the level has been completed, false otherwise
+     */
     bool isDone(){
         return mKill;
     }
 
+    /**
+     * Sets a new flying sparty
+     * @param angry New angry sparty to set as flying sparty
+     */
     void SetFlyingSparty(Angry* angry) {mFlyingAngry = angry;};
 
+    /**
+     * Gets the flying sparty
+     * @return Pointer to the flying sparty. Return nullptr if no angry sparty exists
+     */
     Angry* GetFlyingSparty() {return mFlyingAngry;};
 
     int GetNumberOfItems();
