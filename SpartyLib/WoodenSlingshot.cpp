@@ -1,4 +1,4 @@
-x/**
+/**
  * @file WoodenSlingshot.cpp
  * @author Milan Mihailovic, zhiqiang ni
  */
