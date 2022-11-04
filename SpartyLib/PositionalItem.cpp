@@ -93,7 +93,7 @@ bool PositionalItem::HitTest(int x, int y)
 /**
  * Reset the x and y to initial values
  */
-void PositionalItem::ResetXY()
+void PositionalItem::ResetXYtemp()
 {
     mX = mInitialCords.x;
     mY = mInitialCords.y;

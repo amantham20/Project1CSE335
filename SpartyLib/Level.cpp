@@ -147,3 +147,11 @@ std::shared_ptr<Slingshot> Level::GetSlingshot()
 {
     return mSlingShot;
 }
+
+
+void Level::ResetItemXY()
+{
+    for (auto item : mItems) {
+        item->ResetXY();
+    }
+}

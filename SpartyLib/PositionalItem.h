@@ -24,7 +24,7 @@ private:
     double mY;
 
     /// initial coordinates
-    b2Vec2 mInitialCords = b2Vec2(-1, -1);
+    b2Vec2 mInitialCords = b2Vec2(1, 3);
 
 public:
 
@@ -36,7 +36,7 @@ public:
 
     bool HitTest(int x, int y) override;
 
-    void ResetXY();
+    void ResetXYtemp();
 
     void AssignXYInitial(double x, double y) override;
 

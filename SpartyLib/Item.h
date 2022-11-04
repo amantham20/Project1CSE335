@@ -79,6 +79,11 @@ public:
 
     virtual bool HitTest(int x, int y) { return false; };
 
+    /**
+     * reset xy
+     */
+    virtual void ResetXY(){};
+
     virtual void InstallPhysics(std::shared_ptr<Physics> physics){};
 
     virtual void AssignXYInitial(double x, double y){};

@@ -35,6 +35,10 @@ public:
 
     void DeleteBody();
 
+    void ResetXY() override {
+        PositionalItem::ResetXYtemp();
+    };
+
     /**
      * Setter for Radius
      * @param rad

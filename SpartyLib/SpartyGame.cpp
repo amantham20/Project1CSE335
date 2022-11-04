@@ -274,6 +274,7 @@ void SpartyGame::LoadXMLSparties(wxXmlNode *node, std::shared_ptr<Level> pLevel)
 
             // Set image location
             item->SetLocation(x_current, y_start);
+            item->AssignXYInitial(x_current, y_start);
             x_current += spacing;
 
             // Load item data based on xml file
@@ -332,13 +333,17 @@ void SpartyGame::Update(std::shared_ptr<wxGraphicsContext> graphics)
     if(visitor->GetNumberFoe() <= 0 && mPlayingArea->isDone())
     {
         mLevelEnd = true;
+        mLevels.at(mCurrentLevel)->ResetItemXY();
         mCurrentLevel++;
         if (mCurrentLevel >= 4){
             mCurrentLevel = 0;
         }
+
+
         Reset();
     }
     if(visitor->GetNumberAngry() == 0 && visitor->GetNumberFoe() != 0 && mPlayingArea->isDone()){
+        mLevels.at(mCurrentLevel)->ResetItemXY();
         Reset();
     }
 }

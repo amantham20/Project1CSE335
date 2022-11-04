@@ -98,6 +98,8 @@ public:
     void ClearLoadedSparty();
 
     std::shared_ptr<Slingshot> GetSlingshot();
+
+    void ResetItemXY();
 };
 
 #endif //ANGRYSPARTY_LEVEL_H

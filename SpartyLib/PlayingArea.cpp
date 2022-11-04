@@ -148,7 +148,7 @@ void PlayingArea::NextLoad(){
 
                 ReloadSlingshot();
 
-                if (Homie->GetNumberAngry()-1 == 0)
+                if (Homie->GetNumberAngry() == 0)
                 {
                     leftOverTime = mTimeDuration;
 
