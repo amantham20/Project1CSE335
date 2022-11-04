@@ -43,6 +43,7 @@ private:
     /// A pointer to the slingshot in the level
     std::shared_ptr<Slingshot> mSlingShot;
 
+    /// shared pointer Sparty Tracker tracking the Angry Sparties
     std::shared_ptr<SpartyTracker> mSpartyTracker;
 
 public:
@@ -94,6 +95,12 @@ public:
 
     void Accept(std::shared_ptr<ItemVisitor> visitor);
 
+    /**
+     * returns the angry sparty that has been clicked on
+     * @param x the x value of the click
+     * @param y the y value of the click
+     * @return the angrysparty that was clicked
+     */
     Angry* HitTest(int x, int y);
 
     /**
