@@ -57,7 +57,7 @@ public:
 
     /**
      * Visitor that counts the number of helmet sparties
-     * @param gruffSparty object
+     * @param helmetSparty Helmet sparty visited
      */
     void VisitHelmetSparty(HelmetSparty* helmetSparty) override { nNumberAngry++;}
 
