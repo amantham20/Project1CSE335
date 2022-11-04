@@ -7,9 +7,13 @@
 #include "pch.h"
 #include "Score.h"
 #include "Level.h"
+
 /**
- * constructor
- * @param score
+ * Constructor for the score
+ * @param level object
+ * @param score double value
+ * @param x double xpos
+ * @param y double ypos
  */
 Score::Score(std::shared_ptr<Level> level, double score, double x,double y) : PositionalItem(level)
 {
@@ -18,6 +22,10 @@ Score::Score(std::shared_ptr<Level> level, double score, double x,double y) : Po
     PositionalItem::SetY(y);
 }
 
+/**
+ * Draw score object given the graphics object
+ * @param graphics
+ */
 void Score::OnDraw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     auto tLevel = Item::GetLevel();

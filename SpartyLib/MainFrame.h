@@ -20,7 +20,9 @@ class SpartyView;
 class MainFrame : public wxFrame
 {
 private:
+    /// SpartyView pointer object
     SpartyView *mSpartyView;
+
     void OnExit(wxCommandEvent& event);
     void OnMenuHelpAbout(wxCommandEvent &event);
     void OnClose(wxCloseEvent& event);

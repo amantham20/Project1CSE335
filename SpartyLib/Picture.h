@@ -29,6 +29,10 @@ public:
      */
     std::shared_ptr<wxBitmap> GetBitmap(){return mImageBitmap;}
 
+    /**
+     * Getter for Image
+     * @return mImage
+     */
     std::shared_ptr<wxImage> GetImage(){return mImage;}
 
     void SetPicture(const std::wstring& filename);

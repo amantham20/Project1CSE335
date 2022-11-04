@@ -20,7 +20,7 @@ Picture::Picture(const std::wstring& filename)
 }
 
 /*
- * Intantiates to Bob.png
+ * Initializes to Bob.png
  */
 Picture::Picture() {
     //TODO Kinda Rethink this
@@ -38,6 +38,3 @@ void Picture::SetPicture(const std::wstring& filename){
     mImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mImageBitmap = make_shared<wxBitmap>(*mImage);
 }
-
-
-

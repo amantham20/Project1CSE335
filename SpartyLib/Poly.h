@@ -25,6 +25,10 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    /**
+     * Visitor for poly item.
+     * @param visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitPoly(this); }
 
     void InstallPhysics(std::shared_ptr<Physics> physics) override;

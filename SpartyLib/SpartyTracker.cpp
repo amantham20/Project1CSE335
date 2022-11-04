@@ -44,6 +44,7 @@ void SpartyTracker::ReloadSlingshot(std::shared_ptr<Slingshot> slingshot)
  * Checks if an item in the level has been clicked
  * @param x x coordinate to test
  * @param y y coordinate to test
+ * @return Angry* object
  */
 Angry* SpartyTracker::HitTest(int x, int y)
 {

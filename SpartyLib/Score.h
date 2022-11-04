@@ -36,6 +36,11 @@ public:
      * set score to 0
      */
     void Reset() { mScore = 0; }
+
+    /**
+     * Visitor declaration for Score
+     * @param visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor){};
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics);
 };
