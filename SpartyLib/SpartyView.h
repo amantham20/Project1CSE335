@@ -17,6 +17,7 @@ class Angry;
  */
 class SpartyView : public wxWindow {
 private:
+    /// OnPaint event
     void OnPaint(wxPaintEvent& event);
 
     /// The timer that allows for animation
@@ -31,20 +32,24 @@ private:
     ///an object describe the sparty game
     SpartyGame mSpartyGame;
 
-    // Item that the user is currently grabbing
+    /// Item that the user is currently grabbing
     Angry* mGrabbedSparty;
 
+    /// Boolean for Debug mode
     bool mDebug = false;
-    void LoadLevels();
 
+    /// Used for special feature should make the sparty dive
+    bool mDive = false;
+
+    /// Initialize pull direction
     b2Vec2 mPullDirection = b2Vec2(0,0);
 
-    bool mDive = false;
+    void LoadLevels();
+
+
 
 public:
     void Initialize(wxFrame* parent);
-
-    void onNewLevel(wxCommandEvent &event);
 
     void OnTimer(wxTimerEvent &event);
 

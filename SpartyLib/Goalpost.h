@@ -16,7 +16,7 @@
  */
 class Goalpost : public Slingshot {
 private:
-    // Rubber band length in meters
+    /// Rubber band length in meters
     int mRubberBandLength = 3;
 
 public:
@@ -26,10 +26,18 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    /**
+     * Visitor for the goalpost object
+     * @param visitor object
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitGoalpost(this); }
 
     void LoadAngrySparty(Angry* sparty) override;
 
+    /**
+     * Getter for the Rubber Band length
+     * @return int
+     */
     int GetRubberBandLength() override {return mRubberBandLength;};
 };
 

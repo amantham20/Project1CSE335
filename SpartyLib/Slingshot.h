@@ -88,11 +88,13 @@ public:
 
     /**
     * Sets the x position of the loading spot
+    * @param x double value
     */
     void SetXLoadSpot(double x) {mXLoadSpot = x;};
 
     /**
     * Sets the y position of the loading spot
+    * @param y double value
     */
     void SetYLoadSpot(double y) {mYLoadSpot = y;};
 

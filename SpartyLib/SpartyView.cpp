@@ -173,14 +173,9 @@ void SpartyView::OnLevelOpen(wxCommandEvent& event)
 }
 
 /**
- * Draw the sparty
- * @param dc The device context to draw on
+ * Function for Toggling the debug mode
+ * @param event
  */
-//void SpartyView::OnDraw(wxDC *dc)
-//{
-//
-//}
-
 void SpartyView::OnDebugMode(wxCommandEvent& event)
 {
     mDebug = !mDebug;

@@ -26,7 +26,10 @@ public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     void SetLocation(double x, double y) override;
-
+    /**
+     * Visits the gruff sparty object
+     * @param visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitGruffSparty(this); }
 
 };

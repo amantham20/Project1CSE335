@@ -49,10 +49,22 @@ public:
      */
     std::vector<Foe *>  TheseHoes(){return mFoeKillList;};
 
+    /**
+     * Visitor that counts the number of gruff sparties
+     * @param gruffSparty object
+     */
     void VisitGruffSparty(GruffSparty* gruffSparty) override { nNumberAngry++;}
 
+    /**
+     * Visitor that counts the number of helmet sparties
+     * @param gruffSparty object
+     */
     void VisitHelmetSparty(HelmetSparty* helmetSparty) override { nNumberAngry++;}
 
+    /**
+     * Getter for Number of angry sparties
+     * @return int
+     */
     int GetNumberAngry(){return nNumberAngry;}
 };
 

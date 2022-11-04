@@ -27,6 +27,10 @@ public:
 
     void SetLocation(double x, double y) override;
 
+    /**
+     * Visits the Helmet Sparty object
+     * @param visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitHelmetSparty(this); }
 
 };
