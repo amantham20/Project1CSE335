@@ -164,6 +164,9 @@ void Angry::DeleteBody()
     world->DestroyBody(body);
 }
 
+/**
+ * Function that makes an angry foe dive down (special ability)
+ */
 void Angry::Dive()
 {
     auto body = BodyItem::GetBody();

@@ -31,21 +31,33 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    /**
+     * Accept function that accepts a visitor
+     * @param visitor Visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitFoe(this); }
 
     void InstallPhysics(std::shared_ptr<Physics> physics) override;
 
+    /**
+     * Returns the foe down status
+     * @return
+     */
     double GetDown(){return mDown;}
 
+    /**
+     * Returns the ID of the foe
+     * @return
+     */
     int GetId(){return Item::GetId();}
 
+    /**
+     * Deletes the doe body from the world
+     * @param physics
+     */
     void DeleteBody(std::shared_ptr<Physics> physics){
         physics->GetWorld()->DestroyBody(BodyItem::GetBody());
     }
-
-//    Physics* GetPhysics(){return Item::}
-
-//    bool HitTest(int x, int y) override { return true; };
 };
 
 #endif //ANGRYSPARTY_FOE_H

@@ -15,6 +15,8 @@ class SpartyApp : public wxApp {
 private:
 
 public:
+
+
     bool OnInit() override;
 
 };

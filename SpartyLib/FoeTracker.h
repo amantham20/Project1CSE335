@@ -17,20 +17,36 @@
  */
 class FoeTracker : public ItemVisitor{
 private:
+    /// Number of foes
     int mNumberFoe = 0;
 
+    /// Number of Angry Spartes
     int nNumberAngry = 0;
 
+    /// List of the foes to be killed
     std::vector<Foe *> mFoeKillList;
+
+    /// List of the id of the foes to kill
     std::unordered_set<int> mFoeKillListId;
 public:
+    /**
+     * Return the number of foes
+     * @return
+     */
     int GetNumberFoe(){ return mNumberFoe; };
+
     void VisitFoe(Foe *foe) override;
 
-//    void RemoveFallenFoe(std::shared_ptr<Physics> physics);
-//    std::vector<Foe *> TheseHoes(){return mFoeKillList;};
+    /**
+     * Returns a list of the ids of the foes to kill
+     * @return
+     */
     std::unordered_set<int> TheseHoesID(){return mFoeKillListId;};
 
+    /**
+     * Returns hoes
+     * @return
+     */
     std::vector<Foe *>  TheseHoes(){return mFoeKillList;};
 
     void VisitGruffSparty(GruffSparty* gruffSparty) override { nNumberAngry++;}

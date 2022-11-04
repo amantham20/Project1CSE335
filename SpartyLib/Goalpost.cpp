@@ -11,6 +11,8 @@ using namespace std;
 
 /// Slingshot filename
 const wstring GoalpostsImageName = L"images/goalposts.png";
+
+/// Front of the slingshot filename
 const wstring GoalpostsFrontImageName = L"images/goalposts-front.png";
 
 /**

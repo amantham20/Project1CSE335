@@ -26,6 +26,10 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    /**
+     * Accept function that takes a visitor
+     * @param visitor
+     */
     void Accept(std::shared_ptr<ItemVisitor> visitor) override { visitor->VisitBlock(this); }
 
     void InstallPhysics(std::shared_ptr<Physics> physics) override;

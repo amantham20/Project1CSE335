@@ -9,6 +9,9 @@
 #ifndef ANGRYSPARTY_MAINFRAME_H
 #define ANGRYSPARTY_MAINFRAME_H
 
+/**
+ * Forward declaration for SpartyView
+ */
 class SpartyView;
 
 /**

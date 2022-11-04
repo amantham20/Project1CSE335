@@ -22,6 +22,7 @@ public:
     /// Convert of radians to degrees
     static constexpr double RtoD = 57.2957795131;
 
+    /// The value of Pi
     static constexpr double Pi = 3.14159265358979323846;
 
     /// Convert of seconds to milliseconds
