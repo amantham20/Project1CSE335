@@ -32,16 +32,18 @@ private:
 
     /// x coordinate of the right attachment point for the rubber band in meters
     double mXRightAttachment = 0;
+
     /// y coordinate of the right attachment point for the rubber band in meters
     double mYRightAttachment = 0;
 
+    /// Front View of the shared pointer of picture
     std::shared_ptr<Picture> mFrontPicture;
 
 protected:
     /// A pointer to the currently loaded angry sparty
     Angry *mLoadedSparty;
 
-    /// A pointer to the loaded sparty 
+    /// A pointer to the loaded sparty
     std::shared_ptr<Item> mLoadedSpartySP;
 
 public:

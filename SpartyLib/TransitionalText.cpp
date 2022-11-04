@@ -8,8 +8,10 @@
 #include "Level.h"
 
 /**
- * constructor
- * @param score
+ * Transitional Text Constructor
+ * @param level level shared pointer
+ * @param x double x
+ * @param y double y
  */
 TransitionalText::TransitionalText(std::shared_ptr<Level> level, double x,double y) : PositionalItem(level)
 {
@@ -17,6 +19,12 @@ TransitionalText::TransitionalText(std::shared_ptr<Level> level, double x,double
     PositionalItem::SetY(y);
 }
 
+/**
+ * Draws the Transitional Text
+ * @param graphics object
+ * @param level integer value
+ * @param end boolean value
+ */
 void TransitionalText::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, const int &level, const bool &end)
 {
     auto tLevel = Item::GetLevel();
