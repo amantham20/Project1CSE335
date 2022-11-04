@@ -11,7 +11,7 @@
 /// The radius in meters
 const double GruffSpartyRadius = 0.25;
 
-/// The velocity factor for Gruff Sparty
+/// The mPullDirection factor for Gruff Sparty
 const float GruffSpartyVelocityFactor = 12.0;
 
 

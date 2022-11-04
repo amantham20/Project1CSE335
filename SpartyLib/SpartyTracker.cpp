@@ -31,17 +31,12 @@ void SpartyTracker::VisitGruffSparty(GruffSparty* gruffSparty)
  */
 void SpartyTracker::ReloadSlingshot(std::shared_ptr<Slingshot> slingshot)
 {
-//    Angry * nextAngrySparty = mSparties.front();
-    Angry * nextAngrySparty = nullptr;
     for(auto item : mSparties){
         if(item !=nullptr){
-            nextAngrySparty = item;
+            item->SetLoadedInSlingshot(true);
+            slingshot->LoadAngrySparty(item);
             break;
         }
-    }
-    if (nextAngrySparty != nullptr){
-        nextAngrySparty->SetLoadedInSlingshot(true);
-        slingshot->LoadAngrySparty(nextAngrySparty);
     }
 }
 

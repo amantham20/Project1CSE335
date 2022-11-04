@@ -261,12 +261,12 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
         // If the angry sparty is being moved, we only continue to
         // move it while the left button is down.
 
-        // todo: change hard coded value to the projectile direction and velocity
+        // todo: change hard coded value to the projectile direction and mPullDirection
 
         if (event.LeftIsDown()) {
             auto spartyPosition = mGrabbedSparty->GetPosition();
 
-            velocity = b2Vec2((abs(spartyPosition.x)-abs(slingshotLoadingPosition.x)), (abs(slingshotLoadingPosition.y)-abs(spartyPosition.y)));
+            mPullDirection = b2Vec2((abs(spartyPosition.x)-abs(slingshotLoadingPosition.x)), (slingshotLoadingPosition.y-spartyPosition.y));
 
             //  Calculate angle between x-axis and mouse position vector
             double thetaRad = atan2(metersY-slingshotLoadingPosition.y, metersX-slingshotLoadingPosition.x);
@@ -310,13 +310,11 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
             }
         }
         else {
-            // When the left button is released, we release the
-            // angry sparty.
-            // todo: Angry launch code
-//            mGrabbedSparty->SetLocation(slingshotLoadingPosition.x, slingshotLoadingPosition.y);
+            // When the left button is released, we release the Angry Sparty
             mGrabbedSparty->SetLoadedInSlingshot(false);
             mSpartyGame.ClearLoadedSparty();
-            mGrabbedSparty->Launch(velocity);
+
+            mGrabbedSparty->Launch(mPullDirection);
             mDive = true;
             mSpartyGame.SetFlyingSparty(mGrabbedSparty);
             mGrabbedSparty = nullptr;

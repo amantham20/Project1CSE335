@@ -37,7 +37,7 @@ private:
     bool mDebug = false;
     void LoadLevels();
 
-    b2Vec2 velocity = b2Vec2(0,0);
+    b2Vec2 mPullDirection = b2Vec2(0,0);
 
     bool mDive = false;
 

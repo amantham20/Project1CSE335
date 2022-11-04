@@ -102,6 +102,8 @@ public:
     void SetFlyingSparty(Angry* angry) {mFlyingAngry = angry;};
 
     Angry* GetFlyingSparty() {return mFlyingAngry;};
+
+    int GetNumberOfItems();
 };
 
 #endif //ANGRYSPARTY_PLAYINGAREA_H

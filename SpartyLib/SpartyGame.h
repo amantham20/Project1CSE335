@@ -110,6 +110,7 @@ public:
 
     void SetFlyingSparty(Angry* angry);
 
+    int GetNumberOfItems();
 };
 
 #endif //ANGRYSPARTY_SPARTYGAME_H
