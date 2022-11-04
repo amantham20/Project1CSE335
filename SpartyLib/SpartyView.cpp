@@ -266,7 +266,7 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
         if (event.LeftIsDown()) {
             auto spartyPosition = mGrabbedSparty->GetPosition();
 
-            velocity = b2Vec2((abs(spartyPosition.x)-abs(slingshotLoadingPosition.x)), (abs(slingshotLoadingPosition.y)-abs(spartyPosition.y)));
+            mVelocity = b2Vec2((abs(spartyPosition.x)-abs(slingshotLoadingPosition.x)), (abs(slingshotLoadingPosition.y)-abs(spartyPosition.y)));
 
             //  Calculate angle between x-axis and mouse position vector
             double thetaRad = atan2(metersY-slingshotLoadingPosition.y, metersX-slingshotLoadingPosition.x);
@@ -314,12 +314,15 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
             // angry sparty.
             // todo: Angry launch code
 //            mGrabbedSparty->SetLocation(slingshotLoadingPosition.x, slingshotLoadingPosition.y);
-            mGrabbedSparty->SetLoadedInSlingshot(false);
-            mSpartyGame.ClearLoadedSparty();
-            mGrabbedSparty->Launch(velocity);
-            mDive = true;
-            mSpartyGame.SetFlyingSparty(mGrabbedSparty);
-            mGrabbedSparty = nullptr;
+            if (mGrabbedSparty != NULL)
+            {
+                mGrabbedSparty->SetLoadedInSlingshot(false);
+                mSpartyGame.ClearLoadedSparty();
+                mGrabbedSparty->Launch(mVelocity);
+                mDive = true;
+                mSpartyGame.SetFlyingSparty(mGrabbedSparty);
+                mGrabbedSparty = nullptr;
+            }
         }
 
         // Force the screen to redraw

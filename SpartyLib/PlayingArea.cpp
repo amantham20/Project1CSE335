@@ -19,6 +19,12 @@ const int VelocityIterations = 6;
 /// Number of position update iterations per step
 const int PositionIterations = 2;
 
+///postion for x for score
+const int PositionXScore  = 1400;
+
+///postion for y for score
+const int PositionYScore  = 10;
+
 /**
  * constructor
  * @param level
@@ -29,7 +35,7 @@ PlayingArea::PlayingArea(const std::shared_ptr<Level>& level, std::shared_ptr<Sc
     //todo incompleated Have to make it left alighted when the values are greater than 1 digit
     mPhysics = std::make_shared<Physics>(level->GetPosition());
     mScore = std::make_shared<Score>(level, 0, level->GetWidth()*Consts::MtoCM-50, 10);
-    mTransitionalText = std::make_shared<TransitionalText>(level, 1400, 10);
+    mTransitionalText = std::make_shared<TransitionalText>(level, PositionXScore, PositionYScore);
 
 
 //    for(const auto& item : mItems)
