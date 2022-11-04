@@ -18,12 +18,15 @@ private:
     std::shared_ptr<wxBitmap> mImageBitmap;
 
 public:
-//    Picture(Level *level, const std::wstring& filename);
 
     Picture(const std::wstring& filename);
 
     Picture();
 
+    /**
+     *
+     * @return the image bitmap
+     */
     std::shared_ptr<wxBitmap> GetBitmap(){return mImageBitmap;}
 
     std::shared_ptr<wxImage> GetImage(){return mImage;}
