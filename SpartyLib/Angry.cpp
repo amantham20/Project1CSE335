@@ -93,7 +93,6 @@ void Angry::InstallPhysics(std::shared_ptr<Physics> physics) {
     BodyItem::SetPhysics(physics);
 
     b2BodyDef bodyDefinition;
-    // Todo: Change to dynamics body on the fly instead of hard coding it
     bodyDefinition.type = b2_staticBody;
     bodyDefinition.position = PositionalItem::GetPosition();
 

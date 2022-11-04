@@ -36,7 +36,6 @@ Goalpost::Goalpost(std::shared_ptr<Level> level) : Slingshot(level)
  */
 void Goalpost::XmlLoad(wxXmlNode *node)
 {
-    //todo: uncomplete code
     Slingshot::XmlLoad(node);
 
     // Set position of the laoding spot for an angry sparty

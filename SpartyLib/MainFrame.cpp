@@ -13,17 +13,13 @@
  */
 void MainFrame::Initialize()
 {
-    //todo: find the window size
     Create(nullptr, wxID_ANY, L"SpartyApp", wxDefaultPosition,  wxSize( 1200,700 ));
 
-    //todo: add comment
     auto sizer = new wxBoxSizer( wxVERTICAL );
 
     mSpartyView = new SpartyView();
     mSpartyView->Initialize(this);
 
-    //todo: make sure this sizer is correct
-    // Add it to the sizer
     sizer->Add(mSpartyView,1, wxEXPAND | wxALL );
 
     // Set the sizer for this frame

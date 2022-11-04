@@ -20,7 +20,6 @@
 
 using namespace std;
 
-//todo move to conns class
 /// Frame duration in seconds
 const double FrameDuration = 1.0/60.0;
 
@@ -51,7 +50,6 @@ void SpartyView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnLevelOpen, this, IDM_LEVEL3);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &SpartyView::OnDebugMode, this, IDM_DEBUG);
     parent->Bind(wxEVT_UPDATE_UI, &SpartyView::OnUpdateDebugMode, this, IDM_DEBUG);
-    //todo: not complete code
 
     // Bind mouse event handlers
     Bind(wxEVT_LEFT_DOWN, &SpartyView::OnLeftDown, this);
@@ -69,7 +67,6 @@ void SpartyView::Initialize(wxFrame* parent)
  * load all the level into a vector
  */
 
-//TODO: remove next line
 //This function is complete
 void SpartyView::LoadLevels()
 {
@@ -117,15 +114,8 @@ void SpartyView::OnPaint(wxPaintEvent& event)
 
     mSpartyGame.OnDraw(graphics, size.GetWidth(), size.GetHeight());
 
-    if (mDebug) {
-        // Draw outlines around each of the on-screen item
-        //todo:: need visitor? Nope should be fine
-        //todo:: thing broken inverted debug draw
-//        graphics->PushState();
-//        graphics->Scale(1,-1);
-//        mSpartyGame.DebugOnDraw(graphics);
-//        graphics->PopState();
-
+    if (mDebug)
+    {
     }
 }
 
@@ -145,7 +135,6 @@ void SpartyView::OnTimer(wxTimerEvent& event)
 void SpartyView::OnLevelOpen(wxCommandEvent& event)
 {
 
-    //todo: this is not the right code to use
     switch (event.GetId()) {
     case IDM_LEVEL0: {
         mSpartyGame.SetLevel(0);
@@ -256,7 +245,6 @@ void SpartyView::OnMouseMove(wxMouseEvent& event)
         // If the angry sparty is being moved, we only continue to
         // move it while the left button is down.
 
-        // todo: change hard coded value to the projectile direction and mPullDirection
 
         if (event.LeftIsDown()) {
             auto spartyPosition = mGrabbedSparty->GetPosition();
