@@ -234,9 +234,10 @@ void PlayingArea::ReloadSlingshot()
 }
 
 /**
- * Checks if an item in the level has been clicked
- * @param x x coordinate to test
- * @param y y coordinate to test
+ * Hit Test on the playing area. Checks if an item has been clicked on the playing area
+ * @param x X coordinate to test
+ * @param y Y coordinate to test
+ * @return Returns a pointer to an item that has been clicked on. Return nullptr if no item has been clicekd on
  */
 Angry* PlayingArea::HitTest(int x, int y)
 {

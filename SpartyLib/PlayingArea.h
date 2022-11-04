@@ -77,6 +77,10 @@ public:
 
     void Update(double frameDuration);
 
+    /**
+     * Sets the level Playig Area is currently displaying
+     * @param level New level to set Playing area to
+     */
     void SetLevel(const int &level) { mCurrentLevel = level; } ;
 
 
@@ -84,10 +88,13 @@ public:
 
     void InstallPhysics();
 
+    /// Boolean that sets if the total should be added or not
     bool mAddTotal = true;
 
+    /// Controls the text display that shows when a level is done or loads
     bool mControlDisplay = true;
 
+    /// Duration texts should last, initialized to zero.
     double mTimeDuration = 0;
 
     Angry* HitTest(int x, int y);
@@ -98,6 +105,10 @@ public:
 
     void NextLoad();
 
+    /**
+     * Returns if the level has been completed successfully
+     * @return True if the level has been completed, false otherwise
+     */
     bool isDone(){
         return mKill;
     }
