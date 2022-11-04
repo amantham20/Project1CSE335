@@ -123,11 +123,19 @@ b2Vec2 Level::GetSlingshotLoadingPosition()
     return b2Vec2(mSlingShot->GetXLoadSpot(), mSlingShot->GetYLoadSpot());
 }
 
+/**
+ * Get the length of the slingshot rubber band in this level
+ * @return int that is the length of the rubber band
+ */
 int Level::GetRubberBandLength()
 {
     return mSlingShot->GetRubberBandLength();
 }
 
+/**
+ * Adds an Items to Playarea without compromising the level's Storage
+ * @param playingArea
+ */
 void Level::AddItemDepp(std::shared_ptr<PlayingArea> playingArea){
     for(auto item : mItems)
     {
@@ -143,12 +151,18 @@ void Level::ClearLoadedSparty()
     mSlingShot->ClearLoadedAngrySparty();
 }
 
+/**
+ * Gets the slingshot in this level
+ * @return Slingshot in this level
+ */
 std::shared_ptr<Slingshot> Level::GetSlingshot()
 {
     return mSlingShot;
 }
 
-
+/**
+ * resets the Loction for each item
+ */
 void Level::ResetItemXY()
 {
     for (auto item : mItems) {
