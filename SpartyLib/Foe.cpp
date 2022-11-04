@@ -69,13 +69,13 @@ void Foe::InstallPhysics(std::shared_ptr<Physics> physics)
     const int Octa = 8;
     const double divideFactor = 1.9;
     const b2Vec2 vertices[] = {
-            { 0.35355/divideFactor, 0.35355/divideFactor },
-            { 0.0 , 0.5/divideFactor },
-            { -0.35355/divideFactor , 0.35355/divideFactor },
-            { -0.5/divideFactor ,  0.0 },
-            { -0.35355/divideFactor , -0.35355/divideFactor },
-            { -0.0  ,  -0.5/divideFactor },
-            { 0.35355/divideFactor , -0.35355/divideFactor },
+            { static_cast<float>(0.35355/divideFactor), static_cast<float>(0.35355/divideFactor) },
+            { 0.0 , static_cast<float>(0.5/divideFactor) },
+            { static_cast<float>(-0.35355/divideFactor) , static_cast<float>(0.35355/divideFactor) },
+            { static_cast<float>(-0.5/divideFactor) ,  0.0 },
+            { static_cast<float>(-0.35355/divideFactor) , static_cast<float>(-0.35355/divideFactor) },
+            { -0.0  ,  static_cast<float>(-0.5/divideFactor) },
+            { static_cast<float>(0.35355/divideFactor) , static_cast<float>(-0.35355/divideFactor) },
             { 0.5/2 ,  -0.0 },
     };
 
