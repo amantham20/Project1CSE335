@@ -20,9 +20,6 @@
  */
 class BodyItem : public PositionalItem {
 private:
-
-
-
     /// Width of the BodyItem
     double mWidth = 0;
 
@@ -83,26 +80,58 @@ public:
      */
     double GetAngle(){ return mAngle*Consts::DtoR; }
 
+    /**
+     * Getter for the position of the body item
+     * @return
+     */
     b2Vec2 GetPosition() {return PositionalItem::GetPosition(); }
 
-
-//    virtual void InstallPhysics(std::shared_ptr<Physics> physics);
-
+    /**
+     * Install physics for the boty item
+     * @param physics
+     */
     void InstallPhysics(std::shared_ptr<Physics> physics) override;
 
+    /**
+     * Sets the body of the Body Item
+     * @param body
+     */
     void SetBody(b2Body *body){mBody = body;}
 
+    /**
+     * Sets the physics attribute of the Body Item
+     * @param physics
+     */
     void SetPhysics( std::shared_ptr<Physics> physics){mPhysics = physics;}
 
-//    b2Vec2 GetSize(){return mSize;}
+    /**
+     * Getter for the angle of the body
+     * @return angle of the body
+     */
     double GetDAngle(){return mAngle;};
 
+    /**
+     * Getter for the body resolution
+     * @return resolution
+     */
     double GetResolution(){return mRestitution;};
 
+    /**
+     * Getter for the density of the body
+     * @return Density of the body
+     */
     double GetDensity(){return mDensity;};
 
+    /**
+     * Getter for the friction of the body
+     * @return Friction of the body
+     */
     double GetFriction(){return mFriction;};
 
+    /**
+     * Get the boolean value that represents if the body is static or ont
+     * @return True if the body is static, false otherwise.
+     */
     bool GetStatic(){return mStatic;}
 
 };

@@ -76,7 +76,10 @@ void Block::OnDraw(std::shared_ptr<wxGraphicsContext> graphics){
     graphics->PopState();
 }
 
-// Commented to check for inheritance
+/**
+ * Installs physics for this item
+ * @param physics Physics object to install
+ */
 void Block::InstallPhysics(std::shared_ptr<Physics> physics){
 
     BodyItem::SetPhysics(physics);

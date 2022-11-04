@@ -18,8 +18,13 @@
 class Angry : public BodyItem
 {
 private:
+    /// Bool that represents if the angry Sparty is loaded or not
     bool mLoaded = false;
+
+    /// Radius of the Angry Sparty
     double mRadius = 0;
+
+    /// Velocity factor. Represents how fast the angry sparty is
     float mVelocityFactor = 0;
 
 public:
@@ -35,6 +40,9 @@ public:
 
     void DeleteBody();
 
+    /**
+     * Resets the x and y positions of the angry sparty
+     */
     void ResetXY() override {
         PositionalItem::ResetXYtemp();
     };

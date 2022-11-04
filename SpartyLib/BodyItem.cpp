@@ -8,7 +8,7 @@
 
 /**
  * BodyItem constructor
- * @param world
+ * @param level Level the body item is part of
  */
 BodyItem::BodyItem(std::shared_ptr<Level> level) : PositionalItem(level)
 {
